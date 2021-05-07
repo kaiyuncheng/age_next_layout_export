@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import CategorySlider from "../utils/sliders/CategorySlider";
 
-const Category = () => {
+const Category = ({ blockData }) => {
   return (
     <div className="topics_section relative border border-secondary-medium rounded-lg rounded-br-5xl flex flex-col p-5 pt-3 bg-gradient-to-t from-primary-light via-white to-white">
       <button
         type="button"
         className="absolute -top-4 left-5 shadow-md bg-primary-light hover:bg-secondary-light transition-all duration-200 px-12 py-2 rounded-br-full rounded-tl-full overflow-hidden outline-none focus:outline-none"
       >
-        <h2 className="text-base">熟女學</h2>
+        <h2 className="text-base">{blockData.name}</h2>
         <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-r"></span>
       </button>
 
@@ -37,53 +37,28 @@ const Category = () => {
         </div>
       </a>
       <div className="topics_items hidden md:flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-5">
-        <div className="topics_item">
-          <a href="#" className="group">
-            <div className="rounded-t-md overflow-hidden">
-              <img
-                className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                src="https://doqvf81n9htmm.cloudfront.net/data/crop_article/112267/shutterstock_1038990709.jpg_1140x855.jpg"
-                alt=""
-              />
-            </div>
-            <div className="bg-rainbow-r w-full h-1.5 rounded-b-md mb-2"></div>
-            <h3 className="group-hover:text-gray-600 transition-all duration-300 ease-in-out">
-              這種婚不結也罷！5血淋淋經驗告訴我們：失去自己人生、經濟上依賴先生難以幸福
-            </h3>
-          </a>
-        </div>
-        <div className="topics_item">
-          <a href="#" className="group">
-            <div className="rounded-t-md overflow-hidden">
-              <img
-                className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                src="https://doqvf81n9htmm.cloudfront.net/data/crop_article/112774/2021310_210325.jpg_1140x855.jpg"
-                alt=""
-              />
-            </div>
-            <div className="bg-rainbow-r w-full h-1.5 rounded-b-md mb-2"></div>
-            <h3 className="group-hover:text-gray-600 transition-all duration-300 ease-in-out">
-              這種婚不結也罷！5血淋淋經驗告訴我們：失去自己人生、經濟上依賴先生難以幸福
-            </h3>
-          </a>
-        </div>
-        <div className="topics_item">
-          <a href="#" className="group">
-            <div className="rounded-t-md overflow-hidden">
-              <img
-                className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                src="https://doqvf81n9htmm.cloudfront.net/data/crop_article/112802/shutterstock_1917062426.jpg_1140x855.jpg"
-                alt=""
-              />
-            </div>
-            <div className="bg-rainbow-r w-full h-1.5 rounded-b-md mb-2"></div>
-            <h3 className="group-hover:text-gray-600 transition-all duration-300 ease-in-out">
-              這種婚不結也罷！5血淋淋經驗告訴我們：失去自己人生、經濟上依賴先生難以幸福
-            </h3>
-          </a>
-        </div>
+        {blockData.data &&
+          blockData.data.map((item, i) => {
+            return (
+              <div key={i} className="topics_item flex-1">
+                <a href="#" className="group flex flex-col justify-center">
+                  <div className="rounded-t-md overflow-hidden h-52">
+                    <img
+                      className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
+                      src={item.image_url}
+                      alt={item.title}
+                    />
+                  </div>
+                  <div className="bg-rainbow-r w-full h-1.5 rounded-b-md mb-2"></div>
+                  <h3 className="group-hover:text-gray-600 transition-all duration-300 ease-in-out line-clamp-3">
+                    {item.minor_title}
+                  </h3>
+                </a>
+              </div>
+            );
+          })}
       </div>
-      <CategorySlider/>
+      <CategorySlider topics={blockData.data} />
     </div>
   );
 };

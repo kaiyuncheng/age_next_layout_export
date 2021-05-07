@@ -91,114 +91,50 @@ const VideoSlider = ({ topics }) => {
 
       <div className="video_slider relative overflow-hidden">
         <Slider {...settings}>
-          <div className="bg-white outline-none focus:outline-none ">
-            <div className="relative flex flex-col px-2 z-10">
-              <a
-                href="#"
-                className="group block relative w-full mb-5 outline-none focus:outline-none"
-              >
-                <div className="rounded-lg overflow-hidden h-72 xs:h-56 w-full mb-5">
-                  <img
-                    className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                    src="https://s3-ap-northeast-1.amazonaws.com/lazybusiness/data/jamiesu_149/2020OCT/1021/LeeY4.JPG"
-                    alt=""
-                  />
+          {topics &&
+            topics.map((item, i) => {
+              return (
+                <div
+                  key={i}
+                  className="bg-white outline-none focus:outline-none "
+                >
+                  <div className="relative flex flex-col px-2 z-10">
+                    <a
+                      href={item.link}
+                      className="group block relative w-full mb-5 outline-none focus:outline-none"
+                    >
+                      <div className="rounded-lg overflow-hidden h-72 xs:h-56 w-full mb-5">
+                        <img
+                          className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
+                          src={item.image_url}
+                          alt={item.title}
+                        />
+                      </div>
+                      <span className="absolute top-36 xs:top-28 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out fill-current text-white opacity-60 group-hover:opacity-95 z-40">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="48.405"
+                          height="48.405"
+                          viewBox="0 0 48.405 48.405"
+                        >
+                          <path
+                            id="Icon_awesome-play-circle"
+                            data-name="Icon awesome-play-circle"
+                            d="M24.765.562a24.2,24.2,0,1,0,24.2,24.2A24.2,24.2,0,0,0,24.765.562ZM36.056,27.107,18.88,36.964A2.346,2.346,0,0,1,15.4,34.915v-20.3a2.348,2.348,0,0,1,3.484-2.049L36.056,23.008A2.35,2.35,0,0,1,36.056,27.107Z"
+                            transform="translate(-0.563 -0.563)"
+                          />
+                        </svg>
+                      </span>
+                      <div className=" px-2 pb-5 outline-none focus:outline-none">
+                        <p className="text-base group-hover:text-gray-600">
+                          {item.title}
+                        </p>
+                      </div>
+                    </a>
+                  </div>
                 </div>
-                <span className="absolute top-36 xs:top-28 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out fill-current text-white opacity-60 group-hover:opacity-95 z-40">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="48.405"
-                    height="48.405"
-                    viewBox="0 0 48.405 48.405"
-                  >
-                    <path
-                      id="Icon_awesome-play-circle"
-                      data-name="Icon awesome-play-circle"
-                      d="M24.765.562a24.2,24.2,0,1,0,24.2,24.2A24.2,24.2,0,0,0,24.765.562ZM36.056,27.107,18.88,36.964A2.346,2.346,0,0,1,15.4,34.915v-20.3a2.348,2.348,0,0,1,3.484-2.049L36.056,23.008A2.35,2.35,0,0,1,36.056,27.107Z"
-                      transform="translate(-0.563 -0.563)"
-                    />
-                  </svg>
-                </span>
-                <div className=" px-2 pb-5 outline-none focus:outline-none">
-                  <p className="text-base group-hover:text-gray-600">
-                    1最強館長棄百萬年薪！砸千萬退休金只為做「這件事」
-                  </p>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div className="bg-white outline-none focus:outline-none ">
-            <div className="relative flex flex-col px-2 z-10">
-              <a
-                href="#"
-                className="group block relative w-full mb-5 outline-none focus:outline-none"
-              >
-                <div className="rounded-lg overflow-hidden h-72 xs:h-56 w-full mb-5">
-                  <img
-                    className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                    src="https://doqvf81n9htmm.cloudfront.net/data/crop_article/112833/shutterstock_1935250781.jpg_1140x855.jpg"
-                  alt=""
-                  />
-                </div>
-                <span className="absolute top-36 xs:top-28 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out fill-current text-white opacity-60 group-hover:opacity-95 z-40">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="48.405"
-                    height="48.405"
-                    viewBox="0 0 48.405 48.405"
-                  >
-                    <path
-                      id="Icon_awesome-play-circle"
-                      data-name="Icon awesome-play-circle"
-                      d="M24.765.562a24.2,24.2,0,1,0,24.2,24.2A24.2,24.2,0,0,0,24.765.562ZM36.056,27.107,18.88,36.964A2.346,2.346,0,0,1,15.4,34.915v-20.3a2.348,2.348,0,0,1,3.484-2.049L36.056,23.008A2.35,2.35,0,0,1,36.056,27.107Z"
-                      transform="translate(-0.563 -0.563)"
-                    />
-                  </svg>
-                </span>
-                <div className=" px-2 pb-5 outline-none focus:outline-none">
-                  <p className="text-base group-hover:text-gray-600">
-                    2最強館長棄百萬年薪！砸千萬退休金只為做「這件事」
-                  </p>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div className="bg-white outline-none focus:outline-none ">
-            <div className="relative flex flex-col px-2 z-10">
-              <a
-                href="#"
-                className="group block relative w-full mb-5 outline-none focus:outline-none"
-              >
-                <div className="rounded-lg overflow-hidden h-72 xs:h-56 w-full mb-5">
-                  <img
-                    className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                    src="https://doqvf81n9htmm.cloudfront.net/data/jamiesu_149/2020OCT/1021/LeeY.jpg"
-                  alt=""
-                  />
-                </div>
-                <span className="absolute top-36 xs:top-28 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out fill-current text-white opacity-60 group-hover:opacity-95 z-40">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="48.405"
-                    height="48.405"
-                    viewBox="0 0 48.405 48.405"
-                  >
-                    <path
-                      id="Icon_awesome-play-circle"
-                      data-name="Icon awesome-play-circle"
-                      d="M24.765.562a24.2,24.2,0,1,0,24.2,24.2A24.2,24.2,0,0,0,24.765.562ZM36.056,27.107,18.88,36.964A2.346,2.346,0,0,1,15.4,34.915v-20.3a2.348,2.348,0,0,1,3.484-2.049L36.056,23.008A2.35,2.35,0,0,1,36.056,27.107Z"
-                      transform="translate(-0.563 -0.563)"
-                    />
-                  </svg>
-                </span>
-                <div className=" px-2 pb-5 outline-none focus:outline-none">
-                  <p className="text-base group-hover:text-gray-600">
-                    3最強館長棄百萬年薪！砸千萬退休金只為做「這件事」
-                  </p>
-                </div>
-              </a>
-            </div>
-          </div> 
+              );
+            })}
         </Slider>
       </div>
 

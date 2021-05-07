@@ -1,11 +1,14 @@
 import '../styles/globals.scss'
 import {MenuContextWrapper} from '../context/menu';
+import {MainContextWrapper} from '../context/main';
 
 function MyApp({ Component, pageProps }) {
   return (
-  <MenuContextWrapper>
-    <Component {...pageProps} />
-  </MenuContextWrapper>
+    <MainContextWrapper>
+      <MenuContextWrapper>
+        <Component {...pageProps} />
+      </MenuContextWrapper>
+     </MainContextWrapper>
   );
 }
 

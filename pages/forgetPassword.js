@@ -28,8 +28,8 @@ export default function login() {
                                             <div className="absolute bottom-[1px] left-[1px] inline-flex items-center justify-center h-10 px-3 rounded-l-md bg-secondary-medium">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="19" viewBox="0 0 17 19">
                                                     <g id="Icon_feather-user" data-name="Icon feather-user" transform="translate(-5.5 -4)">
-                                                      <path id="Path_4135" data-name="Path 4135" d="M22,28.973V26.815A4.167,4.167,0,0,0,18,22.5H10a4.167,4.167,0,0,0-4,4.315v2.158" transform="translate(0 -6.473)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-                                                      <path id="Path_4136" data-name="Path 4136" d="M20.648,8.815A4.324,4.324,0,1,1,16.324,4.5a4.32,4.32,0,0,1,4.324,4.315Z" transform="translate(-2.324)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                                      <path id="Path_4135" data-name="Path 4135" d="M22,28.973V26.815A4.167,4.167,0,0,0,18,22.5H10a4.167,4.167,0,0,0-4,4.315v2.158" transform="translate(0 -6.473)" fill="none" stroke="#fff" strokeLinecap="round" stroke-linejoin="round" strokeWidth="1"/>
+                                                      <path id="Path_4136" data-name="Path 4136" d="M20.648,8.815A4.324,4.324,0,1,1,16.324,4.5a4.32,4.32,0,0,1,4.324,4.315Z" transform="translate(-2.324)" fill="none" stroke="#fff" strokeLinecap="round" stroke-linejoin="round" strokeWidth="1"/>
                                                     </g>
                                                 </svg>
                                             </div>

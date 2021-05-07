@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
-const Speakers = ({ title }) => {
+const Speakers = ({ title, topics }) => {
   return (
-    <div className="speakers">
+    <div className="speakers mb-5">
       <div className="relative inline-flex items-center rounded-tl-lg bg-primary-light pl-5 py-2 w-full shadow-mdRight rounded-br-5xl overflow-hidden outline-none focus:outline-none mb-5">
         {title === "最新快訊" ? (
           <span className="mr-2">
@@ -40,8 +40,8 @@ const Speakers = ({ title }) => {
                   transform="translate(1383.476 2236.002)"
                   fill="none"
                   stroke="#000"
-                  stroke-linecap="round"
-                  stroke-width="1"
+                  strokeLinecap="round"
+                  strokeWidth="1"
                 />
                 <line
                   id="Line_10"
@@ -50,8 +50,8 @@ const Speakers = ({ title }) => {
                   transform="translate(1383.882 2239.379)"
                   fill="none"
                   stroke="#000"
-                  stroke-linecap="round"
-                  stroke-width="1"
+                  strokeLinecap="round"
+                  strokeWidth="1"
                 />
                 <line
                   id="Line_9"
@@ -61,8 +61,8 @@ const Speakers = ({ title }) => {
                   transform="translate(1383.476 2240.504)"
                   fill="none"
                   stroke="#000"
-                  stroke-linecap="round"
-                  stroke-width="1"
+                  strokeLinecap="round"
+                  strokeWidth="1"
                 />
               </g>
             </svg>
@@ -91,127 +91,25 @@ const Speakers = ({ title }) => {
       <div className="relative">
         <div className="bg-white outline-none focus:outline-none ">
           <div className="flex flex-row flex-wrap md:flex-nowrap md:flex-col md:space-y-5 relative ">
-            <a
-              href="#"
+          {topics &&
+            topics.map((item, i) => {
+              return ( <a key={i}
+              href={item.link}
               className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
             >
               <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
                 <img
                   className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                  src="https://doqvf81n9htmm.cloudfront.net/data/heidilin_146/0ESG/shutterstock_556478710.jpg"
-                  alt=""
+                  src={item.image_url}
+                  alt={item.title}
                 />
               </div>
               <p className="text-sm md:text-base group-hover:text-gray-600">
-                退休金規劃12-10／中年存款900萬，提早退休可行嗎？專家：小心做錯這5件事
+              {item.title}
               </p>
-            </a>
-            <a
-              href="#"
-              className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
-            >
-              <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
-                <img
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                  src="https://doqvf81n9htmm.cloudfront.net/data/shenlin_127/shutterstock_707130331.jpeg"
-                  alt=""
-                />
-              </div>
-              <p className="text-sm md:text-base group-hover:text-gray-600">
-                最強館長棄百萬年薪！砸千萬退休金只為做「這件事」棄百萬年薪！砸千萬退休金只為做「這件事」
-              </p>
-            </a>
-            <a
-              href="#"
-              className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
-            >
-              <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
-                <img
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                  src="https://doqvf81n9htmm.cloudfront.net/data/heidilin_146/0ESG/shutterstock_556478710.jpg"
-                  alt=""
-                />
-              </div>
-              <p className="text-sm md:text-base group-hover:text-gray-600">
-                退休金規劃12-10／中年存款900萬，提早退休可行嗎？專家：小心做錯這5件事
-              </p>
-            </a>
-            <a
-              href="#"
-              className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
-            >
-              <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
-                <img
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                  src="https://doqvf81n9htmm.cloudfront.net/data/shenlin_127/shutterstock_707130331.jpeg"
-                  alt=""
-                />
-              </div>
-              <p className="text-sm md:text-base group-hover:text-gray-600">
-                最強館長棄百萬年薪！砸千萬退休金只為做「這件事」棄百萬年薪！砸千萬退休金只為做「這件事」
-              </p>
-            </a>
-            <a
-              href="#"
-              className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
-            >
-              <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
-                <img
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                  src="https://doqvf81n9htmm.cloudfront.net/data/heidilin_146/0ESG/shutterstock_556478710.jpg"
-                  alt=""
-                />
-              </div>
-              <p className="text-sm md:text-base group-hover:text-gray-600">
-                退休金規劃12-10／中年存款900萬，提早退休可行嗎？專家：小心做錯這5件事
-              </p>
-            </a>
-            <a
-              href="#"
-              className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
-            >
-              <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
-                <img
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                  src="https://doqvf81n9htmm.cloudfront.net/data/shenlin_127/shutterstock_707130331.jpeg"
-                  alt=""
-                />
-              </div>
-              <p className="text-sm md:text-base group-hover:text-gray-600">
-                最強館長棄百萬年薪！砸千萬退休金只為做「這件事」棄百萬年薪！砸千萬退休金只為做「這件事」
-              </p>
-            </a>
-            <a
-              href="#"
-              className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
-            >
-              <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
-                <img
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                  src="https://doqvf81n9htmm.cloudfront.net/data/heidilin_146/0ESG/shutterstock_556478710.jpg"
-                  alt=""
-                />
-              </div>
-              <p className="text-sm md:text-base group-hover:text-gray-600">
-                退休金規劃12-10／中年存款900萬，提早退休可行嗎？專家：小心做錯這5件事
-              </p>
-            </a>
-            <a
-              href="#"
-              className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
-            >
-              <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
-                <img
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                  src="https://doqvf81n9htmm.cloudfront.net/data/shenlin_127/shutterstock_707130331.jpeg"
-                  alt=""
-                />
-              </div>
-              <p className="text-sm md:text-base group-hover:text-gray-600">
-                最強館長棄百萬年薪！砸千萬退休金只為做「這件事」棄百萬年薪！砸千萬退休金只為做「這件事」
-              </p>
-            </a>
-          </div>
+            </a>);
+            })}
+            </div>
         </div>
 
         <div className="absolute bottom-0 right-0 border-b border-r border-secondary-medium rounded-br-6xl w-full p-5"></div>

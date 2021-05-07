@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
 const Tabs = ({tab1topics, tab2topics}) => {
-  const [topics0To3, setTopics1To3]= useState(tab1topics.slice(0,3));
-  const [topics3To6, setTopics3To6]= useState(tab1topics.slice(3,6));
+  const [topics0To3, setTopics1To3]= useState([]);
+  const [topics3To6, setTopics3To6]= useState([]);
   const [isHot, setIsHot]= useState(true);
+
+  useEffect(() => {
+    setTopics1To3(tab1topics.slice(0,3));
+    setTopics3To6(tab1topics.slice(3,6));
+  }, [tab1topics]);
 
   const handleTabs = (item) => {
     if (item === 'hot'){

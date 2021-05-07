@@ -7,32 +7,39 @@ import AsideSection from "../../components/AsideSection";
 import ArticleList from "../../components/MainSection/ArticleList";
 
 
-// export const getStaticProps = async ({params}) => {
-//   try {
-//     const { data } = await axios.get(`article/detail/202105040003`);
-//     return {
-//       props: {
-//         data,
-//       },
-//     };
-//   } catch (error) {
-//     console.log("getData error", error);
-//   }
-// };
-
-
-export const getStaticPaths = async () => {
-    
+export const getServerSideProps = async (context) => {
+    const {id} = context.query;
+  try {
+    const { data } = await axios.get(`article/detail/${id}`);
     return {
-        paths: [
-          // String variant:
-          '/blog/first-post',
-          // Object variant:
-          { params: { slug: 'second-post' } },
-        ],
-        fallback: true,
-      }
-}
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    console.log("getData error", error);
+  }
+};
+
+
+// export const getStaticPaths = async () => {
+
+//      const res = await axios.get(`Catalog/news`);
+//         const dataPath = res.data.data;
+//         console.log('path data', res);
+
+
+//         const paths = dataPath.map((item) => {
+//             return{
+//                 params: { id: item.url_query}
+//             };
+//         })
+
+//         return {
+//             paths,
+//             fallback: false
+//         };
+// }
 
 export default function Article({data}) {
     // const {mainData} = useMainContext();
@@ -40,7 +47,7 @@ export default function Article({data}) {
 
   return (
     <Layout siteTitle="幸福熟齡 - 最新文章">
-    {console.log('文章', data)}
+      {console.log(data)}
       {/* <!-- bread crumb --> */}
       <div className="breadcrumb pt-7 md:pt-5 mb-5">
         <nav className="max-w-screen-2xl mx-auto px-4 lg:px-2 text-sm text-gray-600 font-light">
