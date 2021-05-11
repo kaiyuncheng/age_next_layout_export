@@ -2,24 +2,24 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
-const Tabs = ({tab1topics, tab2topics}) => {
-  const [topics0To3, setTopics1To3]= useState([]);
-  const [topics3To6, setTopics3To6]= useState([]);
-  const [isHot, setIsHot]= useState(true);
+const Tabs = ({ tab1topics, tab2topics }) => {
+  const [topics0To3, setTopics1To3] = useState([]);
+  const [topics3To6, setTopics3To6] = useState([]);
+  const [isHot, setIsHot] = useState(true);
 
   useEffect(() => {
-    setTopics1To3(tab1topics.slice(0,3));
-    setTopics3To6(tab1topics.slice(3,6));
+    setTopics1To3(tab1topics.slice(0, 3));
+    setTopics3To6(tab1topics.slice(3, 6));
   }, [tab1topics]);
 
   const handleTabs = (item) => {
-    if (item === 'hot'){
-      setTopics1To3(tab1topics.slice(0,3));
-      setTopics3To6(tab1topics.slice(3,6));
+    if (item === "hot") {
+      setTopics1To3(tab1topics.slice(0, 3));
+      setTopics3To6(tab1topics.slice(3, 6));
       setIsHot(true);
-    }else{
-      setTopics1To3(tab2topics.slice(0,3));
-      setTopics3To6(tab2topics.slice(3,6));
+    } else {
+      setTopics1To3(tab2topics.slice(0, 3));
+      setTopics3To6(tab2topics.slice(3, 6));
       setIsHot(false);
     }
   };
@@ -27,9 +27,14 @@ const Tabs = ({tab1topics, tab2topics}) => {
   return (
     <div className="latest_articles w-full md:w-1/2 rounded-lg rounded-br-5xl flex flex-col">
       <div className="relative bg-secondary-medium rounded-t-lg h-10">
-        <button onClick={()=>handleTabs('hot')}
+        <button
+          onClick={() => handleTabs("hot")}
           type="button"
-          className={clsx(isHot && "h-11 bg-primary-light shadow-mdRight", !isHot && "h-10", "header_tab_left hover:h-11 hover:bg-primary-light hover:border inline-flex items-center justify-center absolute bottom-0 left-0 w-1/2 border border-secondary-medium  rounded-tl-lg rounded-tr-5xl text-center outline-none focus:outline-none transition-all duration-200 ease-linear")}
+          className={clsx(
+            isHot && "h-11 bg-primary-light shadow-mdRight",
+            !isHot && "h-10",
+            "header_tab_left hover:h-11 hover:bg-primary-light hover:border inline-flex items-center justify-center absolute bottom-0 left-0 w-1/2 border border-secondary-medium  rounded-tl-lg rounded-tr-5xl text-center outline-none focus:outline-none transition-all duration-200 ease-linear"
+          )}
         >
           <span className="mr-2">
             <svg
@@ -49,9 +54,14 @@ const Tabs = ({tab1topics, tab2topics}) => {
           <h2 className="">熱門文章</h2>
           <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-o"></span>
         </button>
-        <button onClick={()=>handleTabs('news')}
+        <button
+          onClick={() => handleTabs("news")}
           type="button"
-          className={clsx(isHot && "h-10", !isHot && "h-11 bg-primary-light shadow-mdRight border", "header_tab_right hover:h-11 hover:bg-primary-light hover:border inline-flex items-center justify-center absolute bottom-0 right-0 h-10  border-secondary-medium rounded-tr-lg rounded-tl-5xl text-center py-2 w-1/2 overflow-hidden outline-none focus:outline-none transition-all duration-200 ease-linear")}
+          className={clsx(
+            isHot && "h-10",
+            !isHot && "h-11 bg-primary-light shadow-mdRight border",
+            "header_tab_right hover:h-11 hover:bg-primary-light hover:border inline-flex items-center justify-center absolute bottom-0 right-0 h-10  border-secondary-medium rounded-tr-lg rounded-tl-5xl text-center py-2 w-1/2 overflow-hidden outline-none focus:outline-none transition-all duration-200 ease-linear"
+          )}
         >
           <span className="mr-2">
             <svg
@@ -105,42 +115,35 @@ const Tabs = ({tab1topics, tab2topics}) => {
 
       <div className="flex lg:flex-row flex-col flex-grow rounded-bl-lg rounded-br-5xl border-b border-r border-l border-secondary-medium shadow-md ">
         <div className="lg:w-1/2 w-full lg:border-r border-secondary-medium border-dashed flex flex-col flex-grow">
-          {topics0To3 && topics0To3.map((item,i)=>{
-            return(
-              <a key={i+1}
-            href={item.hyperlink}
-            className="relative h-20 flex-grow flex items-center hover:bg-primary-light transition-all duration-300 ease-in-out lg:last:border-none border-b border-secondary-medium border-dashed"
-          >
-            <span className="absolute left-1 top-1 w-8 h-8 bg-primary-dark pl-2 text-white rounded-md rounded-br-5xl">
-              {i+1}
-            </span>
-            <h2 className="pl-12 py-5 md:py-0 pr-3">
-            {item.title}
-            </h2>
-          </a>
-
-            );
-          })}
-          
-           
-           </div>
+          {topics0To3 &&
+            topics0To3.map((item, i) => {
+              return (
+                <Link href={`/article/${item.url_query}`} key={i + 1}>
+                  <a className="relative h-20 flex-grow flex items-center hover:bg-primary-light transition-all duration-300 ease-in-out lg:last:border-none border-b border-secondary-medium border-dashed">
+                    <span className="absolute left-1 top-1 w-8 h-8 bg-primary-dark pl-2 text-white rounded-md rounded-br-5xl">
+                      {i + 1}
+                    </span>
+                    <h2 className="pl-12 py-5 md:py-0 pr-3">{item.title}</h2>
+                  </a>
+                </Link>
+              );
+            })}
+        </div>
         <div className="lg:w-1/2 w-full flex flex-col flex-grow">
-        {topics3To6 && topics3To6.map((item,i)=>{
-            return(
-          <a key={i+4}
-            href={item.hyperlink}
-            className="relative h-20 flex-grow inline-flex items-center hover:bg-primary-light transition-all duration-300 ease-in-out last:rounded-br-5xl last:border-none border-b border-secondary-medium border-dashed"
-          >
-            <span className="absolute left-1 top-1 w-8 h-8 bg-secondary-dark pl-2 text-white rounded-md rounded-br-5xl">
-            {i+4}
-            </span>
-            <h2 className="pl-12 py-5 md:py-0 pr-3">
-            {item.title}
-            </h2>
-          </a>
-            );
-          })}
-          </div>
+          {topics3To6 &&
+            topics3To6.map((item, i) => {
+              return (
+                <Link href={`/article/${item.url_query}`} key={i + 4}>
+                  <a className="relative h-20 flex-grow inline-flex items-center hover:bg-primary-light transition-all duration-300 ease-in-out last:rounded-br-5xl last:border-none border-b border-secondary-medium border-dashed">
+                    <span className="absolute left-1 top-1 w-8 h-8 bg-secondary-dark pl-2 text-white rounded-md rounded-br-5xl">
+                      {i + 4}
+                    </span>
+                    <h2 className="pl-12 py-5 md:py-0 pr-3">{item.title}</h2>
+                  </a>
+                </Link>
+              );
+            })}
+        </div>
       </div>
     </div>
   );

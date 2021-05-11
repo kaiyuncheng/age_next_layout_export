@@ -42,26 +42,11 @@ const Layout = ({ children, siteTitle }) => {
           content="https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/metalogo201804.png"
         />
         <meta property="og:type" content="website" />
-        
-
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-990045206"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-990045206');`,
-          }}
-        />
-
         <title>{siteTitle}</title>
         <link
-          rel="icon"
-          href="https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/favicon.ico"
-        />
+            rel="icon"
+            href="https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/favicon.ico"
+          />
       </Head>
 
       <Header />

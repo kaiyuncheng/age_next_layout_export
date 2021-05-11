@@ -3,11 +3,11 @@ import Head from "next/head";
 import Link from "next/link";
 import { useMainContext } from '../context/main';
 import Layout from "../components/Layout";
-
 import MainSlider from "../components/utils/sliders/MainSlider";
 import Tabs from "../components/LatestSection/Tabs";
 import DigitalSlider from "../components/utils/sliders/DigitalSlider";
-import Banner300x75 from "../components/utils/googletags/Banner300x75";
+import Banner from "../components/utils/googletags/Banner";
+import Banner2 from "../components/utils/googletags/Banner2";
 import Category from "../components/MainSection/Category";
 import AsideSection from "../components/AsideSection";
 
@@ -25,7 +25,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* <Banner300x75/> */}
+      <Banner /> <Banner />
+      <Banner2/>
 
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
@@ -40,13 +41,6 @@ export default function Home() {
           <AsideSection isHot={false} videoTopics={mainData.hot_videos} newsTopics={mainData.article_news}/>
         </div>
       </div>
-
-      <Link href="/testpage">
-        <a>test page</a>
-      </Link>
-      <Link href="/second">
-        <a>第二頁</a>
-      </Link>
     </Layout>
   );
 }

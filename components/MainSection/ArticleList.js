@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ArticleListItem from './ArticleListItem';
 
 const ArticleList = ({topics}) => {
@@ -7,7 +7,6 @@ const ArticleList = ({topics}) => {
   {topics && topics.map((item,i)=>{
             return(
               <ArticleListItem key={i} item={item} />
-
             );
           })}
     </div>);

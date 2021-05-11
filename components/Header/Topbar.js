@@ -106,7 +106,7 @@ const Topbar = () => {
 
       <div className="topbar_btns flex items-center justify-center h-full w-full md:w-auto whitespace-nowrap">
         <a
-          className="topbar_btn md:mr-3 md:hidden block flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
+          className="topbar_btn md:mr-3 md:hidden flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full flex items-center justify-center last:border-r"
           href="https://www.businesstoday.com.tw/"
           target="_blank"
         >

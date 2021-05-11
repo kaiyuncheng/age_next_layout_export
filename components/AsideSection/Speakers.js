@@ -93,8 +93,11 @@ const Speakers = ({ title, topics }) => {
           <div className="flex flex-row flex-wrap md:flex-nowrap md:flex-col md:space-y-5 relative ">
           {topics &&
             topics.map((item, i) => {
-              return ( <a key={i}
-              href={item.link}
+              return ( 
+                
+
+            <Link href={`/article/${item.url_query}`} key={i}>
+            <a 
               className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
             >
               <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
@@ -107,7 +110,10 @@ const Speakers = ({ title, topics }) => {
               <p className="text-sm md:text-base group-hover:text-gray-600">
               {item.title}
               </p>
-            </a>);
+            </a>
+                      </Link>
+            
+            );
             })}
             </div>
         </div>
