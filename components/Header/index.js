@@ -5,7 +5,6 @@ import clsx from "clsx";
 import { useMenuContext } from "../../context/menu";
 import Topbar from "./Topbar";
 import Banner from "../utils/googletags/Banner";
-
 const Header = () => {
   const [menuState, setMenuState] = useState(false);
   const [top, setTop] = useState(true);
@@ -331,6 +330,19 @@ const Header = () => {
 
           <div className="mainbar_banner hidden lg:block">
             {/* <Banner /> */}
+            {/* <!-- 廣告A 300x75 banner -->
+                    <!-- /1006274/thebetteraging_pc_all_300x100 -->
+                    <!-- <div id='div-gpt-ad-1529564063399-0' style="display: none;"></div> --> */}
+            {/* <a href="#" className="block w-[300px] h-[75px]">
+              <Image
+                className="h-full w-full object-cover"
+                src="/images/banner_300x75.jpg"
+                height={75}
+                width={300}
+                alt="Banner 300x75"
+              />
+            </a> */}
+            <Banner adId="div-gpt-ad-1529564063399-0" />
           </div>
 
 

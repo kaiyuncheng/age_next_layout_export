@@ -1,37 +1,18 @@
-import React, { useEffect } from "react";
-import Head from "next/head";
-import useDfpSlot from "../../../hooks/useDfpSlot";
-const Banner = ({size}) => {
-  // const defaultBanner =  banners[size];
+import { useAdSlot } from "../../../hooks/useAdSlot";
+import { useAdContext } from "../../../context/ad";
 
-  // const banners = {
-  //   banner300x75: {
-  //     path: '/1006274/thebetteraging_pc_all_300x100',
-  //     size: [300, 75],
-  //     id: 'div-gpt-ad-1529564063399-0',
-  //   },
-  //   banner300x100: {
-  //     path: '/1006274/thebetteraging_pc_all_300x100',
-  //     size: [300, 100],
-  //     id: 'div-gpt-ad-1529564063399-0',
-  //   },
-  // };
+function Banner({ adId }) {
+  const { adData } = useAdContext();
+  const targetAd = adData.adlist[adId];
 
-  useDfpSlot({
-    path: '/1006274/thebetteraging_pc_all_300x100',
-    size: [300, 75],
-    id: 'div-gpt-ad-1529564063399-0',
+  useAdSlot({
+    sizes: targetAd.sizes,
+    id: adId,
+    isTransitioning: adData.isTransitioning,
+    slot: targetAd.slot
   });
 
-  
-
-
-  return (
-      <div
-        id="div-gpt-ad-1529564063399-0"
-        style={{ width: "300px", height: "75px" }}
-      />
-  );
-};
+  return <div id={adId} />;
+}
 
 export default Banner;

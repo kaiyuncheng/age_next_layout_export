@@ -1,7 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import { useUserContext } from "../../context/user";
+
 const Topbar = () => {
-  
+  const { userData } = useUserContext();
+
   return (
     <div className="topbar text-gray-500 text-sm border-b border-gray-200">
     <div className="max-w-screen-2xl mx-auto md:pl-4 lg:pl-2 flex items-center justify-between h-10">
@@ -201,28 +204,54 @@ const Topbar = () => {
           </svg>
         </a>
 
+        {
+          Object.keys(userData).length ? 
+          <p
+            className="topbar_btn flex-grow md:px-4 h-full inline-flex items-center justify-center last:border-r"
+          >{userData.username}, 您好</p> : null
+        }
         <a
-          className="topbar_btn block flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
+          className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
           href="https://www.facebook.com/thebetteraging/"
           target="_blank"
         >
           FACEBOOK
         </a>
         <a
-          className="topbar_btn block flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
+          className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
           href="https://page.line.me/sgw2846w?openQrModal=true"
           target="_blank"
         >
           LINE
         </a>
-        <Link href="/login">
-        <a className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
-          >登入</a>
-        </Link>
-        <Link href="/register">
-        <a className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
-          >註冊</a>
-        </Link>
+        {
+          Object.keys(userData).length ? (
+            <>
+              <a
+                className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
+                href="https://www.businesstoday.com.tw/dashboard"
+                target="_blank"
+              >
+                會員中心
+              </a>
+              <Link href="/logout">
+              <a className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
+                >登出</a>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/login">
+              <a className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
+                >登入</a>
+              </Link>
+              <Link href="/register">
+              <a className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
+                >註冊</a>
+              </Link>
+            </>
+          )
+        }
       </div>
     </div>
   </div>

@@ -7,10 +7,11 @@ import Layout from "../components/Layout";
 import MainSlider from "../components/utils/sliders/MainSlider";
 import Tabs from "../components/LatestSection/Tabs";
 import DigitalSlider from "../components/utils/sliders/DigitalSlider";
-import Banner from "../components/utils/googletags/Banner";
-import Banner2 from "../components/utils/googletags/Banner2";
 import Category from "../components/MainSection/Category";
 import AsideSection from "../components/AsideSection";
+import Banner from "../components/utils/googletags/Banner"
+
+// import Banner2 from "../components/utils/googletags/Banner2";
 
 
 export default function Home() {
@@ -31,8 +32,8 @@ export default function Home() {
       </div>
     </Fade>
 
-      <Banner /> 
-      <Banner2/>
+      {/* <Banner /> 
+      <Banner2/> */}
 
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
@@ -47,6 +48,7 @@ export default function Home() {
           <AsideSection isHot={false} isProject={false}  videoTopics={mainData.hot_videos} newsTopics={mainData.article_news}/>
         </div>
       </div>
+      <Banner adId="div-gpt-ad-1529567429364-1" />
     </Layout>
   );
 }
