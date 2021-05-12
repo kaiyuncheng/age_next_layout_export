@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
 import Topbar from "./Topbar";
+import Banner from "../utils/googletags/Banner"
 
 const Header = () => {
   const [menuState, setMenuState] = useState(false);
@@ -43,7 +44,7 @@ const Header = () => {
   return (
     <header className="shadow-md fixed top-0 z-50 w-full bg-white">
       <Topbar />
-      {console.log("header", menuData)}
+      {/* {console.log("header", menuData)} */}
       <div className="mainbar">
         <div className="max-w-screen-2xl mx-auto px-2 md:px-4 lg:px-2 h-20 md:h-24 flex justify-between items-center">
           <button
@@ -335,7 +336,7 @@ const Header = () => {
             {/* <!-- 廣告A 300x75 banner -->
                     <!-- /1006274/thebetteraging_pc_all_300x100 -->
                     <!-- <div id='div-gpt-ad-1529564063399-0' style="display: none;"></div> --> */}
-            <a href="#" className="block w-[300px] h-[75px]">
+            {/* <a href="#" className="block w-[300px] h-[75px]">
               <Image
                 className="h-full w-full object-cover"
                 src="/images/banner_300x75.jpg"
@@ -343,7 +344,8 @@ const Header = () => {
                 width={300}
                 alt="Banner 300x75"
               />
-            </a>
+            </a> */}
+            <Banner adId="div-gpt-ad-1529564063399-0" />
           </div>
         </div>
       </div>

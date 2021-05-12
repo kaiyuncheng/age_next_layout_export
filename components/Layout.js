@@ -57,6 +57,8 @@ const Layout = ({ children, siteTitle }) => {
           }}
         />
 
+        <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+
         <title>{siteTitle}</title>
         <link
           rel="icon"

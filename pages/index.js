@@ -8,9 +8,9 @@ import Layout from "../components/Layout";
 import MainSlider from "../components/utils/sliders/MainSlider";
 import Tabs from "../components/LatestSection/Tabs";
 import DigitalSlider from "../components/utils/sliders/DigitalSlider";
-import Banner300x75 from "../components/utils/googletags/Banner300x75";
 import Category from "../components/MainSection/Category";
 import AsideSection from "../components/AsideSection";
+import Banner from "../components/utils/googletags/Banner"
 
 const top_banners = [
   {
@@ -269,8 +269,6 @@ export default function Home({ data }) {
         </div>
       </div>
 
-      {/* <Banner300x75/> */}
-
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
           <div className="relative w-full md:w-3/4 flex flex-col space-y-14 overflow-hidden pt-5">
@@ -282,7 +280,7 @@ export default function Home({ data }) {
           <AsideSection videoTopics={mainData.hot_videos} newsTopics={mainData.article_news}/>
         </div>
       </div>
-
+      <Banner adId="div-gpt-ad-1529567429364-1" />
       <Link href="/testpage">
         <a>test page</a>
       </Link>
