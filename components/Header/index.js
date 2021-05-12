@@ -330,7 +330,7 @@ const Header = () => {
           </button>
 
           <div className="mainbar_banner hidden lg:block">
-            <Banner />
+            {/* <Banner /> */}
           </div>
 
 
@@ -344,7 +344,7 @@ const Header = () => {
             menuData.map((item, i) => {
               return (
                 <li key={i} className="group flex-grow relative">
-                  {item.link.charAt(0) === "/" ? (
+                {item.link ? item.link.charAt(0) === "/" ? (
                     <Link href={item.link}>
                       <a className="main_menu_btn flex items-center justify-center relative w-full h-10 rounded-br-full rounded-tl-full transition-all duration-500 group-hover:bg-primary-light focus-within:bg-primary-light outline-none focus:outline-none">
                         <h2>{item.name}</h2>
@@ -371,8 +371,20 @@ const Header = () => {
                         )}
                       ></span>
                     </a>
-                  )}
-
+                   ) : <a
+                      href="#"
+                      rel="noreferrer"
+                      target="_self"
+                      className="main_menu_btn flex items-center justify-center relative w-full h-10 rounded-br-full rounded-tl-full transition-all duration-500 group-hover:bg-primary-light focus-within:bg-primary-light outline-none focus:outline-none"
+                    >
+                      <h2>{item.name}</h2>
+                      <span
+                        className={clsx(
+                          item.color,
+                          "absolute w-full h-1 left-0 bottom-0 border"
+                        )}
+                      ></span>
+                    </a>}
                   <ul className="block transform origin-top scale-y-0 transition-all duration-300 group-hover:scale-y-100 absolute top-10 left-0 w-full bg-rainbow-olight shadow-md rounded-b-lg overflow-hidden">
                     {item.under_menu &&
                       item.under_menu.map((item, i) => {

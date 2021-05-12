@@ -89,36 +89,31 @@ const Speakers = ({ title, topics }) => {
       </div>
 
       <div className="relative">
-        <div className="bg-white outline-none focus:outline-none ">
+        <div className="outline-none focus:outline-none relative z-10">
           <div className="flex flex-row flex-wrap md:flex-nowrap md:flex-col md:space-y-5 relative ">
-          {topics &&
-            topics.map((item, i) => {
-              return ( 
-                
-
-            <Link href={`/article/${item.url_query}`} key={i}>
-            <a 
-              className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
-            >
-              <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
-                <img
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                  src={item.image_url}
-                  alt={item.title}
-                />
-              </div>
-              <p className="text-sm md:text-base group-hover:text-gray-600">
-              {item.title}
-              </p>
-            </a>
-                      </Link>
-            
-            );
-            })}
-            </div>
+            {topics &&
+              topics.map((item, i) => {
+                return (
+                  <Link href={`/article/${item.url_query}`} key={i}>
+                    <a className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none">
+                      <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
+                        <img
+                          className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
+                          src={item.image_url}
+                          alt={item.title}
+                        />
+                      </div>
+                      <p className="text-sm md:text-base group-hover:text-gray-600">
+                        {item.title}
+                      </p>
+                    </a>
+                  </Link>
+                );
+              })}
+          </div>
         </div>
 
-        <div className="absolute bottom-0 right-0 border-b border-r border-secondary-medium rounded-br-6xl w-full p-5"></div>
+        <div className="absolute z-0 bottom-0 right-0 border-b border-r border-secondary-medium rounded-br-6xl w-full p-5"></div>
       </div>
     </div>
   );

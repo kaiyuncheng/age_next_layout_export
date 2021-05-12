@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import clsx from "clsx";
+import Image from "next/image";
+import Link from "next/link";
 
 function NextArrow({ onClick }) {
   return (
@@ -75,19 +76,22 @@ const CategorySlider = ({ topics }) => {
             return (
               <div key={i} className="outline-none focus:outline-none">
                 <div className="flex flex-col">
-                  <a href="#" className="group">
-                    <div className="rounded-t-md overflow-hidden h-56 xs:h-60">
-                      <img
-                        className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                        src={item.image_url}
-                        alt={item.title}
-                      />
-                    </div>
-                    <div className="bg-rainbow-r w-full h-1.5 rounded-b-md mb-2"></div>
-                    <h3 className="group-hover:text-gray-600 transition-all duration-300 ease-in-out">
-                      {item.title}
-                    </h3>
-                  </a>
+                  <Link href={`/article/${item.url_query}`}>
+                    <a className="group">
+                      <div className="relative rounded-t-md overflow-hidden h-56 xs:h-60">
+                        <Image
+                          className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
+                          src={item.image_url}
+                          alt={item.title}
+                          layout="fill"
+                        />
+                      </div>
+                      <div className="bg-rainbow-r w-full h-1.5 rounded-b-md mb-2"></div>
+                      <h3 className="group-hover:text-gray-600 transition-all duration-300 ease-in-out">
+                        {item.title}
+                      </h3>
+                    </a>
+                  </Link>
                 </div>
               </div>
             );

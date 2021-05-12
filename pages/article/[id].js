@@ -80,7 +80,6 @@ export default function Article({ data }) {
         />
       </Head>
 
-      {/* <!-- bread crumb --> */}
       <BreadCrumb
         titles={[
           { title: `${articleData.category_info.name || '分類文章'}`, link: `/category/${articleData.article_info.url_query}` },

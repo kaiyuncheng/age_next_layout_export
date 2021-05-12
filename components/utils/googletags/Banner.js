@@ -15,7 +15,6 @@ const Banner = ({size}) => {
   //     size: [300, 100],
   //     id: 'div-gpt-ad-1529564063399-0',
   //   },
-
   // };
 
   useDfpSlot({

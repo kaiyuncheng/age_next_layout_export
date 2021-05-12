@@ -1,8 +1,10 @@
 import React from 'react';
 import Link from "next/link";
 import Image from "next/image"; 
+import Fade from "react-reveal/Fade";
 const AuthorListItem = ({author}) => {
   return (
+    <Fade bottom>
     <div className="w-full lg:w-1/2 px-4 pb-8">
     <div className="flex bg-white rounded-bl-lg rounded-t-lg rounded-br-5xl shadow-md border border-secondary-medium">
       <div className="w-1/3 h-56 inline-flex items-center justify-center p-2 xs:p-5 lg:p-3">
@@ -28,7 +30,7 @@ const AuthorListItem = ({author}) => {
 
         <Link href={`/authors/${author.id}`}>
         <a 
-          className="group absolute z-50 right-0 bottom-0 bg-primary-light hover:bg-secondary-medium hover:text-primary-dark text-gray-800 py-2 px-10  inline-flex items-center justify-center rounded-br-full rounded-tl-full transition-all duration-300 ease-in-out outline-none focus:outline-none"
+          className="group absolute z-20 right-0 bottom-0 bg-primary-light hover:bg-secondary-medium hover:text-primary-dark text-gray-800 py-2 px-10  inline-flex items-center justify-center rounded-br-full rounded-tl-full transition-all duration-300 ease-in-out outline-none focus:outline-none"
         >
           <p className="mr-2 whitespace-nowrap">查看文章</p>
           <div>
@@ -54,6 +56,7 @@ const AuthorListItem = ({author}) => {
       </div>
     </div>
   </div>
+  </Fade>
   );
 };
 

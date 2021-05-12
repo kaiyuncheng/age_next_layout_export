@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 import useDfpSlot from "../../../hooks/useDfpSlot";
-const Banner = ({size}) => {
+const Banner2 = ({size}) => {
   // const defaultBanner =  banners[size];
 
   // const banners = {
@@ -40,4 +40,4 @@ const Banner = ({size}) => {
   );
 };
 
-export default Banner;
+export default Banner2;
