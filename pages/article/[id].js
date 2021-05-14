@@ -45,7 +45,6 @@ export default function Article({ data }) {
 
   return (
     <Layout siteTitle={`幸福熟齡 - ${articleData.article_info.title}`}>
-      {console.log(articleData)}
 
       <Head>
         <meta
@@ -82,7 +81,7 @@ export default function Article({ data }) {
 
       <BreadCrumb
         titles={[
-          { title: `${articleData.category_info.name || '分類文章'}`, link: `/category/${articleData.article_info.url_query}` },
+          { title: `${articleData.category_info.name || '分類文章'}`, link: `/catalog/${articleData.category_info.category_id}` },
           { title: `${articleData.article_info.title}`, link: `/article/${articleData.article_info.url_query}` },
         ]}
       />

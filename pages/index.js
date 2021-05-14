@@ -20,8 +20,6 @@ export default function Home() {
   return (
     <Layout siteTitle="幸福熟齡 - 從今開始，一同勾勒熟齡的美好">
       <MainSlider topics={mainData.top_banners} />
-    {console.log(mainData)}
-
 
     <Fade bottom>
       <div className="latest border-box mb-10">
@@ -32,23 +30,22 @@ export default function Home() {
       </div>
     </Fade>
 
-      {/* <Banner /> 
-      <Banner2/> */}
-
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
           <div className="relative w-full md:w-3/4 flex flex-col space-y-14 overflow-hidden pt-5">
 
           {mainData.block_banners_list && mainData.block_banners_list.map((block)=>{
             return(
-              <Category key={block.category_id} name={block.name} id={block.category_id} data={block.data} isInnerCategory={false} />
+              <Category key={block.category_id} name={block.name} id={block.category_id} data={block.data} isIndexCategory={true} />
             );
           })}
+
+          <Banner adId="div-gpt-ad-1529567429364-1" />
           </div>
           <AsideSection isHot={false} isProject={false}  videoTopics={mainData.hot_videos} newsTopics={mainData.article_news}/>
         </div>
       </div>
-      <Banner adId="div-gpt-ad-1529567429364-1" />
+     
     </Layout>
   );
 }

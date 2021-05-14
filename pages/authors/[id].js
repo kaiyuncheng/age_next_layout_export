@@ -40,8 +40,6 @@ export default function Author({ authorInfo, authorArticles }) {
 
   return (
     <Layout siteTitle={`幸福熟齡 - ${authorInfoData.authorInfo.name}`}>
-      {console.log("作者檔案", authorInfoData)}
-      {console.log("作者文章", authorArticlesData)}
       <Head>
         <meta
           itemProp="description"
@@ -95,6 +93,8 @@ export default function Author({ authorInfo, authorArticles }) {
             <div className="author_articles flex flex-col space-y-20 pb-5 mb-5">
               <ArticleList topics={authorArticlesData.articleInfo} />
             </div>
+
+            
           </div>
 
           <AsideSection isHot={true} />

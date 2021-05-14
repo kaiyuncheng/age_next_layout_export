@@ -52,8 +52,8 @@ const ArticleList = ({ topics }) => {
       
 
       {listItems.map((listItem, i) => (
-        <Fade bottom>
-          <ArticleListItem key={i} item={topics[listItem - 1]} />
+        <Fade bottom key={i} >
+          <ArticleListItem item={topics[listItem - 1]} />
         </Fade>
       ))}
       {isFetching && (

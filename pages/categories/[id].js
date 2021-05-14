@@ -10,7 +10,7 @@ import Category from "../../components/MainSection/Category";
 export const getServerSideProps = async (context) => {
   const { id } = context.query;
   try {
-    const { data } = await axios.get(`Catalog/getCataloglist/${id}`);
+    const { data } = await axios.get(`Catalog/list/${id}`);
     return {
       props: {
         data,
@@ -188,8 +188,8 @@ export default function Categories({ data }) {
             <MainArticle topics={categoriesData.top_info} />}
 
 
-            {categoriesData.SliderCategoryArticle &&
-                <ArticlesSlider topics={categoriesData.SliderCategoryArticle}/>}
+            {categoriesData.slider_category_article &&
+                <ArticlesSlider topics={categoriesData.slider_category_article}/>}
             
             
             {categoriesData.article_info &&

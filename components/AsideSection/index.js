@@ -2,16 +2,16 @@ import React from "react";
 import { useMainContext } from "../../context/main";
 import VideoSlider from "../utils/sliders/VideoSlider";
 import Speakers from "./Speakers";
-import ProjectTitle from "./ProjectTitle";
+import BrandInfo from "./BrandInfo";
 import Fade from "react-reveal/Fade";
 
-const AsideSection = ({ isHot, isProject }) => {
+const AsideSection = ({ isHot, isBrandOpen, brandData }) => {
   const { mainData } = useMainContext();
 
   return (
     <Fade bottom>
       <aside className="w-full md:w-1/4">
-        {isProject && <ProjectTitle />}
+        {isBrandOpen && <BrandInfo brandData={brandData}/>}
 
         <VideoSlider topics={mainData.hot_videos} />
 

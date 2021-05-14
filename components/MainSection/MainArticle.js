@@ -4,9 +4,22 @@ import Image from "next/image";
 import Fade from "react-reveal/Fade";
 
 const MainArticle = ({ topics }) => {
+  function createMarkup() {
+    return { __html: topics.video };
+  }
+  function VideoComponent() {
+    return (
+      <div
+        className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden relative mb-5"
+        dangerouslySetInnerHTML={createMarkup()}
+      />
+    );
+  }
+
   return (
     <Fade bottom>
     <div className="flex flex-col">
+    {topics.file_type === "image" && topics.image_url && (
       <Link href={`/article/${topics.url_query}`}>
         <a className="group relative block rounded-lg overflow-hidden w-full mb-5 outline-none focus:outline-none">
         <Image
@@ -19,6 +32,11 @@ const MainArticle = ({ topics }) => {
           />
         </a>
       </Link>
+        )}
+
+        {topics.file_type === "video" && topics.video && <VideoComponent />}
+
+      
 
       <Link href={`/article/${topics.url_query}`}>
         <a className="block mb-5 outline-none focus:outline-none">

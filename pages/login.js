@@ -1,7 +1,8 @@
 import Layout from "../components/Layout";
 import MemberLogin from "../components/login/MemberLogin"
 import { useUserContext } from "../context/user";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import BreadCrumb from "../components/utils/BreadCrumb";
 
 export default function login() {
   const { userData } = useUserContext();
@@ -13,15 +14,8 @@ export default function login() {
   return (
     <Layout siteTitle="幸福熟齡 - 會員登入">
       {/* <!-- bread crumb --> */}
-      <div className="breadcrumb pt-7 md:pt-5 mb-5">
-        <nav className="max-w-screen-2xl mx-auto px-4 lg:px-2 text-sm text-gray-600 font-light">
-          <a href="https://thebetteraging.businesstoday.com.tw/">幸福熟齡</a>
-          <span className="mx-1">/</span>
-          <a href="#" className="text-gray-800 font-normal">
-            會員登入
-          </a>
-        </nav>
-      </div>
+      <BreadCrumb titles={[ { title: '會員登入', link: '/login' }]}/>
+
 
       {/* <!-- main section--> */}
       <div>

@@ -1,16 +1,13 @@
 import Layout from '../components/Layout';
+import BreadCrumb from "../components/utils/BreadCrumb";
 
 export default function login() {
     return (
     <Layout siteTitle="幸福熟齡 - 忘記密碼">
         {/* <!-- bread crumb --> */}
-        <div className="breadcrumb pt-7 md:pt-5 mb-5">
-            <nav className="max-w-screen-2xl mx-auto px-4 lg:px-2 text-sm text-gray-600 font-light">
-                <a href="https://thebetteraging.businesstoday.com.tw/">幸福熟齡</a>
-                <span className="mx-1">/</span>
-                <a href="#" className="text-gray-800 font-normal">忘記密碼</a>
-            </nav>
-        </div>
+        <BreadCrumb titles={[
+            { title: "會員登入", link: "/login" },
+            { title: "忘記密碼", link: "/forgetPassword" }]} />
 
 
         {/* <!-- main section--> */}

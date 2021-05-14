@@ -42,10 +42,6 @@ const Layout = ({ children, siteTitle }) => {
           content="https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/metalogo201804.png"
         />
         <meta property="og:type" content="website" />
-        
-
-        <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-
         <title>{siteTitle}</title>
         <link
             rel="icon"

@@ -77,7 +77,7 @@ const MainSlider = ({ topics }) => {
         {topics &&
           topics.map((item, i) => {
             return ( 
-              <div className="relative outline-none focus:outline-none">
+              <div key={i} className="relative outline-none focus:outline-none">
                 <div className="relative shadow-lg mx-5 flex flex-col lg:flex-row bg-white rounded-bl-lg rounded-t-lg rounded-br-5xl  border border-secondary-medium">
                   <Link href={`/article/${item.article_id}`}>
                     <a className="group relative z-30 rounded-t-lg md:rounded-l-lg md:rounded-t-none block overflow-hidden flex-grow w-full lg:w-1/2 h-72">
