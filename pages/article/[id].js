@@ -12,9 +12,18 @@ export const getServerSideProps = async (context) => {
   try {
     const { data } = await axios.get(`article/detail/${id}`);
 
+    if (!data.data) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
+    
     return {
       props: {
-        data,
+        data: data.data,
       },
     };
   } catch (error) {
@@ -28,9 +37,23 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-export default function Article({ data }) {
-  const [articleData, setArticleData] = useState(data.data);
+// const init = {
+//   code: '',
+//   time: '',
+//   data: {
+//     article_info: {
+//       title: '',
+//     },
+//   },
+// };
+
+export default function article({ data }) {
+  const [articleData, setArticleData] = useState(data);
   const [fontSize, setFontSize] = useState("text-base");
+
+  useEffect(() => {
+    setArticleData(data);
+  }, [data]);
 
   function createMarkup() {
     return { __html: articleData.content_info[0].text };
@@ -44,47 +67,87 @@ export default function Article({ data }) {
   };
 
   return (
-    <Layout siteTitle={`幸福熟齡 - ${articleData.article_info.title}`}>
-
+    <Layout
+      siteTitle={`幸福熟齡 - ${
+        articleData.article_info.title || '從今開始，一同勾勒熟齡的美好'
+      }`}
+    >
       <Head>
-        <meta
-          itemProp="description"
-          content={articleData.seo_meta.meta_description}
-        />
-        <meta
-          name="description"
-          content={articleData.seo_meta.meta_description}
-        />
-        <meta name="keywords" content={articleData.seo_meta.meta_keyword} />
-        <meta
-          property="og:title"
-          content={articleData.seo_meta.meta_og_title}
-        />
-        <meta
-          property="og:description"
-          content={articleData.seo_meta.meta_og_description}
-        />
-        <meta
-          property="og:url"
-          content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.url_query}`}
-        />
-        <meta
-          itemProp="image"
-          property="og:image"
-          content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.meta_og_image}`}
-        />
-        <meta
-          itemProp="image"
-          content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.meta_og_image}`}
-        />
+        {articleData.seo_meta.meta_description && (
+          <meta
+            itemProp="description"
+            content={articleData.seo_meta.meta_description}
+          />
+        )}
+
+        {articleData.seo_meta.meta_description && (
+          <meta
+            name="description"
+            content={articleData.seo_meta.meta_description}
+          />
+        )}
+
+        {articleData.seo_meta.meta_keyword && (
+          <meta name="keywords" content={articleData.seo_meta.meta_keyword} />
+        )}
+
+        {articleData.seo_meta.meta_og_title && (
+          <meta
+            property="og:title"
+            content={articleData.seo_meta.meta_og_title}
+          />
+        )}
+
+        {articleData.seo_meta.meta_og_description && (
+          <meta
+            property="og:description"
+            content={articleData.seo_meta.meta_og_description}
+          />
+        )}
+
+        {articleData.category_info.category_id && (
+          <meta
+            property="og:url"
+            content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.category_info.category_id}`}
+          />
+        )}
+
+        {articleData.seo_meta.meta_og_image && (
+          <meta
+            itemProp="image"
+            property="og:image"
+            content={articleData.seo_meta.meta_og_image}
+          />
+        )}
+
+        {articleData.seo_meta.meta_og_image && (
+          <meta itemProp="image" content={articleData.seo_meta.meta_og_image} />
+        )}
       </Head>
 
-      <BreadCrumb
-        titles={[
-          { title: `${articleData.category_info.name || '分類文章'}`, link: `/catalog/${articleData.category_info.category_id}` },
-          { title: `${articleData.article_info.title}`, link: `/article/${articleData.article_info.url_query}` },
-        ]}
-      />
+      {articleData.category_info.name ? (
+        <BreadCrumb
+          titles={[
+            {
+              title: `${articleData.category_info.name}`,
+              link: `/catalog/${articleData.category_info.category_id}`,
+            },
+            {
+              title: `${articleData.article_info.title}`,
+              link: `/article/${articleData.article_info.url_query}`,
+            },
+          ]}
+        />
+      ) : (
+        <BreadCrumb
+          titles={[
+            {
+              title: `${articleData.article_info.title}`,
+              link: `/article/${articleData.article_info.url_query}`,
+            },
+          ]}
+        />
+      )}
 
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row md:space-x-10 md:space-y-0">
@@ -131,13 +194,13 @@ export default function Article({ data }) {
                   <div className="article_font flex space-x-2 mb-4 xs:mb-0">
                     <button
                       type="button"
-                      onClick={() => handleFontSize("base")}
+                      onClick={() => handleFontSize('base')}
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-base font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
                       A
                     </button>
                     <button
-                      onClick={() => handleFontSize("lg")}
+                      onClick={() => handleFontSize('lg')}
                       type="button"
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-lg font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
@@ -145,7 +208,7 @@ export default function Article({ data }) {
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleFontSize("xl")}
+                      onClick={() => handleFontSize('xl')}
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-2xl font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
                       A
@@ -220,13 +283,13 @@ export default function Article({ data }) {
               <div
                 className={clsx(
                   fontSize,
-                  "article_part bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5"
+                  'article_part bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
                 )}
               >
                 <p>{articleData.article_info.part_text}</p>
               </div>
 
-              <div className={clsx(fontSize, "article_content mb-5")}>
+              <div className={clsx(fontSize, 'article_content mb-5')}>
                 <TextComponent />
               </div>
               <ul className="article_tags flex items-center mb-5 flex-wrap">

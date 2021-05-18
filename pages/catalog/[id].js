@@ -1,45 +1,41 @@
-import React, { useState, useEffect } from "react";
-import Layout from "../../components/Layout";
-import axios from "../../components/utils/axios";
-import Head from "next/head";
-import Image from "next/image";
-import ProjectSection from "../../components/ProjectSection";
-import BreadCrumb from "../../components/utils/BreadCrumb";
-import AsideSection from "../../components/AsideSection";
-import MainArticle from "../../components/MainSection/MainArticle";
-import FourColumns from "../../components/MainSection/FourColumns";
-import ArticlesSlider from "../../components/utils/sliders/ArticlesSlider";
-import Category from "../../components/MainSection/Category";
-import ArticleList from "../../components/MainSection/ArticleList";
+import React, { useState, useEffect } from 'react';
+import Layout from '../../components/Layout';
+import axios from '../../components/utils/axios';
+import Head from 'next/head';
+import Image from 'next/image';
+import ProjectSection from '../../components/ProjectSection';
+import BreadCrumb from '../../components/utils/BreadCrumb';
+import AsideSection from '../../components/AsideSection';
+import MainArticle from '../../components/MainSection/MainArticle';
+import FourColumns from '../../components/MainSection/FourColumns';
+import ArticlesSlider from '../../components/utils/sliders/ArticlesSlider';
+import Category from '../../components/MainSection/Category';
+import ArticleList from '../../components/MainSection/ArticleList';
 
-// export const getServerSideProps = async (context) => {
-//   const { id } = context.query;
-//   await axios.get(`Catalog/list/${id}`).then((res)=>{ 
-//       return {
-//       props: {
-//         res,
-//       },
-//     }}).catch((error) => { console.error(error) })
-// };
-
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async context => {
   const { id } = context.query;
   try {
-    const { code, data } = await axios.get(`Catalog/list/${id}`);
-    console.log(code);
+    const { data } = await axios.get(`Catalog/list/${id}`);
+
+    if (!data.data) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
+
     return {
       props: {
-        data,
+        data: data.data,
       },
     };
-    
-
-
   } catch (error) {
-    console.log("getServerSideProps error", error);
+    console.log('getServerSideProps error', error);
     return {
       redirect: {
-        destination: "/",
+        destination: '/',
         permanent: false,
       },
     };
@@ -47,19 +43,22 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function cataloglist({ data }) {
-  const [catalogData, setCatalogData] = useState(data.data);
+  const [catalogData, setCatalogData] = useState(data);
   const [isBrandOpen, setIsBrandOpen] = useState(false);
+
+  useEffect(() => {
+    setCatalogData(data);
+  }, [data]);
 
   useEffect(() => {
     setIsBrandOpen(!!catalogData.brand_area);
   }, []);
-  
 
   return (
     <Layout
-      siteTitle={
-        `幸福熟齡 - ${catalogData.category_info.name || '從今開始，一同勾勒熟齡的美好'}`
-      }
+      siteTitle={`幸福熟齡 - ${
+        catalogData.category_info.name || '從今開始，一同勾勒熟齡的美好'
+      }`}
     >
       <Head>
         {catalogData.seo_meta.meta_description && (
@@ -97,7 +96,7 @@ export default function cataloglist({ data }) {
         {catalogData.category_info.category_id && (
           <meta
             property="og:url"
-            content={`http://thebetteraging.businesstoday.com.tw/categories/${catalogData.category_info.category_id}`}
+            content={`http://thebetteraging.businesstoday.com.tw/catalog/${catalogData.category_info.category_id}`}
           />
         )}
 
@@ -105,15 +104,12 @@ export default function cataloglist({ data }) {
           <meta
             itemProp="image"
             property="og:image"
-            content={`http://thebetteraging.businesstoday.com.tw/article/${catalogData.seo_meta.meta_og_image}`}
+            content={catalogData.seo_meta.meta_og_image}
           />
         )}
 
         {catalogData.seo_meta.meta_og_image && (
-          <meta
-            itemProp="image"
-            content={`http://thebetteraging.businesstoday.com.tw/article/${catalogData.seo_meta.meta_og_image}`}
-          />
+          <meta itemProp="image" content={catalogData.seo_meta.meta_og_image} />
         )}
       </Head>
 
@@ -143,7 +139,7 @@ export default function cataloglist({ data }) {
 
             {/* <!-- bread crumb --> */}
 
-            {catalogData.category_info.categoryLevel === "1" ? (
+            {catalogData.category_info.categoryLevel === '1' ? (
               <BreadCrumb
                 titles={[
                   {
@@ -196,28 +192,35 @@ export default function cataloglist({ data }) {
             )}
 
             <div className="space-y-14">
+              {catalogData.top_article && (
+                <MainArticle topics={catalogData.top_article} />
+              )}
 
-            {catalogData.top_article && <MainArticle topics={catalogData.top_article} />}
+              {catalogData.focus_content && (
+                <FourColumns topics={catalogData.focus_content} />
+              )}
 
-            {catalogData.focus_content && <FourColumns topics={catalogData.focus_content} />}
+              {catalogData.slider_category_article && (
+                <ArticlesSlider topics={catalogData.slider_category_article} />
+              )}
 
-            {catalogData.slider_category_article && <ArticlesSlider topics={catalogData.slider_category_article} />}
+              {!catalogData.category_info.is_project_based_style_enable &&
+                catalogData.article_info && (
+                  <ArticleList topics={catalogData.article_info} />
+                )}
 
-            {!catalogData.category_info.is_project_based_style_enable && catalogData.article_info &&
-              <ArticleList topics={catalogData.article_info} />}
-
-              {catalogData.category_info.is_project_based_style_enable && catalogData.article_project_info &&
+              {catalogData.category_info.is_project_based_style_enable &&
+                catalogData.article_project_info &&
                 catalogData.article_project_info.map((block, i) => {
-                return (
-                  <Category
-                    key={i+1}
-                    name={block.name}
-                    id={block.category_id}
-                    data={block.data}
-                  />
-                );
-              })}   
-
+                  return (
+                    <Category
+                      key={i + 1}
+                      name={block.name}
+                      id={block.category_id}
+                      data={block.data}
+                    />
+                  );
+                })}
             </div>
           </div>
 

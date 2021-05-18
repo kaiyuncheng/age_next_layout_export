@@ -6,8 +6,7 @@ export default function register() {
   return (
     <Layout siteTitle="幸福熟齡 - 會員註冊">
       {/* <!-- bread crumb --> */}
-      <BreadCrumb titles={[{ title: "會員註冊", link: "/register" }]} />
-      
+      <BreadCrumb titles={[{ title: '會員註冊', link: '/register' }]} />
 
       {/* <!-- main section--> */}
       <div>
@@ -339,8 +338,8 @@ export default function register() {
                       </div>
                       <input
                         className="form-input w-full pl-14 border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-lg shadow-sm outline-none focus:outline-none placeholder-gray-400"
-                        type="text"
-                        name="keywords"
+                        type="password"
+                        name="password"
                         placeholder="密碼"
                       />
                     </label>
@@ -386,8 +385,8 @@ export default function register() {
                       </div>
                       <input
                         className="form-input w-full pl-14 border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-lg shadow-sm outline-none focus:outline-none placeholder-gray-400"
-                        type="text"
-                        name="keywords"
+                        type="password"
+                        name="repeatPassword"
                         placeholder="再次輸入密碼"
                       />
                     </label>

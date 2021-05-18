@@ -11,9 +11,19 @@ import AuthorListItem from "../../components/MainSection/AuthorListItem";
 export const getStaticProps = async () => {
     try {
       const { data } = await axios.get(`Author/getLongTermAuthor`);
+
+      if (!data.data) {
+        return {
+          redirect: {
+            destination: '/',
+            permanent: false,
+          },
+        };
+      }
+
       return {
         props: {
-          data,
+          data: data.data,
         },
       };
     } catch (error) {
@@ -22,11 +32,15 @@ export const getStaticProps = async () => {
   };
 
 export default function authors({data}) {
-  const [authorsData, setAuthorsData] = useState(data.data);
+  const [authorsData, setAuthorsData] = useState(data);
+
+  useEffect(() => {
+    setAuthorsData(data);
+  }, [data]);
 
   return (
     <Layout siteTitle="幸福熟齡 - 名人私房學">
-      {/* <!-- bread crumb --> */}
+      
       <BreadCrumb titles={[{ title: '名人私房學', link: '/authors' }]}/>
 
       <div className="sections">

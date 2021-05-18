@@ -1,11 +1,11 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
 const Speakers = ({ title, topics }) => {
   return (
     <div className="speakers mb-5">
       <div className="relative inline-flex items-center rounded-tl-lg bg-primary-light pl-5 py-2 w-full shadow-mdRight rounded-br-5xl overflow-hidden outline-none focus:outline-none mb-5">
-        {title === "最新快訊" ? (
+        {title === '最新快訊' ? (
           <span className="mr-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +94,7 @@ const Speakers = ({ title, topics }) => {
             {topics &&
               topics.map((item, i) => {
                 return (
-                  <Link href={`/article/${item.url_query}`} key={i}>
+                  <Link key={i} href={'/article/[id]'} as={`/article/${item.url_query}`}>
                     <a className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none">
                       <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
                         <img
