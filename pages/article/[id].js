@@ -105,10 +105,10 @@ export default function article({ data }) {
           />
         )}
 
-        {articleData.category_info.category_id && (
+        {articleData.article_info.url_query && (
           <meta
             property="og:url"
-            content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.category_info.category_id}`}
+            content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.url_query}`}
           />
         )}
 
@@ -129,7 +129,7 @@ export default function article({ data }) {
         <BreadCrumb
           titles={[
             {
-              title: `${articleData.category_info.name}`,
+              title: `${articleData.category_info.name} `,
               link: `/catalog/${articleData.category_info.category_id}`,
             },
             {
@@ -215,43 +215,51 @@ export default function article({ data }) {
                     </button>
                   </div>
                   <div className="article_socials flex space-x-4 mb-4 xs:mb-0">
-                    <a
-                      href={articleData.fb_share_url}
-                      className="icon_fb group"
-                      rel="noreferrer"
-                      target="_blank"
+                    <Link
+                      href={`https://www.facebook.com/share.php?u=https://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.url_query}`}
                     >
-                      <svg
-                        className="fill-current text-primary-dark group-hover:text-blue-600 transition-colors duration-200 ease-in-out"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="13.45"
-                        height="25"
-                        viewBox="0 0 13.45 25"
+                      <a
+                        className="icon_fb group"
+                        rel="noreferrer"
+                        target="_blank"
                       >
-                        <path
-                          id="Icon_zocial-facebook"
-                          data-name="Icon zocial-facebook"
-                          d="M13.257,13.425V8.651h3.851V6.25a6.283,6.283,0,0,1,1.687-4.425A5.366,5.366,0,0,1,22.882,0h3.825V4.775H22.882a.842.842,0,0,0-.674.412,1.675,1.675,0,0,0-.3,1.013V8.65h4.8v4.774h-4.8V25h-4.8V13.425Z"
-                          transform="translate(-13.257)"
-                        />
-                      </svg>
-                    </a>
-                    <a href="#" className="icon_line group">
-                      <svg
-                        className="fill-current text-primary-dark group-hover:text-green-500 transition-colors duration-200 ease-in-out"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26.251"
-                        height="25"
-                        viewBox="0 0 26.251 25"
-                      >
-                        <path
-                          id="Icon_simple-line"
-                          data-name="Icon simple-line"
-                          d="M21.181,11.02a.69.69,0,0,1,0,1.379h-1.92V13.63h1.92a.689.689,0,1,1,0,1.377h-2.61a.69.69,0,0,1-.686-.688V9.1a.691.691,0,0,1,.689-.689h2.61a.689.689,0,0,1,0,1.378h-1.92V11.02h1.92Zm-4.217,3.3a.688.688,0,0,1-.473.652.707.707,0,0,1-.218.034.676.676,0,0,1-.558-.273L13.044,11.1v3.216a.687.687,0,1,1-1.375,0V9.1a.685.685,0,0,1,.47-.651.636.636,0,0,1,.212-.036.707.707,0,0,1,.541.278l2.693,3.642V9.1a.689.689,0,0,1,1.378,0v5.218Zm-6.279,0a.688.688,0,1,1-1.376,0V9.1a.688.688,0,1,1,1.376,0Zm-2.7.688H5.378a.693.693,0,0,1-.689-.688V9.1a.689.689,0,0,1,1.378,0V13.63H7.988a.689.689,0,0,1,0,1.377m18.263-3.494c0-5.875-5.89-10.656-13.125-10.656S0,5.639,0,11.514c0,5.262,4.67,9.671,10.976,10.509.428.09,1.01.282,1.157.645a2.672,2.672,0,0,1,.042,1.181L12,24.965c-.049.329-.263,1.3,1.147.705s7.565-4.46,10.321-7.629a9.431,9.431,0,0,0,2.787-6.528"
-                          transform="translate(0 -0.858)"
-                        />
-                      </svg>
-                    </a>
+                        <svg
+                          className="fill-current text-primary-dark group-hover:text-blue-600 transition-colors duration-200 ease-in-out"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="13.45"
+                          height="25"
+                          viewBox="0 0 13.45 25"
+                        >
+                          <path
+                            id="Icon_zocial-facebook"
+                            data-name="Icon zocial-facebook"
+                            d="M13.257,13.425V8.651h3.851V6.25a6.283,6.283,0,0,1,1.687-4.425A5.366,5.366,0,0,1,22.882,0h3.825V4.775H22.882a.842.842,0,0,0-.674.412,1.675,1.675,0,0,0-.3,1.013V8.65h4.8v4.774h-4.8V25h-4.8V13.425Z"
+                            transform="translate(-13.257)"
+                          />
+                        </svg>
+                      </a>
+                    </Link>
+
+                    <Link
+                      href={`https://lineit.line.me/share/ui?url=https://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.url_query}`}
+                    >
+                      <a className="icon_line group">
+                        <svg
+                          className="fill-current text-primary-dark group-hover:text-green-500 transition-colors duration-200 ease-in-out"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="26.251"
+                          height="25"
+                          viewBox="0 0 26.251 25"
+                        >
+                          <path
+                            id="Icon_simple-line"
+                            data-name="Icon simple-line"
+                            d="M21.181,11.02a.69.69,0,0,1,0,1.379h-1.92V13.63h1.92a.689.689,0,1,1,0,1.377h-2.61a.69.69,0,0,1-.686-.688V9.1a.691.691,0,0,1,.689-.689h2.61a.689.689,0,0,1,0,1.378h-1.92V11.02h1.92Zm-4.217,3.3a.688.688,0,0,1-.473.652.707.707,0,0,1-.218.034.676.676,0,0,1-.558-.273L13.044,11.1v3.216a.687.687,0,1,1-1.375,0V9.1a.685.685,0,0,1,.47-.651.636.636,0,0,1,.212-.036.707.707,0,0,1,.541.278l2.693,3.642V9.1a.689.689,0,0,1,1.378,0v5.218Zm-6.279,0a.688.688,0,1,1-1.376,0V9.1a.688.688,0,1,1,1.376,0Zm-2.7.688H5.378a.693.693,0,0,1-.689-.688V9.1a.689.689,0,0,1,1.378,0V13.63H7.988a.689.689,0,0,1,0,1.377m18.263-3.494c0-5.875-5.89-10.656-13.125-10.656S0,5.639,0,11.514c0,5.262,4.67,9.671,10.976,10.509.428.09,1.01.282,1.157.645a2.672,2.672,0,0,1,.042,1.181L12,24.965c-.049.329-.263,1.3,1.147.705s7.565-4.46,10.321-7.629a9.431,9.431,0,0,0,2.787-6.528"
+                            transform="translate(0 -0.858)"
+                          />
+                        </svg>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <a

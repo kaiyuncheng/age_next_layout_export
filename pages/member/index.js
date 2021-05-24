@@ -119,7 +119,7 @@ export default function member() {
               </div>
 
               <div className="relative h-full w-full md:w-3/4 flex flex-col space-y-10">
-                {/* 會員資料 */}
+                {/* 會員資料與編輯 */}
                 {menu === '會員資料' && <MemberInfo />}
 
                 {/* 文章收藏 */}

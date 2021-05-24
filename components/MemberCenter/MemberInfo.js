@@ -104,13 +104,58 @@ const MemberInfo = () => {
               <tr className="border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*聯絡地址：</th>
                 <td className="whitespace-normal break-all py-4">
+                  <select className="form-select w-full mb-2 border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
+                    <option value="">請選擇行政區域</option>
+                    <option value="台北市">台北市</option>
+                    <option value="基隆市">基隆市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="宜蘭縣">宜蘭縣</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="新竹縣">新竹縣</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="台中市">台中市</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="台南市">台南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="澎湖縣">澎湖縣</option>
+                    <option value="連江縣">連江縣</option>
+                    <option value="金門縣">金門縣</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="台東縣">台東縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                  </select>
+                  <select className="form-select w-full mb-2 border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
+                    <option value="">請選擇鄉鎮區域</option>
+                    <option value="台南市">台南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="澎湖縣">澎湖縣</option>
+                    <option value="連江縣">連江縣</option>
+                    <option value="金門縣">金門縣</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="台東縣">台東縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                  </select>
+                  <input
+                    className="form-input w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none placeholder-gray-400"
+                    type="text"
+                    name="address"
+                    placeholder=""
+                    value="臺北市中正區羅斯福路1絡地址聯絡"
+                  />
+                </td>
+                {/* <td className="whitespace-normal break-all py-4">
                   <input
                     className="form-input w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none placeholder-gray-400"
                     type="text"
                     name="address"
                     value="臺北市中正區羅斯福路1絡地址聯絡"
                   />
-                </td>
+                </td> */}
               </tr>
               <tr className="bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*手機電話：</th>
@@ -151,7 +196,7 @@ const MemberInfo = () => {
               <tr className="border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">性別：</th>
                 <td className="whitespace-normal break-all py-4">
-                  <select class="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
+                  <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
                     <option value="">請選擇</option>
                     <option value="1">男</option>
                     <option value="2" selected>
@@ -163,7 +208,7 @@ const MemberInfo = () => {
               <tr className="bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">婚姻狀態：</th>
                 <td className="whitespace-normal break-all py-4">
-                  <select class="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
+                  <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
                     <option value="">請選擇</option>
                     <option value="1">已婚</option>
                     <option value="0" selected>
@@ -175,7 +220,7 @@ const MemberInfo = () => {
               <tr className="border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">是否有子女：</th>
                 <td className="whitespace-normal break-all py-4">
-                  <select class="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
+                  <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
                     <option value="">請選擇</option>
                     <option value="1">是</option>
                     <option value="0" selected>
@@ -187,7 +232,7 @@ const MemberInfo = () => {
               <tr className="bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*教育程度：</th>
                 <td className="whitespace-normal break-all py-4">
-                  <select class="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
+                  <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
                     <option value="">請選擇</option>
                     <option value="1">國中以下</option>
                     <option value="2">高中職</option>
@@ -201,7 +246,7 @@ const MemberInfo = () => {
               <tr className="border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*個人年收入：</th>
                 <td className="whitespace-normal break-all py-4">
-                  <select class="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
+                  <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
                     <option value="">請選擇</option>
                     <option value="50萬元以下">50萬元以下</option>
                     <option value="51-100萬元">51-100萬元</option>
@@ -216,7 +261,7 @@ const MemberInfo = () => {
               <tr className="border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*職業產業別：</th>
                 <td className="whitespace-normal break-all py-4">
-                  <select class="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
+                  <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
                     <option value="">請選擇</option>
                     <option value="軍公教">軍公教</option>
                     <option value="資訊科技業">資訊科技業</option>
@@ -242,7 +287,7 @@ const MemberInfo = () => {
               <tr className="bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*職稱：</th>
                 <td className="whitespace-normal break-all py-4">
-                  <select class="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
+                  <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
                     <option value="">請選擇</option>
                     <option value="一般職員">一般職員</option>
                     <option value="基層主管">基層主管</option>
@@ -288,9 +333,9 @@ const MemberInfo = () => {
               <tr className="bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">喜好主題：</th>
                 <td className="whitespace-normal break-all py-4">
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme1"
                       type="checkbox"
                       name="like"
@@ -298,9 +343,9 @@ const MemberInfo = () => {
                     />
                     台股
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme2"
                       type="checkbox"
                       name="like"
@@ -308,9 +353,9 @@ const MemberInfo = () => {
                     />
                     全球股市
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme3"
                       type="checkbox"
                       name="like"
@@ -318,9 +363,9 @@ const MemberInfo = () => {
                     />
                     債券基金
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme4"
                       type="checkbox"
                       name="like"
@@ -328,9 +373,9 @@ const MemberInfo = () => {
                     />
                     信用卡
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme5"
                       type="checkbox"
                       name="like"
@@ -338,9 +383,9 @@ const MemberInfo = () => {
                     />
                     理財
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme6"
                       type="checkbox"
                       name="like"
@@ -348,9 +393,9 @@ const MemberInfo = () => {
                     />
                     ETF
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme7"
                       type="checkbox"
                       name="like"
@@ -358,9 +403,9 @@ const MemberInfo = () => {
                     />
                     科技產業動態
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme8"
                       type="checkbox"
                       name="like"
@@ -368,9 +413,9 @@ const MemberInfo = () => {
                     />
                     傳統產業動態
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme9"
                       type="checkbox"
                       name="like"
@@ -378,9 +423,9 @@ const MemberInfo = () => {
                     />
                     金融產業動態
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme10"
                       type="checkbox"
                       name="like"
@@ -388,9 +433,9 @@ const MemberInfo = () => {
                     />
                     房地產
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme11"
                       type="checkbox"
                       name="like"
@@ -398,9 +443,9 @@ const MemberInfo = () => {
                     />
                     保險
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme12"
                       type="checkbox"
                       name="like"
@@ -408,9 +453,9 @@ const MemberInfo = () => {
                     />
                     稅制
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme13"
                       type="checkbox"
                       name="like"
@@ -418,9 +463,9 @@ const MemberInfo = () => {
                     />
                     勞保勞退
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme14"
                       type="checkbox"
                       name="like"
@@ -428,9 +473,9 @@ const MemberInfo = () => {
                     />
                     國際總經
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme15"
                       type="checkbox"
                       name="like"
@@ -438,9 +483,9 @@ const MemberInfo = () => {
                     />
                     政治社會
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme16"
                       type="checkbox"
                       name="like"
@@ -448,9 +493,9 @@ const MemberInfo = () => {
                     />
                     健康
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme17"
                       type="checkbox"
                       name="like"
@@ -458,9 +503,9 @@ const MemberInfo = () => {
                     />
                     生活消費
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme18"
                       type="checkbox"
                       name="like"
@@ -468,9 +513,9 @@ const MemberInfo = () => {
                     />
                     美食旅遊
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme19"
                       type="checkbox"
                       name="like"
@@ -478,9 +523,9 @@ const MemberInfo = () => {
                     />
                     品味收藏
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme20"
                       type="checkbox"
                       name="like"
@@ -488,9 +533,9 @@ const MemberInfo = () => {
                     />
                     職場
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme21"
                       type="checkbox"
                       name="like"
@@ -498,9 +543,9 @@ const MemberInfo = () => {
                     />
                     教育
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme22"
                       type="checkbox"
                       name="like"
@@ -508,9 +553,9 @@ const MemberInfo = () => {
                     />
                     情感關係
                   </label>
-                  <label class="inline-flex items-center mr-4 mb-4">
+                  <label className="inline-flex items-center mr-4 mb-4">
                     <input
-                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1"
+                      className="form-checkbox text-primary-dark border border-secondary-medium focus:border-primary-medium mr-1 rounded-sm focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50"
                       id="theme23"
                       type="checkbox"
                       name="like"

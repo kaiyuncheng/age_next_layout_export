@@ -2,23 +2,28 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const ArticleListItem = ({ item }) => {
+const ArticleListItem = ({ item, isSearch }) => {
   return (
     <div className="flex md:flex-row flex-col relative">
       <Link href={`/article/${item.url_query}`}>
-        <a className="group block rounded-lg overflow-hidden w-full md:w-1/3 outline-none focus:outline-none">
-          <Image
-            className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
-            src={item.image_url}
-            height={300}
-            width={400}
-            layout="responsive"
-            alt={item.title}
-          />
+        <a className="block w-full md:w-1/3 outline-none focus:outline-none">
+          <div className="rounded-lg overflow-hidden aspect-h-3 aspect-w-4 relative">
+            <Image
+              className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
+              src={item.image_url}
+              layout="fill"
+              alt={item.title}
+            />
+          </div>
         </a>
       </Link>
 
       <div className="w-full md:w-2/3 p-5 md:px-5 md:py-0 flex flex-col">
+        {isSearch && (
+          <p className="text-xs text-primary-dark mb-2">
+            {item.pubtime.slice(0, 10)}
+          </p>
+        )}
         <Link href={`/article/${item.url_query}`}>
           <a className="block mb-5 outline-none focus:outline-none">
             <h2 className="text-xl font-bold hover:text-gray-600">
@@ -27,7 +32,7 @@ const ArticleListItem = ({ item }) => {
           </a>
         </Link>
 
-        <p className="text-base mb-5">{item.minor_title}</p>
+        <p className="text-base mb-10 line-clamp-5">{item.minor_title}</p>
 
         <Link href={`/article/${item.url_query}`}>
           <a className="group absolute bottom-0 right-5 z-30 text-gray-800 hover:text-primary-dark inline-flex items-center justify-center transition-all duration-300 ease-in-out outline-none focus:outline-none">
