@@ -42,6 +42,7 @@ const Layout = ({ children, siteTitle }) => {
           content="https://new-thebetteraging-kai.businesstoday.com.tw/images/og_image.jpg"
         />
         <meta property="og:type" content="website" />
+        
         <title>{siteTitle}</title>
         <link
           rel="icon"

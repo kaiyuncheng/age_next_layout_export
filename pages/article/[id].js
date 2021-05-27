@@ -24,6 +24,7 @@ export const getServerSideProps = async (context) => {
     return {
       props: {
         data: data.data,
+        id: id,
       },
     };
   } catch (error) {
@@ -47,7 +48,7 @@ export const getServerSideProps = async (context) => {
 //   },
 // };
 
-export default function article({ data }) {
+export default function article({ data, id }) {
   const [articleData, setArticleData] = useState(data);
   const [fontSize, setFontSize] = useState("text-base");
 
@@ -59,12 +60,22 @@ export default function article({ data }) {
     return { __html: articleData.content_info[0].text };
   }
   function TextComponent() {
-    return <div dangerouslySetInnerHTML={createMarkup()} />;
+    return (
+      <div itemProp="articleBody" dangerouslySetInnerHTML={createMarkup()} />
+    );
   }
 
   const handleFontSize = (size) => {
     setFontSize(`text-${size}`);
   };
+
+  useEffect(() => {
+   dable('renderWidgetByWidth', 'dablewidget_goPjaJlQ_370NGgXx');
+  }, []);
+
+  useEffect(() => {
+   dable('renderWidgetByWidth', 'dablewidget_6oMmnEob_ml69ek74');
+  }, []);
 
   return (
     <Layout
@@ -123,6 +134,24 @@ export default function article({ data }) {
         {articleData.seo_meta.meta_og_image && (
           <meta itemProp="image" content={articleData.seo_meta.meta_og_image} />
         )}
+
+        <meta
+          property="dable:item_id"
+          content={articleData.article_info.url_query || id}
+        />
+        <meta
+          property="dable:author"
+          content={articleData.article_info.writers || '幸福熟齡編輯'}
+        />
+
+        <meta property="article:section" content="最新文章" />
+        <meta property="article:section2" content="aging" />
+        <meta
+          property="article:published_time"
+          content={
+            articleData.article_info.date_2 || '2020-10-27T09:27:00+0000'
+          }
+        />
       </Head>
 
       {articleData.category_info.name ? (
@@ -153,6 +182,7 @@ export default function article({ data }) {
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row md:space-x-10 md:space-y-0">
           <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden pb-5">
             {/* <!-- main article --> */}
+
             <div className="article flex flex-col relative">
               <h2 className="article_title md:text-2xl text-xl font-bold mb-5">
                 {articleData.article_info.title}
@@ -160,7 +190,10 @@ export default function article({ data }) {
               <div className="article_img relative rounded-lg overflow-hidden w-full mb-5">
                 <Image
                   className="h-full w-full object-cover"
-                  src={articleData.article_info.image_url || 'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'}
+                  src={
+                    articleData.article_info.image_url ||
+                    'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
+                  }
                   height={300}
                   width={400}
                   layout="responsive"
@@ -333,6 +366,21 @@ export default function article({ data }) {
             </div>
 
             {/* <!-- 推薦文章 by Dable PC--> */}
+            <div
+              id="dablewidget_goPjaJlQ_370NGgXx"
+              data-widget_id-pc="goPjaJlQ"
+              data-widget_id-mo="370NGgXx"
+              data-widget_id="goPjaJlQ"
+            ></div>
+
+            <div
+              id="dablewidget_6oMmnEob_ml69ek74"
+              data-widget_id-pc="6oMmnEob"
+              data-widget_id-mo="ml69ek74"
+              data-widget_id="6oMmnEob"
+              data-dable-sliding="1"
+              dable-slided="1"
+            ></div>
 
             <div className="hidden mb-14 md:block border border-secondary-medium rounded-lg rounded-br-6xl shadow-md bg-white">
               <div className="text-white text-lg bg-primary-dark py-3 px-4 rounded-t-lg">

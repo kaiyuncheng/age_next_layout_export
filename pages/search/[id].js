@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import axios from '../../components/utils/axios';
 import Layout from '../../components/Layout';
 import AsideSection from '../../components/AsideSection';
@@ -43,7 +43,7 @@ export const getServerSideProps = async context => {
   }
 };
 
-const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
+const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
   const router = useRouter();
   const [resultData, setResultData] = useState([]);
   const [resultNewData, setResultNewData] = useState([]);
@@ -111,7 +111,6 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
     setArticleData(resultPageData);
   }, [resultPageData]);
 
-
   const yearStartHandler = e => {
     setYearStart(e.target.value);
     setYearEnd('');
@@ -127,7 +126,6 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
   };
 
   const sortByPage = () => {
-    
     setResultPageData(resultNewData);
     setResultPageData(prevData => {
       let newAry = [];
@@ -139,16 +137,16 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
   };
 
   const sortByYears = () => {
-       setResultYearData(data.search_data);
-       setResultYearData(prevData =>
-         prevData.filter((item) => {
-           return (
-             item.pubtime.slice(0, 4) >= yearFrom && item.pubtime.slice(0, 4) <= yearTo
-           );
-         }),
-       );
-
-  }
+    setResultYearData(data.search_data);
+    setResultYearData(prevData =>
+      prevData.filter(item => {
+        return (
+          item.pubtime.slice(0, 4) >= yearFrom &&
+          item.pubtime.slice(0, 4) <= yearTo
+        );
+      }),
+    );
+  };
 
   const sortByDate = () => {
     setResultDateData(resultYearData);
@@ -201,7 +199,12 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
         value={yearEnd}
       >
         <option value="">請選擇</option>
-        {years && years.map((item, i) => <option key={i} value={item}>{item}</option>)}
+        {years &&
+          years.map((item, i) => (
+            <option key={i} value={item}>
+              {item}
+            </option>
+          ))}
       </select>
     </label>
   );
@@ -216,8 +219,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
     setDataYears(data);
   };
 
-
-  const handleAdvSearch = (e) => {
+  const handleAdvSearch = e => {
     e.preventDefault();
     setNewKeywords(prev => prev.trim());
 
@@ -226,13 +228,10 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
         `/search/article?keywords=${newKeywords.trim()}&sort=${sortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`,
         `/search/article?keywords=${newKeywords.trim()}`,
       );
-    }else{
+    } else {
       return setNewKeywords('');
     }
-    
   };
-
-  
 
   return (
     <Layout siteTitle="幸福熟齡 - 搜尋結果">
@@ -498,9 +497,10 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                     aria-label="Pagination"
                   >
                     <button
-                      onClick={() =>
-                        isPage > 1 && setIsPage(prevPage => prevPage - 1)
-                      }
+                      onClick={() => {
+                        isPage > 1 && setIsPage(prevPage => prevPage - 1);
+                        return window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
                       type="button"
                       className={clsx(
                         isPage <= 1 && 'cursor-not-allowed text-gray-200',
@@ -529,7 +529,13 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                       articleData.map((item, i) => {
                         return (
                           <button
-                            onClick={() => setIsPage(i + 1)}
+                            onClick={() => {
+                              setIsPage(i + 1);
+                              return window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth',
+                              });
+                            }}
                             type="button"
                             className={clsx(
                               isPage === i + 1 && 'bg-primary-light',
@@ -544,7 +550,13 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                     {articleData.length !== 0 && articleData.length > 7 && (
                       <>
                         <button
-                          onClick={() => setIsPage(1)}
+                          onClick={() =>{
+                              setIsPage(1);
+                              return window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth',
+                              });
+                            }}
                           type="button"
                           className={clsx(
                             isPage === 1 && 'bg-primary-light',
@@ -555,7 +567,13 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                         </button>
 
                         <button
-                          onClick={() => setIsPage(2)}
+                          onClick={() => {
+                            setIsPage(2);
+                            return window.scrollTo({
+                              top: 0,
+                              behavior: 'smooth',
+                            });
+                          }}
                           type="button"
                           className={clsx(
                             isPage === 2 && 'bg-primary-light',
@@ -587,7 +605,14 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                             .map((item, i) => {
                               return (
                                 <button
-                                  onClick={() => setIsPage(i + 3)}
+                                  onClick={() => {
+                              setIsPage(i + 3);
+                              return window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth',
+                              });
+                            }
+                                  }
                                   type="button"
                                   className={clsx(
                                     isPage === i + 3 && 'bg-primary-light',
@@ -614,7 +639,14 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                     {articleData.length !== 0 && articleData.length > 7 && (
                       <>
                         <button
-                          onClick={() => setIsPage(articleData.length - 1)}
+                          onClick={() => {
+                              setIsPage(articleData.length - 1);
+                              return window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth',
+                              });
+                            }
+                            }
                           type="button"
                           className={clsx(
                             isPage === articleData.length - 1 &&
@@ -629,7 +661,13 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                         </button>
 
                         <button
-                          onClick={() => setIsPage(articleData.length)}
+                          onClick={() => {
+                              setIsPage(articleData.length);
+                              return window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth',
+                              });
+                            }}
                           type="button"
                           className={clsx(
                             isPage === articleData.length && 'bg-primary-light',
@@ -642,8 +680,14 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                     )}
 
                     <button
-                      onClick={() =>
-                        isPage < pages && setIsPage(prevPage => prevPage + 1)
+                      onClick={() => {
+                              isPage < pages &&
+                                setIsPage(prevPage => prevPage + 1);
+                              return window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth',
+                              });
+                            }
                       }
                       type="button"
                       className={clsx(
