@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 import axios from '../../components/utils/axios';
 import Layout from '../../components/Layout';
-import Link from 'next/link';
 import AsideSection from '../../components/AsideSection';
-import ArticleList from '../../components/MainSection/ArticleList';
 import BreadCrumb from '../../components/utils/BreadCrumb';
 import ArticleListItem from '../../components/MainSection/ArticleListItem';
+import clsx from 'clsx';
 
 export const getServerSideProps = async context => {
   const { keywords, sort, count, yearFrom, yearTo } = context.query;
@@ -30,7 +29,7 @@ export const getServerSideProps = async context => {
         sort: sort || 'related',
         count: count || '10',
         yearFrom: yearFrom || '2008',
-        yearTo: yearTo || '2021',
+        yearTo: yearTo || new Date().getFullYear(),
       },
     };
   } catch (error) {
@@ -45,35 +44,25 @@ export const getServerSideProps = async context => {
 };
 
 const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
+  const router = useRouter();
   const [resultData, setResultData] = useState([]);
-  const [articleData, setArticleData] = useState([]);
+  const [resultNewData, setResultNewData] = useState([]);
   const [newKeywords, setNewKeywords] = useState('');
-  const [newSortBy, setNewSortBy] = useState('');
   const [newCount, setNewCount] = useState('');
-
+  const [sortBy, setSortBy] = useState('related');
 
   const [yearStart, setYearStart] = useState('');
   const [yearEnd, setYearEnd] = useState('');
   const [dataYears, setDataYears] = useState([]);
-  
 
-
-  const [sortBy, setSortBy] = useState('');
+  const [resultYearData, setResultYearData] = useState([]);
+  const [resultPageData, setResultPageData] = useState([]);
 
   const [resultDateData, setResultDateData] = useState([]);
   const [resultRelatedData, setResultRelatedData] = useState([]);
-
-  const [resultPageData, setResultPageData] = useState([]);
-
-  let newAry;
-
-  useEffect(() => {
-    setResultData(data);
-    sortByDate();
-    createData();
-    setResultRelatedData(data.search_data);
-    setArticleData(data.search_data);
-  }, [data]);
+  const [articleData, setArticleData] = useState([]);
+  const [pages, setPages] = useState(0);
+  const [isPage, setIsPage] = useState(1);
 
   useEffect(() => {
     setNewKeywords(keywords);
@@ -81,7 +70,6 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
 
   useEffect(() => {
     setSortBy(sort);
-    setNewSortBy(sort);
   }, [sort]);
 
   useEffect(() => {
@@ -94,19 +82,35 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
   }, [yearFrom, yearTo]);
 
   useEffect(() => {
+    setResultData(data);
+    sortByYears();
+    sortByDate();
+    createData();
+    setResultNewData(data.search_data);
+  }, [data]);
+
+  useEffect(() => {
+    sortByDate();
+    setResultRelatedData(resultYearData);
+  }, [resultYearData]);
+
+  useEffect(() => {
     if (sortBy === 'date') {
-      setArticleData(resultDateData);
+      setResultNewData(resultDateData);
     } else {
-      setArticleData(resultRelatedData);
+      setResultNewData(resultRelatedData);
     }
-  }, [sortBy]);
+    setPages(Math.ceil(resultNewData.length / Number(count)));
+  }, [sortBy, resultNewData, sort]);
 
+  useEffect(() => {
+    sortByPage();
+  }, [pages, resultNewData]);
 
+  useEffect(() => {
+    setArticleData(resultPageData);
+  }, [resultPageData]);
 
-  // useEffect(() => {
-  //   let pages = Math.ceil(resultData.search_data.length / count);
-  //   setResultPageData(resultData.search_data.slice(0, count));
-  // }, []);
 
   const yearStartHandler = e => {
     setYearStart(e.target.value);
@@ -115,18 +119,39 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
   const yearEndHandler = e => {
     setYearEnd(e.target.value);
   };
-
   const countHandler = e => {
     setNewCount(e.target.value);
   };
-
   const handleChangeKeywords = e => {
     setNewKeywords(e.target.value);
   };
 
+  const sortByPage = () => {
+    
+    setResultPageData(resultNewData);
+    setResultPageData(prevData => {
+      let newAry = [];
+      for (let n = 1; n <= pages; n++) {
+        newAry.push(prevData.slice(count * (n - 1), count * n));
+      }
+      return [...newAry];
+    });
+  };
+
+  const sortByYears = () => {
+       setResultYearData(data.search_data);
+       setResultYearData(prevData =>
+         prevData.filter((item) => {
+           return (
+             item.pubtime.slice(0, 4) >= yearFrom && item.pubtime.slice(0, 4) <= yearTo
+           );
+         }),
+       );
+
+  }
 
   const sortByDate = () => {
-    setResultDateData(data.search_data);
+    setResultDateData(resultYearData);
     setResultDateData(prevData =>
       prevData.map(item => {
         let timestamp = new Date(item.pubtime).getTime();
@@ -146,26 +171,6 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
   const handleSort = e => {
     setSortBy(e.target.value);
   };
-
-  const handleNewSort = e => {
-    setNewSortBy(e.target.value);
-  };
-
-
-  // const changeArticle = () => {
-  //   if (sortBy === 'date') {
-  //     setArticleData(resultDateData);
-  //   } else {
-  //     setArticleData(resultRelatedData);
-  //   }
-  // };
-
-  const sortPage = () => {
-    let pages = Math.ceil(resultData.search_data.length / newCount);
-    setResultPageData(resultData.search_data.slice(0, newCount));
-  };
-
-
   const YearStartSelect = ({ yearStart, yearStartHandler, years }) => (
     <label htmlFor="yearStart">
       <span className="block sm:inline mb-2">搜尋結果限定年份：</span>
@@ -176,7 +181,12 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
         value={yearStart}
       >
         <option value="">請選擇</option>
-        {years && years.map(item => <option value={item}>{item}</option>)}
+        {years &&
+          years.map((item, i) => (
+            <option key={i} value={item}>
+              {item}
+            </option>
+          ))}
       </select>
     </label>
   );
@@ -191,7 +201,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
         value={yearEnd}
       >
         <option value="">請選擇</option>
-        {years && years.map(item => <option value={item}>{item}</option>)}
+        {years && years.map((item, i) => <option key={i} value={item}>{item}</option>)}
       </select>
     </label>
   );
@@ -206,16 +216,26 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
     setDataYears(data);
   };
 
+
+  const handleAdvSearch = (e) => {
+    e.preventDefault();
+    setNewKeywords(prev => prev.trim());
+
+    if (newKeywords.trim().length !== 0) {
+      return router.push(
+        `/search/article?keywords=${newKeywords.trim()}&sort=${sortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`,
+        `/search/article?keywords=${newKeywords.trim()}`,
+      );
+    }else{
+      return setNewKeywords('');
+    }
+    
+  };
+
+  
+
   return (
     <Layout siteTitle="幸福熟齡 - 搜尋結果">
-      {console.log('取10筆', resultPageData)}
-      {console.log('日期排列', resultDateData)}
-      {console.log('相關排列', resultRelatedData)}
-      {console.log('分類', sortBy)}
-      {console.log('列表檔案', articleData)}
-      {console.log('New分類', newSortBy)}
-      {console.log('開始年份', yearStart)}
-      {console.log('結束年份', yearEnd)}
       {/* <!-- bread crumb --> */}
       <BreadCrumb
         titles={[
@@ -266,7 +286,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                   </label>
                 </div>
                 <div className="advancedsearch_sortBy inline-flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:items-center sm:h-10">
-                  <label htmlFor="sortBy">搜尋結果排序規則：</label>
+                  <label htmlFor="newSortBy">搜尋結果排序規則：</label>
 
                   <div>
                     <label className="inline-flex items-center ml-2 mr-4">
@@ -276,8 +296,8 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                         className="form-radio text-primary-dark border border-secondary-medium focus:border-primary-medium"
                         name="radio-colors"
                         value="related"
-                        checked={newSortBy === 'related'}
-                        onChange={handleNewSort}
+                        checked={sortBy === 'related'}
+                        onChange={handleSort}
                       />
                       <span className="ml-2 whitespace-nowrap">最相關</span>
                     </label>
@@ -288,8 +308,8 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                         className="form-radio text-primary-dark border border-secondary-medium focus:border-primary-medium"
                         name="radio-colors"
                         value="date"
-                        checked={newSortBy === 'date'}
-                        onChange={handleNewSort}
+                        checked={sortBy === 'date'}
+                        onChange={handleSort}
                       />
                       <span className="ml-2 whitespace-nowrap">最新</span>
                     </label>
@@ -328,32 +348,28 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                   )}
                 </div>
                 <div className="relative border-b border-r border-secondary-medium rounded-br-6xl w-full pt-5 pb-6">
-                  <Link
-                    href={`/search/article?keywords=${newKeywords}&sort=${newSortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`}
-                    as="/search/article"
+                  <button
+                    type="button"
+                    onClick={handleAdvSearch}
+                    className="group absolute right-1 bottom-1 bg-primary-dark hover:bg-secondary-dark hover:text-primary-dark text-white py-2 px-10 inline-flex items-center justify-center rounded-br-full rounded-tl-full transition-all duration-300 ease-in-out outline-none focus:outline-none"
                   >
-                    <button
-                      type="button"
-                      className="group absolute z-50 right-1 bottom-1 bg-primary-dark hover:bg-secondary-dark hover:text-primary-dark text-white py-2 px-10 inline-flex items-center justify-center rounded-br-full rounded-tl-full transition-all duration-300 ease-in-out outline-none focus:outline-none"
-                    >
-                      <p className="mr-2">搜尋</p>
-                      <div>
-                        <svg
-                          className="fill-current text-white group-hover:text-primary-dark transform group-hover:translate-x-1 transition-all duration-300 ease-in-out"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="15"
-                          height="15"
-                          viewBox="0 0 15.997 16"
-                        >
-                          <path
-                            id="Icon_awesome-search"
-                            data-name="Icon awesome-search"
-                            d="M15.78,13.833l-3.115-3.115a.749.749,0,0,0-.531-.219h-.509A6.5,6.5,0,1,0,10.5,11.624v.509a.749.749,0,0,0,.219.531l3.115,3.115a.747.747,0,0,0,1.059,0l.884-.884a.753.753,0,0,0,0-1.062ZM6.5,10.5a4,4,0,1,1,4-4A4,4,0,0,1,6.5,10.5Z"
-                          />
-                        </svg>
-                      </div>
-                    </button>
-                  </Link>
+                    <p className="mr-2">搜尋</p>
+                    <div>
+                      <svg
+                        className="fill-current text-white group-hover:text-primary-dark transform group-hover:translate-x-1 transition-all duration-300 ease-in-out"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="15"
+                        height="15"
+                        viewBox="0 0 15.997 16"
+                      >
+                        <path
+                          id="Icon_awesome-search"
+                          data-name="Icon awesome-search"
+                          d="M15.78,13.833l-3.115-3.115a.749.749,0,0,0-.531-.219h-.509A6.5,6.5,0,1,0,10.5,11.624v.509a.749.749,0,0,0,.219.531l3.115,3.115a.747.747,0,0,0,1.059,0l.884-.884a.753.753,0,0,0,0-1.062ZM6.5,10.5a4,4,0,1,1,4-4A4,4,0,0,1,6.5,10.5Z"
+                        />
+                      </svg>
+                    </div>
+                  </button>
                 </div>
               </form>
             </div>
@@ -362,14 +378,16 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
             <div className="search_results_bar flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:justify-between sm:items-center mb-5 pr-1">
               <div className="results_info text-sm text-gray-700">
                 <p className="text-sm text-gray-700">
-                  顯示
-                  <span className="font-medium mx-1">1</span>到
-                  <span className="font-medium mx-1">{count}</span>
-                  項的結果，共有
+                  顯示第
                   <span className="font-medium mx-1">
-                    {data.search_data.length}
+                    {(isPage - 1) * count + 1}
                   </span>
-                  項結果
+                  到<span className="font-medium mx-1">{isPage * count}</span>
+                  項，全部搜尋結果有
+                  <span className="font-medium mx-1">
+                    {resultNewData.length}
+                  </span>
+                  項
                 </p>
               </div>
               <div className="results_select">
@@ -391,7 +409,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
             {/* <!-- search results section--> */}
             <div className="search_results flex flex-col space-y-20 pb-5 mb-5">
               {articleData.length !== 0 &&
-                articleData.map((item, i) => {
+                articleData[isPage - 1].map((item, i) => {
                   return (
                     <ArticleListItem key={i} item={item} isSearch={true} />
                   );
@@ -407,9 +425,17 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
             {/* <!-- search pagination --> */}
             <div className="search_pagination flex items-center justify-between">
               <div className="flex-1 flex justify-between md:hidden">
-                <a
-                  href="#"
-                  className="relative inline-flex items-center px-4 py-2 border border-secondary-medium text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-primary-light"
+                <button
+                  onClick={() =>
+                    isPage > 1 && setIsPage(prevPage => prevPage - 1)
+                  }
+                  type="button"
+                  className={clsx(
+                    isPage <= 1 && 'cursor-not-allowed text-gray-200',
+                    isPage > 1 && 'hover:bg-primary-light text-gray-700 ',
+
+                    'relative inline-flex items-center px-4 py-2 rounded-md border border-secondary-medium bg-white text-sm font-medium outline-none focus:outline-none',
+                  )}
                 >
                   <span className="sr-only">上一頁</span>
                   <svg
@@ -425,10 +451,23 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                       clipRule="evenodd"
                     />
                   </svg>
-                </a>
-                <a
-                  href="#"
-                  className="ml-3 relative inline-flex items-center px-4 py-2 border border-secondary-medium text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-primary-light"
+                </button>
+
+                <p className="relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-gray-700">
+                  {isPage} / {pages || 1}
+                </p>
+
+                <button
+                  onClick={() =>
+                    isPage < pages && setIsPage(prevPage => prevPage + 1)
+                  }
+                  type="button"
+                  className={clsx(
+                    isPage >= pages && 'cursor-not-allowed text-gray-200',
+                    isPage < pages && 'hover:bg-primary-light text-gray-700',
+
+                    'ml-3 relative inline-flex items-center px-4 py-2 border rounded-md border-secondary-medium bg-white text-sm font-medium outline-none focus:outline-none',
+                  )}
                 >
                   <span className="sr-only">下一頁</span>
                   <svg
@@ -444,19 +483,13 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                       clipRule="evenodd"
                     />
                   </svg>
-                </a>
+                </button>
               </div>
               <div className="hidden md:flex-1 md:flex md:flex-col lg:flex-row lg:items-center md:justify-between">
                 <div className="mb-5 lg:mb-0">
                   <p className="text-sm text-gray-700">
-                    顯示
-                    <span className="font-medium mx-1">1</span>到
-                    <span className="font-medium mx-1">{count}</span>
-                    項的結果，共有
-                    <span className="font-medium mx-1">
-                      {data.search_data.length}
-                    </span>
-                    項結果
+                    第<span className="font-medium mx-1">{isPage}</span>頁，共
+                    <span className="font-medium mx-1">{pages || 1}</span>頁
                   </p>
                 </div>
                 <div>
@@ -464,9 +497,17 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                     className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
                     aria-label="Pagination"
                   >
-                    <a
-                      href="#"
-                      className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-secondary-medium bg-white text-sm font-medium text-gray-500 hover:bg-primary-light"
+                    <button
+                      onClick={() =>
+                        isPage > 1 && setIsPage(prevPage => prevPage - 1)
+                      }
+                      type="button"
+                      className={clsx(
+                        isPage <= 1 && 'cursor-not-allowed text-gray-200',
+                        isPage > 1 && 'hover:bg-primary-light text-gray-500 ',
+
+                        'relative inline-flex items-center px-2 py-2 rounded-l-md border border-secondary-medium bg-white text-sm font-medium outline-none focus:outline-none',
+                      )}
                     >
                       <span className="sr-only">上一頁</span>
                       <svg
@@ -482,49 +523,136 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                           clipRule="evenodd"
                         />
                       </svg>
-                    </a>
-                    <a
-                      href="#"
-                      className="relative inline-flex items-center px-4 py-2 border border-secondary-medium bg-white text-sm font-medium text-gray-700 hover:bg-primary-light"
-                    >
-                      1
-                    </a>
-                    <a
-                      href="#"
-                      className="relative inline-flex items-center px-4 py-2 border border-secondary-medium bg-white text-sm font-medium text-gray-700 hover:bg-primary-light"
-                    >
-                      2
-                    </a>
-                    <a
-                      href="#"
-                      className="hidden md:inline-flex relative items-center px-4 py-2 border border-secondary-medium bg-white text-sm font-medium text-gray-700 hover:bg-primary-light"
-                    >
-                      3
-                    </a>
-                    <span className="relative inline-flex items-center px-4 py-2 border border-secondary-medium bg-white text-sm font-medium text-gray-700">
-                      ...
-                    </span>
-                    <a
-                      href="#"
-                      className="hidden md:inline-flex relative items-center px-4 py-2 border border-secondary-medium bg-white text-sm font-medium text-gray-700 hover:bg-primary-light"
-                    >
-                      8
-                    </a>
-                    <a
-                      href="#"
-                      className="relative inline-flex items-center px-4 py-2 border border-secondary-medium bg-white text-sm font-medium text-gray-700 hover:bg-primary-light"
-                    >
-                      9
-                    </a>
-                    <a
-                      href="#"
-                      className="relative inline-flex items-center px-4 py-2 border border-secondary-medium bg-white text-sm font-medium text-gray-700 hover:bg-primary-light"
-                    >
-                      10
-                    </a>
-                    <a
-                      href="#"
-                      className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-secondary-medium bg-white text-sm font-medium text-gray-500 hover:bg-primary-light"
+                    </button>
+                    {articleData.length !== 0 &&
+                      articleData.length <= 7 &&
+                      articleData.map((item, i) => {
+                        return (
+                          <button
+                            onClick={() => setIsPage(i + 1)}
+                            type="button"
+                            className={clsx(
+                              isPage === i + 1 && 'bg-primary-light',
+                              'relative inline-flex items-center px-4 py-2 border border-secondary-medium text-sm font-medium text-gray-700 hover:bg-primary-light outline-none focus:outline-none',
+                            )}
+                          >
+                            {i + 1}
+                          </button>
+                        );
+                      })}
+
+                    {articleData.length !== 0 && articleData.length > 7 && (
+                      <>
+                        <button
+                          onClick={() => setIsPage(1)}
+                          type="button"
+                          className={clsx(
+                            isPage === 1 && 'bg-primary-light',
+                            'relative inline-flex items-center px-4 py-2 border border-secondary-medium text-sm font-medium text-gray-700 hover:bg-primary-light outline-none focus:outline-none',
+                          )}
+                        >
+                          1
+                        </button>
+
+                        <button
+                          onClick={() => setIsPage(2)}
+                          type="button"
+                          className={clsx(
+                            isPage === 2 && 'bg-primary-light',
+                            isPage > 3 &&
+                              isPage < articleData.length - 2 &&
+                              'hidden',
+                            'relative inline-flex items-center px-4 py-2 border border-secondary-medium text-sm font-medium text-gray-700 hover:bg-primary-light outline-none focus:outline-none',
+                          )}
+                        >
+                          2
+                        </button>
+                        <span
+                          className={clsx(
+                            isPage === 3 && 'hidden',
+                            'relative inline-flex items-center px-4 py-2 border border-secondary-medium bg-white text-sm font-medium text-gray-700',
+                          )}
+                        >
+                          ...
+                        </span>
+                      </>
+                    )}
+
+                    {articleData.length !== 0 &&
+                      articleData.length > 7 &&
+                      isPage > 2 && (
+                        <>
+                          {articleData
+                            .slice(2, articleData.length - 2)
+                            .map((item, i) => {
+                              return (
+                                <button
+                                  onClick={() => setIsPage(i + 3)}
+                                  type="button"
+                                  className={clsx(
+                                    isPage === i + 3 && 'bg-primary-light',
+                                    (isPage > i + 4 || isPage < i + 2) &&
+                                      'hidden',
+                                    'relative inline-flex items-center px-4 py-2 border border-secondary-medium text-sm font-medium text-gray-700 hover:bg-primary-light outline-none focus:outline-none',
+                                  )}
+                                >
+                                  {i + 3}
+                                </button>
+                              );
+                            })}
+                          <span
+                            className={clsx(
+                              isPage >= articleData.length - 2 && 'hidden',
+                              'relative inline-flex items-center px-4 py-2 border border-secondary-medium bg-white text-sm font-medium text-gray-700',
+                            )}
+                          >
+                            ...
+                          </span>
+                        </>
+                      )}
+
+                    {articleData.length !== 0 && articleData.length > 7 && (
+                      <>
+                        <button
+                          onClick={() => setIsPage(articleData.length - 1)}
+                          type="button"
+                          className={clsx(
+                            isPage === articleData.length - 1 &&
+                              'bg-primary-light',
+                            isPage > 2 &&
+                              isPage < articleData.length - 2 &&
+                              'hidden',
+                            'relative inline-flex items-center px-4 py-2 border border-secondary-medium text-sm font-medium text-gray-700 hover:bg-primary-light outline-none focus:outline-none',
+                          )}
+                        >
+                          {articleData.length - 1}
+                        </button>
+
+                        <button
+                          onClick={() => setIsPage(articleData.length)}
+                          type="button"
+                          className={clsx(
+                            isPage === articleData.length && 'bg-primary-light',
+                            'relative inline-flex items-center px-4 py-2 border border-secondary-medium text-sm font-medium text-gray-700 hover:bg-primary-light outline-none focus:outline-none',
+                          )}
+                        >
+                          {articleData.length}
+                        </button>
+                      </>
+                    )}
+
+                    <button
+                      onClick={() =>
+                        isPage < pages && setIsPage(prevPage => prevPage + 1)
+                      }
+                      type="button"
+                      className={clsx(
+                        isPage >= pages && 'cursor-not-allowed text-gray-200',
+                        isPage < pages &&
+                          'hover:bg-primary-light text-gray-500 ',
+
+                        'relative inline-flex items-center px-2 py-2 rounded-r-md border border-secondary-medium bg-white text-sm font-medium outline-none focus:outline-none',
+                      )}
                     >
                       <span className="sr-only">下ㄧ頁</span>
                       <svg
@@ -540,13 +668,11 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo}) => {
                           clipRule="evenodd"
                         />
                       </svg>
-                    </a>
+                    </button>
                   </nav>
                 </div>
               </div>
             </div>
-
-            {/* <ArticleList topics={newsData} /> */}
           </div>
           <AsideSection isHot={true} />
         </div>

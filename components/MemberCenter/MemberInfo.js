@@ -49,19 +49,19 @@ const MemberInfo = () => {
 
           <table className="table-auto text-left w-full mb-10 whitespace-nowrap">
             <tbody>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">帳號：</th>
                 <td className="whitespace-normal break-all py-4">
                   tanya**********l.com
                 </td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">註冊模式：</th>
                 <td className="whitespace-normal break-all py-4">
                   Google 註冊
                 </td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">姓名：</th>
                 <td className="whitespace-normal break-all py-4">
                   <input
@@ -72,10 +72,10 @@ const MemberInfo = () => {
                   />
                 </td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">照片：</th>
                 <td className="whitespace-normal break-all py-4">
-                  <label className="w-64 flex flex-col items-center px-4 py-6 border border-secondary-medium active:border-primary-medium active:ring active:ring-primary-medium active:ring-opacity-50 rounded-md shadow-sm tracking-wide cursor-pointer hover:bg-blue hover:text-primary-dark">
+                  <label className="w-64 flex flex-col items-center px-4 py-6 border border-secondary-medium active:border-primary-medium active:ring active:ring-primary-medium active:ring-opacity-50 rounded-md shadow-sm tracking-wide cursor-pointer hover:bg-blue hover:text-primary-dark bg-white">
                     <svg
                       className="w-8 h-8 fill-current"
                       xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@ const MemberInfo = () => {
 
           <table className="table-auto text-left w-full mb-10 whitespace-nowrap">
             <tbody>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*聯絡地址：</th>
                 <td className="whitespace-normal break-all py-4">
                   <select className="form-select w-full mb-2 border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
@@ -157,7 +157,7 @@ const MemberInfo = () => {
                   />
                 </td> */}
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*手機電話：</th>
                 <td className="whitespace-normal break-all py-4">
                   <input
@@ -169,7 +169,7 @@ const MemberInfo = () => {
                   />
                 </td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">市內電話：</th>
                 <td className="whitespace-normal break-all py-4">
                   <input
@@ -181,7 +181,7 @@ const MemberInfo = () => {
                   />
                 </td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">生日：</th>
                 <td className="whitespace-normal break-all py-4">
                   <input
@@ -193,7 +193,7 @@ const MemberInfo = () => {
                   />
                 </td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">性別：</th>
                 <td className="whitespace-normal break-all py-4">
                   <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
@@ -205,7 +205,7 @@ const MemberInfo = () => {
                   </select>
                 </td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">婚姻狀態：</th>
                 <td className="whitespace-normal break-all py-4">
                   <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
@@ -217,7 +217,7 @@ const MemberInfo = () => {
                   </select>
                 </td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">是否有子女：</th>
                 <td className="whitespace-normal break-all py-4">
                   <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
@@ -229,7 +229,7 @@ const MemberInfo = () => {
                   </select>
                 </td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*教育程度：</th>
                 <td className="whitespace-normal break-all py-4">
                   <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
@@ -243,7 +243,7 @@ const MemberInfo = () => {
                   </select>
                 </td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*個人年收入：</th>
                 <td className="whitespace-normal break-all py-4">
                   <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
@@ -258,7 +258,7 @@ const MemberInfo = () => {
                   </select>
                 </td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*職業產業別：</th>
                 <td className="whitespace-normal break-all py-4">
                   <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
@@ -284,7 +284,7 @@ const MemberInfo = () => {
                   </select>
                 </td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">*職稱：</th>
                 <td className="whitespace-normal break-all py-4">
                   <select className="form-select w-full border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none">
@@ -297,7 +297,7 @@ const MemberInfo = () => {
                   </select>
                 </td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">公司名稱：</th>
                 <td className="whitespace-normal break-all py-4">
                   <input
@@ -308,7 +308,7 @@ const MemberInfo = () => {
                   />
                 </td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">公司電話：</th>
                 <td className="whitespace-normal break-all py-4">
                   <input
@@ -319,7 +319,7 @@ const MemberInfo = () => {
                   />
                 </td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">統一編號：</th>
                 <td className="whitespace-normal break-all py-4">
                   <input
@@ -330,7 +330,7 @@ const MemberInfo = () => {
                   />
                 </td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">喜好主題：</th>
                 <td className="whitespace-normal break-all py-4">
                   <label className="inline-flex items-center mr-4 mb-4">
@@ -614,19 +614,19 @@ const MemberInfo = () => {
 
           <table className="table-auto text-left w-full mb-10 whitespace-nowrap">
             <tbody>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">帳號：</th>
                 <td className="whitespace-normal break-all py-4">
                   tanya**********l.com
                 </td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">註冊模式：</th>
                 <td className="whitespace-normal break-all py-4">
                   Google 註冊
                 </td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">姓名：</th>
                 <td className="whitespace-normal break-all py-4">Chris</td>
               </tr>
@@ -639,59 +639,59 @@ const MemberInfo = () => {
 
           <table className="table-auto text-left w-full mb-10 whitespace-nowrap">
             <tbody>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">聯絡地址：</th>
                 <td className="whitespace-normal break-all py-4">
                   臺北市中正區羅斯福路1絡地址聯絡
                 </td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">手機電話：</th>
                 <td className="whitespace-normal break-all py-4">12345567</td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">市內電話：</th>
                 <td className="whitespace-normal break-all py-4">12345567</td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">生日：</th>
                 <td className="whitespace-normal break-all py-4">1234:56:71</td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">性別：</th>
                 <td className="whitespace-normal break-all py-4">女</td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">婚姻狀態：</th>
                 <td className="whitespace-normal break-all py-4">已婚</td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">是否有子女：</th>
                 <td className="whitespace-normal break-all py-4">否</td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">教育程度：</th>
                 <td className="whitespace-normal break-all py-4">大學</td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">職業產業別：</th>
                 <td className="whitespace-normal break-all py-4">資訊</td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">職稱：</th>
                 <td className="whitespace-normal break-all py-4">記者</td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">公司名稱：</th>
                 <td className="whitespace-normal break-all py-4">公司名稱</td>
               </tr>
-              <tr className="bg-rainbow-olight border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">公司電話：</th>
                 <td className="whitespace-normal break-all py-4">
                   02-13394934
                 </td>
               </tr>
-              <tr className="border-b border-secondary-medium">
+              <tr className="even:bg-rainbow-olight border-b border-secondary-medium">
                 <th className="w-1/4 py-4 pl-2 sm:px-5">統一編號：</th>
                 <td className="whitespace-normal break-all py-4">
                   11223421412

@@ -160,7 +160,7 @@ export default function article({ data }) {
               <div className="article_img relative rounded-lg overflow-hidden w-full mb-5">
                 <Image
                   className="h-full w-full object-cover"
-                  src={articleData.article_info.image_url}
+                  src={articleData.article_info.image_url || 'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'}
                   height={300}
                   width={400}
                   layout="responsive"
@@ -321,7 +321,7 @@ export default function article({ data }) {
                   articleData.tag_info.map((item, i) => {
                     return (
                       <li key={i}>
-                        <Link href={`/search/${item.keyword}`}>
+                        <Link href={`/search/article?keywords=${item.keyword}`}>
                           <a className="block border text-primary-dark hover:text-white hover:bg-primary-dark border-primary-dark px-2 py-1 mb-2 mr-2 rounded-md transition-all duration-300 ease-in-out whitespace-nowrap">
                             {item.keyword}
                           </a>

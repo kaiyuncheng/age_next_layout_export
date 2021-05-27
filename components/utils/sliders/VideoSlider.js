@@ -101,7 +101,7 @@ const VideoSlider = ({ topics }) => {
                   className="bg-white outline-none focus:outline-none "
                 >
                   <div className="relative flex flex-col px-2 z-10">
-                    <Link href={`/video/${'item.url_query'}`}>
+                    <Link href={`/video/${item.url_query}`}>
                       <a className="group block relative w-full mb-5 outline-none focus:outline-none">
                         <div className="rounded-lg overflow-hidden w-full h-48 xs:h-72 sm:h-80 md:h-40 xl:h-56 mb-5 relative">
                           <Image

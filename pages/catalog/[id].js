@@ -126,7 +126,10 @@ export default function cataloglist({ data }) {
                 <div className="relative overflow-hidden rounded-lg w-20 h-14 mr-5">
                   <Image
                     className="w-full h-full object-cover"
-                    src={catalogData.brand_area.logo_url}
+                    src={
+                      catalogData.brand_area.logo_url ||
+                      'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
+                    }
                     layout="fill"
                     alt={catalogData.brand_area.logo_title}
                   />

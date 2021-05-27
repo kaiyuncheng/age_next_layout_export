@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import clsx from "clsx";
 import { useMenuContext } from "../../context/menu";
@@ -10,7 +9,6 @@ import SearchBar from "../Header/SearchBar";
 const Header = () => {
   const [menuState, setMenuState] = useState(false);
   const [top, setTop] = useState(true);
-  const router = useRouter();
   const { menuData, setMenuData } = useMenuContext();
   useEffect(() => {
     const scrollHandler = () => {
@@ -401,8 +399,7 @@ const Header = () => {
       >
         <div className="w-full h-screen sm:w-1/2 bg-primary-light shadow-mdRight pt-5 pb-10">
           <div className="mobile_menu_search mx-5 mb-5 relative border border-white rounded-br-full">
-          <SearchBar/>
-            
+            <SearchBar toggleMenu={toggleMenu} />
           </div>
           <nav className="bg-primary-light">
             <ul className="flex flex-col">
@@ -420,12 +417,17 @@ const Header = () => {
                       <div className="main_menu_btn h-10 group relative w-full transition-all duration-500 group-hover:bg-white outline-none focus:outline-none flex items-center justify-center">
                         {item.link.charAt(0) === '/' ? (
                           <Link href={item.link}>
-                            <a>
+                            <a onClick={toggleMenu}>
                               <h2 className="mr-2">{item.name}</h2>
                             </a>
                           </Link>
                         ) : (
-                          <a href={item.link} rel="noreferrer" target="_blank">
+                          <a
+                            onClick={toggleMenu}
+                            href={item.link}
+                            rel="noreferrer"
+                            target="_blank"
+                          >
                             <h2 className="mr-2">{item.name}</h2>
                           </a>
                         )}
@@ -474,13 +476,17 @@ const Header = () => {
                               >
                                 {item.link.charAt(0) === '/' ? (
                                   <Link href={item.link}>
-                                    <a className="relative flex items-center justify-center w-full h-10 transition duration-300 hover:bg-primary-light hover:overflow-hidden outline-none focus:outline-none">
+                                    <a
+                                      onClick={toggleMenu}
+                                      className="relative flex items-center justify-center w-full h-10 transition duration-300 hover:bg-primary-light hover:overflow-hidden outline-none focus:outline-none"
+                                    >
                                       <h2>{item.name}</h2>
                                     </a>
                                   </Link>
                                 ) : (
                                   <a
                                     href={item.link}
+                                    onClick={toggleMenu}
                                     rel="noreferrer"
                                     target="_blank"
                                     className="relative flex items-center justify-center w-full h-10 transition duration-300 hover:bg-primary-light hover:overflow-hidden outline-none focus:outline-none"

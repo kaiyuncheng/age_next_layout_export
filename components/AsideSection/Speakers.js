@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Speakers = ({ title, topics }) => {
   return (
@@ -94,13 +95,22 @@ const Speakers = ({ title, topics }) => {
             {topics &&
               topics.map((item, i) => {
                 return (
-                  <Link key={i} href={'/article/[id]'} as={`/article/${item.url_query}`}>
+                  <Link
+                    key={i}
+                    href={'/article/[id]'}
+                    as={`/article/${item.url_query}`}
+                  >
                     <a className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none">
-                      <div className="block md:hidden overflow-hidden rounded-lg mb-2 w-full aspect-w-4 aspect-h-3">
-                        <img
+                      <div className="block md:hidden overflow-hidden rounded-lg mb-2 aspect-w-4 aspect-h-3 relative">
+
+                        <Image
                           className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                          src={item.image_url}
+                          src={
+                            item.image_url ||
+                            'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
+                          }
                           alt={item.title}
+                          layout="fill"
                         />
                       </div>
                       <p className="text-sm md:text-base group-hover:text-gray-600">

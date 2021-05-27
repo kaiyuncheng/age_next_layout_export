@@ -58,7 +58,7 @@ export default function videos({ data, id }) {
       
 
     if (id === '1') {
-      setMenuName('全部');
+      setMenuName(videosData.media_category_lv1[0].name || '全部');
       setVideosList(videosData.media_video);
     } else {
       setMenuName(videosData.media_category[id - 2].name);
@@ -80,7 +80,7 @@ export default function videos({ data, id }) {
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
           <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden">
             {/* <!-- video tags--> */}
-            <ul className="video_tags flex space-x-2 flex-wrap">
+            <ul className="video_tags flex flex-wrap mb-3">
               <li>
                 <Link href="/videos/1">
                   <button
@@ -89,10 +89,10 @@ export default function videos({ data, id }) {
                       menuTag === '1'
                         ? 'text-white bg-primary-dark'
                         : 'text-primary-dark',
-                      'block border mb-5 hover:bg-primary-dark hover:text-white   border-primary-dark px-2 py-1 rounded-md transition-all duration-300 ease-in-out whitespace-nowrap outline-none focus:outline-none',
+                      'block border hover:bg-primary-dark hover:text-white   border-primary-dark px-2 py-1 rounded-md transition-all duration-300 ease-in-out whitespace-nowrap outline-none focus:outline-none mb-2 mr-2',
                     )}
                   >
-                    全部
+                    {videosData.media_category_lv1[0].name || '全部'}
                   </button>
                 </Link>
               </li>
@@ -107,7 +107,7 @@ export default function videos({ data, id }) {
                             menuTag === item.media_category_id
                               ? 'text-white bg-primary-dark'
                               : 'text-primary-dark',
-                            'block border mb-5 hover:bg-primary-dark hover:text-white  border-primary-dark px-2 py-1 rounded-md transition-all duration-300 ease-in-out whitespace-nowrap outline-none focus:outline-none',
+                            'block border hover:bg-primary-dark hover:text-white  border-primary-dark px-2 py-1 rounded-md transition-all duration-300 ease-in-out whitespace-nowrap outline-none focus:outline-none mb-2 mr-2',
                           )}
                         >
                           {item.name}

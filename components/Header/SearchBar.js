@@ -2,34 +2,45 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 
-const SearchBar = () => {
+const SearchBar = ({ toggleMenu }) => {
   const router = useRouter();
   const [keywords, setKeywords] = useState('');
-  const [keywordsMobile, setKeywordsMobile] = useState('');
   const inputRef = useRef(null);
-  const inputRefMobile = useRef(null);
 
   const handleChange = e => {
     setKeywords(e.target.value);
   };
-  const handleChangeMobile = e => {
-    setKeywordsMobile(e.target.value);
-  };
 
-  const handleKeyDown = event => {
-    if (event.keyCode === 13 && keywords.length !== 0) {
-      router.push(`/search/article?keywords=${keywords}`);
+  const handleKeyDown = e => {
+    setKeywords(prev => prev.trim());
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      if (keywords.trim().length !== 0) {
+        router.push(`/search/article?keywords=${keywords.trim()}`);
+      }
     }
   };
 
-  const handleRouter = () => {
-    if (keywords.length !== 0) {
-      router.push(`/search/article?keywords=${keywords}`)
-    }else{
-      router.push(`#`);
+  const handleRouter = e => {
+    e.preventDefault();
+    setKeywords(prev => prev.trim());
+    if (keywords.trim().length !== 0) {
+      return router.push(`/search/article?keywords=${keywords.trim()}`);
+    } else {
+      return setKeywords('');
     }
   };
 
+  const handleRouterMobile = e => {
+    e.preventDefault();
+    toggleMenu();
+    setKeywords(prev => prev.trim());
+    if (keywords.trim().length !== 0) {
+      return router.push(`/search/article?keywords=${keywords.trim()}`);
+    } else {
+      return setKeywords('');
+    }
+  };
 
   return (
     <>
@@ -58,13 +69,13 @@ const SearchBar = () => {
           ref={inputRef}
           onKeyDown={handleKeyDown}
         />
-          <button
-            onClick={handleRouter}
-            type="button"
-            className="absolute right-0 top-0 bg-primary-dark hover:bg-primary-medium transition-colors duration-300 h-10 w-24 text-white rounded-br-full rounded-tl-full outline-none focus:outline-none"
-          >
-            搜尋
-          </button>
+        <button
+          onClick={handleRouter}
+          type="button"
+          className="absolute right-0 top-0 bg-primary-dark hover:bg-primary-medium transition-colors duration-300 h-10 w-24 text-white rounded-br-full rounded-tl-full outline-none focus:outline-none"
+        >
+          搜尋
+        </button>
       </form>
 
       <form className="md:hidden flex items-center">
@@ -87,18 +98,17 @@ const SearchBar = () => {
           className="h-10 w-72 placeholder-gray-500 bg-transparent outline-none focus:outline-none"
           placeholder="搜尋關鍵字..."
           type="text"
-          value={keywordsMobile}
-          onChange={handleChangeMobile}
-          ref={inputRefMobile}
+          value={keywords}
+          onChange={handleChange}
+          ref={inputRef}
         />
-        <Link href={`/search/article?keywords=${keywordsMobile}`}>
-          <button
-            type="submit"
-            className="absolute right-0 top-0 bg-primary-dark hover:bg-primary-medium transition-colors duration-300 h-10 w-20 text-white rounded-br-full rounded-tl-full outline-none focus:outline-none"
-          >
-            搜尋
-          </button>
-        </Link>
+        <button
+          onClick={handleRouterMobile}
+          type="submit"
+          className="absolute right-0 top-0 bg-primary-dark hover:bg-primary-medium transition-colors duration-300 h-10 w-20 text-white rounded-br-full rounded-tl-full outline-none focus:outline-none"
+        >
+          搜尋
+        </button>
       </form>
     </>
   );

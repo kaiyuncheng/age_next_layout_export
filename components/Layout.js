@@ -35,23 +35,28 @@ const Layout = ({ children, siteTitle }) => {
         <meta
           itemProp="image"
           property="og:image"
-          content="https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/metalogo201804.png"
+          content="https://new-thebetteraging-kai.businesstoday.com.tw/images/og_image.jpg"
         />
         <meta
           itemProp="image"
-          content="https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/metalogo201804.png"
+          content="https://new-thebetteraging-kai.businesstoday.com.tw/images/og_image.jpg"
         />
         <meta property="og:type" content="website" />
         <title>{siteTitle}</title>
         <link
-            rel="icon"
-            href="https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/favicon.ico"
-          />
+          rel="icon"
+          href="https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/favicon.ico"
+        />
+
+        {/* <script
+          async="async"
+          src="https://www.googletagservices.com/tag/js/gpt.js"
+        ></script> */}
       </Head>
 
       <Header />
 
-      <main className="mt-28 md:mt-44 flex flex-col pb-10">{children}</main>
+      <main className="mt-28 md:mt-44 flex flex-col pb-14">{children}</main>
 
       <Footer />
     </div>
