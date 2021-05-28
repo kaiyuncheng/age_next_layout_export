@@ -6,6 +6,7 @@ import Image from "next/image";
 import AsideSection from "../../components/AsideSection";
 import BreadCrumb from "../../components/utils/BreadCrumb";
 import AuthorListItem from "../../components/MainSection/AuthorListItem";
+import Banner from '../../components/utils/googletags/Banner';
 
 
 export const getStaticProps = async () => {
@@ -40,17 +41,27 @@ export default function authors({data}) {
 
   return (
     <Layout siteTitle="幸福熟齡 - 名人私房學">
-      
-      <BreadCrumb titles={[{ title: '名人私房學', link: '/authors' }]}/>
+      {/* PC 內頁廣告上 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto mt-10 mb-5 px-4 lg:px-2 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_pc_home_970x250_t" />
+      </div>
+
+      {/* Mobile 內頁廣告上 */}
+
+      <div className="block sm:hidden mt-14 mb-4 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_mob_home_300x250_t" />
+      </div>
+
+      <BreadCrumb titles={[{ title: '名人私房學', link: '/authors' }]} />
 
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
           <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden">
             <div className="flex flex-col lg:flex-row flex-wrap -mx-4">
-            {authorsData && authorsData.map((author, i)=>{
-              return(<AuthorListItem author={author} key={i+1}/>);  
-            })}
-
+              {authorsData &&
+                authorsData.map((author, i) => {
+                  return <AuthorListItem author={author} key={i + 1} />;
+                })}
             </div>
           </div>
           <AsideSection />

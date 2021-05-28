@@ -5,6 +5,7 @@ function Banner({ adId }) {
   const { adData } = useAdContext();
   const targetAd = adData.adlist[adId];
   // const isFormal = typeof window !== 'undefined' && window.location.host === 'thebetteraging.businesstoday.com.tw' ? true : false;
+  
   const isFormal = true;
 
   useAdSlot({

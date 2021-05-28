@@ -69,7 +69,7 @@ const CategorySlider = ({ topics }) => {
   };
 
   return (
-    <div className="topics_slider relative block md:hidden">
+    <div className="topics_slider relative block lg:hidden">
       <Slider {...settings}>
         {topics &&
           topics.map((item, i) => {

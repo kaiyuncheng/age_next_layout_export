@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
 
           <script
             async
-            charset="utf-8"
+            charSet="utf-8"
             src="https://static.dable.io/dist/plugin.min.js"
           ></script>
 
@@ -44,7 +44,7 @@ export default class MyDocument extends Document {
                             };
                           e = a.createElement(l);
                           e.async = 1;
-                          e.charset = 'utf-8';
+                          e.charSet = 'utf-8';
                           e.src = 'https://static.dable.io/dist/plugin.min.js';
                           _ = a.getElementsByTagName(l)[0];
                           _.parentNode.insertBefore(e, _);

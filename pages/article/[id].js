@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import AsideSection from "../../components/AsideSection";
 import BreadCrumb from "../../components/utils/BreadCrumb";
+import Banner from '../../components/utils/googletags/Banner';
+
 export const getServerSideProps = async (context) => {
   const { id } = context.query;
   try {
@@ -494,6 +496,10 @@ export default function article({ data, id }) {
 
           <AsideSection isHot={true} />
         </div>
+      </div>
+
+      <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_pc_home_970x250_b" />
       </div>
     </Layout>
   );

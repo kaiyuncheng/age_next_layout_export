@@ -11,7 +11,7 @@ import FourColumns from '../../components/MainSection/FourColumns';
 import ArticlesSlider from '../../components/utils/sliders/ArticlesSlider';
 import Category from '../../components/MainSection/Category';
 import ArticleList from '../../components/MainSection/ArticleList';
-
+import Banner from '../../components/utils/googletags/Banner';
 export const getServerSideProps = async context => {
   const { id } = context.query;
   try {
@@ -112,6 +112,17 @@ export default function cataloglist({ data }) {
           <meta itemProp="image" content={catalogData.seo_meta.meta_og_image} />
         )}
       </Head>
+
+      {/* PC 內頁廣告上 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto mt-10 mb-10 px-4 lg:px-2 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_pc_home_970x250_t" />
+      </div>
+
+      {/* Mobile 內頁廣告上 */}
+
+      <div className="block sm:hidden mt-10 mb-10 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_mob_home_300x250_t" />
+      </div>
 
       {catalogData.category_top_img && (
         <ProjectSection topics={catalogData.category_top_img} />
@@ -233,6 +244,9 @@ export default function cataloglist({ data }) {
             brandData={catalogData.brand_area}
           />
         </div>
+      </div>
+      <div className="lg:block hidden max-w-screen-2xl mx-auto mt-14 px-4 lg:px-2 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_pc_home_970x250_b" />
       </div>
     </Layout>
   );

@@ -29,6 +29,17 @@ export default function Home() {
         </div>
       </Fade>
 
+      {/* PC 首頁廣告上 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto mb-10 px-4 lg:px-2 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_pc_home_970x250_t" />
+      </div>
+
+      {/* Mobile 首頁廣告上 */}
+
+      <div className="block sm:hidden mb-10 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_mob_home_300x250_t" />
+      </div>
+
       <div className="sections mb-14">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
           <div className="relative w-full md:w-3/4 flex flex-col space-y-14 overflow-hidden pt-5">
@@ -56,7 +67,7 @@ export default function Home() {
       </div>
 
       <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center border border-red-500">
-        <Banner adId="div-gpt-ad-1529567429364-1" />
+        <Banner adId="thebetteraging_pc_home_970x250_b" />
       </div>
     </Layout>
   );

@@ -41,7 +41,7 @@ const Category = ({ name, id, data, isIndexCategory }) => {
         </a>
       </Link>
 
-      <div className="topics_items hidden md:flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-5">
+      <div className="topics_items hidden lg:flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-5">
         {data &&
           data.map((item, i) => {
             return (

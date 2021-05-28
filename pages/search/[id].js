@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import clsx from 'clsx';
 import axios from '../../components/utils/axios';
 import Layout from '../../components/Layout';
 import AsideSection from '../../components/AsideSection';
 import BreadCrumb from '../../components/utils/BreadCrumb';
 import ArticleListItem from '../../components/MainSection/ArticleListItem';
-import clsx from 'clsx';
+import Banner from '../../components/utils/googletags/Banner';
 
 export const getServerSideProps = async context => {
   const { keywords, sort, count, yearFrom, yearTo } = context.query;
@@ -248,6 +249,17 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
 
   return (
     <Layout siteTitle="幸福熟齡 - 搜尋結果">
+      {/* PC 內頁廣告上 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto mt-10 mb-5 px-4 lg:px-2 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_pc_home_970x250_t" />
+      </div>
+
+      {/* Mobile 內頁廣告上 */}
+
+      <div className="block sm:hidden mt-14 mb-4 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_mob_home_300x250_t" />
+      </div>
+
       {/* <!-- bread crumb --> */}
       <BreadCrumb
         titles={[
