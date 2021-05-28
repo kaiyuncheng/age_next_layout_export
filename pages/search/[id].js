@@ -233,6 +233,19 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
     }
   };
 
+  const handleKeyDown = e => {
+    setNewKeywords(prev => prev.trim());
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      if (newKeywords.trim().length !== 0) {
+        router.push(
+          `/search/article?keywords=${newKeywords.trim()}&sort=${sortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`,
+          `/search/article?keywords=${newKeywords.trim()}`,
+        );
+      }
+    }
+  };
+
   return (
     <Layout siteTitle="幸福熟齡 - 搜尋結果">
       {/* <!-- bread crumb --> */}
@@ -281,6 +294,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
                       name="keywords"
                       value={newKeywords}
                       onChange={handleChangeKeywords}
+                      onKeyDown={handleKeyDown}
                     />
                   </label>
                 </div>
@@ -550,13 +564,13 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
                     {articleData.length !== 0 && articleData.length > 7 && (
                       <>
                         <button
-                          onClick={() =>{
-                              setIsPage(1);
-                              return window.scrollTo({
-                                top: 0,
-                                behavior: 'smooth',
-                              });
-                            }}
+                          onClick={() => {
+                            setIsPage(1);
+                            return window.scrollTo({
+                              top: 0,
+                              behavior: 'smooth',
+                            });
+                          }}
                           type="button"
                           className={clsx(
                             isPage === 1 && 'bg-primary-light',
@@ -606,13 +620,12 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
                               return (
                                 <button
                                   onClick={() => {
-                              setIsPage(i + 3);
-                              return window.scrollTo({
-                                top: 0,
-                                behavior: 'smooth',
-                              });
-                            }
-                                  }
+                                    setIsPage(i + 3);
+                                    return window.scrollTo({
+                                      top: 0,
+                                      behavior: 'smooth',
+                                    });
+                                  }}
                                   type="button"
                                   className={clsx(
                                     isPage === i + 3 && 'bg-primary-light',
@@ -640,13 +653,12 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
                       <>
                         <button
                           onClick={() => {
-                              setIsPage(articleData.length - 1);
-                              return window.scrollTo({
-                                top: 0,
-                                behavior: 'smooth',
-                              });
-                            }
-                            }
+                            setIsPage(articleData.length - 1);
+                            return window.scrollTo({
+                              top: 0,
+                              behavior: 'smooth',
+                            });
+                          }}
                           type="button"
                           className={clsx(
                             isPage === articleData.length - 1 &&
@@ -662,12 +674,12 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
 
                         <button
                           onClick={() => {
-                              setIsPage(articleData.length);
-                              return window.scrollTo({
-                                top: 0,
-                                behavior: 'smooth',
-                              });
-                            }}
+                            setIsPage(articleData.length);
+                            return window.scrollTo({
+                              top: 0,
+                              behavior: 'smooth',
+                            });
+                          }}
                           type="button"
                           className={clsx(
                             isPage === articleData.length && 'bg-primary-light',
@@ -681,14 +693,12 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
 
                     <button
                       onClick={() => {
-                              isPage < pages &&
-                                setIsPage(prevPage => prevPage + 1);
-                              return window.scrollTo({
-                                top: 0,
-                                behavior: 'smooth',
-                              });
-                            }
-                      }
+                        isPage < pages && setIsPage(prevPage => prevPage + 1);
+                        return window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth',
+                        });
+                      }}
                       type="button"
                       className={clsx(
                         isPage >= pages && 'cursor-not-allowed text-gray-200',
