@@ -10,6 +10,7 @@ import DigitalSlider from "../components/utils/sliders/DigitalSlider";
 import Category from "../components/MainSection/Category";
 import AsideSection from "../components/AsideSection";
 import Banner from "../components/utils/googletags/Banner"
+import DableBanner from "../components/utils/dable/DableBanner"
 
 // import Banner2 from "../components/utils/googletags/Banner2";
 
@@ -20,20 +21,20 @@ export default function Home() {
   return (
     <Layout siteTitle="幸福熟齡 - 從今開始，一同勾勒熟齡的美好">
       <MainSlider topics={mainData.top_banners} />
-    {console.log(mainData)}
+      {console.log(mainData)}
 
-
-    <Fade bottom>
-      <div className="latest border-box mb-10">
-        <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-4 lg:space-x-10">
-          <Tabs tab1topics={mainData.hot_article_banners} tab2topics={mainData.new_article_banners} />
-          <DigitalSlider topics={mainData.special_banners} />
+      <Fade bottom>
+        <div className="latest border-box mb-10">
+          <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-4 lg:space-x-10">
+            <Tabs tab1topics={mainData.hot_article_banners} tab2topics={mainData.new_article_banners} />
+            <DigitalSlider topics={mainData.special_banners} />
+          </div>
         </div>
-      </div>
-    </Fade>
+      </Fade>
 
-      {/* <Banner /> 
-      <Banner2/> */}
+      <div className="banner m-20 max-w-screen-2xl mx-auto px-4 lg:px-2">
+        <Banner adId="thebetteraging_pc_home_970x250_t" />
+      </div>
 
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
@@ -48,7 +49,16 @@ export default function Home() {
           <AsideSection isHot={false} isProject={false}  videoTopics={mainData.hot_videos} newsTopics={mainData.article_news}/>
         </div>
       </div>
-      <Banner adId="div-gpt-ad-1529567429364-1" />
+      
+      <div className="banner m-20 max-w-screen-2xl mx-auto px-4 lg:px-2">
+        <Banner adId="thebetteraging_pc_home_970x250_b" />
+      </div>
+
+      <div className="banner m-20 max-w-screen-2xl mx-auto px-4 lg:px-2">
+        <DableBanner adId="dablewidget_goPjaJlQ_370NGgXx" />
+      </div>
+
+      
     </Layout>
   );
 }
