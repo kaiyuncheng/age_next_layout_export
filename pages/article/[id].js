@@ -12,9 +12,19 @@ export const getServerSideProps = async (context) => {
   try {
     const { data } = await axios.get(`article/detail/${id}`);
 
+    if (!data.data) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
+    
     return {
       props: {
-        data,
+        data: data.data,
+        id: id,
       },
     };
   } catch (error) {
@@ -28,69 +38,151 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-export default function Article({ data }) {
-  const [articleData, setArticleData] = useState(data.data);
+// const init = {
+//   code: '',
+//   time: '',
+//   data: {
+//     article_info: {
+//       title: '',
+//     },
+//   },
+// };
+
+export default function article({ data, id }) {
+  const [articleData, setArticleData] = useState(data);
   const [fontSize, setFontSize] = useState("text-base");
+
+  useEffect(() => {
+    setArticleData(data);
+  }, [data]);
 
   function createMarkup() {
     return { __html: articleData.content_info[0].text };
   }
   function TextComponent() {
-    return <div dangerouslySetInnerHTML={createMarkup()} />;
+    return (
+      <div itemProp="articleBody" dangerouslySetInnerHTML={createMarkup()} />
+    );
   }
 
   const handleFontSize = (size) => {
     setFontSize(`text-${size}`);
   };
 
-  return (
-    <Layout siteTitle={`幸福熟齡 - ${articleData.article_info.title}`}>
-      {console.log(articleData)}
+  useEffect(() => {
+   dable('renderWidgetByWidth', 'dablewidget_goPjaJlQ_370NGgXx');
+  }, []);
 
+  useEffect(() => {
+   dable('renderWidgetByWidth', 'dablewidget_6oMmnEob_ml69ek74');
+  }, []);
+
+  return (
+    <Layout
+      siteTitle={`幸福熟齡 - ${
+        articleData.article_info.title || '從今開始，一同勾勒熟齡的美好'
+      }`}
+    >
       <Head>
+        {articleData.seo_meta.meta_description && (
+          <meta
+            itemProp="description"
+            content={articleData.seo_meta.meta_description}
+          />
+        )}
+
+        {articleData.seo_meta.meta_description && (
+          <meta
+            name="description"
+            content={articleData.seo_meta.meta_description}
+          />
+        )}
+
+        {articleData.seo_meta.meta_keyword && (
+          <meta name="keywords" content={articleData.seo_meta.meta_keyword} />
+        )}
+
+        {articleData.seo_meta.meta_og_title && (
+          <meta
+            property="og:title"
+            content={articleData.seo_meta.meta_og_title}
+          />
+        )}
+
+        {articleData.seo_meta.meta_og_description && (
+          <meta
+            property="og:description"
+            content={articleData.seo_meta.meta_og_description}
+          />
+        )}
+
+        {articleData.article_info.url_query && (
+          <meta
+            property="og:url"
+            content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.url_query}`}
+          />
+        )}
+
+        {articleData.seo_meta.meta_og_image && (
+          <meta
+            itemProp="image"
+            property="og:image"
+            content={articleData.seo_meta.meta_og_image}
+          />
+        )}
+
+        {articleData.seo_meta.meta_og_image && (
+          <meta itemProp="image" content={articleData.seo_meta.meta_og_image} />
+        )}
+
         <meta
-          itemProp="description"
-          content={articleData.seo_meta.meta_description}
+          property="dable:item_id"
+          content={articleData.article_info.url_query || id}
         />
         <meta
-          name="description"
-          content={articleData.seo_meta.meta_description}
+          property="dable:author"
+          content={articleData.article_info.writers || '幸福熟齡編輯'}
         />
-        <meta name="keywords" content={articleData.seo_meta.meta_keyword} />
+
+        <meta property="article:section" content="最新文章" />
+        <meta property="article:section2" content="aging" />
         <meta
-          property="og:title"
-          content={articleData.seo_meta.meta_og_title}
-        />
-        <meta
-          property="og:description"
-          content={articleData.seo_meta.meta_og_description}
-        />
-        <meta
-          property="og:url"
-          content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.url_query}`}
-        />
-        <meta
-          itemProp="image"
-          property="og:image"
-          content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.meta_og_image}`}
-        />
-        <meta
-          itemProp="image"
-          content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.meta_og_image}`}
+          property="article:published_time"
+          content={
+            articleData.article_info.date_2 || '2020-10-27T09:27:00+0000'
+          }
         />
       </Head>
 
-      <BreadCrumb
-        titles={[
-          { title: `${articleData.category_info.name || '分類文章'}`, link: `/category/${articleData.article_info.url_query}` },
-          { title: `${articleData.article_info.title}`, link: `/article/${articleData.article_info.url_query}` },
-        ]}
-      />
+      {articleData.category_info.name ? (
+        <BreadCrumb
+          titles={[
+            {
+              title: `${articleData.category_info.name} `,
+              link: `/catalog/${articleData.category_info.category_id}`,
+            },
+            {
+              title: `${articleData.article_info.title}`,
+              link: `/article/${articleData.article_info.url_query}`,
+            },
+          ]}
+        />
+      ) : (
+        <BreadCrumb
+          titles={[
+            {
+              title: `${articleData.article_info.title}`,
+              link: `/article/${articleData.article_info.url_query}`,
+            },
+          ]}
+        />
+      )}
 
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row md:space-x-10 md:space-y-0">
           <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden pb-5">
             {/* <!-- main article --> */}
+
             <div className="article flex flex-col relative">
               <h2 className="article_title md:text-2xl text-xl font-bold mb-5">
                 {articleData.article_info.title}
@@ -98,7 +190,10 @@ export default function Article({ data }) {
               <div className="article_img relative rounded-lg overflow-hidden w-full mb-5">
                 <Image
                   className="h-full w-full object-cover"
-                  src={articleData.article_info.image_url}
+                  src={
+                    articleData.article_info.image_url ||
+                    'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
+                  }
                   height={300}
                   width={400}
                   layout="responsive"
@@ -132,13 +227,13 @@ export default function Article({ data }) {
                   <div className="article_font flex space-x-2 mb-4 xs:mb-0">
                     <button
                       type="button"
-                      onClick={() => handleFontSize("base")}
+                      onClick={() => handleFontSize('base')}
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-base font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
                       A
                     </button>
                     <button
-                      onClick={() => handleFontSize("lg")}
+                      onClick={() => handleFontSize('lg')}
                       type="button"
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-lg font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
@@ -146,50 +241,58 @@ export default function Article({ data }) {
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleFontSize("xl")}
+                      onClick={() => handleFontSize('xl')}
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-2xl font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
                       A
                     </button>
                   </div>
                   <div className="article_socials flex space-x-4 mb-4 xs:mb-0">
-                    <a
-                      href={articleData.fb_share_url}
-                      className="icon_fb group"
-                      rel="noreferrer"
-                      target="_blank"
+                    <Link
+                      href={`https://www.facebook.com/share.php?u=https://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.url_query}`}
                     >
-                      <svg
-                        className="fill-current text-primary-dark group-hover:text-blue-600 transition-colors duration-200 ease-in-out"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="13.45"
-                        height="25"
-                        viewBox="0 0 13.45 25"
+                      <a
+                        className="icon_fb group"
+                        rel="noreferrer"
+                        target="_blank"
                       >
-                        <path
-                          id="Icon_zocial-facebook"
-                          data-name="Icon zocial-facebook"
-                          d="M13.257,13.425V8.651h3.851V6.25a6.283,6.283,0,0,1,1.687-4.425A5.366,5.366,0,0,1,22.882,0h3.825V4.775H22.882a.842.842,0,0,0-.674.412,1.675,1.675,0,0,0-.3,1.013V8.65h4.8v4.774h-4.8V25h-4.8V13.425Z"
-                          transform="translate(-13.257)"
-                        />
-                      </svg>
-                    </a>
-                    <a href="#" className="icon_line group">
-                      <svg
-                        className="fill-current text-primary-dark group-hover:text-green-500 transition-colors duration-200 ease-in-out"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26.251"
-                        height="25"
-                        viewBox="0 0 26.251 25"
-                      >
-                        <path
-                          id="Icon_simple-line"
-                          data-name="Icon simple-line"
-                          d="M21.181,11.02a.69.69,0,0,1,0,1.379h-1.92V13.63h1.92a.689.689,0,1,1,0,1.377h-2.61a.69.69,0,0,1-.686-.688V9.1a.691.691,0,0,1,.689-.689h2.61a.689.689,0,0,1,0,1.378h-1.92V11.02h1.92Zm-4.217,3.3a.688.688,0,0,1-.473.652.707.707,0,0,1-.218.034.676.676,0,0,1-.558-.273L13.044,11.1v3.216a.687.687,0,1,1-1.375,0V9.1a.685.685,0,0,1,.47-.651.636.636,0,0,1,.212-.036.707.707,0,0,1,.541.278l2.693,3.642V9.1a.689.689,0,0,1,1.378,0v5.218Zm-6.279,0a.688.688,0,1,1-1.376,0V9.1a.688.688,0,1,1,1.376,0Zm-2.7.688H5.378a.693.693,0,0,1-.689-.688V9.1a.689.689,0,0,1,1.378,0V13.63H7.988a.689.689,0,0,1,0,1.377m18.263-3.494c0-5.875-5.89-10.656-13.125-10.656S0,5.639,0,11.514c0,5.262,4.67,9.671,10.976,10.509.428.09,1.01.282,1.157.645a2.672,2.672,0,0,1,.042,1.181L12,24.965c-.049.329-.263,1.3,1.147.705s7.565-4.46,10.321-7.629a9.431,9.431,0,0,0,2.787-6.528"
-                          transform="translate(0 -0.858)"
-                        />
-                      </svg>
-                    </a>
+                        <svg
+                          className="fill-current text-primary-dark group-hover:text-blue-600 transition-colors duration-200 ease-in-out"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="13.45"
+                          height="25"
+                          viewBox="0 0 13.45 25"
+                        >
+                          <path
+                            id="Icon_zocial-facebook"
+                            data-name="Icon zocial-facebook"
+                            d="M13.257,13.425V8.651h3.851V6.25a6.283,6.283,0,0,1,1.687-4.425A5.366,5.366,0,0,1,22.882,0h3.825V4.775H22.882a.842.842,0,0,0-.674.412,1.675,1.675,0,0,0-.3,1.013V8.65h4.8v4.774h-4.8V25h-4.8V13.425Z"
+                            transform="translate(-13.257)"
+                          />
+                        </svg>
+                      </a>
+                    </Link>
+
+                    <Link
+                      href={`https://lineit.line.me/share/ui?url=https://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.url_query}`}
+                    >
+                      <a className="icon_line group">
+                        <svg
+                          className="fill-current text-primary-dark group-hover:text-green-500 transition-colors duration-200 ease-in-out"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="26.251"
+                          height="25"
+                          viewBox="0 0 26.251 25"
+                        >
+                          <path
+                            id="Icon_simple-line"
+                            data-name="Icon simple-line"
+                            d="M21.181,11.02a.69.69,0,0,1,0,1.379h-1.92V13.63h1.92a.689.689,0,1,1,0,1.377h-2.61a.69.69,0,0,1-.686-.688V9.1a.691.691,0,0,1,.689-.689h2.61a.689.689,0,0,1,0,1.378h-1.92V11.02h1.92Zm-4.217,3.3a.688.688,0,0,1-.473.652.707.707,0,0,1-.218.034.676.676,0,0,1-.558-.273L13.044,11.1v3.216a.687.687,0,1,1-1.375,0V9.1a.685.685,0,0,1,.47-.651.636.636,0,0,1,.212-.036.707.707,0,0,1,.541.278l2.693,3.642V9.1a.689.689,0,0,1,1.378,0v5.218Zm-6.279,0a.688.688,0,1,1-1.376,0V9.1a.688.688,0,1,1,1.376,0Zm-2.7.688H5.378a.693.693,0,0,1-.689-.688V9.1a.689.689,0,0,1,1.378,0V13.63H7.988a.689.689,0,0,1,0,1.377m18.263-3.494c0-5.875-5.89-10.656-13.125-10.656S0,5.639,0,11.514c0,5.262,4.67,9.671,10.976,10.509.428.09,1.01.282,1.157.645a2.672,2.672,0,0,1,.042,1.181L12,24.965c-.049.329-.263,1.3,1.147.705s7.565-4.46,10.321-7.629a9.431,9.431,0,0,0,2.787-6.528"
+                            transform="translate(0 -0.858)"
+                          />
+                        </svg>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <a
@@ -221,13 +324,13 @@ export default function Article({ data }) {
               <div
                 className={clsx(
                   fontSize,
-                  "article_part bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5"
+                  'article_part bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
                 )}
               >
                 <p>{articleData.article_info.part_text}</p>
               </div>
 
-              <div className={clsx(fontSize, "article_content mb-5")}>
+              <div className={clsx(fontSize, 'article_content mb-5')}>
                 <TextComponent />
               </div>
               <ul className="article_tags flex items-center mb-5 flex-wrap">
@@ -251,7 +354,7 @@ export default function Article({ data }) {
                   articleData.tag_info.map((item, i) => {
                     return (
                       <li key={i}>
-                        <Link href={`/search/${item.keyword}`}>
+                        <Link href={`/search/article?keywords=${item.keyword}`}>
                           <a className="block border text-primary-dark hover:text-white hover:bg-primary-dark border-primary-dark px-2 py-1 mb-2 mr-2 rounded-md transition-all duration-300 ease-in-out whitespace-nowrap">
                             {item.keyword}
                           </a>
@@ -263,6 +366,21 @@ export default function Article({ data }) {
             </div>
 
             {/* <!-- 推薦文章 by Dable PC--> */}
+            <div
+              id="dablewidget_goPjaJlQ_370NGgXx"
+              data-widget_id-pc="goPjaJlQ"
+              data-widget_id-mo="370NGgXx"
+              data-widget_id="goPjaJlQ"
+            ></div>
+
+            <div
+              id="dablewidget_6oMmnEob_ml69ek74"
+              data-widget_id-pc="6oMmnEob"
+              data-widget_id-mo="ml69ek74"
+              data-widget_id="6oMmnEob"
+              data-dable-sliding="1"
+              dable-slided="1"
+            ></div>
 
             <div className="hidden mb-14 md:block border border-secondary-medium rounded-lg rounded-br-6xl shadow-md bg-white">
               <div className="text-white text-lg bg-primary-dark py-3 px-4 rounded-t-lg">

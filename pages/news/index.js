@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../../components/Layout";
 import axios from "../../components/utils/axios";
 import AsideSection from "../../components/AsideSection";
@@ -9,18 +9,33 @@ import BreadCrumb from "../../components/utils/BreadCrumb";
 export const getStaticProps = async () => {
   try {
     const { data } = await axios.get(`Catalog/news`);
+    
+    if (!data.data) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
+
     return {
       props: {
-        data,
+        data: data.data,
       },
     };
+
   } catch (error) {
     console.log("getData error", error);
   }
 };
 
 export default function news({data}) {
-    const [newsData, setNewsData] = useState(data.data);
+    const [newsData, setNewsData] = useState(data);
+
+    useEffect(() => {
+      setNewsData(data);
+    }, [data]);
 
   return (
     <Layout siteTitle="幸福熟齡 - 最新文章">

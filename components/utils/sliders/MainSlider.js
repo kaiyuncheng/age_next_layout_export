@@ -568,7 +568,7 @@ const MainSlider = ({ topics }) => {
           {topics &&
             topics.map((item, i) => {
               return (
-                <div key={i} className="outline-none focus:outline-none">
+                <div key={i+1} className="outline-none focus:outline-none">
                   <div className="flex flex-col lg:flex-row lg:h-[450px] rounded-bl-lg rounded-t-lg rounded-br-5xl shadow-lg bg-white mx-5 overflow-hidden">
                     <Link href={`/article/${item.url_query}`}>
                       <a className="main_slider_img block overflow-hidden h-72 md:h-96 lg:h-full w-full lg:w-2/5 ">

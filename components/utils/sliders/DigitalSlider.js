@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import clsx from "clsx";
+import Image from 'next/image';
 
 function NextArrow({ onClick }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="group px-2 py-2 rounded-lg absolute z-40 -right-5 lg:right-0 -top-17 transform transition-all duration-300 outline-none focus:outline-none"
+      className="group px-2 py-2 rounded-lg absolute z-40 -right-5 lg:-right-5 xl:right-0 -top-17 lg:-top-19 xl:-top-17  transform transition-all duration-300 outline-none focus:outline-none"
     >
       <svg
         className="fill-current text-gray-800 group-hover:text-primary-dark transform group-hover:translate-x-1 transition-all duration-300 ease-in-out"
@@ -31,7 +31,7 @@ function PrevArrow({ onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="group px-2 py-2 rounded-lg absolute z-40 right-3 lg:right-10 -top-17 transform transition-all duration-500 outline-none focus:outline-none"
+      className="group px-2 py-2 rounded-lg absolute z-40 right-3 lg:right-3 xl:right-10 -top-17 lg:-top-19 xl:-top-17 transform transition-all duration-500 outline-none focus:outline-none"
     >
       <svg
         className="fill-current text-gray-800 group-hover:text-primary-dark transform group-hover:-translate-x-1 transition-all duration-300 ease-in-out"
@@ -102,22 +102,28 @@ const DigitalSlider = ({ topics }) => {
                   <div className="flex flex-col space-y-5 lg:space-y-0 lg:space-x-5 lg:flex-row h-full">
                     <a
                       href={item.hyperlink}
-                      className="block relative z-10 rounded-lg overflow-hidden w-full lg:w-1/2 h-full outline-none focus:outline-none"
+                      className="block relative z-10 rounded-lg overflow-hidden w-full h-52 xs:h-72 md:h-52 lg:w-1/2 lg:h-full outline-none focus:outline-none relative"
                     >
-                      <img
+                      <Image
                         className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
-                        src={item.image_url}
+                        src={
+                          item.image_url ||
+                          'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
+                        }
                         alt={item.title}
+                        layout="fill"
                       />
                     </a>
                     <a
-                      href="#"
+                      href={item.hyperlink}
                       className="block relative z-10 group w-full lg:w-1/2 outline-none focus:outline-none"
                     >
                       <h2 className="pb-2 mb-2 border-b border-secondary-medium border-dashed group-hover:text-primary-dark text-xl font-medium">
                         {item.title}
                       </h2>
-                      <p className="text-base line-clamp-6">{item.minor_title}</p>
+                      <p className="text-base line-clamp-6">
+                        {item.minor_title}
+                      </p>
                     </a>
                   </div>
                 </div>

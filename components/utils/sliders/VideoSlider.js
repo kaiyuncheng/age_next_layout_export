@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
 import clsx from "clsx";
+import Link from 'next/link';
+import Image from 'next/image';
 
 function NextArrow({ onClick }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="group bg-primary-dark hover:bg-secondary-dark px-3 py-2 rounded-lg absolute z-40 right-0 top-36 xs:top-28 transform -translate-y-1/2 transition-all duration-300 outline-none focus:outline-none"
+      className="group bg-primary-dark hover:bg-secondary-dark px-3 py-2 rounded-lg absolute z-40 right-0 top-24 xs:top-36 sm:top-40 md:top-20 xl:top-28 transform -translate-y-1/2 transition-all duration-300 outline-none focus:outline-none"
     >
       <svg
         className="fill-current text-white group-hover:text-primary-dark transform group-hover:translate-x-1 transition-all duration-300 ease-in-out"
@@ -31,7 +33,7 @@ function PrevArrow({ onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="group bg-primary-dark hover:bg-secondary-dark px-3 py-2 rounded-lg absolute z-40 left-0 top-36 xs:top-28 transform -translate-y-1/2 transition-all duration-500 outline-none focus:outline-none"
+      className="group bg-primary-dark hover:bg-secondary-dark px-3 py-2 rounded-lg absolute z-40 left-0 top-24 xs:top-36 sm:top-40 md:top-20 xl:top-28 transform -translate-y-1/2 transition-all duration-500 outline-none focus:outline-none"
     >
       <svg
         className="fill-current text-white group-hover:text-primary-dark transform group-hover:-translate-x-1 transition-all duration-300 ease-in-out"
@@ -99,38 +101,40 @@ const VideoSlider = ({ topics }) => {
                   className="bg-white outline-none focus:outline-none "
                 >
                   <div className="relative flex flex-col px-2 z-10">
-                    <a
-                      href={item.link}
-                      className="group block relative w-full mb-5 outline-none focus:outline-none"
-                    >
-                      <div className="rounded-lg overflow-hidden h-72 xs:h-56 w-full mb-5">
-                        <img
-                          className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                          src={item.image_url}
-                          alt={item.title}
-                        />
-                      </div>
-                      <span className="absolute top-36 xs:top-28 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out fill-current text-white opacity-60 group-hover:opacity-95 z-40">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="48.405"
-                          height="48.405"
-                          viewBox="0 0 48.405 48.405"
-                        >
-                          <path
-                            id="Icon_awesome-play-circle"
-                            data-name="Icon awesome-play-circle"
-                            d="M24.765.562a24.2,24.2,0,1,0,24.2,24.2A24.2,24.2,0,0,0,24.765.562ZM36.056,27.107,18.88,36.964A2.346,2.346,0,0,1,15.4,34.915v-20.3a2.348,2.348,0,0,1,3.484-2.049L36.056,23.008A2.35,2.35,0,0,1,36.056,27.107Z"
-                            transform="translate(-0.563 -0.563)"
+                    <Link href={`/video/${item.url_query}`}>
+                      <a className="group block relative w-full mb-5 outline-none focus:outline-none">
+                        <div className="rounded-lg overflow-hidden w-full h-48 xs:h-72 sm:h-80 md:h-40 xl:h-56 mb-5 relative">
+                          <Image
+                            className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
+                            src={item.image_url}
+                            alt={item.title}
+                            layout="fill"
                           />
-                        </svg>
-                      </span>
-                      <div className=" px-2 pb-5 outline-none focus:outline-none">
-                        <p className="text-base group-hover:text-gray-600">
-                          {item.title}
-                        </p>
-                      </div>
-                    </a>
+
+                          <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out fill-current text-white opacity-60 group-hover:opacity-95 z-40">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="48.405"
+                              height="48.405"
+                              viewBox="0 0 48.405 48.405"
+                            >
+                              <path
+                                id="Icon_awesome-play-circle"
+                                data-name="Icon awesome-play-circle"
+                                d="M24.765.562a24.2,24.2,0,1,0,24.2,24.2A24.2,24.2,0,0,0,24.765.562ZM36.056,27.107,18.88,36.964A2.346,2.346,0,0,1,15.4,34.915v-20.3a2.348,2.348,0,0,1,3.484-2.049L36.056,23.008A2.35,2.35,0,0,1,36.056,27.107Z"
+                                transform="translate(-0.563 -0.563)"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <div className=" px-2 pb-5 outline-none focus:outline-none">
+                          <p className="text-base group-hover:text-gray-600">
+                            {item.title}
+                          </p>
+                        </div>
+                      </a>
+                    </Link>
                   </div>
                 </div>
               );

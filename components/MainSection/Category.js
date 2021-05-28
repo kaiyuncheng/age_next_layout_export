@@ -4,20 +4,20 @@ import Image from "next/image";
 import Link from "next/link";
 import Fade from "react-reveal/Fade";
 
-const Category = ({ name, id, data, isInnerCategory }) => {
-  let hrefLink = isInnerCategory ? `/category/${id}` : `/categories/${id}`;
+const Category = ({ name, id, data, isIndexCategory }) => {
+  let linkHref = isIndexCategory ? `/catalog/${id}`: `${id}`;
 
   return (
     <Fade bottom>
     <div className="topics_section relative border border-secondary-medium rounded-lg rounded-br-5xl flex flex-col p-5 pt-3 bg-gradient-to-t from-primary-light via-white to-white">
-      <Link href={hrefLink}>
+      <Link href={linkHref}>
         <a className="absolute -top-4 left-5 shadow-md bg-primary-light hover:bg-secondary-light transition-all duration-200 px-12 py-2 rounded-br-full rounded-tl-full overflow-hidden outline-none focus:outline-none">
           <h2 className="text-base">{name}</h2>
           <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-r"></span>
         </a>
       </Link>
 
-      <Link href={hrefLink}>
+      <Link href={linkHref}>
         <a className="topics_btn group inline-flex items-center justify-center self-end mb-3 mr-2">
           <p className="mr-2 group-hover:text-primary-dark transition-all duration-300 ease-in-out">
             閱讀更多

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import clsx from "clsx";
 import { useMenuContext } from "../../context/menu";
 import Topbar from "./Topbar";
 import Banner from "../utils/googletags/Banner";
+import SearchBar from "../Header/SearchBar";
+
 const Header = () => {
   const [menuState, setMenuState] = useState(false);
   const [top, setTop] = useState(true);
-  const router = useRouter();
   const { menuData, setMenuData } = useMenuContext();
   useEffect(() => {
     const scrollHandler = () => {
@@ -52,24 +52,24 @@ const Header = () => {
               <span
                 aria-hidden="true"
                 className={clsx(
-                  !menuState && "-translate-y-2",
-                  menuState && "rotate-45 translate-y-0",
-                  "block absolute left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full bg-current transform transition duration-500 ease-in-out"
+                  !menuState && '-translate-y-2',
+                  menuState && 'rotate-45 translate-y-0',
+                  'block absolute left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full bg-current transform transition duration-500 ease-in-out',
                 )}
               ></span>
               <span
                 aria-hidden="true"
                 className={clsx(
-                  menuState && "opacity-0",
-                  "block absolute left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full bg-current transform transition duration-500 ease-in-out"
+                  menuState && 'opacity-0',
+                  'block absolute left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full bg-current transform transition duration-500 ease-in-out',
                 )}
               ></span>
               <span
                 aria-hidden="true"
                 className={clsx(
-                  !menuState && "translate-y-2",
-                  menuState && "-rotate-45 translate-y-0",
-                  "block absolute left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full bg-current transform transition duration-500 ease-in-out"
+                  !menuState && 'translate-y-2',
+                  menuState && '-rotate-45 translate-y-0',
+                  'block absolute left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full bg-current transform transition duration-500 ease-in-out',
                 )}
               ></span>
             </div>
@@ -270,40 +270,8 @@ const Header = () => {
                 </a>
               </Link>
             </div>
-
             <div className="mainbar_search hidden md:block w-72 lg:w-96 relative border border-grey-500 rounded-br-full">
-              <form
-                action="https://thebetteraging.businesstoday.com.tw/search"
-                id="mainbar_search_form"
-                className="flex items-center"
-              >
-                <div className="icon px-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      id="Icon_awesome-search"
-                      data-name="Icon awesome-search"
-                      d="M15.78,13.833l-3.115-3.115a.749.749,0,0,0-.531-.219h-.509A6.5,6.5,0,1,0,10.5,11.624v.509a.749.749,0,0,0,.219.531l3.115,3.115a.747.747,0,0,0,1.059,0l.884-.884a.753.753,0,0,0,0-1.062ZM6.5,10.5a4,4,0,1,1,4-4A4,4,0,0,1,6.5,10.5Z"
-                      fill="#b0b6ba"
-                    />
-                  </svg>
-                </div>
-                <input
-                  className="h-10 w-72 placeholder-gray-400 bg-transparent outline-none focus:outline-none"
-                  placeholder="搜尋關鍵字..."
-                  type="text"
-                />
-                <button
-                  type="submit"
-                  className="absolute right-0 top-0 bg-primary-dark hover:bg-primary-medium transition-colors duration-300 h-10 w-24 text-white rounded-br-full rounded-tl-full outline-none focus:outline-none"
-                >
-                  搜尋
-                </button>
-              </form>
+              <SearchBar />
             </div>
           </div>
 
@@ -329,23 +297,8 @@ const Header = () => {
           </button>
 
           <div className="mainbar_banner hidden lg:block">
-            {/* <Banner /> */}
-            {/* <!-- 廣告A 300x75 banner -->
-                    <!-- /1006274/thebetteraging_pc_all_300x100 -->
-                    <!-- <div id='div-gpt-ad-1529564063399-0' style="display: none;"></div> --> */}
-            {/* <a href="#" className="block w-[300px] h-[75px]">
-              <Image
-                className="h-full w-full object-cover"
-                src="/images/banner_300x75.jpg"
-                height={75}
-                width={300}
-                alt="Banner 300x75"
-              />
-            </a> */}
             <Banner adId="div-gpt-ad-1529564063399-0" />
           </div>
-
-
         </div>
       </div>
 
@@ -356,34 +309,37 @@ const Header = () => {
             menuData.map((item, i) => {
               return (
                 <li key={i} className="group flex-grow relative">
-                {item.link ? item.link.charAt(0) === "/" ? (
-                    <Link href={item.link}>
-                      <a className="main_menu_btn flex items-center justify-center relative w-full h-10 rounded-br-full rounded-tl-full transition-all duration-500 group-hover:bg-primary-light focus-within:bg-primary-light outline-none focus:outline-none">
+                  {item.link ? (
+                    item.link.charAt(0) === '/' ? (
+                      <Link href={item.link}>
+                        <a className="main_menu_btn flex items-center justify-center relative w-full h-10 rounded-br-full rounded-tl-full transition-all duration-500 group-hover:bg-primary-light focus-within:bg-primary-light outline-none focus:outline-none">
+                          <h2>{item.name}</h2>
+                          <span
+                            className={clsx(
+                              item.color,
+                              'absolute w-full h-1 left-0 bottom-0 border',
+                            )}
+                          ></span>
+                        </a>
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.link}
+                        rel="noreferrer"
+                        target="_blank"
+                        className="main_menu_btn flex items-center justify-center relative w-full h-10 rounded-br-full rounded-tl-full transition-all duration-500 group-hover:bg-primary-light focus-within:bg-primary-light outline-none focus:outline-none"
+                      >
                         <h2>{item.name}</h2>
                         <span
                           className={clsx(
                             item.color,
-                            "absolute w-full h-1 left-0 bottom-0 border"
+                            'absolute w-full h-1 left-0 bottom-0 border',
                           )}
                         ></span>
                       </a>
-                    </Link>
+                    )
                   ) : (
                     <a
-                      href={item.link}
-                      rel="noreferrer"
-                      target="_blank"
-                      className="main_menu_btn flex items-center justify-center relative w-full h-10 rounded-br-full rounded-tl-full transition-all duration-500 group-hover:bg-primary-light focus-within:bg-primary-light outline-none focus:outline-none"
-                    >
-                      <h2>{item.name}</h2>
-                      <span
-                        className={clsx(
-                          item.color,
-                          "absolute w-full h-1 left-0 bottom-0 border"
-                        )}
-                      ></span>
-                    </a>
-                   ) : <a
                       href="#"
                       rel="noreferrer"
                       target="_self"
@@ -393,10 +349,11 @@ const Header = () => {
                       <span
                         className={clsx(
                           item.color,
-                          "absolute w-full h-1 left-0 bottom-0 border"
+                          'absolute w-full h-1 left-0 bottom-0 border',
                         )}
                       ></span>
-                    </a>}
+                    </a>
+                  )}
                   <ul className="block transform origin-top scale-y-0 transition-all duration-300 group-hover:scale-y-100 absolute top-10 left-0 w-full bg-rainbow-olight shadow-md rounded-b-lg overflow-hidden">
                     {item.under_menu &&
                       item.under_menu.map((item, i) => {
@@ -405,9 +362,9 @@ const Header = () => {
                             key={i}
                             className="border-b last:border-none border-primary-light"
                           >
-                            {item.link.charAt(0) === "/" ||
+                            {item.link.charAt(0) === '/' ||
                             item.link == false ? (
-                              <Link href={item.link || "/"}>
+                              <Link href={item.link || '/'}>
                                 <a className="link_1 relative flex items-center justify-center w-full h-10 transition duration-300 hover:bg-primary-light hover:overflow-hidden outline-none focus:outline-none">
                                   <h2>{item.name}</h2>
                                 </a>
@@ -435,45 +392,14 @@ const Header = () => {
       {/* <!-- popup mobile menu toggle:scale-x-100 --> */}
       <div
         className={clsx(
-          !menuState && "scale-x-0",
-          menuState && "scale-x-100",
-          "mobile_menu md:hidden absolute top-30 z-100 inset-x-0 transition-all duration-200 ease-in-out transform origin-left h-screen overflow-y-scroll"
+          !menuState && 'scale-x-0',
+          menuState && 'scale-x-100',
+          'mobile_menu md:hidden absolute top-30 z-100 inset-x-0 transition-all duration-200 ease-in-out transform origin-left h-screen overflow-y-scroll',
         )}
       >
         <div className="w-full h-screen sm:w-1/2 bg-primary-light shadow-mdRight pt-5 pb-10">
           <div className="mobile_menu_search mx-5 mb-5 relative border border-white rounded-br-full">
-            <form
-              action="https://thebetteraging.businesstoday.com.tw/search"
-              id="mainbar_search_form"
-              className="flex items-center"
-            >
-              <div className="icon px-3">
-                <svg
-                  className="fill-current text-gray-500"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    id="Icon_awesome-search"
-                    data-name="Icon awesome-search"
-                    d="M15.78,13.833l-3.115-3.115a.749.749,0,0,0-.531-.219h-.509A6.5,6.5,0,1,0,10.5,11.624v.509a.749.749,0,0,0,.219.531l3.115,3.115a.747.747,0,0,0,1.059,0l.884-.884a.753.753,0,0,0,0-1.062ZM6.5,10.5a4,4,0,1,1,4-4A4,4,0,0,1,6.5,10.5Z"
-                  />
-                </svg>
-              </div>
-              <input
-                className="h-10 w-72 placeholder-gray-500 bg-transparent outline-none focus:outline-none"
-                placeholder="搜尋關鍵字..."
-                type="text"
-              />
-              <button
-                type="submit"
-                className="absolute right-0 top-0 bg-primary-dark hover:bg-primary-medium transition-colors duration-300 h-10 w-20 text-white rounded-br-full rounded-tl-full outline-none focus:outline-none"
-              >
-                搜尋
-              </button>
-            </form>
+            <SearchBar toggleMenu={toggleMenu} />
           </div>
           <nav className="bg-primary-light">
             <ul className="flex flex-col">
@@ -483,20 +409,25 @@ const Header = () => {
                     <li
                       key={i}
                       className={clsx(
-                        !item.open && "h-10",
-                        item.open && "h-auto",
-                        "transition-all duration-200 ease-in-out relative border-t border-white overflow-hidden"
+                        !item.open && 'h-10',
+                        item.open && 'h-auto',
+                        'transition-all duration-200 ease-in-out relative border-t border-white overflow-hidden',
                       )}
                     >
                       <div className="main_menu_btn h-10 group relative w-full transition-all duration-500 group-hover:bg-white outline-none focus:outline-none flex items-center justify-center">
-                        {item.link.charAt(0) === "/" ? (
+                        {item.link.charAt(0) === '/' ? (
                           <Link href={item.link}>
-                            <a>
+                            <a onClick={toggleMenu}>
                               <h2 className="mr-2">{item.name}</h2>
                             </a>
                           </Link>
                         ) : (
-                          <a href={item.link} rel="noreferrer" target="_blank">
+                          <a
+                            onClick={toggleMenu}
+                            href={item.link}
+                            rel="noreferrer"
+                            target="_blank"
+                          >
                             <h2 className="mr-2">{item.name}</h2>
                           </a>
                         )}
@@ -508,9 +439,9 @@ const Header = () => {
                           >
                             <svg
                               className={clsx(
-                                !item.open && "rotate-0",
-                                item.open && "rotate-90",
-                                "fill-current text-gray-800 transform group-hover:translate-x-1 transition-all duration-300 ease-in-out"
+                                !item.open && 'rotate-0',
+                                item.open && 'rotate-90',
+                                'fill-current text-gray-800 transform group-hover:translate-x-1 transition-all duration-300 ease-in-out',
                               )}
                               xmlns="http://www.w3.org/2000/svg"
                               width="15"
@@ -530,7 +461,7 @@ const Header = () => {
                         <span
                           className={clsx(
                             item.color,
-                            "absolute w-2 h-full left-0 bottom-0 border"
+                            'absolute w-2 h-full left-0 bottom-0 border',
                           )}
                         ></span>
                       </div>
@@ -543,15 +474,19 @@ const Header = () => {
                                 key={i}
                                 className="border-b border-primary-light"
                               >
-                                {item.link.charAt(0) === "/" ? (
+                                {item.link.charAt(0) === '/' ? (
                                   <Link href={item.link}>
-                                    <a className="relative flex items-center justify-center w-full h-10 transition duration-300 hover:bg-primary-light hover:overflow-hidden outline-none focus:outline-none">
+                                    <a
+                                      onClick={toggleMenu}
+                                      className="relative flex items-center justify-center w-full h-10 transition duration-300 hover:bg-primary-light hover:overflow-hidden outline-none focus:outline-none"
+                                    >
                                       <h2>{item.name}</h2>
                                     </a>
                                   </Link>
                                 ) : (
                                   <a
                                     href={item.link}
+                                    onClick={toggleMenu}
                                     rel="noreferrer"
                                     target="_blank"
                                     className="relative flex items-center justify-center w-full h-10 transition duration-300 hover:bg-primary-light hover:overflow-hidden outline-none focus:outline-none"

@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Fade from 'react-reveal/Fade';
-import VideoListItem from './VideoListItem';
+import React, { useState, useEffect } from "react";
+import Fade from "react-reveal/Fade";
+import CollectItem from './CollectItem';
 
-const VideoList = ({ topics }) => {
-  
-  const [listItems, setListItems] = useState([]);
-  console.log(listItems, 'top');
+const CollectList = ({ topics }) => {
+  let defaultNum =
+    topics.length > 0 ? (topics.length < 15 ? topics.length : 15) : 0;
+
+  const [listItems, setListItems] = useState(
+    Array.from(Array(defaultNum).keys(), n => n + 1),
+  );
   const [isFetching, setIsFetching] = useState(false);
-
-  useEffect(() => {
-    let defaultNum =
-    topics.length > 0 ? (topics.length < 9 ? topics.length : 9) : 0;
-    setListItems(Array.from(Array(defaultNum).keys(), n => n + 1));
-  }, [topics]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -38,9 +35,9 @@ const VideoList = ({ topics }) => {
 
   const fetchMoreListItems = () => {
     let listNum =
-      (topics.length - listItems.length - 6 < 0)
-        ? ((topics.length - listItems.length) % 6)
-        : 6;
+      (topics.length - listItems.length) % 5 !== 0
+        ? ((topics.length - listItems.length) % 5) - 1
+        : 5;
     setTimeout(() => {
       setListItems(prevState => [
         ...prevState,
@@ -51,11 +48,12 @@ const VideoList = ({ topics }) => {
   };
 
   return (
-    <div className="videos relative flex flex-col md:flex-row flex-wrap -mx-4">
-      {listItems.length <= topics.length && listItems.map((listItem, i) => (
-        <VideoListItem key={i} item={topics[listItem - 1]} />
+    <div className="news_articles flex flex-col space-y-14 pb-5 mb-5">
+      {listItems.map((listItem, i) => (
+        <Fade bottom key={i}>
+          <CollectItem item={topics[listItem - 1]} />
+        </Fade>
       ))}
-
       {isFetching && (
         <div className="flex items-center justify-center">
           <div className="fill-current text-primary-dark animate-spin mr-2">
@@ -79,4 +77,4 @@ const VideoList = ({ topics }) => {
   );
 };
 
-export default VideoList;
+export default CollectList;

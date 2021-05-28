@@ -4,14 +4,27 @@ import Image from "next/image";
 import Fade from "react-reveal/Fade";
 
 const MainArticle = ({ topics }) => {
+  function createMarkup() {
+    return { __html: topics.video };
+  }
+  function VideoComponent() {
+    return (
+      <div
+        className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden relative mb-5"
+        dangerouslySetInnerHTML={createMarkup()}
+      />
+    );
+  }
+
   return (
     <Fade bottom>
     <div className="flex flex-col">
+    {topics.file_type === "image" && (
       <Link href={`/article/${topics.url_query}`}>
         <a className="group relative block rounded-lg overflow-hidden w-full mb-5 outline-none focus:outline-none">
         <Image
             className="object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
-            src={topics.image_url}
+            src={topics.image_url || 'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'}
             height={300}
             width={400}
             layout="responsive"
@@ -19,6 +32,11 @@ const MainArticle = ({ topics }) => {
           />
         </a>
       </Link>
+        )}
+
+        {topics.file_type === "video" && topics.video && <VideoComponent />}
+
+      
 
       <Link href={`/article/${topics.url_query}`}>
         <a className="block mb-5 outline-none focus:outline-none">

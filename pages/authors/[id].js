@@ -17,6 +17,16 @@ export const getServerSideProps = async (context) => {
       axios.get(`Author/release/${id}`),
       axios.get(`Author/getLongTermAuthorArticle/${id}`),
     ]);
+
+    if (!authorInfoRes.data.data || !authorArticlesRes.data.data) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
+
     return {
       props: {
         authorInfo: authorInfoRes.data.data,
@@ -38,47 +48,80 @@ export default function Author({ authorInfo, authorArticles }) {
   const [authorInfoData, setAuthorInfo] = useState(authorInfo);
   const [authorArticlesData, setAuthorData] = useState(authorArticles);
 
-  return (
-    <Layout siteTitle={`幸福熟齡 - ${authorInfoData.authorInfo.name}`}>
-      {console.log("作者檔案", authorInfoData)}
-      {console.log("作者文章", authorArticlesData)}
-      <Head>
-        <meta
-          itemProp="description"
-          content={authorInfoData.seo_meta.meta_description}
-        />
-        <meta
-          name="description"
-          content={authorInfoData.seo_meta.meta_description}
-        />
-        <meta name="keywords" content={authorInfoData.seo_meta.meta_keyword} />
-        <meta
-          property="og:title"
-          content={authorInfoData.seo_meta.meta_og_title}
-        />
-        <meta
-          property="og:description"
-          content={authorInfoData.seo_meta.meta_og_description}
-        />
-        <meta
-          property="og:url"
-          content={`http://thebetteraging.businesstoday.com.tw/article/${authorInfoData.seo_meta.url_query}`}
-        />
-        <meta
-          itemProp="image"
-          property="og:image"
-          content={`http://thebetteraging.businesstoday.com.tw/article/${authorInfoData.seo_meta.meta_og_image}`}
-        />
-        <meta
-          itemProp="image"
-          content={`http://thebetteraging.businesstoday.com.tw/article/${authorInfoData.seo_meta.meta_og_image}`}
-        />
-      </Head>
+  useEffect(() => {
+    setAuthorInfo(authorInfo);
+    setAuthorData(authorArticles);
+  }, [authorInfo, authorArticles]);
 
+  return (
+    <Layout
+      siteTitle={`幸福熟齡 - ${
+        authorInfoData.authorInfo.name || '從今開始，一同勾勒熟齡的美好'
+      }`}
+    >
+      <Head>
+        {authorInfoData.seo_meta.meta_description && (
+          <meta
+            itemProp="description"
+            content={authorInfoData.seo_meta.meta_description}
+          />
+        )}
+
+        {authorInfoData.seo_meta.meta_description && (
+          <meta
+            name="description"
+            content={authorInfoData.seo_meta.meta_description}
+          />
+        )}
+
+        {authorInfoData.seo_meta.meta_keyword && (
+          <meta
+            name="keywords"
+            content={authorInfoData.seo_meta.meta_keyword}
+          />
+        )}
+
+        {authorInfoData.seo_meta.meta_og_title && (
+          <meta
+            property="og:title"
+            content={authorInfoData.seo_meta.meta_og_title}
+          />
+        )}
+
+        {authorInfoData.seo_meta.meta_og_description && (
+          <meta
+            property="og:description"
+            content={authorInfoData.seo_meta.meta_og_description}
+          />
+        )}
+
+        {authorInfoData.authorInfo.id && (
+          <meta
+            property="og:url"
+            content={`http://thebetteraging.businesstoday.com.tw/authors/${authorInfoData.authorInfo.id}`}
+          />
+        )}
+
+        {authorInfoData.seo_meta.meta_og_image && (
+          <meta
+            itemProp="image"
+            property="og:image"
+            content={authorInfoData.seo_meta.meta_og_image}
+          />
+        )}
+
+        {authorInfoData.seo_meta.meta_og_image && (
+          <meta
+            itemProp="image"
+            content={authorInfoData.seo_meta.meta_og_image}
+          />
+        )}
+      </Head>
+      
       {/* <!-- bread crumb --> */}
       <BreadCrumb
         titles={[
-          { title: "名人私房學", link: "/authors" },
+          { title: '名人私房學', link: '/authors' },
           {
             title: `${authorInfoData.authorInfo.name}`,
             link: `/authors/${authorInfoData.authorInfo.id}`,
