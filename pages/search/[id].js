@@ -299,7 +299,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
 
                 <div className="advancedsearch_keywords">
                   <label className="inline-flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:items-center w-full pr-1">
-                    <span className="">搜尋指定關鍵字：</span>
+                    <span>搜尋指定關鍵字：</span>
                     <input
                       className="form-input flex-grow sm:flex-grow-0 ml-1 border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none placeholder-gray-400"
                       type="text"
@@ -451,9 +451,10 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
             <div className="search_pagination flex items-center justify-between">
               <div className="flex-1 flex justify-between md:hidden">
                 <button
-                  onClick={() =>
-                    isPage > 1 && setIsPage(prevPage => prevPage - 1)
-                  }
+                  onClick={() => {
+                    isPage > 1 && setIsPage(prevPage => prevPage - 1);
+                    return window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
                   type="button"
                   className={clsx(
                     isPage <= 1 && 'cursor-not-allowed text-gray-200',
@@ -483,9 +484,13 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
                 </p>
 
                 <button
-                  onClick={() =>
-                    isPage < pages && setIsPage(prevPage => prevPage + 1)
-                  }
+                  onClick={() => {
+                    isPage < pages && setIsPage(prevPage => prevPage + 1);
+                    return window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    });
+                  }}
                   type="button"
                   className={clsx(
                     isPage >= pages && 'cursor-not-allowed text-gray-200',
@@ -740,7 +745,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
               </div>
             </div>
           </div>
-          <AsideSection isHot={true} />
+          <AsideSection isHot={true} type={'list'} />
         </div>
       </div>
     </Layout>

@@ -14,7 +14,6 @@ export default class MyDocument extends Document {
             async="async"
             src="https://www.googletagservices.com/tag/js/gpt.js"
           ></script>
-
           <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=AW-990045206"
@@ -27,13 +26,18 @@ export default class MyDocument extends Document {
             gtag('config', 'AW-990045206');`,
             }}
           />
+          <script
+            data-ad-client="ca-pub-4601055099861731"
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          ></script>
 
           <script
             async
             charSet="utf-8"
             src="https://static.dable.io/dist/plugin.min.js"
           ></script>
-
+          
           <script
             dangerouslySetInnerHTML={{
               __html: `(function (d, a, b, l, e, _) {

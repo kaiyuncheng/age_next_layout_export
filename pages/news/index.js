@@ -58,7 +58,7 @@ export default function news({data}) {
           <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden">
             <ArticleList topics={newsData} />
           </div>
-          <AsideSection isHot={true} />
+          <AsideSection isHot={true} type={'list'} />
         </div>
       </div>
     </Layout>

@@ -242,7 +242,9 @@ export default function cataloglist({ data }) {
             isHot={true}
             isBrandOpen={isBrandOpen}
             brandData={catalogData.brand_area}
+            type={'list'}
           />
+          
         </div>
       </div>
       <div className="lg:block hidden max-w-screen-2xl mx-auto mt-14 px-4 lg:px-2 flex justify-center items-center border border-red-500">

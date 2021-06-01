@@ -64,7 +64,7 @@ export default function authors({data}) {
                 })}
             </div>
           </div>
-          <AsideSection />
+          <AsideSection isHot={true} type={'list'} />
         </div>
       </div>
     </Layout>

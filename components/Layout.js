@@ -42,7 +42,7 @@ const Layout = ({ children, siteTitle }) => {
           content="https://new-thebetteraging-kai.businesstoday.com.tw/images/og_image.jpg"
         />
         <meta property="og:type" content="website" />
-        
+
         <title>{siteTitle}</title>
         <link
           rel="icon"
@@ -58,6 +58,25 @@ const Layout = ({ children, siteTitle }) => {
       <Header />
 
       <main className="mt-28 md:mt-44 flex flex-col pb-14">{children}</main>
+
+      {/* <div className="modal">
+        <div className="modal-content">
+          <span className="close">×</span>
+
+          <div id="dablewidget_goBezRXe" data-widget_id="goBezRXe">
+            <iframe
+              width="100%"
+              height="433"
+              title="你不能錯過的新聞"
+              frameBorder="0"
+              scrolling="no"
+              name="dableframe-0.20140056594932387"
+              src="https://api.dable.io/widgets/id/goBezRXe/users/45567756.1590412564953?from=https%3A%2F%2Fthebetteraging.businesstoday.com.tw%2F&amp;url=https%3A%2F%2Fthebetteraging.businesstoday.com.tw%2F&amp;ref=&amp;cid=45567756.1590412564953&amp;uid=45567756.1590412564953&amp;site=thebetteraging.businesstoday&amp;id=dablewidget_goBezRXe&amp;ad_params=%7B%7D&amp;pixel_ratio=2&amp;client_width=0&amp;network=non-wifi&amp;lang=zh-TW&amp;pre_expose=1&amp;is_top_win=1&amp;top_win_accessible=1"
+              data-ready="1"
+            ></iframe>
+          </div>
+        </div>
+      </div> */}
 
       <Footer />
     </div>
