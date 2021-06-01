@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
 import axios from '../../components/utils/axios';
-import clsx from 'clsx';
-import Image from 'next/image';
-import Link from 'next/link';
 import Head from 'next/head';
 import BreadCrumb from '../../components/utils/BreadCrumb';
 import RelatedArticleItem from '../../components/MainSection/RelatedArticleItem';
 import RelatedArticleList from '../../components/MainSection/RelatedArticleList';
+import clsx from 'clsx';
 
 export const getServerSideProps = async context => {
   const { id } = context.query;
@@ -40,17 +38,6 @@ export const getServerSideProps = async context => {
   }
 };
 
-// const init = {
-//   code: '',
-//   time: '',
-//   data: {
-//     article_info: {
-//       title: '',
-//     },
-//   },
-// };
-
-
 const dableIds = [
   {
     id: 'dablewidget_G7ZAB2oW_1XDPzZXe',
@@ -81,6 +68,8 @@ const dableIds = [
 
 export default function article({ data, id }) {
   const [articleData, setArticleData] = useState(data);
+  const [isBack, setIsBack] = useState(false);
+  const [isScrollDown, setIsScrollDown] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
   const [isShowList, setIsShowList] = useState(false);
   
@@ -93,8 +82,21 @@ export default function article({ data, id }) {
   }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleScrollTop = () => {
+      if (window.pageYOffset > 300) {
+          setIsScrollDown(true)
+      } 
+      if (isScrollDown && window.pageYOffset <= 200){
+        setIsBack(true);
+      }
+    };
+    window.addEventListener('scroll', handleScrollTop);
+    return () => window.removeEventListener('scroll', handleScrollTop);
+  }, [isScrollDown]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScrollBottom);
+    return () => window.removeEventListener('scroll', handleScrollBottom);
   }, []);
 
   useEffect(() => {
@@ -112,10 +114,10 @@ export default function article({ data, id }) {
     }
   }, [isFetching]);
 
-  const handleScroll = () => {
+  const handleScrollBottom = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop !==
-        document.documentElement.offsetHeight
+      document.documentElement.offsetHeight
     )
       return;
     setIsFetching(true);
@@ -126,8 +128,8 @@ export default function article({ data, id }) {
       siteTitle={`幸福熟齡 - ${
         articleData.article_info.title || '從今開始，一同勾勒熟齡的美好'
       }`}
-    >
-      <Head>
+    > 
+    <Head>
         {articleData.seo_meta.meta_description && (
           <meta
             itemProp="description"
@@ -225,7 +227,7 @@ export default function article({ data, id }) {
       )}
 
       {/* Dable 大家都在看 隱藏 下滑顯示 */}
-      <div className="dable_hidden_widget">
+      <div className={clsx(isBack && "block", !isBack && "hidden", "dable_hidden_widget")}>
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 my-10">
           <div
             id="dablewidget_6oMmnEob_ml69ek74"

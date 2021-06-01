@@ -15,7 +15,7 @@ function Banner({ adId }) {
     slot: isFormal ? targetAd.slot : targetAd.dev_slot
   });
 
-  return <div id={adId} />;
+  return <div id={adId}  />;
 }
 
 export default Banner;
