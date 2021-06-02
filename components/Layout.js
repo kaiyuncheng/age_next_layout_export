@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import DableFullCover from './utils/dable/DableFullCover';
 import Banner from "./utils/googletags/Banner";
+import GoTop from "./utils/GoTop";
 
 // const siteTitle ='幸福熟齡 - 從今開始，一同勾勒熟齡的美好';
 const Layout = ({ children, siteTitle }) => {
@@ -55,18 +56,17 @@ const Layout = ({ children, siteTitle }) => {
         ></script> */}
       </Head>
 
-      <Banner adId="thebetteraging_pc_in-cover" />
-
+      <GoTop />
       <DableFullCover />
       <Header />
       <main className="mt-28 md:mt-44 flex flex-col pb-14">{children}</main>
       <Footer />
 
-      <div className="fixed bottom-0 left-0">
+      <div className="md:block hidden fixed bottom-0 left-0 border border-blue-500">
         <Banner adId="thebetteraging_pc_in-cover" />
       </div>
 
-      <div className="fixed bottom-0 left-0">
+      <div className="block md:hidden fixed bottom-0 left-0 border border-blue-500">
         <Banner adId="thebetteraging_mob_320x480_cover" />
       </div>
     </div>

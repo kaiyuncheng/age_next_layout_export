@@ -137,7 +137,7 @@ const MainSlider = ({ topics }) => {
                         </a>
                       </Link>
 
-                      <p className="text-base overflow-ellipsis md:overflow-clip line-clamp-6">
+                      <p className="text-base overflow-ellipsis md:overflow-clip line-clamp-5">
                         {item.minor_title}
                       </p>
 

@@ -59,7 +59,7 @@ const DableFullCover = () => {
       className={clsx(
         isOpen && 'opacity-100 z-100',
         !isOpen && 'opacity-0 z-0',
-        'top-0 left-0 w-screen h-screen bg-black bg-opacity-75 xs:fixed flex justify-center items-center overflow-auto',
+        'fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-75 hidden sm:flex   justify-center items-center overflow-auto',
       )}
     >
       <div className="relative border border-secondary-medium bg-white px-10 pt-10 pb-8 rounded-2xl rounded-br-6xl overflow-y-scroll h-4/5 md:h-auto w-4/5 shadow-md">
