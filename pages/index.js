@@ -9,7 +9,6 @@ import Category from "../components/MainSection/Category";
 import AsideSection from "../components/AsideSection";
 import Banner from "../components/utils/googletags/Banner";
 
-
 export default function Home() {
   const {mainData} = useMainContext();
 
@@ -35,7 +34,6 @@ export default function Home() {
       </div>
 
       {/* Mobile 首頁廣告上 */}
-
       <div className="block sm:hidden mb-10 flex justify-center items-center border border-red-500">
         <Banner adId="thebetteraging_mob_home_300x250_t" />
       </div>
@@ -67,14 +65,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* <div className="relative shadow-md bg-primary-light hover:bg-secondary-light transition-all duration-200 px-12 py-2 rounded-br-full rounded-tl-full overflow-hidden outline-none focus:outline-none w-44 mb-20 ml-20">
-        <h2 className="text-base">大家都在看</h2>
-        <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-o"></span>
-      </div> */}
-
+      {/* PC 首頁廣告下 */}
       <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center border border-red-500">
-        <Banner adId="thebetteraging_pc_home_970x250_b" />
+        <Banner adId="thebetteraging_pc_home_970x250_b" adStyle={''} />
       </div>
+
+      {/* MB 首頁廣告下 */}
     </Layout>
   );
 }

@@ -146,3 +146,10 @@
     </li>
   </ul>
 </div>;
+
+{
+  /* <div className="relative shadow-md bg-primary-light hover:bg-secondary-light transition-all duration-200 px-12 py-2 rounded-br-full rounded-tl-full overflow-hidden outline-none focus:outline-none w-44 mb-20 ml-20">
+        <h2 className="text-base">大家都在看</h2>
+        <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-o"></span>
+      </div> */
+}

@@ -16,8 +16,8 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
         <VideoSlider topics={mainData.hot_videos} />
 
         {/* PC 首頁 側邊欄 上 */}
-        <div className="hidden md:flex justify-center items-center mt-5 mb-10 border border-red-500">
-          <Banner adId="thebetterraging_pc_list_300x250_rt" />
+        <div className="hidden md:flex my-5 justify-center items-center border border-red-500">
+          <Banner adId="thebetterraging_pc_list_300x250_rt" adStyle={''} />
         </div>
 
         {/* MB 首頁 側邊欄 上 */}
@@ -32,6 +32,7 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
                 ? `thebetterraging_pc_${type}_300x250_rt`
                 : `thebetterraging_pc_${type}_300x250_rt_${i}`
             }
+            adStyle={'my-5'}
           />
         </div>
 
@@ -48,8 +49,10 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
         <Speakers title="最新快訊" topics={mainData.article_news} />
 
         {/* PC 首頁 側邊欄 下 */}
-        <div className="hidden md:flex justify-center items-center mt-10 mb-10 border border-red-500">
-          <Banner adId="thebetterraging_pc_article_300x250_rt" />
+        <div className="hidden md:flex my-5 justify-center items-center border border-red-500">
+          <Banner
+            adId="thebetterraging_pc_article_300x250_rt"
+          />
         </div>
 
         {/* MB 首頁 側邊欄 下 */}

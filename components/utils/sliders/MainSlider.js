@@ -568,15 +568,21 @@ const MainSlider = ({ topics }) => {
           {topics &&
             topics.map((item, i) => {
               return (
-                <div key={i+1} className="outline-none focus:outline-none">
-                  <div className="flex flex-col lg:flex-row lg:h-[450px] rounded-bl-lg rounded-t-lg rounded-br-5xl shadow-lg bg-white mx-5 overflow-hidden">
+                <div key={i + 1} className="outline-none focus:outline-none">
+                  <div className="flex flex-col lg:flex-row lg:h-auto rounded-bl-lg rounded-t-lg rounded-br-5xl shadow-lg bg-white mx-5 overflow-hidden">
                     <Link href={`/article/${item.url_query}`}>
-                      <a className="main_slider_img block overflow-hidden h-72 md:h-96 lg:h-full w-full lg:w-2/5 ">
-                        <img
-                          className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
-                          src={item.image_url}
-                          alt={item.title}
-                        />
+                      <a className="main_slider_img block overflow-hidden relative h-full w-full lg:w-3/5">
+                        <div className="aspect-h-3 aspect-w-4">
+                          <Image
+                            className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
+                            src={
+                              item.image_url ||
+                              'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
+                            }
+                            layout="fill"
+                            alt={item.title}
+                          />
+                        </div>
                       </a>
                     </Link>
                     <div className="main_slider_contents relative p-10 w-full lg:w-3/5">

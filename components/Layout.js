@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import Header from "./Header";
 import Footer from "./Footer";
+import DableFullCover from './utils/dable/DableFullCover';
+import Banner from "./utils/googletags/Banner";
 
 // const siteTitle ='幸福熟齡 - 從今開始，一同勾勒熟齡的美好';
 const Layout = ({ children, siteTitle }) => {
@@ -55,30 +55,20 @@ const Layout = ({ children, siteTitle }) => {
         ></script> */}
       </Head>
 
+      <Banner adId="thebetteraging_pc_in-cover" />
+
+      <DableFullCover />
       <Header />
-
       <main className="mt-28 md:mt-44 flex flex-col pb-14">{children}</main>
-
-      {/* <div className="modal">
-        <div className="modal-content">
-          <span className="close">×</span>
-
-          <div id="dablewidget_goBezRXe" data-widget_id="goBezRXe">
-            <iframe
-              width="100%"
-              height="433"
-              title="你不能錯過的新聞"
-              frameBorder="0"
-              scrolling="no"
-              name="dableframe-0.20140056594932387"
-              src="https://api.dable.io/widgets/id/goBezRXe/users/45567756.1590412564953?from=https%3A%2F%2Fthebetteraging.businesstoday.com.tw%2F&amp;url=https%3A%2F%2Fthebetteraging.businesstoday.com.tw%2F&amp;ref=&amp;cid=45567756.1590412564953&amp;uid=45567756.1590412564953&amp;site=thebetteraging.businesstoday&amp;id=dablewidget_goBezRXe&amp;ad_params=%7B%7D&amp;pixel_ratio=2&amp;client_width=0&amp;network=non-wifi&amp;lang=zh-TW&amp;pre_expose=1&amp;is_top_win=1&amp;top_win_accessible=1"
-              data-ready="1"
-            ></iframe>
-          </div>
-        </div>
-      </div> */}
-
       <Footer />
+
+      <div className="fixed bottom-0 left-0">
+        <Banner adId="thebetteraging_pc_in-cover" />
+      </div>
+
+      <div className="fixed bottom-0 left-0">
+        <Banner adId="thebetteraging_mob_320x480_cover" />
+      </div>
     </div>
   );
 };

@@ -19,7 +19,7 @@ const ProjectSection = ({ topics }) => {
       <div className="absolute -top-2 left-0 p-1 bg-white shadow-md w-full"></div>
       <div className="max-w-screen-2xl mx-auto px-0 lg:px-2 relative">
         {topics.file_type === "image" && topics.image_url && (
-          <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden relative">
+          <div className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden relative">
             <Image
               className="w-full h-full object-cover"
               src={topics.image_url}

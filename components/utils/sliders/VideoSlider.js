@@ -70,7 +70,7 @@ const VideoSlider = ({ topics }) => {
   };
 
   return (
-    <div className="videos relative">
+    <div className="videos relative -mb-5">
       <div className="relative inline-flex items-center rounded-tl-lg bg-primary-light pl-5 py-2 w-full shadow-mdRight rounded-br-5xl overflow-hidden outline-none focus:outline-none mb-5">
         <span className="mr-2">
           <svg
