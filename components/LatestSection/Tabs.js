@@ -25,15 +25,15 @@ const Tabs = ({ tab1topics, tab2topics }) => {
   };
 
   return (
-    <div className="latest_articles w-full md:w-1/2 rounded-lg rounded-br-5xl flex flex-col">
+    <div className="latest_articles w-full md:w-1/2 rounded-lg rounded-br-5xl flex flex-col mb-10 md:mb-0">
       <div className="relative bg-secondary-medium rounded-t-lg h-10">
         <button
-          onClick={() => handleTabs("hot")}
+          onClick={() => handleTabs('hot')}
           type="button"
           className={clsx(
-            isHot && "h-11 bg-primary-light shadow-mdRight",
-            !isHot && "h-10",
-            "header_tab_left hover:h-11 hover:bg-primary-light hover:border inline-flex items-center justify-center absolute bottom-0 left-0 w-1/2 border border-secondary-medium  rounded-tl-lg rounded-tr-5xl text-center outline-none focus:outline-none transition-all duration-200 ease-linear"
+            isHot && 'h-11 bg-primary-light shadow-mdRight',
+            !isHot && 'h-10',
+            'header_tab_left hover:h-11 hover:bg-primary-light hover:border inline-flex items-center justify-center absolute bottom-0 left-0 w-1/2 border border-secondary-medium  rounded-tl-lg rounded-tr-5xl text-center outline-none focus:outline-none transition-all duration-200 ease-linear',
           )}
         >
           <span className="mr-2">
@@ -55,12 +55,12 @@ const Tabs = ({ tab1topics, tab2topics }) => {
           <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-o"></span>
         </button>
         <button
-          onClick={() => handleTabs("news")}
+          onClick={() => handleTabs('news')}
           type="button"
           className={clsx(
-            isHot && "h-10",
-            !isHot && "h-11 bg-primary-light shadow-mdRight border",
-            "header_tab_right hover:h-11 hover:bg-primary-light hover:border inline-flex items-center justify-center absolute bottom-0 right-0 h-10  border-secondary-medium rounded-tr-lg rounded-tl-5xl text-center py-2 w-1/2 overflow-hidden outline-none focus:outline-none transition-all duration-200 ease-linear"
+            isHot && 'h-10',
+            !isHot && 'h-11 bg-primary-light shadow-mdRight border',
+            'header_tab_right hover:h-11 hover:bg-primary-light hover:border inline-flex items-center justify-center absolute bottom-0 right-0 h-10  border-secondary-medium rounded-tr-lg rounded-tl-5xl text-center py-2 w-1/2 overflow-hidden outline-none focus:outline-none transition-all duration-200 ease-linear',
           )}
         >
           <span className="mr-2">

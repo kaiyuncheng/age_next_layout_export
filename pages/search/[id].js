@@ -249,15 +249,14 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
 
   return (
     <Layout siteTitle="幸福熟齡 - 搜尋結果">
-      {/* PC 內頁廣告上 */}
-      <div className="lg:block hidden max-w-screen-2xl mx-auto mt-10 mb-5 px-4 lg:px-2 flex justify-center items-center border border-red-500">
-        <Banner adId="thebetteraging_pc_home_970x250_t" />
+      {/* PC 列表頁 廣告上 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center">
+        <Banner adId="thebetterraging_pc_list_970x250_t" />
       </div>
 
-      {/* Mobile 內頁廣告上 */}
-
-      <div className="block sm:hidden mt-14 mb-4 flex justify-center items-center border border-red-500">
-        <Banner adId="thebetteraging_mob_home_300x250_t" />
+      {/* Mobile 列表頁 廣告上 */}
+      <div className="block sm:hidden flex justify-center items-center">
+        <Banner adId="thebetteraging_mob_list_300x250_t" />
       </div>
 
       {/* <!-- bread crumb --> */}
@@ -747,6 +746,11 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
           </div>
           <AsideSection isHot={true} type={'list'} />
         </div>
+      </div>
+
+      {/* PC 列表頁 廣告下 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center">
+        <Banner adId="thebetterraging_pc_list_970x250_b" />
       </div>
     </Layout>
   );

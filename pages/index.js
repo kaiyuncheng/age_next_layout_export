@@ -9,8 +9,10 @@ import Category from "../components/MainSection/Category";
 import AsideSection from "../components/AsideSection";
 import Banner from "../components/utils/googletags/Banner";
 
+
 export default function Home() {
   const {mainData} = useMainContext();
+
 
   return (
     <Layout siteTitle="幸福熟齡 - 從今開始，一同勾勒熟齡的美好">
@@ -18,24 +20,30 @@ export default function Home() {
 
       <Fade bottom>
         <div className="latest border-box mb-10">
-          <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-4 lg:space-x-10">
+          <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row space-y-0 md:space-x-4 lg:space-x-10">
             <Tabs
               tab1topics={mainData.hot_article_banners}
               tab2topics={mainData.new_article_banners}
             />
+
+            {/* Mobile 首頁 廣告上 */}
+            <div className="block sm:hidden flex justify-center items-center">
+              <Banner adId="thebetteraging_mob_home_300x250_t" />
+            </div>
+
             <DigitalSlider topics={mainData.special_banners} />
           </div>
         </div>
       </Fade>
 
-      {/* PC 首頁廣告上 */}
-      <div className="lg:block hidden max-w-screen-2xl mx-auto mb-10 px-4 lg:px-2 flex justify-center items-center border border-red-500">
+      {/* PC 首頁 廣告上 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center">
         <Banner adId="thebetteraging_pc_home_970x250_t" />
       </div>
 
-      {/* Mobile 首頁廣告上 */}
-      <div className="block sm:hidden mb-10 flex justify-center items-center border border-red-500">
-        <Banner adId="thebetteraging_mob_home_300x250_t" />
+      {/* Mobile 首頁 廣告下 */}
+      <div className="block sm:hidden flex justify-center items-center">
+        <Banner adId="thebetteraging_mob_home_300x250_m" />
       </div>
 
       <div className="sections mb-14">
@@ -50,6 +58,7 @@ export default function Home() {
                     id={block.category_id}
                     data={block.data}
                     isIndexCategory={true}
+                    parentName={block.name}
                   />
                 );
               })}
@@ -65,12 +74,11 @@ export default function Home() {
         </div>
       </div>
 
-      {/* PC 首頁廣告下 */}
-      <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center border border-red-500">
+      {/* PC 首頁 廣告下 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center">
         <Banner adId="thebetteraging_pc_home_970x250_b" adStyle={''} />
       </div>
 
-      {/* MB 首頁廣告下 */}
     </Layout>
   );
 }

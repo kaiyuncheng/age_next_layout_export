@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import Link from "next/link";
+import clsx from "clsx";
 
 function NextArrow({ onClick }) {
   return (
@@ -51,7 +52,7 @@ function PrevArrow({ onClick }) {
     </button>
   );
 }
-const CategorySlider = ({ topics }) => {
+const CategorySlider = ({ topics, color }) => {
   const [pages, setPages] = useState({ currentSlide: 0 });
 
   const settings = {
@@ -59,7 +60,7 @@ const CategorySlider = ({ topics }) => {
     speed: 500,
     fade: true,
     autoplay: false,
-    cssEase: "linear",
+    cssEase: 'linear',
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
 
@@ -69,15 +70,15 @@ const CategorySlider = ({ topics }) => {
   };
 
   return (
-    <div className="topics_slider relative block lg:hidden">
-      <Slider {...settings}>
-        {topics &&
-          topics.map((item, i) => {
-            return (
-              <div key={i} className="outline-none focus:outline-none">
-                <div className="flex flex-col">
+    <>
+      <div className="topics_slider relative block lg:hidden mb-4">
+        <Slider {...settings}>
+          {topics &&
+            topics.map((item, i) => {
+              return (
+                <div key={i} className="outline-none focus:outline-none">
                   <Link href={`/article/${item.url_query}`}>
-                    <a className="group">
+                    <a className="group flex flex-col">
                       <div className="relative rounded-t-md overflow-hidden aspect-h-3 aspect-w-4">
                         <Image
                           className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
@@ -86,18 +87,27 @@ const CategorySlider = ({ topics }) => {
                           layout="fill"
                         />
                       </div>
-                      <div className="bg-rainbow-r w-full h-1.5 rounded-b-md mb-2"></div>
-                      <h3 className="group-hover:text-gray-600 transition-all duration-300 ease-in-out">
-                        {item.title}
-                      </h3>
+                      <div
+                        className={clsx(color, 'w-full h-1.5 rounded-b-md')}
+                      ></div>
                     </a>
                   </Link>
                 </div>
-              </div>
-            );
-          })}
-      </Slider>
-    </div>
+              );
+            })}
+        </Slider>
+      </div>
+
+      {topics && (
+        <Link href={`/article/${topics[pages.currentSlide].url_query}`}>
+          <a className="block lg:hidden">
+            <h3 className="hover:text-gray-600 transition-all duration-300 ease-in-out">
+              {topics[pages.currentSlide].title}
+            </h3>
+          </a>
+        </Link>
+      )}
+    </>
   );
 };
 

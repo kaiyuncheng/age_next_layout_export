@@ -61,14 +61,16 @@ const Layout = ({ children, siteTitle }) => {
       <Header />
       <main className="mt-28 md:mt-44 flex flex-col pb-14">{children}</main>
       <Footer />
-
+      {/* 
       <div className="md:block hidden fixed bottom-0 left-0 border border-blue-500">
         <Banner adId="thebetteraging_pc_in-cover" />
       </div>
 
       <div className="block md:hidden fixed bottom-0 left-0 border border-blue-500">
         <Banner adId="thebetteraging_mob_320x480_cover" />
-      </div>
+      </div> */}
+
+      <Banner adId="thebetteraging_mob_320x480_cover" />
     </div>
   );
 };

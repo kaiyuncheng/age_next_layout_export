@@ -571,8 +571,8 @@ const MainSlider = ({ topics }) => {
                 <div key={i + 1} className="outline-none focus:outline-none">
                   <div className="flex flex-col lg:flex-row lg:h-auto rounded-bl-lg rounded-t-lg rounded-br-5xl shadow-lg bg-white mx-5 overflow-hidden">
                     <Link href={`/article/${item.url_query}`}>
-                      <a className="main_slider_img block overflow-hidden relative h-full w-full lg:w-3/5">
-                        <div className="aspect-h-3 aspect-w-4">
+                      <a className="main_slider_img block overflow-hidden relative w-full lg:w-1/2">
+                        <div className="aspect-h-3 aspect-w-4 h-full">
                           <Image
                             className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
                             src={
@@ -585,7 +585,7 @@ const MainSlider = ({ topics }) => {
                         </div>
                       </a>
                     </Link>
-                    <div className="main_slider_contents relative p-10 w-full lg:w-3/5">
+                    <div className="main_slider_contents relative p-10 w-full lg:w-1/2">
                       <Link href={`/article/${item.url_query}`}>
                         <a>
                           <h2 className="text-xl md:text-2xl font-bold mb-5 transition-all duration-300 ease-in-out hover:text-primary-dark text-gray-800">

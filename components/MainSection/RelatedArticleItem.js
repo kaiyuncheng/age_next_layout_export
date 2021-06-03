@@ -36,7 +36,12 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
 
   return (
     <div className="sections flex flex-col justify-center items-center">
-      <div className="w-full max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row md:space-x-10 md:space-y-0">
+      <div
+        className={clsx(
+          !i && 'mb-14',
+          'w-full max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row md:space-x-10 md:space-y-0',
+        )}
+      >
         <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden pb-5">
           {/* <!-- main article --> */}
 
@@ -57,6 +62,18 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                 alt={item.article_info.title}
               />
             </div>
+
+            {/* Mobile 內頁 黃金特區ㄧ 文章單頁 文章大圖下方 */}
+            <div className="block sm:hidden flex justify-center items-center">
+              <Banner
+                adId={
+                  !i
+                    ? `thebetteraging_mob_article_300x250_t`
+                    : `thebetteraging_mob_article_300x250_t_${i}`
+                }
+              />
+            </div>
+
             <div className="article_info mb-5">
               {item.article_info.writers && (
                 <p className="inline text-sm text-gray-600 mr-4">
@@ -232,22 +249,18 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
         <AsideSection isHot={true} type={'article'} i={i} />
       </div>
 
-      <div className="lg:block hidden max-w-screen-2xl px-4 lg:px-2 border border-red-500 my-14">
-        <Banner
-          adId={
-            !i
-              ? `thebetteraging_pc_home_970x250_t`
-              : `thebetterraging_pc_list_970x250_b`
-          }
-        />
+      {/* PC 內頁 廣告 下 */}
 
-        {/* <Banner
+      <div
+        className="lg:block hidden max-w-screen-2xl px-4 lg:px-2"
+      >
+        <Banner
           adId={
             !i
               ? `thebetterraging_pc_article_970x250_b`
               : `thebetterraging_pc_article_970x250_b_${i}`
           }
-        /> */}
+        />
       </div>
     </div>
   );

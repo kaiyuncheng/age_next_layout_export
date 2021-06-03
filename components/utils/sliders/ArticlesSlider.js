@@ -105,9 +105,9 @@ const MainSlider = ({ topics }) => {
                   key={i}
                   className="relative outline-none focus:outline-none"
                 >
-                  <div className="relative shadow-lg mx-5 flex flex-col lg:flex-row bg-white rounded-bl-lg rounded-t-lg rounded-br-5xl  border border-secondary-medium">
+                  <div className="relative shadow-lg mx-5 flex flex-col lg:flex-row bg-white rounded-bl-lg rounded-t-lg rounded-br-5xl border border-secondary-medium h-full">
                     <Link href={`/article/${item.article_id}`}>
-                      <a className="group relative z-30 rounded-t-lg md:rounded-l-lg md:rounded-r-none block overflow-hidden flex-grow w-full lg:w-1/2 h-auto">
+                      <a className="group relative z-30 rounded-t-lg lg:rounded-l-lg lg:rounded-r-none block overflow-hidden flex-grow w-full lg:w-auto h-full">
                         <div className="aspect-w-4 aspect-h-3">
                           <Image
                             className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
@@ -128,16 +128,16 @@ const MainSlider = ({ topics }) => {
                       </a>
                     </Link>
 
-                    <div className="main_slider_contents relative z-30 p-8 pb-20 w-full lg:w-1/2 h-auto">
+                    <div className="main_slider_contents relative z-30 py-5 px-5 lg:pl-5 lg:pr-7 2xl:p-8 pb-20 w-full lg:w-2/5 2xl:w-1/2">
                       <Link href={`/article/${item.article_id}`}>
                         <a>
-                          <h2 className="text-xl font-bold mb-5 transition-all duration-300 ease-in-out hover:text-primary-dark text-gray-800">
+                          <h2 className="text-xl font-bold mb-3 transition-all duration-300 ease-in-out hover:text-primary-dark text-gray-800">
                             {item.title}
                           </h2>
                         </a>
                       </Link>
 
-                      <p className="text-base overflow-ellipsis md:overflow-clip line-clamp-5">
+                      <p className="text-base overflow-ellipsis md:overflow-clip line-clamp-5 lg:line-clamp-4 xl:line-clamp-5 2xl:line-clamp-6">
                         {item.minor_title}
                       </p>
 

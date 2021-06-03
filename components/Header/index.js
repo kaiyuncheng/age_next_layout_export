@@ -23,7 +23,6 @@ const Header = () => {
   };
 
   const toggleOpen = (id) => {
-    console.log(id);
     setMenuData((prevMenuData) =>
       prevMenuData.map((item) => {
         if (item.category_id !== id) {

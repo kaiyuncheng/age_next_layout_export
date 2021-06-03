@@ -113,15 +113,14 @@ export default function cataloglist({ data }) {
         )}
       </Head>
 
-      {/* PC 內頁廣告上 */}
-      <div className="lg:block hidden max-w-screen-2xl mx-auto mt-10 mb-10 px-4 lg:px-2 flex justify-center items-center border border-red-500">
-        <Banner adId="thebetteraging_pc_home_970x250_t" />
+      {/* PC 列表頁 廣告上 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center">
+        <Banner adId="thebetterraging_pc_list_970x250_t" />
       </div>
 
-      {/* Mobile 內頁廣告上 */}
-
-      <div className="block sm:hidden mt-10 mb-10 flex justify-center items-center border border-red-500">
-        <Banner adId="thebetteraging_mob_home_300x250_t" />
+      {/* Mobile 列表頁 廣告上 */}
+      <div className="block sm:hidden flex justify-center items-center">
+        <Banner adId="thebetteraging_mob_list_300x250_t" />
       </div>
 
       {catalogData.category_top_img && (
@@ -232,6 +231,7 @@ export default function cataloglist({ data }) {
                       name={block.name}
                       id={block.category_id}
                       data={block.data}
+                      parentName={catalogData.category_info.name}
                     />
                   );
                 })}
@@ -244,12 +244,16 @@ export default function cataloglist({ data }) {
             brandData={catalogData.brand_area}
             type={'list'}
           />
-          
         </div>
       </div>
-      <div className="lg:block hidden max-w-screen-2xl mx-auto mt-14 px-4 lg:px-2 flex justify-center items-center border border-red-500">
-        <Banner adId="thebetteraging_pc_home_970x250_b" />
+      
+
+
+      {/* PC 列表頁 廣告下 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center">
+        <Banner adId="thebetterraging_pc_list_970x250_b" />
       </div>
+
     </Layout>
   );
 }

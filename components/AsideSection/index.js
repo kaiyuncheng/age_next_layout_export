@@ -15,17 +15,9 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
         {isBrandOpen && <BrandInfo brandData={brandData} />}
         <VideoSlider topics={mainData.hot_videos} />
 
+
         {/* PC 首頁 側邊欄 上 */}
-        <div className="hidden md:flex my-5 justify-center items-center border border-red-500">
-          <Banner adId="thebetterraging_pc_list_300x250_rt" adStyle={''} />
-        </div>
-
-        {/* MB 首頁 側邊欄 上 */}
-        <div className="flex md:hidden justify-center items-center mt-5 mb-10 border border-red-500">
-          <Banner adId="thebetteraging_mob_home_300x250_mb" />
-        </div>
-
-        {/* <div className="hidden md:flex justify-center items-center mt-5 mb-10 border border-red-500">
+        <div className="hidden sm:flex justify-center items-center my-5">
           <Banner
             adId={
               !i
@@ -36,7 +28,8 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
           />
         </div>
 
-        <div className="flex md:hidden justify-center items-center mt-5 mb-10 border border-red-500">
+        {/* MB 首頁 側邊欄 上 */}
+        <div className="flex sm:hidden justify-center items-center my-5">
           <Banner
             adId={
               !i
@@ -44,23 +37,12 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
                 : `thebetteraging_mob_${type}_300x250_mb_${i}`
             }
           />
-        </div> */}
+        </div>
 
         <Speakers title="最新快訊" topics={mainData.article_news} />
 
         {/* PC 首頁 側邊欄 下 */}
-        <div className="hidden md:flex my-5 justify-center items-center border border-red-500">
-          <Banner
-            adId="thebetterraging_pc_article_300x250_rt"
-          />
-        </div>
-
-        {/* MB 首頁 側邊欄 下 */}
-        <div className="flex md:hidden justify-center items-center mt-10 mb-10 border border-red-500">
-          <Banner adId="thebetteraging_mob_home_300x250_b" />
-        </div>
-
-        {/* <div className="hidden md:flex justify-center items-center mt-5 mb-10 border border-red-500">
+        <div className="hidden sm:flex justify-center items-center my-5">
           <Banner
             adId={
               !i
@@ -70,7 +52,8 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
           />
         </div>
 
-        <div className="flex md:hidden justify-center items-center mt-5 mb-10 border border-red-500">
+        {/* MB 首頁 側邊欄 下 */}
+        <div className="flex sm:hidden justify-center items-center my-5">
           <Banner
             adId={
               !i
@@ -78,7 +61,7 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
                 : `thebetteraging_mob_${type}_300x250_b_${i}`
             }
           />
-        </div> */}
+        </div>
 
         {isHot && (
           <Speakers title="熱門文章" topics={mainData.hot_article_banners} />
