@@ -107,14 +107,15 @@ const MainSlider = ({ topics }) => {
                 >
                   <div className="relative shadow-lg mx-5 flex flex-col lg:flex-row bg-white rounded-bl-lg rounded-t-lg rounded-br-5xl  border border-secondary-medium">
                     <Link href={`/article/${item.article_id}`}>
-                      <a className="group relative z-30 rounded-t-lg md:rounded-l-lg md:rounded-r-none block overflow-hidden flex-grow w-full lg:w-1/2 h-72">
-                        {/* 圖片連結api不正確 {item.image_url} 小標題顏色需增加橘色並設定可以變換顏色*/}
-                        <Image
-                          className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
-                          src={item.image_url}
-                          alt={item.title}
-                          layout="fill"
-                        />
+                      <a className="group relative z-30 rounded-t-lg md:rounded-l-lg md:rounded-r-none block overflow-hidden flex-grow w-full lg:w-1/2 h-auto">
+                        <div className="aspect-w-4 aspect-h-3">
+                          <Image
+                            className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
+                            src={item.image_url}
+                            alt={item.title}
+                            layout="fill"
+                          />
+                        </div>
 
                         <span
                           className={clsx(
@@ -127,7 +128,7 @@ const MainSlider = ({ topics }) => {
                       </a>
                     </Link>
 
-                    <div className="main_slider_contents relative z-30 p-8 pb-20 w-full lg:w-1/2 h-72">
+                    <div className="main_slider_contents relative z-30 p-8 pb-20 w-full lg:w-1/2 h-auto">
                       <Link href={`/article/${item.article_id}`}>
                         <a>
                           <h2 className="text-xl font-bold mb-5 transition-all duration-300 ease-in-out hover:text-primary-dark text-gray-800">
@@ -136,7 +137,7 @@ const MainSlider = ({ topics }) => {
                         </a>
                       </Link>
 
-                      <p className="text-base overflow-ellipsis md:overflow-clip line-clamp-6">
+                      <p className="text-base overflow-ellipsis md:overflow-clip line-clamp-5">
                         {item.minor_title}
                       </p>
 

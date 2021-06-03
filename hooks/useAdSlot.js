@@ -9,7 +9,7 @@ export function useAdSlot({ sizes, id, isTransitioning, slot }) {
 
       if (!isTransitioning && window.googletag && googletag.apiReady) {
         
-        console.log('ad init', id, sizes, window, window.googletag);
+        // console.log('ad init', id, sizes, window, window.googletag);
 
         const googletag = window.googletag || {};
         googletag.cmd = googletag.cmd || [];

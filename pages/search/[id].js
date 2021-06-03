@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import clsx from 'clsx';
 import axios from '../../components/utils/axios';
 import Layout from '../../components/Layout';
 import AsideSection from '../../components/AsideSection';
 import BreadCrumb from '../../components/utils/BreadCrumb';
 import ArticleListItem from '../../components/MainSection/ArticleListItem';
-import clsx from 'clsx';
+import Banner from '../../components/utils/googletags/Banner';
 
 export const getServerSideProps = async context => {
   const { keywords, sort, count, yearFrom, yearTo } = context.query;
@@ -248,6 +249,17 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
 
   return (
     <Layout siteTitle="幸福熟齡 - 搜尋結果">
+      {/* PC 內頁廣告上 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto mt-10 mb-5 px-4 lg:px-2 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_pc_home_970x250_t" />
+      </div>
+
+      {/* Mobile 內頁廣告上 */}
+
+      <div className="block sm:hidden mt-14 mb-4 flex justify-center items-center border border-red-500">
+        <Banner adId="thebetteraging_mob_home_300x250_t" />
+      </div>
+
       {/* <!-- bread crumb --> */}
       <BreadCrumb
         titles={[
@@ -287,7 +299,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
 
                 <div className="advancedsearch_keywords">
                   <label className="inline-flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:items-center w-full pr-1">
-                    <span className="">搜尋指定關鍵字：</span>
+                    <span>搜尋指定關鍵字：</span>
                     <input
                       className="form-input flex-grow sm:flex-grow-0 ml-1 border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none placeholder-gray-400"
                       type="text"
@@ -439,9 +451,10 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
             <div className="search_pagination flex items-center justify-between">
               <div className="flex-1 flex justify-between md:hidden">
                 <button
-                  onClick={() =>
-                    isPage > 1 && setIsPage(prevPage => prevPage - 1)
-                  }
+                  onClick={() => {
+                    isPage > 1 && setIsPage(prevPage => prevPage - 1);
+                    return window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
                   type="button"
                   className={clsx(
                     isPage <= 1 && 'cursor-not-allowed text-gray-200',
@@ -471,9 +484,13 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
                 </p>
 
                 <button
-                  onClick={() =>
-                    isPage < pages && setIsPage(prevPage => prevPage + 1)
-                  }
+                  onClick={() => {
+                    isPage < pages && setIsPage(prevPage => prevPage + 1);
+                    return window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    });
+                  }}
                   type="button"
                   className={clsx(
                     isPage >= pages && 'cursor-not-allowed text-gray-200',
@@ -728,7 +745,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
               </div>
             </div>
           </div>
-          <AsideSection isHot={true} />
+          <AsideSection isHot={true} type={'list'} />
         </div>
       </div>
     </Layout>

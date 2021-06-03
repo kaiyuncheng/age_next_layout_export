@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Fade from "react-reveal/Fade";
-import ArticleListItem from "./ArticleListItem";
+import RelatedArticleItem from './RelatedArticleItem';
 
-const ArticleList = ({ topics }) => {
+const RelatedArticleList = ({ topics, dableIds }) => {
   let defaultNum =
-    topics.length > 0 ? (topics.length < 15 ? topics.length : 15) : 0;
+    topics.length > 0 ? (topics.length < 1 ? topics.length : 1) : 0;
 
   const [listItems, setListItems] = useState(
-    Array.from(Array(defaultNum).keys(), (n) => n + 1)
+    Array.from(Array(defaultNum).keys(), n => n + 1),
   );
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -35,16 +35,16 @@ const ArticleList = ({ topics }) => {
 
   const fetchMoreListItems = () => {
     let listNum =
-      (topics.length - listItems.length - 5 < 0)
-          ? (topics.length - listItems.length) % 5
-          : 5;
+      topics.length - listItems.length - 1 < 0
+        ? (topics.length - listItems.length) % 1
+        : 1;
     setTimeout(() => {
-      setListItems((prevState) => [
+      setListItems(prevState => [
         ...prevState,
-        ...Array.from(Array(listNum).keys(), (n) => n + prevState.length + 1),
+        ...Array.from(Array(listNum).keys(), n => n + prevState.length + 1),
       ]);
       setIsFetching(false);
-    }, 1000);
+    }, 500);
   };
 
   return (
@@ -52,7 +52,11 @@ const ArticleList = ({ topics }) => {
       {listItems.length <= topics.length &&
         listItems.map((listItem, i) => (
           <Fade bottom key={i}>
-            <ArticleListItem item={topics[listItem - 1]} />
+            <RelatedArticleItem
+              item={topics[listItem - 1]}
+              dableIds={dableIds[listItem - 1]}
+              i={i + 1}
+            />
           </Fade>
         ))}
       {listItems.length < topics.length && isFetching && (
@@ -78,4 +82,4 @@ const ArticleList = ({ topics }) => {
   );
 };
 
-export default ArticleList;
+export default RelatedArticleList;

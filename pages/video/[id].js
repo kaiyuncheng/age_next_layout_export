@@ -302,7 +302,7 @@ export default function video({ data }) {
             )}
           </div>
 
-          <AsideSection isHot={true} />
+          <AsideSection isHot={true} type={'article'} />
         </div>
       </div>
     </Layout>

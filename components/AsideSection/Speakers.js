@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Speakers = ({ title, topics }) => {
   return (
-    <div className="speakers mb-5">
+    <div className="speakers">
       <div className="relative inline-flex items-center rounded-tl-lg bg-primary-light pl-5 py-2 w-full shadow-mdRight rounded-br-5xl overflow-hidden outline-none focus:outline-none mb-5">
         {title === '最新快訊' ? (
           <span className="mr-2">

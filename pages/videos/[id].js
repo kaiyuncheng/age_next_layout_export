@@ -122,7 +122,7 @@ export default function videos({ data, id }) {
 
             {videosList && <VideoList topics={videosList} />}
           </div>
-          <AsideSection isHot={true} />
+          <AsideSection isHot={true} type={'list'} />
         </div>
       </div>
     </Layout>

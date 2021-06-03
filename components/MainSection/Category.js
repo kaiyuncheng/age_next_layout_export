@@ -41,14 +41,14 @@ const Category = ({ name, id, data, isIndexCategory }) => {
         </a>
       </Link>
 
-      <div className="topics_items hidden md:flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-5">
+      <div className="topics_items hidden lg:flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-5">
         {data &&
           data.map((item, i) => {
             return (
               <div key={i} className="topics_item flex-1">
                 <Link href={`/article/${item.url_query}`}>
                   <a className="group flex flex-col justify-center">
-                    <div className="relative rounded-t-md overflow-hidden h-52 w-full">
+                    <div className="relative rounded-t-md overflow-hidden aspect-h-3 aspect-w-4 w-full">
                       <Image
                         className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                         src={item.image_url}

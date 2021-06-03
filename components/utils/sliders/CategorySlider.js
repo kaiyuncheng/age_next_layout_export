@@ -8,7 +8,7 @@ function NextArrow({ onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="group bg-primary-dark hover:bg-secondary-dark px-3 py-2 rounded-lg absolute z-40 -right-4 top-28 xs:top-30 transform -translate-y-1/2 transition-all duration-300 outline-none focus:outline-none"
+      className="group bg-primary-dark hover:bg-secondary-dark px-3 py-2 rounded-lg absolute z-40 -right-4 top-1/2 transform -translate-y-1/2 transition-all duration-300 outline-none focus:outline-none"
     >
       <svg
         className="fill-current text-white group-hover:text-primary-dark transform group-hover:translate-x-1 transition-all duration-300 ease-in-out"
@@ -32,7 +32,7 @@ function PrevArrow({ onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="group bg-primary-dark hover:bg-secondary-dark px-3 py-2 rounded-lg absolute z-40 -left-4 top-28 xs:top-30 transform -translate-y-1/2 transition-all duration-500 outline-none focus:outline-none"
+      className="group bg-primary-dark hover:bg-secondary-dark px-3 py-2 rounded-lg absolute z-40 -left-4 top-1/2 transform -translate-y-1/2 transition-all duration-500 outline-none focus:outline-none"
     >
       <svg
         className="fill-current text-white group-hover:text-primary-dark transform group-hover:-translate-x-1 transition-all duration-300 ease-in-out"
@@ -69,7 +69,7 @@ const CategorySlider = ({ topics }) => {
   };
 
   return (
-    <div className="topics_slider relative block md:hidden">
+    <div className="topics_slider relative block lg:hidden">
       <Slider {...settings}>
         {topics &&
           topics.map((item, i) => {
@@ -78,7 +78,7 @@ const CategorySlider = ({ topics }) => {
                 <div className="flex flex-col">
                   <Link href={`/article/${item.url_query}`}>
                     <a className="group">
-                      <div className="relative rounded-t-md overflow-hidden h-56 xs:h-60">
+                      <div className="relative rounded-t-md overflow-hidden aspect-h-3 aspect-w-4">
                         <Image
                           className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                           src={item.image_url}

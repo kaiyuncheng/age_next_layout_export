@@ -297,7 +297,7 @@ const Header = () => {
           </button>
 
           <div className="mainbar_banner hidden lg:block">
-            <Banner adId="div-gpt-ad-1529564063399-0" />
+            <Banner adId="thebetteraging_pc_all_300x100" />
           </div>
         </div>
       </div>

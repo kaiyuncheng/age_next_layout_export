@@ -52,11 +52,12 @@ const VideoList = ({ topics }) => {
 
   return (
     <div className="videos relative flex flex-col md:flex-row flex-wrap -mx-4">
-      {listItems.length <= topics.length && listItems.map((listItem, i) => (
-        <VideoListItem key={i} item={topics[listItem - 1]} />
-      ))}
+      {listItems.length <= topics.length &&
+        listItems.map((listItem, i) => (
+          <VideoListItem key={i} item={topics[listItem - 1]} />
+        ))}
 
-      {isFetching && (
+      {listItems.length < topics.length && isFetching && (
         <div className="flex items-center justify-center">
           <div className="fill-current text-primary-dark animate-spin mr-2">
             <svg

@@ -117,7 +117,7 @@ export default function Author({ authorInfo, authorArticles }) {
           />
         )}
       </Head>
-      
+
       {/* <!-- bread crumb --> */}
       <BreadCrumb
         titles={[
@@ -140,7 +140,7 @@ export default function Author({ authorInfo, authorArticles }) {
             </div>
           </div>
 
-          <AsideSection isHot={true} />
+          <AsideSection isHot={true} type={'article'} />
         </div>
       </div>
     </Layout>
