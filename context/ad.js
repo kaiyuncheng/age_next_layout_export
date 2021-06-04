@@ -506,8 +506,8 @@ export function AdContextWrapper({ children }) {
 
   useEffect(() => {
     const setTransitionStarted = () => {
-      setAdData((prevadData) => {
-        let newData = { ...prevadData };
+      setAdData((prevAdData) => {
+        let newData = { ...prevAdData };
         newData.isTransitioning = true;
         return newData;
       })
@@ -518,8 +518,8 @@ export function AdContextWrapper({ children }) {
     };
 
     const setTransitionComplete = () => {
-      setAdData((prevadData) => {
-        let newData = { ...prevadData };
+      setAdData((prevAdData) => {
+        let newData = { ...prevAdData };
         newData.isTransitioning = false;
         return newData;
       })
