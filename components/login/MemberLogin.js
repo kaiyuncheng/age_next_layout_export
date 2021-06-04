@@ -14,7 +14,7 @@ export default function MemberLogin() {
 
   const router = useRouter();
 
-  function submit() {
+  const submit = async function() {
     // todo 前端檢測
     if(!email || email.length < 5) {
       alert('mail none')
@@ -24,29 +24,40 @@ export default function MemberLogin() {
       alert('password none')
       return false;
     }
-    axios({
-      method: 'post',
-      url: 'https://api-thebetteraging-hardy.businesstoday.com.tw/api/Customer/login',
-      data: JSON.stringify({
-        email: email,
-        password: password
-      })
-    }).then(response => {
-      const { data } = response;
-      if(data.code === 200) {
-        alert(data.messages);
-        // 寫入token
-        localStorage.setItem('btnetThebetteraging', data.token);
-        if(rememberme) {
-          localStorage.setItem('rememberMail', email);
+    try {
+      const res = await axios.post(
+        'Customer/login',
+        JSON.stringify({
+          email: email,
+          password: password
+        })
+      )
+      if(res.data && res.data.code) {
+        const { data } = res;
+        switch(data.code) {
+          case 200:
+            alert(data.messages);
+            // 寫入token
+            localStorage.setItem('btnetThebetteraging', data.token);
+            if(rememberme) {
+              localStorage.setItem('rememberMail', email);
+            }
+            // 跳轉
+            router.push('/');
+            break;
+          case 403:
+            alert(data.messages);
+            break;
+          default:
+            // 未知錯誤
         }
-        // 跳轉
-        router.push('/');
+      } else {
+        // 未知錯誤
       }
-    }).catch((error) => {
+    } catch (error) {
       alert('登入送出失敗');
       console.log(error);
-    })
+    }
   }
   
   return (
