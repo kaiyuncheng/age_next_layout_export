@@ -244,7 +244,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className="footer_info text-white space-y-2 text-sm font-light">
-            <p>服務電話：(02)2581-6196按1</p>
+            <p>服務電話：(02)2581-6196 按 207 / 208 / 209 / 210</p>
             <p>服務時間：週一至五09:00~17:30例假日除外</p>
             <p>傳真電話：(02)2531-6438</p>
             <p>
@@ -373,7 +373,7 @@ const Footer = () => {
       <div className="footer_bottom bg-secondary-medium text-center text-sm text-gray-500 p-4">
         <p>
           今周文化事業(股)公司/今周行銷(股)公司/今周出版(股)公司 版權所有
-          本網站圖文非經本社同意不得刊載 Copyright © {new Date().getFullYear()}{" "}
+          本網站圖文非經本社同意不得刊載 Copyright © {new Date().getFullYear()}{' '}
           Business Today All rights reserved
         </p>
       </div>

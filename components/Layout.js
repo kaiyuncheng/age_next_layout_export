@@ -69,7 +69,8 @@ const Layout = ({ children, siteTitle }) => {
       <div className="block md:hidden fixed bottom-0 left-0 border border-blue-500">
         <Banner adId="thebetteraging_mob_320x480_cover" />
       </div> */}
-
+      
+      <Banner adId="thebetteraging_pc_in-cover" />
       <Banner adId="thebetteraging_mob_320x480_cover" />
     </div>
   );
