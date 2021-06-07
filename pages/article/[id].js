@@ -6,6 +6,7 @@ import BreadCrumb from '../../components/utils/BreadCrumb';
 import RelatedArticleItem from '../../components/MainSection/RelatedArticleItem';
 import RelatedArticleList from '../../components/MainSection/RelatedArticleList';
 import clsx from 'clsx';
+import DableHiddenBar from '../../components/utils/dable/DableHiddenBar';
 
 export const getServerSideProps = async context => {
   const { id } = context.query;
@@ -68,31 +69,12 @@ const dableIds = [
 
 export default function article({ data, id }) {
   const [articleData, setArticleData] = useState(data);
-  const [isBack, setIsBack] = useState(false);
-  const [isScrollDown, setIsScrollDown] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
   const [isShowList, setIsShowList] = useState(false);
   
   useEffect(() => {
     setArticleData(data);
   }, [data]);
-
-  useEffect(() => {
-    dable('renderWidgetByWidth', 'dablewidget_6oMmnEob_ml69ek74');
-  }, []);
-
-  useEffect(() => {
-    const handleScrollTop = () => {
-      if (window.pageYOffset > 300) {
-          setIsScrollDown(true)
-      } 
-      if (isScrollDown && window.pageYOffset <= 200){
-        setIsBack(true);
-      }
-    };
-    window.addEventListener('scroll', handleScrollTop);
-    return () => window.removeEventListener('scroll', handleScrollTop);
-  }, [isScrollDown]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScrollBottom);
@@ -227,32 +209,14 @@ export default function article({ data, id }) {
       )}
 
       {/* Dable 大家都在看 隱藏 下滑顯示 */}
-      <div
-        className={clsx(
-          isBack && 'block',
-          !isBack && 'hidden',
-          'dable_hidden_widget',
-        )}
-      >
-        <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 my-10">
-          <div
-            id="dablewidget_6oMmnEob_ml69ek74"
-            data-widget_id-pc="6oMmnEob"
-            data-widget_id-mo="ml69ek74"
-            data-widget_id="6oMmnEob"
-            data-dable-sliding="1"
-            dable-slided="1"
-          ></div>
-        </div>
-      </div>
-      {/* Dable 大家都在看 隱藏 下滑顯示 */}
+      <DableHiddenBar />
 
       <RelatedArticleItem
         item={articleData}
         dableIds={{
-          id: 'dablewidget_goPjaJlQ_370NGgXx',
-          pc: 'goPjaJlQ',
-          mo: '370NGgXx',
+          id: 'dablewidget_6oMPxGXb_OoR43ely',
+          pc: '6oMPxGXb',
+          mo: 'OoR43ely',
         }}
         type={'article'}
         i={0}

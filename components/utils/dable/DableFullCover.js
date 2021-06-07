@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 const DableFullCover = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,10 +48,8 @@ const DableFullCover = () => {
 
 
   useEffect(() => {
-    dable('renderWidget', 'dablewidget_goBezRXe');
+    dable('renderWidget', 'dablewidget_37JLneXN');
   }, []);
-
-  
 
   return (
     <div
@@ -59,19 +57,21 @@ const DableFullCover = () => {
       className={clsx(
         isOpen && 'hidden sm:flex z-100',
         !isOpen && 'hidden',
-        'fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-75 justify-center items-center overflow-auto',
+        'fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-75 justify-center items-center overflow-hidden',
       )}
     >
-      <div className="relative border border-secondary-medium bg-white px-10 pt-10 pb-8 rounded-2xl rounded-br-6xl overflow-y-scroll h-4/5 md:h-auto w-4/5 shadow-md">
-        <button
-          onClick={closeHandler}
-          type="button"
-          className="absolute right-4 top-2 font-medium text-2xl text-primary-dark outline-none focus:outline-none hover:text-primary-medium"
-        >
-          ×
-        </button>
+      <div className="relative border border-secondary-medium bg-white px-10 pt-10 pb-8 rounded-2xl rounded-br-6xl h-4/5 md:h-auto w-4/5 shadow-md">
+        <div className="overflow-y-scroll md:overflow-y-hidden w-full h-full">
+          <button
+            onClick={closeHandler}
+            type="button"
+            className="absolute right-4 top-2 font-medium text-2xl text-primary-dark outline-none focus:outline-none hover:text-primary-medium"
+          >
+            ×
+          </button>
 
-        <div id="dablewidget_goBezRXe" data-widget_id="goBezRXe"></div>
+          <div id="dablewidget_37JLneXN" data-widget_id="37JLneXN"></div>
+        </div>
       </div>
     </div>
   );

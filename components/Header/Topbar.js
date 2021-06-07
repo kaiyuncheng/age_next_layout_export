@@ -233,7 +233,7 @@ const Topbar = () => {
                 會員中心
               </a>
               <Link href="/logout">
-                <a className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r">
+                <a className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center 2xl:last:border-r">
                   登出
                 </a>
               </Link>
@@ -246,7 +246,7 @@ const Topbar = () => {
                 </a>
               </Link>
               <Link href="/register">
-                <a className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r">
+                <a className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center 2xl:last:border-r">
                   註冊
                 </a>
               </Link> */}
@@ -262,7 +262,7 @@ const Topbar = () => {
               <a
                 href="https://dev-hardy.businesstoday.com.tw/login?form_termcare=Y"
                 target="_blank"
-                className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
+                className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center 2xl:last:border-r"
               >
                 註冊
               </a>

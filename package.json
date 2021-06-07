@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node server.js"
+    "start": "next start",
+    "startNode": "node server.js"
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.2.0",
