@@ -57,7 +57,7 @@ export default function cataloglist({ data }) {
   return (
     <Layout
       siteTitle={`幸福熟齡 - ${
-        catalogData.category_info.name || '從今開始，一同勾勒熟齡的美好'
+        catalogData.category_info.name || '從今開始，勾勒美好第二人生'
       }`}
     >
       <Head>
@@ -246,14 +246,11 @@ export default function cataloglist({ data }) {
           />
         </div>
       </div>
-      
-
 
       {/* PC 列表頁 廣告下 */}
       <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center">
         <Banner adId="thebetterraging_pc_list_970x250_b" />
       </div>
-
     </Layout>
   );
 }

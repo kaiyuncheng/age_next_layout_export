@@ -5,7 +5,6 @@ import DableFullCover from './utils/dable/DableFullCover';
 import Banner from "./utils/googletags/Banner";
 import GoTop from "./utils/GoTop";
 
-// const siteTitle ='幸福熟齡 - 從今開始，一同勾勒熟齡的美好';
 const Layout = ({ children, siteTitle }) => {
   return (
     <div>

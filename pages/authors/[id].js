@@ -56,7 +56,7 @@ export default function Author({ authorInfo, authorArticles }) {
   return (
     <Layout
       siteTitle={`幸福熟齡 - ${
-        authorInfoData.authorInfo.name || '從今開始，一同勾勒熟齡的美好'
+        authorInfoData.authorInfo.name || '從今開始，勾勒美好第二人生'
       }`}
     >
       <Head>

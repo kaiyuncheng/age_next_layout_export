@@ -104,7 +104,7 @@ const Topbar = () => {
               </g>
             </svg>
           </a>
-          <p className="whitespace-nowrap">從今開始，一同勾勒熟齡的美好</p>
+          <p className="whitespace-nowrap">從今開始，勾勒美好第二人生</p>
         </div>
 
         <div className="topbar_btns flex items-center justify-center h-full w-full md:w-auto whitespace-nowrap">

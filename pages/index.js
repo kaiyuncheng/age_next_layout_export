@@ -15,7 +15,7 @@ export default function Home() {
 
 
   return (
-    <Layout siteTitle="幸福熟齡 - 從今開始，一同勾勒熟齡的美好">
+    <Layout siteTitle="幸福熟齡 - 從今開始，勾勒美好第二人生">
       <MainSlider topics={mainData.top_banners} />
 
       <Fade bottom>
@@ -78,7 +78,6 @@ export default function Home() {
       <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center">
         <Banner adId="thebetteraging_pc_home_970x250_b" adStyle={''} />
       </div>
-
     </Layout>
   );
 }

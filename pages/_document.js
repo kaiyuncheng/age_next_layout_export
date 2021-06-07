@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
             charSet="utf-8"
             src="https://static.dable.io/dist/plugin.min.js"
           ></script>
-          
+
           <script
             dangerouslySetInnerHTML={{
               __html: `(function (d, a, b, l, e, _) {
@@ -57,6 +57,7 @@ export default class MyDocument extends Document {
                         dable('sendLogOnce');`,
             }}
           />
+
         </Head>
         <body>
           <Main />

@@ -60,7 +60,7 @@ export default function video({ data }) {
   return (
     <Layout
       siteTitle={`幸福熟齡 - ${
-        videoData.mediaDetail.title || '從今開始，一同勾勒熟齡的美好'
+        videoData.mediaDetail.title || '從今開始，勾勒美好第二人生'
       }`}
     >
       <Head>

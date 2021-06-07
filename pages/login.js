@@ -1,21 +1,36 @@
-import Layout from "../components/Layout";
-import MemberLogin from "../components/login/MemberLogin"
-import { useUserContext } from "../context/user";
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import BreadCrumb from "../components/utils/BreadCrumb";
+import { useUserContext } from '../context/user';
+import Layout from '../components/Layout';
+import BreadCrumb from '../components/utils/BreadCrumb';
+import MemberLogin from '../components/login/MemberLogin';
+import useFBLogin from '../hooks/useFBLogin';
 
 export default function login() {
   const { userData } = useUserContext();
   const router = useRouter();
-  if(Object.keys(userData).length) {
+  if (Object.keys(userData).length) {
     router.push('/');
   }
 
+  // FB登入與登出
+  const [response, handleFBLogin, handleFBLogout] = useFBLogin();
+  const [isFBLogin, setIsFBLogin] = useState(false);
+  useEffect(() => {
+    if (response && response === 'connected') {
+      setIsFBLogin(true);
+    } else {
+      setIsFBLogin(false);
+    }
+  }, [response]);
+
+
   return (
     <Layout siteTitle="幸福熟齡 - 會員登入">
-      {/* <!-- bread crumb --> */}
-      <BreadCrumb titles={[ { title: '會員登入', link: '/login' }]}/>
+      {console.log('isFBLogin', isFBLogin)}
 
+      {/* <!-- bread crumb --> */}
+      <BreadCrumb titles={[{ title: '會員登入', link: '/login' }]} />
 
       {/* <!-- main section--> */}
       <div>
@@ -27,8 +42,9 @@ export default function login() {
                 使用社群登入
               </h2>
               <div className="flex flex-col justify-center items-center space-y-5 py-20 px-3 lg:px-10 xl:px-20 2xl:px-32">
-                <a
-                  href="#"
+                <button
+                  type="button"
+                  onClick={handleFBLogin}
                   className="group flex items-center justify-center outline-none w-full xs:w-3/4 focus:outline-none"
                 >
                   <span className="bg-blue-900 h-10 w-10 flex items-center justify-center rounded-l-lg">
@@ -50,7 +66,34 @@ export default function login() {
                   <p className="flex-grow whitespace-nowrap h-10 px-5 bg-blue-600 group-hover:bg-blue-500 transition-all duration-200 ease-in-out rounded-r-lg text-white font-medium inline-flex items-center">
                     使用FACEBOOK帳號登入
                   </p>
-                </a>
+                </button>
+                {isFBLogin && (
+                  <button
+                    type="button"
+                    onClick={handleFBLogout}
+                    className="group flex items-center justify-center outline-none w-full xs:w-3/4 focus:outline-none"
+                  >
+                    <span className="bg-blue-900 h-10 w-10 flex items-center justify-center rounded-l-lg">
+                      <svg
+                        className="fill-current text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="13.45"
+                        height="18"
+                        viewBox="0 0 13.45 25"
+                      >
+                        <path
+                          id="Icon_zocial-facebook"
+                          data-name="Icon zocial-facebook"
+                          d="M13.257,13.425V8.651h3.851V6.25a6.283,6.283,0,0,1,1.687-4.425A5.366,5.366,0,0,1,22.882,0h3.825V4.775H22.882a.842.842,0,0,0-.674.412,1.675,1.675,0,0,0-.3,1.013V8.65h4.8v4.774h-4.8V25h-4.8V13.425Z"
+                          transform="translate(-13.257)"
+                        />
+                      </svg>
+                    </span>
+                    <p className="flex-grow whitespace-nowrap h-10 px-5 bg-blue-600 group-hover:bg-blue-500 transition-all duration-200 ease-in-out rounded-r-lg text-white font-medium inline-flex items-center">
+                      登出
+                    </p>
+                  </button>
+                )}
                 <a
                   href="#"
                   className="group flex items-center outline-none w-full xs:w-3/4 focus:outline-none"

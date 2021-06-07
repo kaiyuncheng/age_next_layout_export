@@ -79,7 +79,7 @@ const Header = () => {
               <Link href="/">
                 <a>
                   <h1 className="hidden">
-                    幸福熟齡 - 從今開始，一同勾勒熟齡的美好
+                    幸福熟齡 - 從今開始，勾勒美好第二人生
                   </h1>
                   <svg
                     className="h-12 md:h-24"

@@ -126,10 +126,10 @@ export default function article({ data, id }) {
   return (
     <Layout
       siteTitle={`幸福熟齡 - ${
-        articleData.article_info.title || '從今開始，一同勾勒熟齡的美好'
+        articleData.article_info.title || '從今開始，勾勒美好第二人生'
       }`}
-    > 
-    <Head>
+    >
+      <Head>
         {articleData.seo_meta.meta_description && (
           <meta
             itemProp="description"
@@ -227,7 +227,13 @@ export default function article({ data, id }) {
       )}
 
       {/* Dable 大家都在看 隱藏 下滑顯示 */}
-      <div className={clsx(isBack && "block", !isBack && "hidden", "dable_hidden_widget")}>
+      <div
+        className={clsx(
+          isBack && 'block',
+          !isBack && 'hidden',
+          'dable_hidden_widget',
+        )}
+      >
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 my-10">
           <div
             id="dablewidget_6oMmnEob_ml69ek74"
@@ -240,7 +246,7 @@ export default function article({ data, id }) {
         </div>
       </div>
       {/* Dable 大家都在看 隱藏 下滑顯示 */}
-      
+
       <RelatedArticleItem
         item={articleData}
         dableIds={{
