@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useUserContext } from '../context/user';
-import Layout from '../components/Layout';
-import BreadCrumb from '../components/utils/BreadCrumb';
-import MemberLogin from '../components/login/MemberLogin';
-import useFBLogin from '../hooks/useFBLogin';
+import { useUserContext } from '../../context/user';
+import Layout from '../../components/Layout';
+import BreadCrumb from '../../components/utils/BreadCrumb';
+import MemberLogin from '../../components/login/MemberLogin';
+
+// import useFBLogin from '../../hooks/useFBLogin';
+
 
 export default function login() {
   const { userData, setUserData } = useUserContext();
@@ -14,27 +16,27 @@ export default function login() {
   }
 
   // FB登入與登出
-  const [response, user, handleFBLogin, handleFBLogout] = useFBLogin();
-  const [isFBLogin, setIsFBLogin] = useState(false);
-  useEffect(() => {
-    if (response && response.status === 'connected') {
-      setIsFBLogin(true);
-      // setUserData(); 
-    } else {
-      setIsFBLogin(false);
-    }
-  }, [response]);
+  // const [response, user, handleFBLogin, handleFBLogout] = useFBLogin();
+  // const [isFBLogin, setIsFBLogin] = useState(false);
+  // useEffect(() => {
+  //   if (response && response.status === 'connected') {
+  //     setIsFBLogin(true);
+  //     // setUserData(); 
+  //   } else {
+  //     setIsFBLogin(false);
+  //   }
+  // }, [response]);
 
 
   return (
     <Layout
       siteTitle="幸福熟齡 - 會員登入"
-      isFBLogin={isFBLogin}
-      handleFBLogout={handleFBLogout}
+      // isFBLogin={isFBLogin}
+      // handleFBLogout={handleFBLogout}
     >
-      {console.log('isFBLogin', isFBLogin)}
+      {/* {console.log('isFBLogin', isFBLogin)}
       {console.log('response', response)}
-      {console.log('user', user)}
+      {console.log('user', user)} */}
 
       {/* <!-- bread crumb --> */}
       <BreadCrumb titles={[{ title: '會員登入', link: '/login' }]} />
@@ -51,7 +53,7 @@ export default function login() {
               <div className="flex flex-col justify-center items-center space-y-5 py-20 px-3 lg:px-10 xl:px-20 2xl:px-32">
                 <button
                   type="button"
-                  onClick={handleFBLogin}
+                  // onClick={handleFBLogin}
                   className="group flex items-center justify-center outline-none w-full xs:w-3/4 focus:outline-none"
                 >
                   <span className="bg-blue-900 h-10 w-10 flex items-center justify-center rounded-l-lg">
@@ -74,7 +76,7 @@ export default function login() {
                     使用FACEBOOK帳號登入
                   </p>
                 </button>
-                {isFBLogin && (
+                {/* {isFBLogin && (
                   <button
                     type="button"
                     onClick={handleFBLogout}
@@ -100,7 +102,7 @@ export default function login() {
                       登出
                     </p>
                   </button>
-                )}
+                )} */}
                 <a
                   href="#"
                   className="group flex items-center outline-none w-full xs:w-3/4 focus:outline-none"
