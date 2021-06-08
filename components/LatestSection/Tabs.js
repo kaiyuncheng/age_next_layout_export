@@ -3,8 +3,8 @@ import Link from "next/link";
 import clsx from "clsx";
 
 const Tabs = ({ tab1topics, tab2topics }) => {
-  const [topics0To3, setTopics1To3] = useState([]);
-  const [topics3To6, setTopics3To6] = useState([]);
+  const [topics0To3, setTopics1To3] = useState(null);
+  const [topics3To6, setTopics3To6] = useState(null);
   const [isHot, setIsHot] = useState(true);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const Tabs = ({ tab1topics, tab2topics }) => {
   return (
     <div className="latest_articles w-full md:w-1/2 rounded-lg rounded-br-5xl flex flex-col mb-10 md:mb-0">
       <div className="relative bg-secondary-medium rounded-t-lg h-10">
+        
         <button
           onClick={() => handleTabs('hot')}
           type="button"
@@ -36,7 +37,7 @@ const Tabs = ({ tab1topics, tab2topics }) => {
             'header_tab_left hover:h-11 hover:bg-primary-light hover:border inline-flex items-center justify-center absolute bottom-0 left-0 w-1/2 border border-secondary-medium  rounded-tl-lg rounded-tr-5xl text-center outline-none focus:outline-none transition-all duration-200 ease-linear',
           )}
         >
-          <span className="mr-2">
+          {topics0To3 && <span className="mr-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="26.256"
@@ -50,11 +51,12 @@ const Tabs = ({ tab1topics, tab2topics }) => {
                 transform="translate(-2.25 -9)"
               />
             </svg>
-          </span>
-          <h2 className="">熱門文章</h2>
-          <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-o"></span>
+          </span>}
+          {topics0To3 && <h2>熱門文章</h2>}
+          {topics0To3 && <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-o"></span>}
         </button>
-        <button
+        
+        {topics0To3 && <button
           onClick={() => handleTabs('news')}
           type="button"
           className={clsx(
@@ -108,9 +110,9 @@ const Tabs = ({ tab1topics, tab2topics }) => {
               </g>
             </svg>
           </span>
-          <h2 className="">最新文章</h2>
+           <h2>最新文章</h2>
           <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-o"></span>
-        </button>
+        </button>}
       </div>
 
       <div className="flex lg:flex-row flex-col flex-grow rounded-bl-lg rounded-br-5xl border-b border-r border-l border-secondary-medium shadow-md ">
@@ -128,6 +130,32 @@ const Tabs = ({ tab1topics, tab2topics }) => {
                 </Link>
               );
             })}
+
+          {!topics0To3 && (
+            <>
+              <div className="animate-pulse relative h-20 flex-grow flex items-center lg:last:border-none border-b border-secondary-medium border-dashed">
+                <span className="absolute left-1 top-1 w-8 h-8 bg-secondary-medium pl-2 text-white rounded-md rounded-br-5xl"></span>
+                <div className="pl-12 py-5 md:py-0 pr-3 w-full">
+                  <div className="bg-secondary-medium h-5 rounded-md mb-2"></div>
+                  <div className="bg-secondary-medium h-5 rounded-md"></div>
+                </div>
+              </div>
+              <div className="animate-pulse relative h-20 flex-grow flex items-center lg:last:border-none border-b border-secondary-medium border-dashed">
+                <span className="absolute left-1 top-1 w-8 h-8 bg-secondary-medium pl-2 text-white rounded-md rounded-br-5xl"></span>
+                <div className="pl-12 py-5 md:py-0 pr-3 w-full">
+                  <div className="bg-secondary-medium h-5 rounded-md mb-2"></div>
+                  <div className="bg-secondary-medium h-5 rounded-md"></div>
+                </div>
+              </div>
+              <div className="animate-pulse relative h-20 flex-grow flex items-center lg:last:border-none border-b border-secondary-medium border-dashed">
+                <span className="absolute left-1 top-1 w-8 h-8 bg-secondary-medium pl-2 text-white rounded-md rounded-br-5xl"></span>
+                <div className="pl-12 py-5 md:py-0 pr-3 w-full">
+                  <div className="bg-secondary-medium h-5 rounded-md mb-2"></div>
+                  <div className="bg-secondary-medium h-5 rounded-md"></div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
         <div className="lg:w-1/2 w-full flex flex-col flex-grow">
           {topics3To6 &&
@@ -143,6 +171,32 @@ const Tabs = ({ tab1topics, tab2topics }) => {
                 </Link>
               );
             })}
+
+          {!topics3To6 && (
+            <>
+              <div className="animate-pulse relative h-20 flex-grow flex items-center lg:last:border-none border-b border-secondary-medium border-dashed">
+                <span className="absolute left-1 top-1 w-8 h-8 bg-secondary-medium pl-2 text-white rounded-md rounded-br-5xl"></span>
+                <div className="pl-12 py-5 md:py-0 pr-3 w-full">
+                  <div className="bg-secondary-medium h-5 rounded-md mb-2"></div>
+                  <div className="bg-secondary-medium h-5 rounded-md"></div>
+                </div>
+              </div>
+              <div className="animate-pulse relative h-20 flex-grow flex items-center lg:last:border-none border-b border-secondary-medium border-dashed">
+                <span className="absolute left-1 top-1 w-8 h-8 bg-secondary-medium pl-2 text-white rounded-md rounded-br-5xl"></span>
+                <div className="pl-12 py-5 md:py-0 pr-3 w-full">
+                  <div className="bg-secondary-medium h-5 rounded-md mb-2"></div>
+                  <div className="bg-secondary-medium h-5 rounded-md"></div>
+                </div>
+              </div>
+              <div className="animate-pulse relative h-20 flex-grow flex items-center lg:last:border-none border-b border-secondary-medium border-dashed">
+                <span className="absolute left-1 top-1 w-8 h-8 bg-secondary-medium pl-2 text-white rounded-md rounded-br-5xl"></span>
+                <div className="pl-12 py-5 md:py-0 pr-3 w-full">
+                  <div className="bg-secondary-medium h-5 rounded-md mb-2"></div>
+                  <div className="bg-secondary-medium h-5 rounded-md"></div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -638,7 +638,7 @@ const MainSlider = ({ topics }) => {
                   <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
                   <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
                   <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
-                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
+                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-1/2"></div>
                   <div className="group absolute z-50 right-0 bottom-0 animate-pulse  bg-secondary-medium text-transparent py-2 px-10 inline-flex items-center justify-center rounded-br-full rounded-tl-full outline-none focus:outline-none">
                     <p className="mr-2 ">閱讀更多</p>
                     <div>
