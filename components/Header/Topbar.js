@@ -204,11 +204,6 @@ const Topbar = () => {
             </svg>
           </a>
 
-          {Object.keys(userData).length ? (
-            <p className="topbar_btn flex-grow md:px-4 h-full inline-flex items-center justify-center last:border-r">
-              {userData.username}, 您好
-            </p>
-          ) : null}
           <a
             className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
             href="https://www.facebook.com/thebetteraging/"
@@ -232,7 +227,7 @@ const Topbar = () => {
               >
                 會員中心
               </a>
-              <Link href="/logout">
+              <Link href="/member/logout">
                 <a className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r">
                   登出
                 </a>
@@ -240,7 +235,7 @@ const Topbar = () => {
             </>
           ) : (
             <>
-              {/* <Link href="/login">
+              {/* <Link href="/member/login">
                 <a className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r">
                   登入
                 </a>
