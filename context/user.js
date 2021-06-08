@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from "../components/utils/axios";
-
 const UserContext = createContext();
 
 export function UserContextWrapper({ children }) {
@@ -59,7 +58,7 @@ export function UserContextWrapper({ children }) {
       }
     }
   })
-  
+
   return (
     <UserContext.Provider value={{userData, setUserData}}>
       {children}

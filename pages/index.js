@@ -16,22 +16,24 @@ export default function Home() {
 
   return (
     <Layout siteTitle="幸福熟齡 - 從今開始，勾勒美好第二人生">
-      <MainSlider topics={mainData.top_banners} />
+      {mainData && <MainSlider topics={mainData.top_banners} />}
 
       <Fade bottom>
         <div className="latest border-box mb-10">
           <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row space-y-0 md:space-x-4 lg:space-x-10">
-            <Tabs
-              tab1topics={mainData.hot_article_banners}
-              tab2topics={mainData.new_article_banners}
-            />
+            {mainData && (
+              <Tabs
+                tab1topics={mainData.hot_article_banners}
+                tab2topics={mainData.new_article_banners}
+              />
+            )}
 
             {/* Mobile 首頁 廣告上 */}
             <div className="block sm:hidden flex justify-center items-center">
               <Banner adId="thebetteraging_mob_home_300x250_t" />
             </div>
 
-            <DigitalSlider topics={mainData.special_banners} />
+            {mainData && <DigitalSlider topics={mainData.special_banners} />}
           </div>
         </div>
       </Fade>
@@ -49,7 +51,8 @@ export default function Home() {
       <div className="sections mb-14">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
           <div className="relative w-full md:w-3/4 flex flex-col space-y-14 overflow-hidden pt-5">
-            {mainData.block_banners_list &&
+            {mainData &&
+              mainData.block_banners_list &&
               mainData.block_banners_list.map(block => {
                 return (
                   <Category
@@ -63,14 +66,15 @@ export default function Home() {
                 );
               })}
           </div>
-
-          <AsideSection
-            isHot={false}
-            isProject={false}
-            videoTopics={mainData.hot_videos}
-            newsTopics={mainData.article_news}
-            type={'home'}
-          />
+          {mainData && (
+            <AsideSection
+              isHot={false}
+              isProject={false}
+              videoTopics={mainData.hot_videos}
+              newsTopics={mainData.article_news}
+              type={'home'}
+            />
+          )}
         </div>
       </div>
 

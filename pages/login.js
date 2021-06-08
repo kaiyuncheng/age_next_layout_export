@@ -7,18 +7,19 @@ import MemberLogin from '../components/login/MemberLogin';
 import useFBLogin from '../hooks/useFBLogin';
 
 export default function login() {
-  const { userData } = useUserContext();
+  const { userData, setUserData } = useUserContext();
   const router = useRouter();
   if (Object.keys(userData).length) {
     router.push('/');
   }
 
   // FB登入與登出
-  const [response, handleFBLogin, handleFBLogout] = useFBLogin();
+  const [response, user, handleFBLogin, handleFBLogout] = useFBLogin();
   const [isFBLogin, setIsFBLogin] = useState(false);
   useEffect(() => {
-    if (response && response === 'connected') {
+    if (response && response.status === 'connected') {
       setIsFBLogin(true);
+      // setUserData(); 
     } else {
       setIsFBLogin(false);
     }
@@ -26,8 +27,14 @@ export default function login() {
 
 
   return (
-    <Layout siteTitle="幸福熟齡 - 會員登入">
+    <Layout
+      siteTitle="幸福熟齡 - 會員登入"
+      isFBLogin={isFBLogin}
+      handleFBLogout={handleFBLogout}
+    >
       {console.log('isFBLogin', isFBLogin)}
+      {console.log('response', response)}
+      {console.log('user', user)}
 
       {/* <!-- bread crumb --> */}
       <BreadCrumb titles={[{ title: '會員登入', link: '/login' }]} />

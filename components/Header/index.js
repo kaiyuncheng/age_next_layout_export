@@ -5,8 +5,9 @@ import { useMenuContext } from "../../context/menu";
 import Topbar from "./Topbar";
 import Banner from "../utils/googletags/Banner";
 import SearchBar from "../Header/SearchBar";
+// import TopbarLoginTest from "./TopbarLoginTest";
 
-const Header = () => {
+const Header = ({ isFBLogin, handleFBLogout }) => {
   const [menuState, setMenuState] = useState(false);
   const [top, setTop] = useState(true);
   const { menuData, setMenuData } = useMenuContext();
@@ -14,17 +15,17 @@ const Header = () => {
     const scrollHandler = () => {
       window.pageYOffset > 130 ? setTop(false) : setTop(true);
     };
-    window.addEventListener("scroll", scrollHandler);
-    return () => window.removeEventListener("scroll", scrollHandler);
+    window.addEventListener('scroll', scrollHandler);
+    return () => window.removeEventListener('scroll', scrollHandler);
   }, [top]);
 
   const toggleMenu = () => {
     setMenuState(!menuState);
   };
 
-  const toggleOpen = (id) => {
-    setMenuData((prevMenuData) =>
-      prevMenuData.map((item) => {
+  const toggleOpen = id => {
+    setMenuData(prevMenuData =>
+      prevMenuData.map(item => {
         if (item.category_id !== id) {
           return item;
         } else {
@@ -33,12 +34,13 @@ const Header = () => {
             open: !item.open,
           };
         }
-      })
+      }),
     );
   };
 
   return (
     <header className="shadow-md fixed top-0 z-50 w-full bg-white">
+      {/* <TopbarLoginTest isFBLogin={isFBLogin} handleFBLogout={handleFBLogout} /> */}
       <Topbar />
       <div className="mainbar">
         <div className="max-w-screen-2xl mx-auto px-2 md:px-4 lg:px-2 h-20 md:h-24 flex justify-between items-center">

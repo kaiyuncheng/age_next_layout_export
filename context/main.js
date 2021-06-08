@@ -3,16 +3,16 @@ import axios from "../components/utils/axios";
 
 const MainContext = createContext();
 
-const defaultMainData= {
-    top_banners: [],
-    new_article_banners: [],
-    hot_article_banners: [],
-    special_banners: [],
-    block_banners_list: [],
-    hot_videos: [],
-    article_news: [],
-    seo_meta: {}
-    }
+const defaultMainData = {
+  top_banners: '',
+  new_article_banners: '',
+  hot_article_banners: '',
+  special_banners: '',
+  block_banners_list: '',
+  hot_videos: '',
+  article_news: '',
+  seo_meta: '',
+};
 export function MainContextWrapper({ children }) {
   const [mainData, setMainData] = useState(defaultMainData);
 

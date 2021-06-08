@@ -624,6 +624,44 @@ const MainSlider = ({ topics }) => {
                 </div>
               );
             })}
+
+          {!topics && (
+            <div className="outline-none focus:outline-none">
+              <div className="flex flex-col lg:flex-row lg:h-auto rounded-bl-lg rounded-t-lg rounded-br-5xl shadow-lg bg-white mx-5 overflow-hidden">
+                <div className="animate-pulse bg-secondary-medium overflow-hidden relative w-full lg:w-1/2">
+                  <div className="aspect-h-3 aspect-w-4 h-full"></div>
+                </div>
+                <div className="main_slider_contents relative p-10 w-full lg:w-1/2">
+                  <div className="animate-pulse text-xl md:text-2xl font-bold mb-5 w-full bg-secondary-medium rounded-md h-10"></div>
+
+                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
+                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
+                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
+                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
+                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
+                  <div className="group absolute z-50 right-0 bottom-0 animate-pulse  bg-secondary-medium text-transparent py-2 px-10 inline-flex items-center justify-center rounded-br-full rounded-tl-full outline-none focus:outline-none">
+                    <p className="mr-2 ">閱讀更多</p>
+                    <div>
+                      <svg
+                        className="fill-current text-transparent"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="15"
+                        height="15"
+                        viewBox="0 0 13.503 23.619"
+                      >
+                        <path
+                          id="Icon_ionic-ios-arrow-back"
+                          data-name="Icon ionic-ios-arrow-back"
+                          d="M20.683,18,11.746,9.07a1.688,1.688,0,0,1,2.391-2.384L24.262,16.8a1.685,1.685,0,0,1,.049,2.327L14.144,29.32a1.688,1.688,0,0,1-2.391-2.384Z"
+                          transform="translate(-11.25 -6.194)"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </Slider>
       </div>
     </div>

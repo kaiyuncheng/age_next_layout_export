@@ -5,7 +5,7 @@ import DableFullCover from './utils/dable/DableFullCover';
 import Banner from "./utils/googletags/Banner";
 import GoTop from "./utils/GoTop";
 
-const Layout = ({ children, siteTitle }) => {
+const Layout = ({ children, siteTitle, isFBLogin, handleFBLogout }) => {
   return (
     <div>
       <Head>
@@ -57,7 +57,7 @@ const Layout = ({ children, siteTitle }) => {
 
       <GoTop />
       <DableFullCover />
-      <Header />
+      <Header isFBLogin={isFBLogin} handleFBLogout={handleFBLogout} />
       <main className="mt-28 md:mt-44 flex flex-col pb-14">{children}</main>
       <Footer />
       {/* 
@@ -68,7 +68,7 @@ const Layout = ({ children, siteTitle }) => {
       <div className="block md:hidden fixed bottom-0 left-0 border border-blue-500">
         <Banner adId="thebetteraging_mob_320x480_cover" />
       </div> */}
-      
+
       <Banner adId="thebetteraging_pc_in-cover" />
       <Banner adId="thebetteraging_mob_320x480_cover" />
     </div>

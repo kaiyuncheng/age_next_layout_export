@@ -41,29 +41,29 @@ export const getServerSideProps = async context => {
 
 const dableIds = [
   {
-    id: 'dablewidget_G7ZAB2oW_1XDPzZXe',
-    pc: 'G7ZAB2oW',
-    mo: '1XDPzZXe',
+    id: 'dablewidget_V7aNVKlB_ko84KeoE',
+    pc: 'V7aNVKlB',
+    mo: 'ko84KeoE',
   },
   {
-    id: 'dablewidget_GlGJyG7x_wXQODA7A',
-    pc: 'GlGJyG7x',
-    mo: 'wXQODA7A',
+    id: 'dablewidget_Ql9RE5X4_2XnxmM7d',
+    pc: 'Ql9RE5X4',
+    mo: '2XnxmM7d',
   },
   {
-    id: 'dablewidget_QXebqEoe_Gok6QnXv',
-    pc: 'QXebqEoe',
-    mo: 'Gok6QnXv',
+    id: 'dablewidget_2o2ZBJoe_xXAWam7G',
+    pc: '2o2ZBJoe',
+    mo: 'xXAWam7G',
   },
   {
-    id: 'dablewidget_jobZG4oW_zlvqbL78',
-    pc: 'jobZG4oW',
-    mo: 'zlvqbL78',
+    id: 'dablewidget_3o5bB17j_JXdW63lb',
+    pc: '3o5bB17j',
+    mo: 'JXdW63lb',
   },
   {
-    id: 'dablewidget_plqWKWoO_klrpe0om',
-    pc: 'plqWKWoO',
-    mo: 'klrpe0om',
+    id: 'dablewidget_GlYJMVXy_1oVPkLlP',
+    pc: 'GlYJMVXy',
+    mo: '1oVPkLlP',
   },
 ];
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 const useFBLogin = () => {
   const [response, setResponse] = useState();
+  const [user, setUser] = useState();
   
   useEffect(() => {
     // SDK 載入完後才會初始化 SDK
@@ -17,7 +18,8 @@ const useFBLogin = () => {
       //確認登入
       window.FB.getLoginStatus(function (response) {
         //console.log(response)
-        setResponse(response.status);
+        setResponse(response);
+        getUser();
       });
 
       window.FB.AppEvents.logPageView();
@@ -44,6 +46,7 @@ const useFBLogin = () => {
       { fields: 'id, name, email' },
       function (response) {
         console.log('user info', response);
+        setUser(response);
       },
     );
   }
@@ -51,7 +54,7 @@ const useFBLogin = () => {
   function handleFBLogin() {
     window.FB.login(
       function (response) {
-        setResponse(response.status);
+        setResponse(response);
         getUser();
       },
       { scope: 'public_profile, email' },
@@ -60,11 +63,11 @@ const useFBLogin = () => {
 
   function handleFBLogout() {
     window.FB.logout(function (response) {
-      setResponse(response.status);
+      setResponse(response);
     });
   }
 
-  return [response, handleFBLogin, handleFBLogout];
+  return [response, user, handleFBLogin, handleFBLogout];
 };
 
 export default useFBLogin;
