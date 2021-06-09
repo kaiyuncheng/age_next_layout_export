@@ -633,12 +633,11 @@ const MainSlider = ({ topics }) => {
                 </div>
                 <div className="main_slider_contents relative p-10 w-full lg:w-1/2">
                   <div className="animate-pulse text-xl md:text-2xl font-bold mb-5 w-full bg-secondary-medium rounded-md h-10"></div>
-
-                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
-                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
-                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
-                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-full"></div>
-                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-8 w-1/2"></div>
+                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-6 w-full"></div>
+                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-6 w-full"></div>
+                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-6 w-full"></div>
+                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-6 w-full"></div>
+                  <div className="animate-pulse bg-secondary-medium md:text-lg mb-2 rounded-md h-6 w-1/2"></div>
                   <div className="group absolute z-50 right-0 bottom-0 animate-pulse  bg-secondary-medium text-transparent py-2 px-10 inline-flex items-center justify-center rounded-br-full rounded-tl-full outline-none focus:outline-none">
                     <p className="mr-2 ">閱讀更多</p>
                     <div>

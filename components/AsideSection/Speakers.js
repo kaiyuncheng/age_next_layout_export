@@ -5,8 +5,8 @@ import Image from 'next/image';
 const Speakers = ({ title, topics }) => {
   return (
     <div className="speakers">
-      <div className="relative inline-flex items-center rounded-tl-lg bg-primary-light pl-5 py-2 w-full shadow-mdRight rounded-br-5xl overflow-hidden outline-none focus:outline-none mb-5">
-        {title === '最新快訊' ? (
+      <div className="relative inline-flex items-center rounded-tl-lg bg-primary-light pl-5 py-2 w-full shadow-md rounded-br-5xl overflow-hidden outline-none focus:outline-none mb-5 h-10">
+        { topics && (title === '最新快訊' ? (
           <span className="mr-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -84,9 +84,9 @@ const Speakers = ({ title, topics }) => {
               />
             </svg>
           </span>
-        )}
-        <h2>{title}</h2>
-        <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-o"></span>
+        ))}
+        {topics && <h2>{title}</h2>}
+        {topics && <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-o"></span>}
       </div>
 
       <div className="relative">
@@ -102,7 +102,6 @@ const Speakers = ({ title, topics }) => {
                   >
                     <a className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none">
                       <div className="block md:hidden overflow-hidden rounded-lg mb-2 aspect-w-4 aspect-h-3 relative">
-
                         <Image
                           className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                           src={
@@ -118,6 +117,19 @@ const Speakers = ({ title, topics }) => {
                       </p>
                     </a>
                   </Link>
+                );
+              })}
+
+            {!topics &&
+              [1, 2, 3, 4, 5].map((item, i) => {
+                return (
+                  <div
+                    key={i}
+                    className="animate-pulse group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
+                  >
+                    <div className="block md:hidden overflow-hidden rounded-lg mb-2 aspect-w-4 aspect-h-3 relative bg-secondary-medium"></div>
+                    <div className="text-sm md:text-base mb-1 bg-secondary-medium h-6 rounded-md md:mr-2"></div>
+                  </div>
                 );
               })}
           </div>

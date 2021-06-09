@@ -20,12 +20,12 @@ const ArticleListItem = ({ item, isSearch }) => {
 
       <div className="w-full md:w-2/3 p-5 md:px-5 md:py-0 flex flex-col">
         {isSearch && (
-          <p className="text-xs text-primary-dark mb-2">
+          <p className="text-sm text-primary-dark mb-2">
             {item.pubtime.slice(0, 10)}
           </p>
         )}
         <Link href={`/article/${item.url_query}`}>
-          <a className="block mb-5 outline-none focus:outline-none">
+          <a className="block mb-3 outline-none focus:outline-none">
             <h2 className="text-xl font-bold hover:text-gray-600">
               {item.title}
             </h2>

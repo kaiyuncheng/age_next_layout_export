@@ -6,7 +6,8 @@ import AsideSection from "../AsideSection";
 import Banner from "../utils/googletags/Banner";
 
 const RelatedArticleItem = ({ item, dableIds, i }) => {
-  const [fontSize, setFontSize] = useState('text-base');
+  const [fontSize, setFontSize] = useState('text-lg');
+  const [lineHeight, setLineHeight] = useState('leading-8');
   const [dableId, setDableId] = useState({
     id: 'dablewidget_goPjaJlQ_370NGgXx',
     pc: 'goPjaJlQ',
@@ -26,8 +27,9 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
     );
   }
 
-  const handleFontSize = size => {
+  const handleFontSize = (size, height) => {
     setFontSize(`text-${size}`);
+    setLineHeight(height);
   };
 
   useEffect(() => {
@@ -46,7 +48,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
           {/* <!-- main article --> */}
 
           <div className="article flex flex-col relative">
-            <h2 className="article_title md:text-2xl text-xl font-bold mb-5">
+            <h2 className="article_title md:text-3xl text-2xl font-bold mb-5 tracking-widest">
               {item.article_info.title}
             </h2>
             <div className="article_img relative rounded-lg overflow-hidden w-full mb-5">
@@ -74,25 +76,37 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
               />
             </div>
 
-            <div className="article_info mb-5">
+            <div className="article_info mb-5 text-base text-secondary-dark">
               {item.article_info.writers && (
-                <p className="inline text-sm text-gray-600 mr-4">
-                  撰文：{item.article_info.writers}
+                <p className="inline mr-4">
+                  撰文 |
+                  <span className="ml-1 text-gray-600 font-medium">
+                    {item.article_info.writers}
+                  </span>
                 </p>
               )}
               {item.article_info.release_date && (
-                <p className="inline text-sm text-gray-600 mr-4">
-                  日期：{item.article_info.release_date}
+                <p className="inline mr-4">
+                  日期 |
+                  <span className="ml-1 text-gray-600 font-medium">
+                    {item.article_info.release_date}
+                  </span>
                 </p>
               )}
               {item.category_info.name && (
-                <p className="inline text-sm text-gray-600 mr-4">
-                  分類：{item.category_info.name}
+                <p className="inline mr-4">
+                  分類 |
+                  <span className="ml-1 text-gray-600 font-medium">
+                    {item.category_info.name}
+                  </span>
                 </p>
               )}
               {item.article_info.picture_source && (
-                <p className="inline text-sm text-gray-600 mr-4">
-                  圖檔來源：{item.article_info.picture_source}
+                <p className="inline mr-4">
+                  圖檔來源 |
+                  <span className="ml-1 text-gray-600 font-medium">
+                    {item.article_info.picture_source}
+                  </span>
                 </p>
               )}
             </div>
@@ -101,13 +115,13 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                 <div className="article_font flex space-x-2 mb-4 xs:mb-0">
                   <button
                     type="button"
-                    onClick={() => handleFontSize('base')}
+                    onClick={() => handleFontSize('lg', 'leading-8')}
                     className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-base font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                   >
                     A
                   </button>
                   <button
-                    onClick={() => handleFontSize('lg')}
+                    onClick={() => handleFontSize('xl', 'leading-9')}
                     type="button"
                     className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-lg font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                   >
@@ -115,7 +129,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleFontSize('xl')}
+                    onClick={() => handleFontSize('2xl', 'leading-10')}
                     className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-2xl font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                   >
                     A
@@ -198,13 +212,20 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
             <div
               className={clsx(
                 fontSize,
-                'article_part bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
+                lineHeight,
+                'article_part tracking-widest bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
               )}
             >
               <p>{item.article_info.part_text}</p>
             </div>
 
-            <div className={clsx(fontSize, 'article_content mb-5')}>
+            <div
+              className={clsx(
+                fontSize,
+                lineHeight,
+                'article_content mb-5 tracking-widest',
+              )}
+            >
               <TextComponent />
             </div>
             {item.tag_info.length !== 0 && (
@@ -251,9 +272,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
 
       {/* PC 內頁 廣告 下 */}
 
-      <div
-        className="lg:block hidden max-w-screen-2xl px-4 lg:px-2"
-      >
+      <div className="lg:block hidden max-w-screen-2xl px-4 lg:px-2">
         <Banner
           adId={
             !i

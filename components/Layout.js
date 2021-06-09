@@ -35,11 +35,11 @@ const Layout = ({ children, siteTitle, isFBLogin, handleFBLogout }) => {
         <meta
           itemProp="image"
           property="og:image"
-          content="https://new-thebetteraging-kai.businesstoday.com.tw/images/og_image.jpg"
+          content="https://thebetteraging.businesstoday.com.tw/images/og_image.jpg"
         />
         <meta
           itemProp="image"
-          content="https://new-thebetteraging-kai.businesstoday.com.tw/images/og_image.jpg"
+          content="https://thebetteraging.businesstoday.com.tw/images/og_image.jpg"
         />
         <meta property="og:type" content="website" />
 
@@ -48,6 +48,8 @@ const Layout = ({ children, siteTitle, isFBLogin, handleFBLogout }) => {
           rel="icon"
           href="https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/favicon.ico"
         />
+
+        {/* 'https://thebetteraging.businesstoday.com.tw/images/favicon.ico'  */}
 
         {/* <script
           async="async"

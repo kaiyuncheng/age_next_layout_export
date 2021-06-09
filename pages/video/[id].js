@@ -40,7 +40,8 @@ export const getServerSideProps = async context => {
 
 export default function video({ data }) {
   const [videoData, setVideoData] = useState(data);
-  const [fontSize, setFontSize] = useState("text-base");
+  const [fontSize, setFontSize] = useState('text-lg');
+  const [lineHeight, setLineHeight] = useState('leading-8');
 
   useEffect(() => {
      setVideoData(data);
@@ -53,8 +54,9 @@ export default function video({ data }) {
     return <div dangerouslySetInnerHTML={createMarkup()} />;
   }
 
-  const handleFontSize = (size) => {
+  const handleFontSize = (size, height) => {
     setFontSize(`text-${size}`);
+    setLineHeight(height);
   };
 
   return (
@@ -145,7 +147,7 @@ export default function video({ data }) {
           <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden pb-5">
             {/* <!-- main video --> */}
             <div className="flex flex-col relative mb-14">
-              <h2 className="video_title md:text-2xl text-xl font-bold mb-5">
+              <h2 className="video_title md:text-3xl text-2xl font-bold mb-5 tracking-widest">
                 {videoData.mediaDetail.title}
               </h2>
               <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden relative mb-5">
@@ -159,20 +161,29 @@ export default function video({ data }) {
                   allowFullScreen
                 ></iframe>
               </div>
-              <div className="video_info mb-5">
+              <div className="video_info mb-5 text-base text-secondary-dark">
                 {videoData.mediaDetail.writers && (
-                  <p className="inline text-sm text-gray-600 mr-4">
-                    撰文：{videoData.mediaDetail.writers}
+                  <p className="inline mr-4">
+                    撰文 |
+                    <span className="ml-1 text-gray-600 font-medium">
+                      {videoData.mediaDetail.writers}
+                    </span>
                   </p>
                 )}
                 {videoData.mediaDetail.updated_at && (
-                  <p className="inline text-sm text-gray-600 mr-4">
-                    日期：{videoData.mediaDetail.updated_at}
+                  <p className="inline mr-4">
+                    日期 |
+                    <span className="ml-1 text-gray-600 font-medium">
+                      {videoData.mediaDetail.updated_at}
+                    </span>
                   </p>
                 )}
                 {videoData.mediaDetail.category_name && (
-                  <p className="inline text-sm text-gray-600 mr-4">
-                    分類：{videoData.mediaDetail.category_name}
+                  <p className="inline mr-4">
+                    分類 |
+                    <span className="ml-1 text-gray-600 font-medium">
+                      {videoData.mediaDetail.category_name}
+                    </span>
                   </p>
                 )}
               </div>
@@ -181,13 +192,13 @@ export default function video({ data }) {
                   <div className="video_font flex space-x-2 mb-4 xs:mb-0">
                     <button
                       type="button"
-                      onClick={() => handleFontSize('base')}
+                      onClick={() => handleFontSize('lg', 'leading-8')}
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-base font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
                       A
                     </button>
                     <button
-                      onClick={() => handleFontSize('lg')}
+                      onClick={() => handleFontSize('xl', 'leading-9')}
                       type="button"
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-lg font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
@@ -195,7 +206,7 @@ export default function video({ data }) {
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleFontSize('xl')}
+                      onClick={() => handleFontSize('2xl', 'leading-10')}
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-2xl font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
                       A
@@ -278,13 +289,15 @@ export default function video({ data }) {
               <div
                 className={clsx(
                   fontSize,
-                  'article_part bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
+                  lineHeight,
+                  'article_part tracking-widest bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
                 )}
               >
                 <p>{videoData.mediaDetail.introduction}</p>
               </div>
 
-              <div className={clsx(fontSize, 'mb-5')}>
+              <div className={clsx(fontSize,
+                lineHeight, 'article_content mb-5 tracking-widest')}>
                 <TextComponent />
               </div>
             </div>

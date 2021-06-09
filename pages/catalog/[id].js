@@ -131,7 +131,7 @@ export default function cataloglist({ data }) {
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
           <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden">
             {/* <!-- brand area --> */}
-            {isBrandOpen && (
+            {isBrandOpen && catalogData.brand_area && (
               <div className="flex items-center">
                 <div className="relative overflow-hidden rounded-lg w-20 h-14 mr-5">
                   <Image

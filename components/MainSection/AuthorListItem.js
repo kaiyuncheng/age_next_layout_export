@@ -7,20 +7,23 @@ const AuthorListItem = ({author}) => {
     <Fade bottom>
       <div className="w-full lg:w-1/2 px-4 pb-8">
         <div className="flex bg-white rounded-bl-lg rounded-t-lg rounded-br-5xl shadow-md border border-secondary-medium">
-          <div className="w-1/3 h-56 inline-flex items-center justify-center p-2 xs:p-5 lg:p-3">
-            <Image
-              className="w-full h-full object-cover rounded-full"
-              src={
-                author.image_url ||
-                'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
-              }
-              height={300}
-              width={300}
-              alt={author.name}
-            />
-          </div>
+          <Link href={`/authors/${author.id}`}>
+            <a className="w-2/5 h-auto md:h-56 inline-flex items-center justify-center p-2 xs:p-5">
+              <div className="relative group rounded-full overflow-hidden aspect-w-3 aspect-h-3 w-full md:w-full">
+                <Image
+                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
+                  src={
+                    author.image_url ||
+                    'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
+                  }
+                  alt={author.name}
+                  layout="fill"
+                />
+              </div>
+            </a>
+          </Link>
 
-          <div className="w-2/3 relative md:flex-grow flex flex-col lg:justify-center pt-5 px-5 pb-16">
+          <div className="w-3/5 relative md:flex-grow flex flex-col lg:justify-center pt-5 pr-5 pl-0 pb-16">
             <Link href={`/authors/${author.id}`}>
               <a className="hover:text-primary-dark">
                 <h2 className="text-lg font-medium mb-2">{author.name}</h2>

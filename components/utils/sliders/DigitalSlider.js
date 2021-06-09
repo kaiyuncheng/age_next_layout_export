@@ -106,6 +106,7 @@ const DigitalSlider = ({ topics }) => {
                   <div className="flex flex-col space-y-5 lg:space-y-0 lg:space-x-5 lg:flex-row h-full">
                     <a
                       href={item.hyperlink}
+                      target="_blank"
                       className="block relative z-10 rounded-lg overflow-hidden w-full h-52 xs:h-72 md:h-52 lg:w-1/2 lg:h-full outline-none focus:outline-none relative"
                     >
                       <Image
@@ -120,6 +121,7 @@ const DigitalSlider = ({ topics }) => {
                     </a>
                     <a
                       href={item.hyperlink}
+                      target="_blank"
                       className="block relative z-10 group w-full lg:w-1/2 outline-none focus:outline-none"
                     >
                       <h2 className="pb-2 mb-2 border-b border-secondary-medium border-dashed group-hover:text-primary-dark text-xl font-medium">

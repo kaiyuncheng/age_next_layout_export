@@ -5,7 +5,6 @@ import VideoListItem from './VideoListItem';
 const VideoList = ({ topics }) => {
   
   const [listItems, setListItems] = useState([]);
-  console.log(listItems, 'top');
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {

@@ -71,8 +71,8 @@ const VideoSlider = ({ topics }) => {
 
   return (
     <div className="videos relative -mb-5">
-      <div className="relative inline-flex items-center rounded-tl-lg bg-primary-light pl-5 py-2 w-full shadow-mdRight rounded-br-5xl overflow-hidden outline-none focus:outline-none mb-5">
-        <span className="mr-2">
+      <div className="relative inline-flex items-center rounded-tl-lg bg-primary-light pl-5 py-2 w-full shadow-md rounded-br-5xl overflow-hidden outline-none focus:outline-none mb-5 h-10">
+        {topics && <span className="mr-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="15"
@@ -86,9 +86,9 @@ const VideoSlider = ({ topics }) => {
               transform="translate(-3 -3)"
             />
           </svg>
-        </span>
-        <h2>Hot影音</h2>
-        <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-t"></span>
+        </span>}
+        {topics && <h2>Hot影音</h2>}
+       {topics &&  <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-t"></span>}
       </div>
 
       <div className="video_slider relative overflow-hidden">
@@ -101,8 +101,47 @@ const VideoSlider = ({ topics }) => {
                   className="bg-white outline-none focus:outline-none "
                 >
                   <div className="relative flex flex-col px-2 z-10">
-                    <Link href={`/video/${item.url_query}`}>
-                      <a className="group block relative w-full mb-5 outline-none focus:outline-none">
+                    {item.internal ? (
+                      <Link href={`/video/${item.video_id}`}>
+                        <a className="group block relative w-full mb-5 outline-none focus:outline-none">
+                          <div className="rounded-lg overflow-hidden w-full h-48 xs:h-72 sm:h-80 md:h-40 xl:h-56 mb-5 relative">
+                            <Image
+                              className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
+                              src={item.image_url}
+                              alt={item.title}
+                              layout="fill"
+                            />
+
+                            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out fill-current text-white opacity-60 group-hover:opacity-95 z-40">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="48.405"
+                                height="48.405"
+                                viewBox="0 0 48.405 48.405"
+                              >
+                                <path
+                                  id="Icon_awesome-play-circle"
+                                  data-name="Icon awesome-play-circle"
+                                  d="M24.765.562a24.2,24.2,0,1,0,24.2,24.2A24.2,24.2,0,0,0,24.765.562ZM36.056,27.107,18.88,36.964A2.346,2.346,0,0,1,15.4,34.915v-20.3a2.348,2.348,0,0,1,3.484-2.049L36.056,23.008A2.35,2.35,0,0,1,36.056,27.107Z"
+                                  transform="translate(-0.563 -0.563)"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+
+                          <div className=" px-2 pb-5 outline-none focus:outline-none">
+                            <p className="text-base group-hover:text-gray-600">
+                              {item.title}
+                            </p>
+                          </div>
+                        </a>
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.hyperlink}
+                        target="_blank"
+                        className="group block relative w-full mb-5 outline-none focus:outline-none"
+                      >
                         <div className="rounded-lg overflow-hidden w-full h-48 xs:h-72 sm:h-80 md:h-40 xl:h-56 mb-5 relative">
                           <Image
                             className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
@@ -134,11 +173,42 @@ const VideoSlider = ({ topics }) => {
                           </p>
                         </div>
                       </a>
-                    </Link>
+                    )}
                   </div>
                 </div>
               );
             })}
+
+          {!topics && (
+            <div className="animate-pulse bg-white outline-none focus:outline-none">
+              <div className="relative flex flex-col px-2 z-10">
+                <div className="group block relative w-full mb-5 outline-none focus:outline-none">
+                  <div className="rounded-lg overflow-hidden w-full h-48 xs:h-72 sm:h-80 md:h-40 xl:h-56 mb-5 relative bg-secondary-medium">
+                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out fill-current text-white opacity-60 group-hover:opacity-95 z-40">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="48.405"
+                        height="48.405"
+                        viewBox="0 0 48.405 48.405"
+                      >
+                        <path
+                          id="Icon_awesome-play-circle"
+                          data-name="Icon awesome-play-circle"
+                          d="M24.765.562a24.2,24.2,0,1,0,24.2,24.2A24.2,24.2,0,0,0,24.765.562ZM36.056,27.107,18.88,36.964A2.346,2.346,0,0,1,15.4,34.915v-20.3a2.348,2.348,0,0,1,3.484-2.049L36.056,23.008A2.35,2.35,0,0,1,36.056,27.107Z"
+                          transform="translate(-0.563 -0.563)"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+
+                  <div className=" px-2 pb-5 outline-none focus:outline-none">
+                    <div className="text-base rounded-md bg-secondary-medium w-3/4 h-6">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </Slider>
       </div>
 
