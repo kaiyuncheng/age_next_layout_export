@@ -7,7 +7,6 @@ import Banner from "../utils/googletags/Banner";
 
 const RelatedArticleItem = ({ item, dableIds, i }) => {
   const [fontSize, setFontSize] = useState('text-lg');
-  const [lineHeight, setLineHeight] = useState('leading-8');
   const [dableId, setDableId] = useState({
     id: 'dablewidget_goPjaJlQ_370NGgXx',
     pc: 'goPjaJlQ',
@@ -27,9 +26,8 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
     );
   }
 
-  const handleFontSize = (size, height) => {
+  const handleFontSize = (size) => {
     setFontSize(`text-${size}`);
-    setLineHeight(height);
   };
 
   useEffect(() => {
@@ -80,7 +78,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
               {item.article_info.writers && (
                 <p className="inline mr-4">
                   撰文 |
-                  <span className="ml-1 text-gray-600 font-medium">
+                  <span className="ml-1 text-gray-500">
                     {item.article_info.writers}
                   </span>
                 </p>
@@ -88,7 +86,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
               {item.article_info.release_date && (
                 <p className="inline mr-4">
                   日期 |
-                  <span className="ml-1 text-gray-600 font-medium">
+                  <span className="ml-1 text-gray-500">
                     {item.article_info.release_date}
                   </span>
                 </p>
@@ -96,7 +94,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
               {item.category_info.name && (
                 <p className="inline mr-4">
                   分類 |
-                  <span className="ml-1 text-gray-600 font-medium">
+                  <span className="ml-1 text-gray-500">
                     {item.category_info.name}
                   </span>
                 </p>
@@ -104,7 +102,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
               {item.article_info.picture_source && (
                 <p className="inline mr-4">
                   圖檔來源 |
-                  <span className="ml-1 text-gray-600 font-medium">
+                  <span className="ml-1 text-gray-500">
                     {item.article_info.picture_source}
                   </span>
                 </p>
@@ -115,13 +113,13 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                 <div className="article_font flex space-x-2 mb-4 xs:mb-0">
                   <button
                     type="button"
-                    onClick={() => handleFontSize('lg', 'leading-8')}
+                    onClick={() => handleFontSize('lg')}
                     className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-base font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                   >
                     A
                   </button>
                   <button
-                    onClick={() => handleFontSize('xl', 'leading-9')}
+                    onClick={() => handleFontSize('xl')}
                     type="button"
                     className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-lg font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                   >
@@ -129,7 +127,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleFontSize('2xl', 'leading-10')}
+                    onClick={() => handleFontSize('2xl')}
                     className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-2xl font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                   >
                     A
@@ -212,8 +210,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
             <div
               className={clsx(
                 fontSize,
-                lineHeight,
-                'article_part tracking-widest bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
+                'article_part leading-relaxed tracking-widest bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
               )}
             >
               <p>{item.article_info.part_text}</p>
@@ -222,8 +219,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
             <div
               className={clsx(
                 fontSize,
-                lineHeight,
-                'article_content mb-5 tracking-widest',
+                'article_content leading-relaxed mb-5 tracking-widest',
               )}
             >
               <TextComponent />

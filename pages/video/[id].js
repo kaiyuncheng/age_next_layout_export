@@ -41,7 +41,7 @@ export const getServerSideProps = async context => {
 export default function video({ data }) {
   const [videoData, setVideoData] = useState(data);
   const [fontSize, setFontSize] = useState('text-lg');
-  const [lineHeight, setLineHeight] = useState('leading-8');
+  const [lineHeight, setLineHeight] = useState('leading-relaxed');
 
   useEffect(() => {
      setVideoData(data);
@@ -192,7 +192,7 @@ export default function video({ data }) {
                   <div className="video_font flex space-x-2 mb-4 xs:mb-0">
                     <button
                       type="button"
-                      onClick={() => handleFontSize('lg', 'leading-8')}
+                      onClick={() => handleFontSize('lg', 'leading-relaxed')}
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-base font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
                       A
