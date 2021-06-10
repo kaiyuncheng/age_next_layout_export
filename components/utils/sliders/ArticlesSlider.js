@@ -117,14 +117,16 @@ const MainSlider = ({ topics }) => {
                           />
                         </div>
 
-                        <span
-                          className={clsx(
-                            markColor,
-                            'absolute left-1 top-1 pl-3 pr-5 py-1 text-white rounded-md rounded-br-5xl',
-                          )}
-                        >
-                          {item.mark_name}
-                        </span>
+                        {item.mark_name && (
+                          <span
+                            className={clsx(
+                              markColor,
+                              'absolute left-1 top-1 pl-3 pr-5 py-1 text-white rounded-md rounded-br-5xl',
+                            )}
+                          >
+                            {item.mark_name}
+                          </span>
+                        )}
                       </a>
                     </Link>
 
