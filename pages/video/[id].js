@@ -41,7 +41,6 @@ export const getServerSideProps = async context => {
 export default function video({ data }) {
   const [videoData, setVideoData] = useState(data);
   const [fontSize, setFontSize] = useState('text-lg');
-  const [lineHeight, setLineHeight] = useState('leading-relaxed');
 
   useEffect(() => {
      setVideoData(data);
@@ -54,9 +53,8 @@ export default function video({ data }) {
     return <div dangerouslySetInnerHTML={createMarkup()} />;
   }
 
-  const handleFontSize = (size, height) => {
+  const handleFontSize = size => {
     setFontSize(`text-${size}`);
-    setLineHeight(height);
   };
 
   return (
@@ -165,7 +163,7 @@ export default function video({ data }) {
                 {videoData.mediaDetail.writers && (
                   <p className="inline mr-4">
                     撰文 |
-                    <span className="ml-1 text-gray-600 font-medium">
+                    <span className="ml-1 text-gray-500">
                       {videoData.mediaDetail.writers}
                     </span>
                   </p>
@@ -173,7 +171,7 @@ export default function video({ data }) {
                 {videoData.mediaDetail.updated_at && (
                   <p className="inline mr-4">
                     日期 |
-                    <span className="ml-1 text-gray-600 font-medium">
+                    <span className="ml-1 text-gray-500">
                       {videoData.mediaDetail.updated_at}
                     </span>
                   </p>
@@ -181,7 +179,7 @@ export default function video({ data }) {
                 {videoData.mediaDetail.category_name && (
                   <p className="inline mr-4">
                     分類 |
-                    <span className="ml-1 text-gray-600 font-medium">
+                    <span className="ml-1 text-gray-500">
                       {videoData.mediaDetail.category_name}
                     </span>
                   </p>
@@ -192,13 +190,13 @@ export default function video({ data }) {
                   <div className="video_font flex space-x-2 mb-4 xs:mb-0">
                     <button
                       type="button"
-                      onClick={() => handleFontSize('lg', 'leading-relaxed')}
+                      onClick={() => handleFontSize('lg')}
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-base font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
                       A
                     </button>
                     <button
-                      onClick={() => handleFontSize('xl', 'leading-9')}
+                      onClick={() => handleFontSize('xl')}
                       type="button"
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-lg font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
@@ -206,7 +204,7 @@ export default function video({ data }) {
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleFontSize('2xl', 'leading-10')}
+                      onClick={() => handleFontSize('2xl')}
                       className="text-gray-600 hover:bg-primary-light border border-primary-dark rounded-md h-8 w-8 flex items-center justify-center text-2xl font-medium transition-all duration-200 ease-in-out focus:outline-none outline-none"
                     >
                       A
@@ -289,8 +287,7 @@ export default function video({ data }) {
               <div
                 className={clsx(
                   fontSize,
-                  lineHeight,
-                  'article_part tracking-widest bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
+                  'article_part leading-relaxed tracking-widest bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
                 )}
               >
                 <p>{videoData.mediaDetail.introduction}</p>
@@ -299,8 +296,7 @@ export default function video({ data }) {
               <div
                 className={clsx(
                   fontSize,
-                  lineHeight,
-                  'article_content mb-5 tracking-widest',
+                  'article_content leading-relaxed mb-5 tracking-widest',
                 )}
               >
                 <TextComponent />
