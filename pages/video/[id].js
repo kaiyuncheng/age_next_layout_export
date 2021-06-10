@@ -147,7 +147,7 @@ export default function video({ data }) {
           <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden pb-5">
             {/* <!-- main video --> */}
             <div className="flex flex-col relative mb-14">
-              <h2 className="video_title md:text-3xl text-2xl font-bold mb-5 tracking-widest">
+              <h2 className="video_title md:text-3xl text-2xl font-bold mb-5 tracking-widest md:leading-10">
                 {videoData.mediaDetail.title}
               </h2>
               <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden relative mb-5">
@@ -296,8 +296,13 @@ export default function video({ data }) {
                 <p>{videoData.mediaDetail.introduction}</p>
               </div>
 
-              <div className={clsx(fontSize,
-                lineHeight, 'article_content mb-5 tracking-widest')}>
+              <div
+                className={clsx(
+                  fontSize,
+                  lineHeight,
+                  'article_content mb-5 tracking-widest',
+                )}
+              >
                 <TextComponent />
               </div>
             </div>

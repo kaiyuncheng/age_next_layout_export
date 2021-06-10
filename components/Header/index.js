@@ -361,12 +361,12 @@ const Header = ({ isFBLogin, handleFBLogout }) => {
                         return (
                           <li
                             key={i}
-                            className="border-b last:border-none border-primary-light"
+                            className="border-b last:border-none border-primary-light hover:bg-primary-light md:p-2 xl:p-0"
                           >
                             {item.link.charAt(0) === '/' ||
                             item.link == false ? (
                               <Link href={item.link || '/'}>
-                                <a className="link_1 relative flex items-center justify-center w-full h-10 transition duration-300 hover:bg-primary-light hover:overflow-hidden outline-none focus:outline-none">
+                                <a className="link_1 relative flex items-center justify-center w-full h-10 transition duration-300 hover:overflow-hidden outline-none focus:outline-none text-center">
                                   <h2>{item.name}</h2>
                                 </a>
                               </Link>
@@ -375,7 +375,7 @@ const Header = ({ isFBLogin, handleFBLogout }) => {
                                 href={item.link}
                                 rel="noreferrer"
                                 target="_blank"
-                                className="relative flex items-center justify-center w-full h-10 transition duration-300 hover:bg-primary-light hover:overflow-hidden outline-none focus:outline-none"
+                                className="relative flex items-center justify-center w-full h-10 transition duration-300 hover:overflow-hidden outline-none focus:outline-none text-center"
                               >
                                 <h2>{item.name}</h2>
                               </a>

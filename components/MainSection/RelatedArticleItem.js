@@ -48,7 +48,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
           {/* <!-- main article --> */}
 
           <div className="article flex flex-col relative">
-            <h2 className="article_title md:text-3xl text-2xl font-bold mb-5 tracking-widest">
+            <h2 className="article_title md:text-3xl text-2xl font-bold mb-5 tracking-widest md:leading-10">
               {item.article_info.title}
             </h2>
             <div className="article_img relative rounded-lg overflow-hidden w-full mb-5">
