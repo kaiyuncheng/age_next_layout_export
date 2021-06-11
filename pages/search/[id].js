@@ -46,7 +46,7 @@ export const getServerSideProps = async context => {
 
 const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
   const router = useRouter();
-  const [resultData, setResultData] = useState([]);
+  const [resultData, setResultData] = useState('');
   const [resultNewData, setResultNewData] = useState([]);
   const [newKeywords, setNewKeywords] = useState('');
   const [newCount, setNewCount] = useState('');
@@ -435,7 +435,12 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
               {articleData.length !== 0 &&
                 articleData[isPage - 1].map((item, i) => {
                   return (
-                    <ArticleListItem key={i} item={item} isSearch={true} />
+                    <ArticleListItem
+                      key={i + 1}
+                      item={item}
+                      isSearch={true}
+                      keywords={keywords}
+                    />
                   );
                 })}
 
@@ -559,6 +564,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
                       articleData.map((item, i) => {
                         return (
                           <button
+                            key={i}
                             onClick={() => {
                               setIsPage(i + 1);
                               return window.scrollTo({
@@ -635,6 +641,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
                             .map((item, i) => {
                               return (
                                 <button
+                                  key={i}
                                   onClick={() => {
                                     setIsPage(i + 3);
                                     return window.scrollTo({

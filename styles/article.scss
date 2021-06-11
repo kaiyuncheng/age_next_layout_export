@@ -8,6 +8,12 @@
     font-weight: 800 !important;
     color: #EC6009 !important;
     margin: 0 0 1.25rem 0;
+
+    * {
+      font-size: 28px !important;
+      font-weight: 800 !important;
+      color: #EC6009 !important;
+    }
   }
 
   h2 {
@@ -15,6 +21,12 @@
     font-weight: 800 !important;
     color: #EC6009 !important;
     margin: 0 0 1.25rem 0;
+
+    *{
+      font-size: 24px !important;
+      font-weight: 800 !important;
+      color: #EC6009 !important;
+    }
   }
 
   h3 {
@@ -22,6 +34,12 @@
     font-weight: 800 !important;
     color: #EC6009 !important;
     margin: 0 0 1.25rem 0;
+
+    * {
+      font-size: 20px !important;
+      font-weight: 800 !important;
+      color: #EC6009 !important;
+    }
   }
 
   h4 {
@@ -29,6 +47,12 @@
     font-weight: 800 !important;
     color: #EC6009 !important;
     margin: 0 0 1.25rem 0;
+
+    * {
+      font-size: 16px !important;
+      font-weight: 800 !important;
+      color: #EC6009 !important;
+    }
   }
 
   h5 {
@@ -36,6 +60,12 @@
     font-weight: 800 !important;
     color: #EC6009 !important;
     margin: 0 0 1.25rem 0;
+
+    * {
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      color: #EC6009 !important;
+    }
   }
 
   p {
@@ -48,7 +78,38 @@
     a {
       color: #EC6009 !important;
       font-weight: 500 !important;
-      text-decoration: underline;
+      text-decoration: underline !important;
+
+      &:hover{
+        color: #EE7C3B !important;
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  strong span {
+    color: #EC6009 !important;
+  }
+
+  a {
+    color: #EC6009 !important;
+    font-weight: 500 !important;
+    text-decoration: underline !important;
+    
+    &:hover {
+      color: #EE7C3B !important;
+    }
+    
+    * {
+      color: #EC6009 !important;
+      font-weight: 500 !important;
+
+      &:hover {
+        color: #EE7C3B !important;
+      }
     }
   }
 
@@ -77,7 +138,6 @@
 }
 
 .article_content.text-xl {
-
   div {
     margin: 0 0 1.5rem 0;
   }
@@ -85,26 +145,46 @@
   h1 {
     font-size: 32px !important;
     margin: 0 0 1.5rem 0;
+
+    * {
+      font-size: 32px !important;
+    }
   }
 
   h2 {
     font-size: 28px !important;
     margin: 0 0 1.5rem 0;
+
+    * {
+      font-size: 28px !important;
+    }
   }
 
   h3 {
     font-size: 24px !important;
     margin: 0 0 1.5rem 0;
+
+    * {
+      font-size: 24px !important;
+    }
   }
 
   h4 {
     font-size: 20px !important;
     margin: 0 0 1.5rem 0;
+
+    * {
+      font-size: 20px !important;
+    }
   }
 
   h5 {
     font-size: 16px !important;
     margin: 0 0 1.5rem 0;
+
+    * {
+      font-size: 16px !important;
+    }
   }
 
   p {
@@ -113,10 +193,11 @@
 
   blockquote {
     margin: 0 0 1.5rem 0;
+    p {
+      margin: 0;
+    }
   }
 }
-
-
 
 .article_content.text-2xl {
   div {
@@ -126,26 +207,46 @@
   h1 {
     font-size: 36px !important;
     margin: 0 0 1.75rem 0;
+
+    * {
+      font-size: 36px !important;
+    }
   }
 
   h2 {
     font-size: 32px !important;
     margin: 0 0 1.75rem 0;
+
+    * {
+      font-size: 32px !important;
+    }
   }
 
   h3 {
     font-size: 28px !important;
     margin: 0 0 1.75rem 0;
+
+    * {
+      font-size: 28px !important;
+    }
   }
 
   h4 {
     font-size: 24px !important;
     margin: 0 0 1.75rem 0;
+
+    * {
+      font-size: 24px !important;
+    }
   }
 
   h5 {
     font-size: 20px !important;
     margin: 0 0 1.75rem 0;
+
+    * {
+      font-size: 20px !important;
+    }
   }
 
   p {
@@ -154,6 +255,9 @@
 
   blockquote {
     margin: 0 0 1.75rem 0;
+    p {
+      margin: 0;
+    }
   }
 
 }

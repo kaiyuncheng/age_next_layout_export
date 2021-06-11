@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const ArticleListItem = ({ item, isSearch }) => {
+const ArticleListItem = ({ item, isSearch, keywords }) => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+
+  useEffect(() => {
+    if (isSearch && keywords && item.title && item.title.includes(keywords)) {
+      setTitle(item.title.split(keywords));
+    }
+    if (
+      isSearch &&
+      keywords &&
+      item.minor_title &&
+      item.minor_title.includes(keywords)
+    ) {
+      setContent(item.minor_title.split(keywords));
+    }
+  }, [keywords, item]);
+
   return (
     <div className="flex md:flex-row flex-col relative">
       <Link href={`/article/${item.url_query}`}>
@@ -26,13 +43,53 @@ const ArticleListItem = ({ item, isSearch }) => {
         )}
         <Link href={`/article/${item.url_query}`}>
           <a className="block mb-3 outline-none focus:outline-none">
-            <h2 className="text-xl font-bold hover:text-gray-600">
-              {item.title}
-            </h2>
+            {isSearch && item.title.includes(keywords) ? (
+              <h2 className="text-xl font-bold hover:text-gray-600">
+                {title &&
+                  title.map((word, i) => {
+                    if (i === title.length - 1) {
+                      return <span key={i + 1}>{word}</span>;
+                    } else {
+                      return (
+                        <React.Fragment key={i + 1}>
+                          <span>{word}</span>
+                          <span className="text-primary-dark bg-primary-light">
+                            {keywords}
+                          </span>
+                        </React.Fragment>
+                      );
+                    }
+                  })}
+              </h2>
+            ) : (
+              <h2 className="text-xl font-bold hover:text-gray-600">
+                {item.title}
+              </h2>
+            )}
           </a>
         </Link>
 
-        <p className="text-base mb-10 line-clamp-5">{item.minor_title}</p>
+        {isSearch && item.minor_title.includes(keywords) ? (
+          <p className="text-base mb-10 line-clamp-5">
+            {content &&
+              content.map((word, i) => {
+                if (i === content.length - 1) {
+                  return <span key={i + 1}>{word}</span>;
+                } else {
+                  return (
+                    <React.Fragment key={i + 1}>
+                      <span>{word}</span>
+                      <span className="text-primary-dark bg-primary-light">
+                        {keywords}
+                      </span>
+                    </React.Fragment>
+                  );
+                }
+              })}
+          </p>
+        ) : (
+          <p className="text-base mb-10 line-clamp-5"> {item.minor_title}</p>
+        )}
 
         <Link href={`/article/${item.url_query}`}>
           <a className="group absolute bottom-0 right-5 z-30 text-gray-800 hover:text-primary-dark inline-flex items-center justify-center transition-all duration-300 ease-in-out outline-none focus:outline-none">

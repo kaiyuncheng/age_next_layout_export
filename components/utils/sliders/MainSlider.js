@@ -594,7 +594,7 @@ const MainSlider = ({ topics }) => {
                         </a>
                       </Link>
 
-                      <p className="text-base md:text-lg mb-10">
+                      <p className="text-base md:text-lg mb-10 line-clamp-10">
                         {item.minor_title}
                       </p>
 

@@ -63,6 +63,14 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
     },
+    extend: {
+      lineClamp: {
+        7: '7',
+        8: '8',
+        9: '9',
+        10: '10',
+      }
+    },
     spacing: {
       px: '1px',
       0: '0px',

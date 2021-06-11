@@ -9,7 +9,7 @@ const Layout = ({ children, siteTitle, isFBLogin, handleFBLogout }) => {
   return (
     <div>
       <Head>
-        <meta property="fb:admins" content="100000235436113" />
+        {/* <meta property="fb:admins" content="100000235436113" /> */}
         <meta name="title" content={siteTitle} />
         <meta
           itemProp="description"

@@ -125,7 +125,9 @@ const Tabs = ({ tab1topics, tab2topics }) => {
                     <span className="absolute left-1 top-1 w-8 h-8 bg-primary-dark pl-2 text-white rounded-md rounded-br-5xl">
                       {i + 1}
                     </span>
-                    <h2 className="pl-12 py-5 md:py-0 pr-3">{item.title}</h2>
+                    <h2 className="pl-12 py-5 md:py-0 pr-3 line-clamp-3">
+                      {item.title}
+                    </h2>
                   </a>
                 </Link>
               );
@@ -166,7 +168,7 @@ const Tabs = ({ tab1topics, tab2topics }) => {
                     <span className="absolute left-1 top-1 w-8 h-8 bg-secondary-dark pl-2 text-white rounded-md rounded-br-5xl">
                       {i + 4}
                     </span>
-                    <h2 className="pl-12 py-5 md:py-0 pr-3">{item.title}</h2>
+                    <h2 className="pl-12 py-5 md:py-0 pr-3 line-clamp-3">{item.title}</h2>
                   </a>
                 </Link>
               );
