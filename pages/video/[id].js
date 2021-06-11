@@ -13,7 +13,7 @@ export const getServerSideProps = async context => {
   try {
     const { data } = await axios.get(`Media/detail/${id}`);
 
-    if (!data.data) {
+    if (!data.data || !data.data.mediaDetail.full_text_content) {
       return {
         redirect: {
           destination: '/',

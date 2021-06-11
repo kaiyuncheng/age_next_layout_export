@@ -42,15 +42,14 @@ const Layout = ({ children, siteTitle, isFBLogin, handleFBLogout }) => {
           content="https://thebetteraging.businesstoday.com.tw/images/og_image.jpg"
         />
         <meta property="og:type" content="website" />
-
         <title>{siteTitle}</title>
         <link
           rel="icon"
-          href="https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/favicon.ico"
+          href="https://new-thebetteraging-dev.businesstoday.com.tw/images/favicon.ico"
         />
-
+        {/* 'https://new-thebetteraging-dev.businesstoday.com.tw/images/favicon.ico'  */}
         {/* 'https://thebetteraging.businesstoday.com.tw/images/favicon.ico'  */}
-
+        {/* https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/favicon.ico */}
         {/* <script
           async="async"
           src="https://www.googletagservices.com/tag/js/gpt.js"

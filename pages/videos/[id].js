@@ -14,7 +14,7 @@ export const getServerSideProps = async context => {
   try {
     const { data } = await axios.get(`Media/list`);
 
-    if (!data.data) {
+    if (!data.data || !data.media_category_top || data.media_category_lv1.length === 0 || data.media_category.length === 0) {
       return {
         redirect: {
           destination: '/',
@@ -45,7 +45,7 @@ export default function videos({ data, id }) {
   const [menuTag, setMenuTag] = useState('1');
   const [menuName, setMenuName] = useState('全部');
   const [videosMain, setVideosMain] = useState(
-    videosData.media_category_top[0],
+    videosData.media_category_top[0]
   );
   const [videosList, setVideosList] = useState();
 
