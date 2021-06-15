@@ -11,9 +11,13 @@ import RelatedSlider from "../../components/utils/sliders/RelatedSlider";
 export const getServerSideProps = async context => {
   const { id } = context.query;
   try {
-    const { data } = await axios.get(`Media/detail/${id}`);
+    const [videoDataRes, videosDataRes] = await Promise.all([
+      axios.get(`Media/detail/${id}`),
+      axios.get(`Media/list`),
+    ]);
 
-    if (!data.data || !data.data.mediaDetail.full_text_content) {
+
+    if (!videoDataRes.data.data || !videosDataRes.data.data) {
       return {
         redirect: {
           destination: '/',
@@ -24,7 +28,8 @@ export const getServerSideProps = async context => {
 
     return {
       props: {
-        data: data.data,
+        data: videoDataRes.data.data,
+        categoryData: videosDataRes.data.data,
       },
     };
   } catch (error) {
@@ -38,16 +43,30 @@ export const getServerSideProps = async context => {
   }
 };
 
-export default function video({ data }) {
+export default function video({ data, categoryData }) {
   const [videoData, setVideoData] = useState(data);
+  const [category, setCategory] = useState(categoryData);
+  const [newID, setNewID] = useState();
   const [fontSize, setFontSize] = useState('text-lg');
 
   useEffect(() => {
-     setVideoData(data);
-  }, [data]);
+    setVideoData(data);
+    setCategory(categoryData);
+    findID(videoData.mediaDetail.category_id);
+  }, [data, categoryData]);
+
+
+  function findID (id){
+    category.media_category.map((item, i) => {
+      if (item.media_category_id === id){
+        setNewID(i+1);
+      }
+    })
+  }
+
 
   function createMarkup() {
-    return { __html: videoData.mediaDetail.full_text_content};
+    return { __html: videoData.mediaDetail.full_text_content };
   }
   function TextComponent() {
     return <div dangerouslySetInnerHTML={createMarkup()} />;
@@ -63,6 +82,8 @@ export default function video({ data }) {
         videoData.mediaDetail.title || '從今開始，勾勒美好第二人生'
       }`}
     >
+      {console.log(category)}
+
       <Head>
         {videoData.seo_meta.meta_description && (
           <meta
@@ -121,7 +142,7 @@ export default function video({ data }) {
           titles={[
             {
               title: `${videoData.mediaDetail.category_name} `,
-              link: `/videos/${videoData.mediaDetail.category_id}`,
+              link: `/videos/${newID}`,
             },
             {
               title: `${videoData.mediaDetail.title}`,

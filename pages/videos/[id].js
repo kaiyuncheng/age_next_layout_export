@@ -23,21 +23,25 @@ export const getServerSideProps = async context => {
       };
     }
 
-    if (id > data.data.media_category.length) {
+    
+    if (id === 'all' || (id <= data.data.media_category.length && id > 0)){
+           return {
+             props: {
+               data: data.data,
+               id: id,
+             },
+           };
+    }else{
+
       return {
         redirect: {
           destination: '/videos/all',
           permanent: false,
         },
       };
-    }
 
-    return {
-      props: {
-        data: data.data,
-        id: id,
-      },
-    };
+    }
+      
   } catch (error) {
     console.log('getServerSideProps error', error);
     return {
