@@ -15,7 +15,6 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
         {isBrandOpen && <BrandInfo brandData={brandData} />}
         <VideoSlider topics={mainData.hot_videos} />
 
-
         {/* PC 首頁 側邊欄 上 */}
         <div className="hidden sm:flex justify-center items-center my-5">
           <Banner
@@ -39,7 +38,11 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
           />
         </div>
 
-        <Speakers title="最新快訊" topics={mainData.article_news} />
+        {isHot && (
+          <Speakers title="熱門文章" topics={mainData.hot_article_banners} />
+        )}
+
+        {!isHot && <Speakers title="最新快訊" topics={mainData.article_news} />}
 
         {/* PC 首頁 側邊欄 下 */}
         <div className="hidden sm:flex justify-center items-center my-5">
@@ -63,9 +66,7 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
           />
         </div>
 
-        {isHot && (
-          <Speakers title="熱門文章" topics={mainData.hot_article_banners} />
-        )}
+        {isHot && <Speakers title="最新快訊" topics={mainData.article_news} />}
       </aside>
     </Fade>
   );

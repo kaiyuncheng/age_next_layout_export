@@ -121,11 +121,11 @@ const Tabs = ({ tab1topics, tab2topics }) => {
             topics0To3.map((item, i) => {
               return (
                 <Link href={`/article/${item.url_query}`} key={i + 1}>
-                  <a className="relative h-20 flex-grow flex items-center hover:bg-primary-light transition-all duration-300 ease-in-out lg:last:border-none border-b border-secondary-medium border-dashed">
+                  <a className="relative h-24 sm:h-20 flex-grow flex items-center hover:bg-primary-light transition-all duration-300 ease-in-out lg:last:border-none border-b border-secondary-medium border-dashed pl-12 pr-3">
                     <span className="absolute left-1 top-1 w-8 h-8 bg-primary-dark pl-2 text-white rounded-md rounded-br-5xl">
                       {i + 1}
                     </span>
-                    <h2 className="pl-12 py-5 md:py-0 pr-3 line-clamp-3">
+                    <h2 className="line-clamp-3">
                       {item.title}
                     </h2>
                   </a>
@@ -164,11 +164,13 @@ const Tabs = ({ tab1topics, tab2topics }) => {
             topics3To6.map((item, i) => {
               return (
                 <Link href={`/article/${item.url_query}`} key={i + 4}>
-                  <a className="relative h-20 flex-grow inline-flex items-center hover:bg-primary-light transition-all duration-300 ease-in-out last:rounded-br-5xl last:border-none border-b border-secondary-medium border-dashed">
+                  <a className="relative h-24 sm:h-20 flex-grow flex items-center hover:bg-primary-light transition-all duration-300 ease-in-out last:rounded-br-5xl last:border-none border-b border-secondary-medium border-dashed pl-12 pr-3">
                     <span className="absolute left-1 top-1 w-8 h-8 bg-secondary-dark pl-2 text-white rounded-md rounded-br-5xl">
                       {i + 4}
                     </span>
-                    <h2 className="pl-12 py-5 md:py-0 pr-3 line-clamp-3">{item.title}</h2>
+                    <h2 className="line-clamp-3">
+                      {item.title}
+                    </h2>
                   </a>
                 </Link>
               );

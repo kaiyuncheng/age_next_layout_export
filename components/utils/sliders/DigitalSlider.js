@@ -107,22 +107,24 @@ const DigitalSlider = ({ topics }) => {
                     <a
                       href={item.hyperlink}
                       target="_blank"
-                      className="block relative z-10 rounded-lg overflow-hidden w-full h-52 xs:h-72 md:h-52 lg:w-1/2 lg:h-full outline-none focus:outline-none relative"
+                      className="relative z-10 rounded-lg overflow-hidden w-full lg:w-3/5 outline-none  flex items-center focus:outline-none relative"
                     >
-                      <Image
-                        className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
-                        src={
-                          item.image_url ||
-                          'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
-                        }
-                        alt={item.title}
-                        layout="fill"
-                      />
+                      <div className="aspect-h-3 aspect-w-4 w-full rounded-lg overflow-hidden">
+                        <Image
+                          className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
+                          src={
+                            item.image_url ||
+                            'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
+                          }
+                          alt={item.title}
+                          layout="fill"
+                        />
+                      </div>
                     </a>
                     <a
                       href={item.hyperlink}
                       target="_blank"
-                      className="block relative z-10 group w-full lg:w-1/2 outline-none focus:outline-none"
+                      className="block relative z-10 group w-full lg:w-2/5 outline-none focus:outline-none"
                     >
                       <h2 className="pb-2 mb-2 border-b border-secondary-medium border-dashed group-hover:text-primary-dark text-xl font-medium">
                         {item.title}

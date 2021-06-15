@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "startNode": "node server.js"
+    "start": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "cross-env": "^7.0.2",
+    "express": "^4.17.1",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/custom-forms": "^0.2.1",
     "@tailwindcss/line-clamp": "^0.2.0",

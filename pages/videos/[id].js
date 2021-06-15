@@ -14,10 +14,19 @@ export const getServerSideProps = async context => {
   try {
     const { data } = await axios.get(`Media/list`);
 
-    if (!data.data || !data.media_category_top || data.media_category_lv1.length === 0 || data.media_category.length === 0) {
+    if (!data.data) {
       return {
         redirect: {
           destination: '/',
+          permanent: false,
+        },
+      };
+    }
+
+    if (id > data.data.media_category.length) {
+      return {
+        redirect: {
+          destination: '/videos/all',
           permanent: false,
         },
       };
@@ -42,36 +51,40 @@ export const getServerSideProps = async context => {
 
 export default function videos({ data, id }) {
   const [videosData, setVideosData] = useState(data);
-  const [menuTag, setMenuTag] = useState('1');
+  const [menuTag, setMenuTag] = useState('all');
   const [menuName, setMenuName] = useState('全部');
-  const [videosMain, setVideosMain] = useState(
-    videosData.media_category_top[0]
-  );
+  const [videosMain, setVideosMain] = useState();
   const [videosList, setVideosList] = useState();
 
   useEffect(() => {
     setVideosData(data);
-    setMenuTag(id);
+    
     videosData.media_category_lv1[0].open_top_article === '1'
       ? setVideosMain(videosData.media_category_top)
       : setVideosMain('');
       
 
-    if (id === '1') {
-      setMenuName(videosData.media_category_lv1[0].name || '全部');
+    if (id === 'all') {
+      setMenuName('全部');
       setVideosList(videosData.media_video);
+      setMenuTag(id);
     } else {
-      setMenuName(videosData.media_category[id - 2].name);
-      setVideosList(videosData.media_category[id - 2].media_video);
+      setMenuName(videosData.media_category[id - 1].name);
+      setVideosList(videosData.media_category[id - 1].media_video);
+      setMenuTag(id);
     }
+
+    // setVideosMain(videosData.media_category_top[0]);
   }, [data, id]);
 
   return (
     <Layout siteTitle="幸福熟齡 - Hot影音">
       {/* <!-- bread crumb --> */}
+
+      
       <BreadCrumb
         titles={[
-          { title: 'Hot影音', link: '/videos/1' },
+          { title: 'Hot影音', link: '/videos/all' },
           { title: menuName, link: `/videos/${menuTag}` },
         ]}
       />
@@ -82,17 +95,17 @@ export default function videos({ data, id }) {
             {/* <!-- video tags--> */}
             <ul className="video_tags flex flex-wrap mb-3">
               <li>
-                <Link href="/videos/1">
+                <Link href="/videos/all">
                   <button
                     type="button"
                     className={clsx(
-                      menuTag === '1'
+                      menuTag === 'all'
                         ? 'text-white bg-primary-dark'
                         : 'text-primary-dark',
                       'block border hover:bg-primary-dark hover:text-white   border-primary-dark px-2 py-1 rounded-md transition-all duration-300 ease-in-out whitespace-nowrap outline-none focus:outline-none mb-2 mr-2',
                     )}
                   >
-                    {videosData.media_category_lv1[0].name || '全部'}
+                    全部
                   </button>
                 </Link>
               </li>
@@ -100,11 +113,11 @@ export default function videos({ data, id }) {
                 videosData.media_category.map((item, i) => {
                   return (
                     <li key={i}>
-                      <Link href={`/videos/${item.media_category_id}`}>
+                      <Link href={`/videos/${i + 1}`}>
                         <button
                           type="button"
                           className={clsx(
-                            menuTag === item.media_category_id
+                            menuTag == i + 1
                               ? 'text-white bg-primary-dark'
                               : 'text-primary-dark',
                             'block border hover:bg-primary-dark hover:text-white  border-primary-dark px-2 py-1 rounded-md transition-all duration-300 ease-in-out whitespace-nowrap outline-none focus:outline-none mb-2 mr-2',
