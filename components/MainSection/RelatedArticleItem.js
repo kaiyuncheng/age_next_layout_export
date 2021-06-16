@@ -223,6 +223,9 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
               >
                 <TextComponent />
               </div>
+
+              <div className="border-b border-r border-secondary-medium rounded-br-6xl w-full p-5 mb-5"></div>
+              
               {item.tag_info.length !== 0 && (
                 <ul className="article_tags flex items-center mb-5 flex-wrap">
                   <li className="mr-2 mb-2">

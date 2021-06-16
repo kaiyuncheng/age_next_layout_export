@@ -78,7 +78,6 @@ export default function videos({ data, id }) {
       setMenuTag(id);
     }
 
-    // setVideosMain(videosData.media_category_top[0]);
   }, [data, id]);
 
   return (

@@ -9,7 +9,7 @@ const VideoList = ({ topics }) => {
 
   useEffect(() => {
     let defaultNum =
-    topics.length > 0 ? (topics.length < 9 ? topics.length : 9) : 0;
+    topics.length > 0 ? (topics.length < 18 ? topics.length : 18) : 0;
     setListItems(Array.from(Array(defaultNum).keys(), n => n + 1));
   }, [topics]);
 
@@ -37,9 +37,9 @@ const VideoList = ({ topics }) => {
 
   const fetchMoreListItems = () => {
     let listNum =
-      (topics.length - listItems.length - 6 < 0)
-        ? ((topics.length - listItems.length) % 6)
-        : 6;
+      (topics.length - listItems.length - 9 < 0)
+        ? ((topics.length - listItems.length) % 9)
+        : 9;
     setTimeout(() => {
       setListItems(prevState => [
         ...prevState,

@@ -141,7 +141,11 @@ export default function video({ data, categoryData }) {
         <BreadCrumb
           titles={[
             {
-              title: `${videoData.mediaDetail.category_name} `,
+              title: `Hot影音`,
+              link: `/videos/all`,
+            },
+            {
+              title: `${videoData.mediaDetail.category_name}`,
               link: `/videos/${newID}`,
             },
             {
@@ -153,6 +157,10 @@ export default function video({ data, categoryData }) {
       ) : (
         <BreadCrumb
           titles={[
+            {
+              title: `Hot影音`,
+              link: `/videos/all`,
+            },
             {
               title: `${videoData.mediaDetail.title}`,
               link: `/video/${videoData.mediaDetail.url_query}`,
@@ -193,7 +201,7 @@ export default function video({ data, categoryData }) {
                   <p className="inline mr-4">
                     日期 |
                     <span className="ml-1 text-gray-500">
-                      {videoData.mediaDetail.updated_at}
+                      {videoData.mediaDetail.updated_at.slice(0, 10)}
                     </span>
                   </p>
                 )}
@@ -317,11 +325,45 @@ export default function video({ data, categoryData }) {
               <div
                 className={clsx(
                   fontSize,
-                  'article_content leading-relaxed mb-5 tracking-widest',
+                  'article_content leading-relaxed tracking-widest',
                 )}
               >
                 <TextComponent />
               </div>
+
+              <div className="border-b border-r border-secondary-medium rounded-br-6xl w-full p-5 mb-5"></div>
+
+              {videoData.tag_info.length !== 0 && (
+                <ul className="article_tags flex items-center mb-5 flex-wrap">
+                  <li className="mr-2 mb-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18.326"
+                      height="18.326"
+                      viewBox="0 0 18.326 18.326"
+                    >
+                      <path
+                        id="Icon_awesome-tag"
+                        data-name="Icon awesome-tag"
+                        d="M0,9.024V1.718A1.718,1.718,0,0,1,1.718,0H9.024a1.718,1.718,0,0,1,1.215.5l7.584,7.584a1.718,1.718,0,0,1,0,2.43l-7.306,7.306a1.718,1.718,0,0,1-2.43,0L.5,10.239A1.718,1.718,0,0,1,0,9.024ZM4.009,2.291A1.718,1.718,0,1,0,5.727,4.009,1.718,1.718,0,0,0,4.009,2.291Z"
+                        fill="#ec6009"
+                      />
+                    </svg>
+                  </li>
+
+                  {videoData.tag_info.map((tag, i) => {
+                    return (
+                      <li key={i}>
+                        <Link href={`/search/article?keywords=${tag.keyword}`}>
+                          <a className="block border text-primary-dark hover:text-white hover:bg-primary-dark border-primary-dark px-2 py-1 mb-2 mr-2 rounded-md transition-all duration-300 ease-in-out whitespace-nowrap">
+                            {tag.keyword}
+                          </a>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
             </div>
 
             {/* <!-- related videos --> */}

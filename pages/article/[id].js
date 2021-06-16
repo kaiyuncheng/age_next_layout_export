@@ -186,11 +186,11 @@ export default function article({ data, id }) {
         <BreadCrumb
           titles={[
             {
-              title: `${articleData.category_info.parent_name} `,
+              title: `${articleData.category_info.parent_name}`,
               link: `/catalog/${articleData.category_info.parent_id}`,
             },
             {
-              title: `${articleData.category_info.name} `,
+              title: `${articleData.category_info.name}`,
               link: `/catalog/${articleData.category_info.category_id}`,
             },
             {
@@ -205,7 +205,7 @@ export default function article({ data, id }) {
         <BreadCrumb
           titles={[
             {
-              title: `${articleData.category_info.name} `,
+              title: `${articleData.category_info.name}`,
               link: `/catalog/${articleData.category_info.category_id}`,
             },
             {
