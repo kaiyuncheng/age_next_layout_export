@@ -4,7 +4,7 @@ import ArticleListItem from "./ArticleListItem";
 
 const ArticleList = ({ topics }) => {
   let defaultNum =
-    topics.length > 0 ? (topics.length < 15 ? topics.length : 15) : 0;
+    topics.length > 0 ? (topics.length < 20 ? topics.length : 20) : 0;
 
   const [listItems, setListItems] = useState(
     Array.from(Array(defaultNum).keys(), (n) => n + 1)
@@ -35,16 +35,15 @@ const ArticleList = ({ topics }) => {
 
   const fetchMoreListItems = () => {
     let listNum =
-      (topics.length - listItems.length - 5 < 0)
-          ? (topics.length - listItems.length) % 5
-          : 5;
-    setTimeout(() => {
+      (topics.length - listItems.length - 10 < 0)
+          ? (topics.length - listItems.length) % 10
+          : 10;
+    
       setListItems((prevState) => [
         ...prevState,
         ...Array.from(Array(listNum).keys(), (n) => n + prevState.length + 1),
       ]);
       setIsFetching(false);
-    }, 1000);
   };
 
   return (

@@ -10,7 +10,7 @@ const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
   const { mainData } = useMainContext();
 
   return (
-    <Fade bottom>
+    <Fade bottom when={true}>
       <aside className="w-full md:w-[300px]">
         {isBrandOpen && <BrandInfo brandData={brandData} />}
         <VideoSlider topics={mainData.hot_videos} />

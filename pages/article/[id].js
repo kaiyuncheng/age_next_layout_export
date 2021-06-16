@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Fade from 'react-reveal/Fade';
 import Layout from '../../components/Layout';
 import axios from '../../components/utils/axios';
 import Head from 'next/head';
@@ -95,7 +96,7 @@ export default function article({ data, id }) {
   }, [isFetching]);
 
   const handleScrollBottom = () => {
-    if (document.documentElement.scrollTop >= document.documentElement.offsetHeight - window.innerHeight - 500) {
+    if (document.documentElement.scrollTop >= document.documentElement.offsetHeight - window.innerHeight - 1000) {
       setIsFetching(true);
     } else {
       return null;
@@ -181,7 +182,26 @@ export default function article({ data, id }) {
         />
       </Head>
 
-      {articleData.category_info.name ? (
+      {articleData.category_info.parent_id && articleData.category_info.name && (
+        <BreadCrumb
+          titles={[
+            {
+              title: `${articleData.category_info.parent_name} `,
+              link: `/catalog/${articleData.category_info.parent_id}`,
+            },
+            {
+              title: `${articleData.category_info.name} `,
+              link: `/catalog/${articleData.category_info.category_id}`,
+            },
+            {
+              title: `${articleData.article_info.title}`,
+              link: `/article/${articleData.article_info.url_query}`,
+            },
+          ]}
+        />
+      )}
+
+      {!articleData.category_info.parent_id && articleData.category_info.name && (
         <BreadCrumb
           titles={[
             {
@@ -194,7 +214,9 @@ export default function article({ data, id }) {
             },
           ]}
         />
-      ) : (
+      )}
+
+      {!articleData.category_info.parent_id && !articleData.category_info.name && (
         <BreadCrumb
           titles={[
             {
@@ -207,17 +229,18 @@ export default function article({ data, id }) {
 
       {/* Dable 大家都在看 隱藏 下滑顯示 */}
       <DableHiddenBar />
-
-      <RelatedArticleItem
-        item={articleData}
-        dableIds={{
-          id: 'dablewidget_6oMPxGXb_OoR43ely',
-          pc: '6oMPxGXb',
-          mo: 'OoR43ely',
-        }}
-        type={'article'}
-        i={0}
-      />
+      <Fade bottom>
+        <RelatedArticleItem
+          item={articleData}
+          dableIds={{
+            id: 'dablewidget_6oMPxGXb_OoR43ely',
+            pc: '6oMPxGXb',
+            mo: 'OoR43ely',
+          }}
+          type={'article'}
+          i={0}
+        />
+      </Fade>
 
       {articleData.article_other_list.length !== 0 &&
         !isShowList &&
