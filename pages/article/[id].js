@@ -87,22 +87,19 @@ export default function article({ data, id }) {
       !isShowList &&
       articleData.article_other_list.length !== 0
     ) {
-      setTimeout(() => {
         setIsFetching(false);
         setIsShowList(true);
-      }, 500);
     } else {
       return setIsFetching(false);
     }
   }, [isFetching]);
 
   const handleScrollBottom = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop !==
-      document.documentElement.offsetHeight
-    )
-      return;
-    setIsFetching(true);
+    if (document.documentElement.scrollTop >= document.documentElement.offsetHeight - window.innerHeight - 500) {
+      setIsFetching(true);
+    } else {
+      return null;
+    }
   };
 
   return (

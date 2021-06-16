@@ -26,11 +26,13 @@ const RelatedArticleList = ({ topics, dableIds }) => {
 
   const handleScroll = () => {
     if (
-      window.innerHeight + document.documentElement.scrollTop !==
-      document.documentElement.offsetHeight
-    )
-      return;
-    setIsFetching(true);
+      document.documentElement.scrollTop >=
+      document.documentElement.offsetHeight - window.innerHeight - 500
+    ) {
+      setIsFetching(true);
+    } else {
+      return null;
+    }
   };
 
   const fetchMoreListItems = () => {
@@ -38,13 +40,12 @@ const RelatedArticleList = ({ topics, dableIds }) => {
       topics.length - listItems.length - 1 < 0
         ? (topics.length - listItems.length) % 1
         : 1;
-    setTimeout(() => {
+    
       setListItems(prevState => [
         ...prevState,
         ...Array.from(Array(listNum).keys(), n => n + prevState.length + 1),
       ]);
       setIsFetching(false);
-    }, 500);
   };
 
   return (

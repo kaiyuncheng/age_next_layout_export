@@ -141,8 +141,8 @@ const DigitalSlider = ({ topics }) => {
           {!topics && (
             <div className="animate-pulse outline-none focus:outline-none h-auto lg:h-60">
               <div className="flex flex-col space-y-5 lg:space-y-0 lg:space-x-5 lg:flex-row h-full">
-                <div className="block relative z-10 rounded-lg overflow-hidden w-full h-52 xs:h-72 md:h-52 lg:w-1/2 lg:h-full outline-none focus:outline-none relative bg-secondary-medium"></div>
-                <div className="block relative z-10 group w-full lg:w-1/2 outline-none focus:outline-none">
+                <div className="block relative z-10 rounded-lg overflow-hidden w-full h-52 xs:h-72 md:h-52 lg:w-3/5 lg:h-full outline-none focus:outline-none relative bg-secondary-medium"></div>
+                <div className="block relative z-10 group w-full lg:w-2/5 outline-none focus:outline-none">
                   <div className="mb-1 border-b border-secondary-medium border-dashed text-xl font-medium bg-secondary-medium rounded-md h-8"></div>
                   <div className="pb-2 mb-3 border-b border-secondary-medium border-dashed text-xl font-medium rounded-md h-1"></div>
                   <div className="mb-1 text-base bg-secondary-medium rounded-md h-6"></div>

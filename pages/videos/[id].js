@@ -57,8 +57,8 @@ export default function videos({ data, id }) {
   const [videosData, setVideosData] = useState(data);
   const [menuTag, setMenuTag] = useState('all');
   const [menuName, setMenuName] = useState('全部');
-  const [videosMain, setVideosMain] = useState();
-  const [videosList, setVideosList] = useState();
+  const [videosMain, setVideosMain] = useState('');
+  const [videosList, setVideosList] = useState('');
 
   useEffect(() => {
     setVideosData(data);

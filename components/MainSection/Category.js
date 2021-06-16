@@ -86,7 +86,7 @@ const Category = ({ name, id, data, isIndexCategory, parentName }) => {
                         )}
                       ></div>
                       <h3 className="group-hover:text-gray-600 transition-all duration-300 ease-in-out line-clamp-3">
-                        {item.minor_title}
+                        {item.title}
                       </h3>
                     </a>
                   </Link>

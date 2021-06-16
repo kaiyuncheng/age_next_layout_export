@@ -49,16 +49,13 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
             <h2 className="article_title md:text-3xl text-2xl font-bold mb-5 tracking-widest md:leading-10">
               {item.article_info.title}
             </h2>
-            <div className="article_img relative rounded-lg overflow-hidden w-full mb-5">
-              <Image
+            <div className="article_img relative rounded-lg overflow-hidden w-full mb-5 aspect-w-4 aspect-h-3">
+              <img
                 className="h-full w-full object-cover"
                 src={
                   item.article_info.image_url ||
                   'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
                 }
-                height={300}
-                width={400}
-                layout="responsive"
                 alt={item.article_info.title}
               />
             </div>
