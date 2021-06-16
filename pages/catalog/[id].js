@@ -45,6 +45,7 @@ export const getServerSideProps = async context => {
 export default function cataloglist({ data }) {
   const [catalogData, setCatalogData] = useState(data);
   const [isBrandOpen, setIsBrandOpen] = useState(false);
+  const [showAside, setShowAside] = useState(false);
 
   useEffect(() => {
     setCatalogData(data);
@@ -219,7 +220,10 @@ export default function cataloglist({ data }) {
 
               {!catalogData.category_info.is_project_based_style_enable &&
                 catalogData.article_info && (
-                  <ArticleList topics={catalogData.article_info} />
+                  <ArticleList
+                    topics={catalogData.article_info}
+                    setShowAside={setShowAside}
+                  />
                 )}
 
               {catalogData.category_info.is_project_based_style_enable &&
@@ -237,13 +241,23 @@ export default function cataloglist({ data }) {
                 })}
             </div>
           </div>
-
           <AsideSection
             isHot={true}
             isBrandOpen={isBrandOpen}
             brandData={catalogData.brand_area}
             type={'list'}
+            showPcAside={true}
           />
+
+          {showAside && (
+            <AsideSection
+              isHot={true}
+              isBrandOpen={isBrandOpen}
+              brandData={catalogData.brand_area}
+              type={'article'}
+              showMbAside={true}
+            />
+          )}
         </div>
       </div>
 

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Fade from 'react-reveal/Fade';
 import VideoListItem from './VideoListItem';
 
-const VideoList = ({ topics }) => {
-  
+const VideoList = ({ topics, setShowAside }) => {
   const [listItems, setListItems] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     let defaultNum =
-    topics.length > 0 ? (topics.length < 18 ? topics.length : 18) : 0;
+      topics.length > 0 ? (topics.length < 18 ? topics.length : 18) : 0;
     setListItems(Array.from(Array(defaultNum).keys(), n => n + 1));
+    setShowAside(false);
   }, [topics]);
 
   useEffect(() => {
@@ -20,33 +19,38 @@ const VideoList = ({ topics }) => {
 
   useEffect(() => {
     if (!isFetching || listItems.length >= topics.length) {
-      return setIsFetching(false);
+      setIsFetching(false);
     } else {
       fetchMoreListItems();
     }
   }, [isFetching]);
 
+   useEffect(() => {
+     if(listItems.length >= topics.length){
+       setShowAside(true);
+     }
+   }, [listItems]);
+
   const handleScroll = () => {
     if (
-      window.innerHeight + document.documentElement.scrollTop !==
-      document.documentElement.offsetHeight
-    )
-      return;
-    setIsFetching(true);
+      document.documentElement.scrollTop >=
+      document.documentElement.offsetHeight - window.innerHeight - 500
+    ) {
+      setIsFetching(true);
+    } 
   };
 
   const fetchMoreListItems = () => {
     let listNum =
-      (topics.length - listItems.length - 9 < 0)
-        ? ((topics.length - listItems.length) % 9)
-        : 9;
-    setTimeout(() => {
+      topics.length - listItems.length - 6 < 0
+        ? (topics.length - listItems.length) % 6
+        : 6;
+      
       setListItems(prevState => [
         ...prevState,
         ...Array.from(Array(listNum).keys(), n => n + prevState.length + 1),
       ]);
       setIsFetching(false);
-    }, 1000);
   };
 
   return (
@@ -54,6 +58,7 @@ const VideoList = ({ topics }) => {
       {listItems.length <= topics.length &&
         listItems.map((listItem, i) => (
           <VideoListItem key={i} item={topics[listItem - 1]} />
+          
         ))}
 
       {listItems.length < topics.length && isFetching && (

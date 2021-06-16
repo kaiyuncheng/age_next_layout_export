@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import Fade from "react-reveal/Fade";
 import ArticleListItem from "./ArticleListItem";
 
-const ArticleList = ({ topics }) => {
+const ArticleList = ({ topics, setShowAside }) => {
   let defaultNum =
     topics.length > 0 ? (topics.length < 20 ? topics.length : 20) : 0;
 
   const [listItems, setListItems] = useState(
-    Array.from(Array(defaultNum).keys(), (n) => n + 1)
+    Array.from(Array(defaultNum).keys(), n => n + 1),
   );
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -24,26 +24,32 @@ const ArticleList = ({ topics }) => {
     }
   }, [isFetching]);
 
+  useEffect(() => {
+    if (listItems.length >= topics.length) {
+      setShowAside(true);
+    }
+  }, [listItems]);
+
   const handleScroll = () => {
     if (
-      window.innerHeight + document.documentElement.scrollTop !==
-      document.documentElement.offsetHeight
-    )
-      return;
-    setIsFetching(true);
+      document.documentElement.scrollTop >=
+      document.documentElement.offsetHeight - window.innerHeight - 500
+    ) {
+      setIsFetching(true);
+    } 
   };
 
   const fetchMoreListItems = () => {
     let listNum =
-      (topics.length - listItems.length - 10 < 0)
-          ? (topics.length - listItems.length) % 10
-          : 10;
-    
-      setListItems((prevState) => [
-        ...prevState,
-        ...Array.from(Array(listNum).keys(), (n) => n + prevState.length + 1),
-      ]);
-      setIsFetching(false);
+      topics.length - listItems.length - 10 < 0
+        ? (topics.length - listItems.length) % 10
+        : 10;
+
+    setListItems(prevState => [
+      ...prevState,
+      ...Array.from(Array(listNum).keys(), n => n + prevState.length + 1),
+    ]);
+    setIsFetching(false);
   };
 
   return (

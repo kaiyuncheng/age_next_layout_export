@@ -395,10 +395,10 @@ const Header = ({ isFBLogin, handleFBLogout }) => {
         className={clsx(
           !menuState && 'scale-x-0',
           menuState && 'scale-x-100',
-          'mobile_menu md:hidden absolute top-30 z-100 inset-x-0 transition-all duration-200 ease-in-out transform origin-left h-screen overflow-y-scroll',
+          'mobile_menu md:hidden absolute top-30 z-100 inset-x-0 transition-all duration-200 ease-in-out transform origin-left',
         )}
       >
-        <div className="w-full h-screen sm:w-1/2 bg-primary-light shadow-mdRight pt-5 pb-10">
+        <div className="w-full h-screen overflow-y-scroll sm:w-1/2 bg-primary-light shadow-mdRight pt-5 pb-52">
           <div className="mobile_menu_search mx-5 mb-5 relative border border-white rounded-br-full">
             <SearchBar toggleMenu={toggleMenu} />
           </div>

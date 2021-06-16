@@ -32,6 +32,7 @@ export const getStaticProps = async () => {
 
 export default function news({data}) {
     const [newsData, setNewsData] = useState(data);
+    const [showAside, setShowAside] = useState(false);
 
     useEffect(() => {
       setNewsData(data);
@@ -55,9 +56,13 @@ export default function news({data}) {
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
           <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden">
-            <ArticleList topics={newsData} />
+            <ArticleList topics={newsData} setShowAside={setShowAside} />
           </div>
-          <AsideSection isHot={true} type={'list'} />
+          <AsideSection isHot={true} type={'list'} showPcAside={true} />
+          
+          {showAside && (
+            <AsideSection isHot={true} type={'article'} showMbAside={true} />
+          )}
         </div>
       </div>
     </Layout>

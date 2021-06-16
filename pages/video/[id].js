@@ -3,11 +3,11 @@ import Layout from "../../components/Layout";
 import axios from "../../components/utils/axios";
 import clsx from "clsx";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import AsideSection from "../../components/AsideSection";
 import BreadCrumb from "../../components/utils/BreadCrumb";
 import RelatedSlider from "../../components/utils/sliders/RelatedSlider";
+import Banner from "../../components/utils/googletags/Banner";
 export const getServerSideProps = async context => {
   const { id } = context.query;
   try {
@@ -171,9 +171,9 @@ export default function video({ data, categoryData }) {
 
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row md:space-x-10 md:space-y-0">
-          <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden pb-5">
+          <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden">
             {/* <!-- main video --> */}
-            <div className="flex flex-col relative mb-14">
+            <div className="flex flex-col relative">
               <h2 className="video_title md:text-3xl text-2xl font-bold mb-5 tracking-widest md:leading-10">
                 {videoData.mediaDetail.title}
               </h2>
@@ -334,7 +334,7 @@ export default function video({ data, categoryData }) {
               <div className="border-b border-r border-secondary-medium rounded-br-6xl w-full p-5 mb-5"></div>
 
               {videoData.tag_info.length !== 0 && (
-                <ul className="article_tags flex items-center mb-5 flex-wrap">
+                <ul className="flex items-center mb-5 flex-wrap">
                   <li className="mr-2 mb-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -368,7 +368,7 @@ export default function video({ data, categoryData }) {
 
             {/* <!-- related videos --> */}
             {videoData.mediaRecommend.length !== 0 && (
-              <div className="mb-14 block border border-secondary-medium rounded-lg rounded-br-6xl shadow-md bg-white relative px-2 pt-10 pb-5">
+              <div className="mb-5 block border border-secondary-medium rounded-lg rounded-br-6xl shadow-md bg-white relative px-2 pt-10 pb-5">
                 <div className="absolute -top-4 left-5 shadow-md bg-primary-light hover:bg-secondary-light transition-all duration-200 px-12 py-2 rounded-br-full rounded-tl-full overflow-hidden outline-none focus:outline-none">
                   <h2 className="text-base">相關影音</h2>
                   <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-t"></span>
@@ -380,6 +380,12 @@ export default function video({ data, categoryData }) {
           </div>
 
           <AsideSection isHot={true} type={'article'} />
+        </div>
+
+        {/* PC 內頁 廣告 下 */}
+
+        <div className="lg:block hidden max-w-screen-2xl px-4 lg:px-2 mx-auto">
+          <Banner adId="thebetterraging_pc_article_970x250_b" />
         </div>
       </div>
     </Layout>

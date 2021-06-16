@@ -5,13 +5,28 @@ import Speakers from "./Speakers";
 import BrandInfo from "./BrandInfo";
 import Fade from "react-reveal/Fade";
 import Banner from "../utils/googletags/Banner";
+import clsx from "clsx";
 
-const AsideSection = ({ isHot, isBrandOpen, brandData, type, i }) => {
+const AsideSection = ({
+  isHot,
+  isBrandOpen,
+  brandData,
+  type,
+  i,
+  showPcAside,
+  showMbAside,
+}) => {
   const { mainData } = useMainContext();
 
   return (
     <Fade bottom when={true}>
-      <aside className="w-full md:w-[300px]">
+      <aside
+        className={clsx(
+          showPcAside && 'hidden md:block',
+          showMbAside && 'md:hidden block',
+          'w-full md:w-[300px]',
+        )}
+      >
         {isBrandOpen && <BrandInfo brandData={brandData} />}
         <VideoSlider topics={mainData.hot_videos} />
 

@@ -59,6 +59,7 @@ export default function videos({ data, id }) {
   const [menuName, setMenuName] = useState('全部');
   const [videosMain, setVideosMain] = useState('');
   const [videosList, setVideosList] = useState('');
+  const [showAside, setShowAside] = useState(false);
 
   useEffect(() => {
     setVideosData(data);
@@ -84,7 +85,6 @@ export default function videos({ data, id }) {
     <Layout siteTitle="幸福熟齡 - Hot影音">
       {/* <!-- bread crumb --> */}
 
-      
       <BreadCrumb
         titles={[
           { title: 'Hot影音', link: '/videos/all' },
@@ -136,9 +136,15 @@ export default function videos({ data, id }) {
 
             {videosMain && <MainVideo topics={videosMain} />}
 
-            {videosList && <VideoList topics={videosList} />}
+            {videosList && (
+              <VideoList topics={videosList} setShowAside={setShowAside} />
+            )}
           </div>
-          <AsideSection isHot={true} type={'list'} />
+          <AsideSection isHot={true} type={'list'} showPcAside={true} />
+
+          {showAside && (
+            <AsideSection isHot={true} type={'article'} showMbAside={true} />
+          )}
         </div>
       </div>
     </Layout>
