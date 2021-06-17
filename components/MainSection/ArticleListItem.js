@@ -37,8 +37,8 @@ const ArticleListItem = ({ item, isSearch, keywords }) => {
 
       <div className="w-full md:w-2/3 p-5 md:px-5 md:py-0 flex flex-col">
         {isSearch && (
-          <div className="flex space-x-4">
-            <p className="text-sm text-primary-dark mb-2 inline-flex items-center">
+          <div>
+            <p className="mr-5 text-sm text-primary-dark mb-2 inline-flex items-center">
               <svg
                 className="w-3 mr-2"
                 xmlns="http://www.w3.org/2000/svg"

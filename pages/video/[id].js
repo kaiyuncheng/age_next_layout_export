@@ -82,8 +82,6 @@ export default function video({ data, categoryData }) {
         videoData.mediaDetail.title || '從今開始，勾勒美好第二人生'
       }`}
     >
-      {console.log(category)}
-
       <Head>
         {videoData.seo_meta.meta_description && (
           <meta
@@ -368,7 +366,7 @@ export default function video({ data, categoryData }) {
 
             {/* <!-- related videos --> */}
             {videoData.mediaRecommend.length !== 0 && (
-              <div className="mb-5 block border border-secondary-medium rounded-lg rounded-br-6xl shadow-md bg-white relative px-2 pt-10 pb-5">
+              <div className="mt-5 mb-5 block border border-secondary-medium rounded-lg rounded-br-6xl shadow-md bg-white relative px-2 pt-10 pb-5">
                 <div className="absolute -top-4 left-5 shadow-md bg-primary-light hover:bg-secondary-light transition-all duration-200 px-12 py-2 rounded-br-full rounded-tl-full overflow-hidden outline-none focus:outline-none">
                   <h2 className="text-base">相關影音</h2>
                   <span className="absolute w-full h-1 left-0 bottom-0 bg-rainbow-t"></span>
@@ -381,12 +379,10 @@ export default function video({ data, categoryData }) {
 
           <AsideSection isHot={true} type={'article'} />
         </div>
-
-        {/* PC 內頁 廣告 下 */}
-
-        <div className="lg:block hidden max-w-screen-2xl px-4 lg:px-2 mx-auto">
-          <Banner adId="thebetterraging_pc_article_970x250_b" />
-        </div>
+      </div>
+      {/* PC 內頁 廣告 下 */}
+      <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center">
+        <Banner adId="thebetterraging_pc_article_970x250_b" />
       </div>
     </Layout>
   );

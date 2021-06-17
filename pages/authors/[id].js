@@ -47,6 +47,7 @@ export const getServerSideProps = async (context) => {
 export default function Author({ authorInfo, authorArticles }) {
   const [authorInfoData, setAuthorInfo] = useState(authorInfo);
   const [authorArticlesData, setAuthorData] = useState(authorArticles);
+  const [showAside, setShowAside] = useState(false);
 
   useEffect(() => {
     setAuthorInfo(authorInfo);
@@ -136,11 +137,19 @@ export default function Author({ authorInfo, authorArticles }) {
 
             {/* <!-- author articles section--> */}
             <div className="author_articles flex flex-col space-y-20 pb-5 mb-5">
-              <ArticleList topics={authorArticlesData.articleInfo} />
+              <ArticleList
+                topics={authorArticlesData.articleInfo}
+                setShowAside={setShowAside}
+              />
             </div>
           </div>
 
-          <AsideSection isHot={true} type={'article'} />
+          <AsideSection isHot={true} type={'list'} showPcAside={true} />
+
+          {showAside && (
+            <AsideSection isHot={true} type={'article'} showMbAside={true} />
+          )}
+          
         </div>
       </div>
     </Layout>
