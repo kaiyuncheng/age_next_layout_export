@@ -2,6 +2,7 @@ import React from "react";
 import { useMainContext } from "../../context/main";
 import VideoSlider from "../utils/sliders/VideoSlider";
 import Speakers from "./Speakers";
+import HotNews from './HotNews';
 import BrandInfo from "./BrandInfo";
 import Fade from "react-reveal/Fade";
 import Banner from "../utils/googletags/Banner";
@@ -54,10 +55,10 @@ const AsideSection = ({
         </div>
 
         {isHot && (
-          <Speakers title="熱門文章" topics={mainData.hot_article_banners} />
+          <HotNews topics={mainData.hot_article_banners} />
         )}
 
-        {!isHot && <Speakers title="最新快訊" topics={mainData.article_news} />}
+        {!isHot && <Speakers topics={mainData.article_news} />}
 
         {/* PC 首頁 側邊欄 下 */}
         <div className="hidden sm:flex justify-center items-center my-5">
@@ -81,7 +82,7 @@ const AsideSection = ({
           />
         </div>
 
-        {isHot && <Speakers title="最新快訊" topics={mainData.article_news} />}
+        {isHot && <Speakers topics={mainData.article_news} />}
       </aside>
     </Fade>
   );
