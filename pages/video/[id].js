@@ -213,7 +213,7 @@ export default function video({ data, categoryData }) {
                 )}
               </div>
               <div className="video_functions relative w-full h-12 mb-7 border-b border-r border-secondary-medium rounded-br-6xl flex flex-col xs:flex-row justify-end xs:items-center mt-10 xs:mt-0 pb-1.5 pr-1.5 space-x-2 xs:space-x-5">
-                <div className="flex justify-between items-center space-x-5">
+                <div className="flex justify-between items-center space-x-5 mr-5">
                   <div className="video_font flex space-x-2 mb-4 xs:mb-0">
                     <button
                       type="button"
@@ -241,26 +241,26 @@ export default function video({ data, categoryData }) {
                     <Link
                       href={`https://www.facebook.com/share.php?u=https://thebetteraging.businesstoday.com.tw/video/${videoData.mediaDetail.url_query}`}
                     >
-                    <a
-                      className="icon_fb group"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <svg
-                        className="fill-current text-blue-600 group-hover:text-primary-dark transition-colors duration-200 ease-in-out"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="13.45"
-                        height="25"
-                        viewBox="0 0 13.45 25"
+                      <a
+                        className="icon_fb group"
+                        rel="noreferrer"
+                        target="_blank"
                       >
-                        <path
-                          id="Icon_zocial-facebook"
-                          data-name="Icon zocial-facebook"
-                          d="M13.257,13.425V8.651h3.851V6.25a6.283,6.283,0,0,1,1.687-4.425A5.366,5.366,0,0,1,22.882,0h3.825V4.775H22.882a.842.842,0,0,0-.674.412,1.675,1.675,0,0,0-.3,1.013V8.65h4.8v4.774h-4.8V25h-4.8V13.425Z"
-                          transform="translate(-13.257)"
-                        />
-                      </svg>
-                    </a>
+                        <svg
+                          className="fill-current text-blue-600 group-hover:text-primary-dark transition-colors duration-200 ease-in-out"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="13.45"
+                          height="25"
+                          viewBox="0 0 13.45 25"
+                        >
+                          <path
+                            id="Icon_zocial-facebook"
+                            data-name="Icon zocial-facebook"
+                            d="M13.257,13.425V8.651h3.851V6.25a6.283,6.283,0,0,1,1.687-4.425A5.366,5.366,0,0,1,22.882,0h3.825V4.775H22.882a.842.842,0,0,0-.674.412,1.675,1.675,0,0,0-.3,1.013V8.65h4.8v4.774h-4.8V25h-4.8V13.425Z"
+                            transform="translate(-13.257)"
+                          />
+                        </svg>
+                      </a>
 
                       {/* <a className="block group flex items-center justify-center"
                       >
@@ -308,7 +308,7 @@ export default function video({ data, categoryData }) {
                     </Link>
                   </div>
                 </div>
-                <a
+                {/* <a
                   href="#"
                   className="article_star group bg-primary-light hover:bg-secondary-medium hover:text-primary-dark text-gray-800 py-2 px-10 inline-flex items-center justify-center rounded-br-full rounded-tl-full transition-all duration-300 ease-in-out outline-none focus:outline-none"
                 >
@@ -332,7 +332,7 @@ export default function video({ data, categoryData }) {
                     </svg>
                   </div>
                   <p className="font-medium">加入最愛</p>
-                </a>
+                </a> */}
               </div>
               <div
                 className={clsx(

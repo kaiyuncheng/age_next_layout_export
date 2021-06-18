@@ -105,7 +105,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
               )}
             </div>
             <div className="article_functions relative w-full h-12 mb-7 border-b border-r border-secondary-medium rounded-br-6xl flex flex-col xs:flex-row justify-end xs:items-center mt-10 xs:mt-0 pb-1.5 pr-1.5 space-x-2 xs:space-x-5">
-              <div className="flex justify-between items-center space-x-5">
+              <div className="flex justify-between items-center space-x-5 mr-5">
                 <div className="article_font flex space-x-2 mb-4 xs:mb-0">
                   <button
                     type="button"
@@ -177,7 +177,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                   </Link>
                 </div>
               </div>
-              <a
+              {/* <a
                 href="#"
                 className="article_star group bg-primary-light hover:bg-secondary-medium hover:text-primary-dark text-gray-800 py-2 px-10 inline-flex items-center justify-center rounded-br-full rounded-tl-full transition-all duration-300 ease-in-out outline-none focus:outline-none"
               >
@@ -201,7 +201,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                   </svg>
                 </div>
                 <p className="font-medium">加入最愛</p>
-              </a>
+              </a> */}
             </div>
             <div
               className={clsx(

@@ -53,7 +53,7 @@ export default function cataloglist({ data }) {
 
   useEffect(() => {
     setIsBrandOpen(!!catalogData.brand_area);
-  }, []);
+  }, [catalogData]);
 
   return (
     <Layout
