@@ -102,7 +102,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
       setResultNewData(resultRelatedData);
     }
     setPages(Math.ceil(resultNewData.length / Number(count)));
-  }, [sortBy, resultNewData, sort]);
+  }, [sortBy, resultNewData]);
 
   useEffect(() => {
     sortByPage();
@@ -124,6 +124,9 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
   };
   const handleChangeKeywords = e => {
     setNewKeywords(e.target.value);
+  };
+  const handleSort = e => {
+    setSortBy(e.target.value);
   };
 
   const sortByPage = () => {
@@ -167,9 +170,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
     );
   };
 
-  const handleSort = e => {
-    setSortBy(e.target.value);
-  };
+  
   const YearStartSelect = ({ yearStart, yearStartHandler, years }) => (
     <label htmlFor="yearStart">
       <span className="block sm:inline mb-2">搜尋結果限定年份：</span>

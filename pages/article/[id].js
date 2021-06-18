@@ -7,7 +7,7 @@ import BreadCrumb from '../../components/utils/BreadCrumb';
 import RelatedArticleItem from '../../components/MainSection/RelatedArticleItem';
 import RelatedArticleList from '../../components/MainSection/RelatedArticleList';
 import clsx from 'clsx';
-import DableHiddenBar from '../../components/utils/dable/DableHiddenBar';
+// import DableHiddenBar from '../../components/utils/dable/DableHiddenBar';
 
 export const getServerSideProps = async context => {
   const { id } = context.query;
@@ -228,7 +228,8 @@ export default function article({ data, id }) {
       )}
 
       {/* Dable 大家都在看 隱藏 下滑顯示 */}
-      <DableHiddenBar />
+      {/* <DableHiddenBar /> */}
+
       <Fade bottom>
         <RelatedArticleItem
           item={articleData}

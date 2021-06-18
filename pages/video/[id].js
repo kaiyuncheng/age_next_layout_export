@@ -241,26 +241,49 @@ export default function video({ data, categoryData }) {
                     <Link
                       href={`https://www.facebook.com/share.php?u=https://thebetteraging.businesstoday.com.tw/video/${videoData.mediaDetail.url_query}`}
                     >
-                      <a
-                        className="icon_fb group"
-                        rel="noreferrer"
-                        target="_blank"
+                    <a
+                      className="icon_fb group"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      <svg
+                        className="fill-current text-blue-600 group-hover:text-primary-dark transition-colors duration-200 ease-in-out"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="13.45"
+                        height="25"
+                        viewBox="0 0 13.45 25"
                       >
-                        <svg
-                          className="fill-current text-primary-dark group-hover:text-blue-600 transition-colors duration-200 ease-in-out"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="13.45"
-                          height="25"
-                          viewBox="0 0 13.45 25"
-                        >
-                          <path
-                            id="Icon_zocial-facebook"
-                            data-name="Icon zocial-facebook"
-                            d="M13.257,13.425V8.651h3.851V6.25a6.283,6.283,0,0,1,1.687-4.425A5.366,5.366,0,0,1,22.882,0h3.825V4.775H22.882a.842.842,0,0,0-.674.412,1.675,1.675,0,0,0-.3,1.013V8.65h4.8v4.774h-4.8V25h-4.8V13.425Z"
-                            transform="translate(-13.257)"
-                          />
-                        </svg>
-                      </a>
+                        <path
+                          id="Icon_zocial-facebook"
+                          data-name="Icon zocial-facebook"
+                          d="M13.257,13.425V8.651h3.851V6.25a6.283,6.283,0,0,1,1.687-4.425A5.366,5.366,0,0,1,22.882,0h3.825V4.775H22.882a.842.842,0,0,0-.674.412,1.675,1.675,0,0,0-.3,1.013V8.65h4.8v4.774h-4.8V25h-4.8V13.425Z"
+                          transform="translate(-13.257)"
+                        />
+                      </svg>
+                    </a>
+
+                      {/* <a className="block group flex items-center justify-center"
+                      >
+                        <span className="bg-blue-900 rounded-l-md h-8 w-8 flex items-center justify-center">
+                          <svg
+                            className="fill-current text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="13.45"
+                            height="18"
+                            viewBox="0 0 13.45 25"
+                          >
+                            <path
+                              id="Icon_zocial-facebook"
+                              data-name="Icon zocial-facebook"
+                              d="M13.257,13.425V8.651h3.851V6.25a6.283,6.283,0,0,1,1.687-4.425A5.366,5.366,0,0,1,22.882,0h3.825V4.775H22.882a.842.842,0,0,0-.674.412,1.675,1.675,0,0,0-.3,1.013V8.65h4.8v4.774h-4.8V25h-4.8V13.425Z"
+                              transform="translate(-13.257)"
+                            />
+                          </svg>
+                        </span>
+                        <p className="whitespace-nowrap h-8 px-2 bg-blue-600 group-hover:bg-blue-500 transition-all duration-200 ease-in-out rounded-r-lg text-white text-sm font-medium inline-flex items-center">
+                          分享
+                        </p>
+                      </a> */}
                     </Link>
 
                     <Link
@@ -268,7 +291,7 @@ export default function video({ data, categoryData }) {
                     >
                       <a className="icon_line group">
                         <svg
-                          className="fill-current text-primary-dark group-hover:text-green-500 transition-colors duration-200 ease-in-out"
+                          className="fill-current text-primary-dark text-green-500  group-hover:text-primary-dark transition-colors duration-200 ease-in-out"
                           xmlns="http://www.w3.org/2000/svg"
                           width="26.251"
                           height="25"
