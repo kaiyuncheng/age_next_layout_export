@@ -17,7 +17,7 @@ switch (urlHostname) {
     nameUrl = 'https://api-thebetteraging-hardy.businesstoday.com.tw/api/';
     break;
   case `age-next-layout.vercel.app`:
-    nameUrl = 'https://api-thebetteraging-dev.businesstoday.com.tw/api/';
+    nameUrl = 'https://api-thebetteraging-hardy.businesstoday.com.tw/api/';
     break;
   case `localhost`:
     nameUrl = 'https://api-thebetteraging-hardy.businesstoday.com.tw/api/';
