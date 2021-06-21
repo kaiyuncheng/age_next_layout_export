@@ -4,6 +4,26 @@ import { useUserContext } from "../../context/user";
 
 const Topbar = () => {
   const { userData } = useUserContext();
+  const urlHostname =
+    typeof window !== 'undefined' && window.location.hostname
+      ? window.location.hostname
+      : '';
+
+  let baseUrl;
+  switch (urlHostname) {
+    case 'thebetteraging.businesstoday.com.tw':
+      baseUrl = 'https://www.businesstoday.com.tw/';
+      break;
+    case 'new-thebetteraging-dev.businesstoday.com.tw' ||
+      'new-thebetteraging-kai.businesstoday.com.tw' ||
+      'age-next-layout.vercel.app/':
+      baseUrl = 'https://dev-hardy.businesstoday.com.tw/';
+      break;
+    default:
+      baseUrl = 'https://dev-hardy.businesstoday.com.tw/';
+      break;
+  }
+
 
   return (
     <div className="topbar text-gray-500 text-sm border-b border-gray-200">
@@ -222,7 +242,7 @@ const Topbar = () => {
             <>
               <a
                 className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
-                href="https://dev-hardy.businesstoday.com.tw/dashboard"
+                href={`${baseUrl}dashboard`}
                 target="_blank"
               >
                 會員中心
@@ -248,14 +268,14 @@ const Topbar = () => {
               </Link> */}
 
               <a
-                href="https://dev-hardy.businesstoday.com.tw/login?form_termcare=Y"
+                href={`${baseUrl}login?form_termcare=Y`}
                 className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
               >
                 登入
               </a>
 
               <a
-                href="https://dev-hardy.businesstoday.com.tw/login?form_termcare=Y"
+                href={`${baseUrl}login?form_termcare=Y`}
                 className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center 2xl:last:border-r"
               >
                 註冊
