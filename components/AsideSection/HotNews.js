@@ -52,7 +52,7 @@ const HotNews = ({ topics }) => {
                             layout="fill"
                           />
                         </div>
-                        <p className="text-sm md:text-base group-hover:text-gray-600">
+                        <p className="text-sm md:text-base group-hover:text-gray-600 line-clamp-3">
                           {item.title}
                         </p>
                       </a>

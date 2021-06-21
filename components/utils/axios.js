@@ -1,13 +1,35 @@
 import _axios from 'axios';
 
-const axios = (baseURL) => {
-  const instance = _axios.create({
-        baseURL: baseURL || 'https://api-thebetteraging-hardy.businesstoday.com.tw/api/',
-        timeout: 8000,
-      });
+const urlHostname =
+  typeof window !== 'undefined' && window.location.hostname
+    ? window.location.hostname
+    : '';
 
-   return instance;
+let nameUrl;
+switch (urlHostname) {
+  case 'thebetteraging.businesstoday.com.tw':
+    nameUrl = 'https://api-thebetteraging.businesstoday.com.tw/api/';
+    break;
+  case 'new-thebetteraging-dev.businesstoday.com.tw':
+    nameUrl = 'https://api-thebetteraging-dev.businesstoday.com.tw/api/';
+    break;
+  case 'new-thebetteraging-kai.businesstoday.com.tw' ||
+    'age-next-layout.vercel.app/':
+    nameUrl = 'https://api-thebetteraging-hardy.businesstoday.com.tw/api/';
+    break;
+  default:
+    nameUrl = 'https://api-thebetteraging-hardy.businesstoday.com.tw/api/';
+    break;
 }
 
-export {axios};
+const axios = baseUrl => {
+  const instance = _axios.create({
+    baseURL: baseUrl || nameUrl,
+    timeout: 8000,
+  });
+
+  return instance;
+};
+
+export { axios };
 export default axios();

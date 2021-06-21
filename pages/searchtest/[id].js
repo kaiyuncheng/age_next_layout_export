@@ -44,7 +44,7 @@ export const getServerSideProps = async context => {
   }
 };
 
-const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
+const SearchTest = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
   const router = useRouter();
   const [resultData, setResultData] = useState('');
   const [resultNewData, setResultNewData] = useState([]);
@@ -127,6 +127,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
   };
   const handleSort = e => {
     setSortBy(e.target.value);
+    console.log('handleSort', sortBy);
   };
 
   const sortByPage = () => {
@@ -224,8 +225,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
 
     if (newKeywords.trim().length !== 0) {
       return router.push(
-        `/search/article?keywords=${newKeywords.trim()}&sort=${sortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`,
-        `/search/article?keywords=${newKeywords.trim()}`,
+        `/searchtest/article?keywords=${newKeywords.trim()}&sort=${sortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`
       );
     } else {
       return setNewKeywords('');
@@ -238,8 +238,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
       e.preventDefault();
       if (newKeywords.trim().length !== 0) {
         router.push(
-          `/search/article?keywords=${newKeywords.trim()}&sort=${sortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`,
-          `/search/article?keywords=${newKeywords.trim()}`,
+          `/searchtest/article?keywords=${newKeywords.trim()}&sort=${sortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`
         );
       }
     }
@@ -247,6 +246,10 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
 
   return (
     <Layout siteTitle="幸福熟齡 - 搜尋結果">
+    {console.log('日期排列', resultDateData)}
+    {console.log('相關排列', resultRelatedData)}
+     {console.log('年份排列', resultYearData)}
+
       {/* PC 列表頁 廣告上 */}
       <div className="lg:block hidden max-w-screen-2xl mx-auto px-4 lg:px-2 flex justify-center items-center">
         <Banner adId="thebetterraging_pc_list_970x250_t" />
@@ -316,7 +319,6 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
                         type="radio"
                         name="newSortBy"
                         className="form-radio text-primary-dark border border-secondary-medium focus:border-primary-medium"
-                        name="radio-colors"
                         value="related"
                         checked={sortBy === 'related'}
                         onChange={handleSort}
@@ -328,7 +330,6 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
                         type="radio"
                         name="newSortBy"
                         className="form-radio text-primary-dark border border-secondary-medium focus:border-primary-medium"
-                        name="radio-colors"
                         value="date"
                         checked={sortBy === 'date'}
                         onChange={handleSort}
@@ -413,10 +414,10 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
                 </p>
               </div>
               <div className="results_select">
-                <label htmlFor="count">
+                <label htmlFor="sort">
                   <span>排序依據：</span>
                   <select
-                    name="count"
+                    name="sort"
                     className="form-select ml-1 border border-secondary-medium focus:border-primary-medium focus:ring focus:ring-primary-medium focus:ring-opacity-50 rounded-md shadow-sm outline-none focus:outline-none"
                     onChange={handleSort}
                     value={sortBy}
@@ -761,4 +762,4 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
   );
 };
 
-export default Search;
+export default SearchTest;

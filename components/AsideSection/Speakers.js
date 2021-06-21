@@ -87,7 +87,7 @@ const Speakers = ({ topics }) => {
                       target="_blank"
                       className="group w-full block border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
                     >
-                      <p className="text-base group-hover:text-gray-600">
+                      <p className="line-clamp-3 text-base group-hover:text-gray-600">
                         {item.title}
                       </p>
                     </a>

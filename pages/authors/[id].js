@@ -103,18 +103,18 @@ export default function Author({ authorInfo, authorArticles }) {
           />
         )}
 
-        {authorInfoData.seo_meta.meta_og_image && (
+        {authorInfoData.authorInfo.image_url && (
           <meta
             itemProp="image"
             property="og:image"
-            content={authorInfoData.seo_meta.meta_og_image}
+            content={authorInfoData.authorInfo.image_url}
           />
         )}
 
-        {authorInfoData.seo_meta.meta_og_image && (
+        {authorInfoData.authorInfo.image_url && (
           <meta
             itemProp="image"
-            content={authorInfoData.seo_meta.meta_og_image}
+            content={authorInfoData.authorInfo.image_url}
           />
         )}
       </Head>
@@ -149,7 +149,6 @@ export default function Author({ authorInfo, authorArticles }) {
           {showAside && (
             <AsideSection isHot={true} type={'article'} showMbAside={true} />
           )}
-          
         </div>
       </div>
     </Layout>

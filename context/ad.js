@@ -10,10 +10,26 @@ export function AdContextWrapper({ children }) {
     adlist: {
       // dino todo ★符號> 改版後此版位有異動 待確認
       // ==================== PC ==================== //
+
+      // 影音蓋板 (全站) 測試
+      'test_thebetteraging_pc_in-cover': {
+        sizes: [1, 1],
+        slot: '/1006274/test_thebetteraging_pc_in-cover',
+      },
+      // 手機影音蓋板 (全站) 測試
+      'test_thebetteraging_mob_320x480_cover': {
+        sizes: [
+          [1, 1],
+          [320, 480],
+        ],
+        slot: '/1006274/test_thebetteraging_mob_320x480_cover',
+      },
+
+      
       // 影音蓋板 (全站)
       'thebetteraging_pc_in-cover': {
         sizes: [1, 1],
-        slot: '/1006274/thebetteraging_pc_in-cover'
+        slot: '/1006274/thebetteraging_pc_in-cover',
       },
       // 版頭特區 (全站)
       thebetteraging_pc_all_300x100: {
@@ -21,7 +37,7 @@ export function AdContextWrapper({ children }) {
           [300, 100],
           [300, 75],
         ],
-        slot: '/1006274/thebetteraging_pc_all_300x100'
+        slot: '/1006274/thebetteraging_pc_all_300x100',
       },
       // 首頁黃金特區_上
       thebetterraging_pc_home_300x250_rt: {
@@ -29,7 +45,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_home_300x250_rt'
+        slot: '/1006274/thebetterraging_pc_home_300x250_rt',
       },
       // 首頁黃金特區_中
       thebetterraging_pc_home_300x250_rm: {
@@ -37,7 +53,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_home_300x250_rm'
+        slot: '/1006274/thebetterraging_pc_home_300x250_rm',
       },
       // 首頁大橫幅_上
       thebetteraging_pc_home_970x250_t: {
@@ -45,7 +61,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [970, 250],
         ],
-        slot: '/1006274/thebetteraging_pc_home_970x250_t'
+        slot: '/1006274/thebetteraging_pc_home_970x250_t',
       },
       // 首頁大橫幅_中 ★暫無使用
       thebetterraging_pc_home_970x250_m: {
@@ -53,7 +69,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [970, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_home_970x250_m'
+        slot: '/1006274/thebetterraging_pc_home_970x250_m',
       },
       // 首頁大橫幅_下
       thebetteraging_pc_home_970x250_b: {
@@ -61,7 +77,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [970, 250],
         ],
-        slot: '/1006274/thebetteraging_pc_home_970x250_b'
+        slot: '/1006274/thebetteraging_pc_home_970x250_b',
       },
       // 首頁大看板 ★暫無使用
       thebetterraging_pc_home_300x600_rb: {
@@ -69,7 +85,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 600],
         ],
-        slot: '/1006274/thebetterraging_pc_home_300x600_rb'
+        slot: '/1006274/thebetterraging_pc_home_300x600_rb',
       },
 
       // ★第一層列表頁
@@ -79,7 +95,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_list_300x250_rt'
+        slot: '/1006274/thebetterraging_pc_list_300x250_rt',
       },
       // 列表頁黃金特區_中
       thebetterraging_pc_list_300x250_rm: {
@@ -87,7 +103,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_list_300x250_rm'
+        slot: '/1006274/thebetterraging_pc_list_300x250_rm',
       },
       // 列表頁焦點大看板 ★暫無使用
       thebetterraging_pc_list_300x600_rb: {
@@ -95,7 +111,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 600],
         ],
-        slot: '/1006274/thebetterraging_pc_list_300x600_rb'
+        slot: '/1006274/thebetterraging_pc_list_300x600_rb',
       },
       // 列表頁大橫幅_上
       thebetterraging_pc_list_970x250_t: {
@@ -103,7 +119,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [970, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_list_970x250_t'
+        slot: '/1006274/thebetterraging_pc_list_970x250_t',
       },
       // 列表頁大橫幅_下
       thebetterraging_pc_list_970x250_b: {
@@ -111,7 +127,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [970, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_list_970x250_b'
+        slot: '/1006274/thebetterraging_pc_list_970x250_b',
       },
 
       // ★內頁
@@ -121,7 +137,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rt'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rt',
       },
       // 內頁黃金特區_中
       thebetterraging_pc_article_300x250_rm: {
@@ -129,7 +145,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rm'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rm',
       },
       // 內頁黃金特區_上_1
       thebetterraging_pc_article_300x250_rt_1: {
@@ -137,7 +153,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rt_1'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rt_1',
       },
       // 內頁黃金特區_中_1
       thebetterraging_pc_article_300x250_rm_1: {
@@ -145,7 +161,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rm_1'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rm_1',
       },
       // 內頁黃金特區_上_2
       thebetterraging_pc_article_300x250_rt_2: {
@@ -153,7 +169,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rt_2'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rt_2',
       },
       // 內頁黃金特區_中_2
       thebetterraging_pc_article_300x250_rm_2: {
@@ -161,7 +177,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rm_2'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rm_2',
       },
       // 內頁黃金特區_上_3
       thebetterraging_pc_article_300x250_rt_3: {
@@ -169,7 +185,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rt_3'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rt_3',
       },
       // 內頁黃金特區_中_3
       thebetterraging_pc_article_300x250_rm_3: {
@@ -177,7 +193,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rm_3'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rm_3',
       },
       // 內頁黃金特區_上_4
       thebetterraging_pc_article_300x250_rt_4: {
@@ -185,7 +201,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rt_4'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rt_4',
       },
       // 內頁黃金特區_中_4
       thebetterraging_pc_article_300x250_rm_4: {
@@ -193,7 +209,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rm_4'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rm_4',
       },
       // 內頁黃金特區_上_5
       thebetterraging_pc_article_300x250_rt_5: {
@@ -201,7 +217,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rt_5'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rt_5',
       },
       // 內頁黃金特區_中_5
       thebetterraging_pc_article_300x250_rm_5: {
@@ -209,12 +225,12 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_300x250_rm_5'
+        slot: '/1006274/thebetterraging_pc_article_300x250_rm_5',
       },
       // 內頁焦點大看板 ★暫無使用
       thebetterraging_pc_article_300x600_rb: {
         sizes: [300, 600],
-        slot: '/1006274/thebetterraging_pc_article_300x600_rb'
+        slot: '/1006274/thebetterraging_pc_article_300x600_rb',
       },
       // 內頁小橫幅_下 ★暫無使用
       thebetterraging_pc_article_728x90_b: {
@@ -222,7 +238,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [728, 90],
         ],
-        slot: '/1006274/thebetterraging_pc_article_728x90_b'
+        slot: '/1006274/thebetterraging_pc_article_728x90_b',
       },
       // 內頁大橫幅_下
       thebetterraging_pc_article_970x250_b: {
@@ -230,7 +246,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [970, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_970x250_b'
+        slot: '/1006274/thebetterraging_pc_article_970x250_b',
       },
       // 內頁大橫幅_下_1
       thebetterraging_pc_article_970x250_b_1: {
@@ -238,7 +254,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [970, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_970x250_b_1'
+        slot: '/1006274/thebetterraging_pc_article_970x250_b_1',
       },
       // 內頁大橫幅_下_2
       thebetterraging_pc_article_970x250_b_2: {
@@ -246,7 +262,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [970, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_970x250_b_2'
+        slot: '/1006274/thebetterraging_pc_article_970x250_b_2',
       },
       // 內頁大橫幅_下_3
       thebetterraging_pc_article_970x250_b_3: {
@@ -254,7 +270,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [970, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_970x250_b_3'
+        slot: '/1006274/thebetterraging_pc_article_970x250_b_3',
       },
       // 內頁大橫幅_下_4
       thebetterraging_pc_article_970x250_b_4: {
@@ -262,7 +278,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [970, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_970x250_b_4'
+        slot: '/1006274/thebetterraging_pc_article_970x250_b_4',
       },
       // 內頁大橫幅_下_5
       thebetterraging_pc_article_970x250_b_5: {
@@ -270,12 +286,12 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [970, 250],
         ],
-        slot: '/1006274/thebetterraging_pc_article_970x250_b_5'
+        slot: '/1006274/thebetterraging_pc_article_970x250_b_5',
       },
       // Innity_Ebar_Video
       thebetterraging_Innity_PC_OOP: {
         sizes: [1, 1],
-        slot: '/1006274/thebetterraging_Innity_PC_OOP'
+        slot: '/1006274/thebetterraging_Innity_PC_OOP',
       },
 
       // ==================== MOBILE ==================== //
@@ -285,7 +301,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [320, 480],
         ],
-        slot: '/1006274/thebetteraging_mob_320x480_cover'
+        slot: '/1006274/thebetteraging_mob_320x480_cover',
       },
       // 手機首頁黃金特區_一
       thebetteraging_mob_home_300x250_t: {
@@ -293,7 +309,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_home_300x250_t'
+        slot: '/1006274/thebetteraging_mob_home_300x250_t',
       },
       // 手機首頁黃金特區_二
       thebetteraging_mob_home_300x250_m: {
@@ -301,7 +317,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_home_300x250_m'
+        slot: '/1006274/thebetteraging_mob_home_300x250_m',
       },
       // 手機首頁黃金特區_三
       thebetteraging_mob_home_300x250_mb: {
@@ -309,7 +325,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_home_300x250_mb'
+        slot: '/1006274/thebetteraging_mob_home_300x250_mb',
       },
       // 手機首頁黃金特區_四
       thebetteraging_mob_home_300x250_b: {
@@ -317,7 +333,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_home_300x250_b'
+        slot: '/1006274/thebetteraging_mob_home_300x250_b',
       },
 
       // ★第一層列表頁
@@ -327,7 +343,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_list_300x250_t'
+        slot: '/1006274/thebetteraging_mob_list_300x250_t',
       },
       // 手機列表頁黃金特區_二
       thebetteraging_mob_list_300x250_mb: {
@@ -335,7 +351,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_list_300x250_mb'
+        slot: '/1006274/thebetteraging_mob_list_300x250_mb',
       },
       // 手機列表頁黃金特區_三
       thebetteraging_mob_list_300x250_b: {
@@ -343,7 +359,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_list_300x250_b'
+        slot: '/1006274/thebetteraging_mob_list_300x250_b',
       },
 
       // ★內頁
@@ -353,7 +369,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_t'
+        slot: '/1006274/thebetteraging_mob_article_300x250_t',
       },
       // 手機內頁黃金特區_二
       thebetteraging_mob_article_300x250_mb: {
@@ -361,7 +377,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_mb'
+        slot: '/1006274/thebetteraging_mob_article_300x250_mb',
       },
       // 手機內頁黃金特區_三
       thebetteraging_mob_article_300x250_b: {
@@ -369,7 +385,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_b'
+        slot: '/1006274/thebetteraging_mob_article_300x250_b',
       },
       // 手機內頁黃金特區_一_1
       thebetteraging_mob_article_300x250_t_1: {
@@ -377,7 +393,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_t_1'
+        slot: '/1006274/thebetteraging_mob_article_300x250_t_1',
       },
       // 手機內頁黃金特區_二_1
       thebetteraging_mob_article_300x250_mb_1: {
@@ -385,7 +401,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_mb_1'
+        slot: '/1006274/thebetteraging_mob_article_300x250_mb_1',
       },
       // 手機內頁黃金特區_三_1
       thebetteraging_mob_article_300x250_b_1: {
@@ -393,7 +409,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_b_1'
+        slot: '/1006274/thebetteraging_mob_article_300x250_b_1',
       },
       // 手機內頁黃金特區_一_2
       thebetteraging_mob_article_300x250_t_2: {
@@ -401,7 +417,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_t_2'
+        slot: '/1006274/thebetteraging_mob_article_300x250_t_2',
       },
       // 手機內頁黃金特區_二_2
       thebetteraging_mob_article_300x250_mb_2: {
@@ -409,7 +425,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_mb_2'
+        slot: '/1006274/thebetteraging_mob_article_300x250_mb_2',
       },
       // 手機內頁黃金特區_三_2
       thebetteraging_mob_article_300x250_b_2: {
@@ -417,7 +433,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_b_2'
+        slot: '/1006274/thebetteraging_mob_article_300x250_b_2',
       },
       // 手機內頁黃金特區_一_3
       thebetteraging_mob_article_300x250_t_3: {
@@ -425,7 +441,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_t_3'
+        slot: '/1006274/thebetteraging_mob_article_300x250_t_3',
       },
       // 手機內頁黃金特區_二_3
       thebetteraging_mob_article_300x250_mb_3: {
@@ -433,7 +449,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_mb_3'
+        slot: '/1006274/thebetteraging_mob_article_300x250_mb_3',
       },
       // 手機內頁黃金特區_三_3
       thebetteraging_mob_article_300x250_b_3: {
@@ -441,7 +457,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_b_3'
+        slot: '/1006274/thebetteraging_mob_article_300x250_b_3',
       },
       // 手機內頁黃金特區_一_4
       thebetteraging_mob_article_300x250_t_4: {
@@ -449,7 +465,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_t_4'
+        slot: '/1006274/thebetteraging_mob_article_300x250_t_4',
       },
       // 手機內頁黃金特區_二_4
       thebetteraging_mob_article_300x250_mb_4: {
@@ -457,7 +473,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_mb_4'
+        slot: '/1006274/thebetteraging_mob_article_300x250_mb_4',
       },
       // 手機內頁黃金特區_三_4
       thebetteraging_mob_article_300x250_b_4: {
@@ -465,7 +481,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_b_4'
+        slot: '/1006274/thebetteraging_mob_article_300x250_b_4',
       },
       // 手機內頁黃金特區_一_5
       thebetteraging_mob_article_300x250_t_5: {
@@ -473,7 +489,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_t_5'
+        slot: '/1006274/thebetteraging_mob_article_300x250_t_5',
       },
       // 手機內頁黃金特區_二_5
       thebetteraging_mob_article_300x250_mb_5: {
@@ -481,7 +497,7 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_mb_5'
+        slot: '/1006274/thebetteraging_mob_article_300x250_mb_5',
       },
       // 手機內頁黃金特區_三_5
       thebetteraging_mob_article_300x250_b_5: {
@@ -489,12 +505,12 @@ export function AdContextWrapper({ children }) {
           [1, 1],
           [300, 250],
         ],
-        slot: '/1006274/thebetteraging_mob_article_300x250_b_5'
+        slot: '/1006274/thebetteraging_mob_article_300x250_b_5',
       },
       // Innity_Engage
       thebetteraging_Innity_Mob_OOP: {
         sizes: [1, 1],
-        slot: '/1006274/thebetteraging_Innity_Mob_OOP'
+        slot: '/1006274/thebetteraging_Innity_Mob_OOP',
       },
 
       dablewidget_goPjaJlQ_370NGgXx: {

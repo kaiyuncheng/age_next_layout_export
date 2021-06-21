@@ -92,7 +92,7 @@ const Header = ({ isFBLogin, handleFBLogout }) => {
                   >
                     <defs>
                       <linearGradient
-                        id="linear-gradient"
+                        id="linear-gradient-1"
                         x1="0.63"
                         y1="0.007"
                         x2="0.351"
@@ -177,8 +177,8 @@ const Header = ({ isFBLogin, handleFBLogout }) => {
                                   data-name="Path 4156"
                                   d="M165.6,516.183a33.979,33.979,0,0,0-6.011-.8,22.79,22.79,0,0,0-7.667,9.992c-2.04,4.942.29,5.323,2.255,2.218,1.7-2.679,4.23-7.842,5.4-7.351,1.117.465-1.283,5.008-1.993,9.4-.89,5.5-.187,7.474,2.605.876C162.18,525.809,163.93,521.011,165.6,516.183Z"
                                   transform="translate(-150.093 -498.157)"
+                                  fill="url(#linear-gradient-1)"
                                   fillRule="evenodd"
-                                  fill="url(#linear-gradient)"
                                 />
                                 <path
                                   id="Path_4157"
@@ -416,7 +416,15 @@ const Header = ({ isFBLogin, handleFBLogout }) => {
                       )}
                     >
                       <div className="main_menu_btn h-10 group relative w-full transition-all duration-500 group-hover:bg-white outline-none focus:outline-none flex items-center justify-center">
-                        {item.link.charAt(0) === '/' ? (
+                        
+                        {item.name === '精選專題活動' ? (
+                          <div
+                            onClick={() => toggleOpen(item.category_id)}
+                            className="cursor-pointer"
+                          >
+                            <h2 className="mr-2">{item.name}</h2>
+                          </div>
+                        ) : item.link.charAt(0) === '/' ? (
                           <Link href={item.link}>
                             <a onClick={toggleMenu}>
                               <h2 className="mr-2">{item.name}</h2>
@@ -501,7 +509,8 @@ const Header = ({ isFBLogin, handleFBLogout }) => {
                       </ul>
                     </li>
                   );
-                })}
+                  }
+                )}
             </ul>
           </nav>
         </div>

@@ -11,7 +11,7 @@ const AuthorListItem = ({author}) => {
             <a className="w-2/5 h-auto md:h-56 inline-flex items-center justify-center p-2 xs:p-5">
               <div className="relative group rounded-full overflow-hidden aspect-w-3 aspect-h-3 w-full md:w-full">
                 <Image
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
+                  className="w-full h-full object-cover transform scale-100 xs:group-hover:scale-105 transition-all duration-500 ease-in-out rounded-full"
                   src={
                     author.image_url ||
                     'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
