@@ -69,8 +69,6 @@ const Layout = ({ children, siteTitle, isFBLogin, handleFBLogout }) => {
 
       {/* <Banner adId="thebetteraging_pc_in-cover" />
       <Banner adId="thebetteraging_mob_320x480_cover" /> */}
-
-     
     </div>
   );
 };

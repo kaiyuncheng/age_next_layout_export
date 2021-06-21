@@ -78,9 +78,11 @@ export default function article({ data, id }) {
   }, [data]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScrollBottom);
-    return () => window.removeEventListener('scroll', handleScrollBottom);
-  }, []);
+    if (articleData.article_other_list.length !== 0) {
+      window.addEventListener('scroll', handleScrollBottom);
+      return () => window.removeEventListener('scroll', handleScrollBottom);
+    }
+  }, [articleData]);
 
   useEffect(() => {
     if (
@@ -230,7 +232,7 @@ export default function article({ data, id }) {
       {/* Dable 大家都在看 隱藏 下滑顯示 */}
       {/* <DableHiddenBar /> */}
 
-      <Fade triggerOnce direction="up">
+    <Fade triggerOnce>
         <RelatedArticleItem
           item={articleData}
           dableIds={{
@@ -241,7 +243,7 @@ export default function article({ data, id }) {
           type={'article'}
           i={0}
         />
-      </Fade>
+    </Fade>
 
       {articleData.article_other_list.length !== 0 &&
         !isShowList &&
