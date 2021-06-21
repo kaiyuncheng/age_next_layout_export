@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 import Layout from '../../components/Layout';
 import axios from '../../components/utils/axios';
 import Head from 'next/head';
@@ -230,7 +230,7 @@ export default function article({ data, id }) {
       {/* Dable 大家都在看 隱藏 下滑顯示 */}
       {/* <DableHiddenBar /> */}
 
-      <Fade bottom>
+      <Fade triggerOnce direction="up">
         <RelatedArticleItem
           item={articleData}
           dableIds={{

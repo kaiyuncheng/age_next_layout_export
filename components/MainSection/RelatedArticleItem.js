@@ -17,7 +17,9 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
   }, [dableIds]);
 
   function createMarkup() {
-    return { __html: item.content_info[0].text };
+    if (item.content_info.length !== 0) {
+      return { __html: item.content_info[0].text }
+    };
   }
   function TextComponent() {
     return (

@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 
 const VideoListItem = ({ item }) => {
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 px-4 pb-8">
-      <Fade bottom>
+      <Fade triggerOnce direction="up">
         <div className="flex flex-col bg-white rounded-bl-lg rounded-t-lg rounded-br-5xl shadow-md border border-secondary-medium">
           <Link href={`/video/${item.url_query}`}>
             <a className="group block rounded-t-lg relative overflow-hidden w-full outline-none focus:outline-none">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Fade from "react-reveal/Fade";
+import { Fade } from 'react-awesome-reveal';
 import CollectItem from './CollectItem';
 
 const CollectList = ({ topics }) => {
@@ -50,7 +50,7 @@ const CollectList = ({ topics }) => {
   return (
     <div className="news_articles flex flex-col space-y-14 pb-5 mb-5">
       {listItems.map((listItem, i) => (
-        <Fade bottom key={i}>
+        <Fade triggerOnce direction="up" key={i}>
           <CollectItem item={topics[listItem - 1]} />
         </Fade>
       ))}

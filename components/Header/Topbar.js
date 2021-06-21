@@ -14,9 +14,8 @@ const Topbar = () => {
     case 'thebetteraging.businesstoday.com.tw':
       baseUrl = 'https://www.businesstoday.com.tw/';
       break;
-    case 'new-thebetteraging-dev.businesstoday.com.tw' ||
-      'new-thebetteraging-kai.businesstoday.com.tw' ||
-      'age-next-layout.vercel.app/':
+    case 'new-thebetteraging-dev.businesstoday.com.tw':
+    case 'age-next-layout.vercel.app/':
       baseUrl = 'https://dev-hardy.businesstoday.com.tw/';
       break;
     default:

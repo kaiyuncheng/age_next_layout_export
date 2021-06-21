@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useMainContext } from '../context/main';
-import Fade from "react-reveal/Fade";
+import { Fade } from 'react-awesome-reveal';
 import Layout from "../components/Layout";
 import MainSlider from "../components/utils/sliders/MainSlider";
 import Tabs from "../components/LatestSection/Tabs";
@@ -9,16 +9,16 @@ import Category from "../components/MainSection/Category";
 import AsideSection from "../components/AsideSection";
 import Banner from "../components/utils/googletags/Banner";
 
-
 export default function Home() {
   const {mainData} = useMainContext();
 
-
   return (
     <Layout siteTitle="幸福熟齡 - 從今開始，勾勒美好第二人生">
-      {mainData && <MainSlider topics={mainData.top_banners} />}
+      {mainData && (
+          <MainSlider topics={mainData.top_banners} />
+      )}
 
-      <Fade bottom>
+      <Fade triggerOnce direction="up">
         <div className="latest border-box mb-10">
           <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row space-y-0 md:space-x-4 lg:space-x-10">
             {mainData && (

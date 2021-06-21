@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from "next/link";
 import Image from "next/image"; 
-import Fade from "react-reveal/Fade";
+import { Fade } from 'react-awesome-reveal';
 const AuthorListItem = ({author}) => {
   return (
-    <Fade bottom>
-      <div className="w-full lg:w-1/2 px-4 pb-8">
-        <div className="flex bg-white rounded-bl-lg rounded-t-lg rounded-br-5xl shadow-md border border-secondary-medium">
+    <div className="w-full lg:w-1/2 px-4 pb-8">
+      <Fade triggerOnce direction="up">
+        <div className="flex bg-white r</Fade>ounded-bl-lg rounded-t-lg rounded-br-5xl shadow-md border border-secondary-medium">
           <Link href={`/authors/${author.id}`}>
             <a className="w-2/5 h-auto md:h-56 inline-flex items-center justify-center p-2 xs:p-5">
               <div className="relative group rounded-full overflow-hidden aspect-w-3 aspect-h-3 w-full md:w-full">
@@ -56,8 +56,8 @@ const AuthorListItem = ({author}) => {
             </Link>
           </div>
         </div>
-      </div>
-    </Fade>
+      </Fade>
+    </div>
   );
 };
 

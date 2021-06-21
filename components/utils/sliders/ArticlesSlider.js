@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Slider from 'react-slick';
 import clsx from 'clsx';
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 
 function NextArrow({ onClick }) {
   return (
@@ -71,7 +71,7 @@ const MainSlider = ({ topics }) => {
   };
 
   return (
-    <Fade bottom>
+    <Fade triggerOnce direction="up">
       <div className={clsx('articles_slider relative')}>
         <Slider {...settings}>
           {topics &&

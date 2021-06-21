@@ -4,6 +4,8 @@ import Footer from "./Footer";
 import DableFullCover from './utils/dable/DableFullCover';
 import Banner from "./utils/googletags/Banner";
 import GoTop from "./utils/GoTop";
+import { DFPSlotsProvider, AdSlot } from 'react-dfp';
+
 
 const Layout = ({ children, siteTitle, isFBLogin, handleFBLogout }) => {
   return (
@@ -67,6 +69,8 @@ const Layout = ({ children, siteTitle, isFBLogin, handleFBLogout }) => {
 
       {/* <Banner adId="thebetteraging_pc_in-cover" />
       <Banner adId="thebetteraging_mob_320x480_cover" /> */}
+
+     
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Fade from "react-reveal/Fade";
+import { Fade } from 'react-awesome-reveal';
 const AuthorInfo = ({ author }) => {
   function createMarkup() {
     return { __html: author.introduction2 };
@@ -12,7 +12,7 @@ const AuthorInfo = ({ author }) => {
   }
 
   return (
-    <Fade bottom>
+    <Fade triggerOnce direction="up">
       <div className="border border-secondary-medium bg-white shadow-md rounded-lg rounded-br-5xl flex flex-col space-y-10 md:flex-row md:space-y-0 md:space-x-10 p-5 md:p-10 mb-14">
         <div className="w-full md:w-1/3 inline-flex items-center justify-center">
           <Image

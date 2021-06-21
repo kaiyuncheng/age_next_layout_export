@@ -4,7 +4,7 @@ import VideoSlider from "../utils/sliders/VideoSlider";
 import Speakers from "./Speakers";
 import HotNews from './HotNews';
 import BrandInfo from "./BrandInfo";
-import Fade from "react-reveal/Fade";
+import { Fade } from 'react-awesome-reveal';
 import Banner from "../utils/googletags/Banner";
 import clsx from "clsx";
 
@@ -20,7 +20,7 @@ const AsideSection = ({
   const { mainData } = useMainContext();
 
   return (
-    <Fade bottom when={true}>
+    <Fade triggerOnce direction="up">
       <aside
         className={clsx(
           showPcAside && 'hidden md:block',
@@ -54,9 +54,7 @@ const AsideSection = ({
           />
         </div>
 
-        {isHot && (
-          <HotNews topics={mainData.hot_article_banners} />
-        )}
+        {isHot && <HotNews topics={mainData.hot_article_banners} />}
 
         {!isHot && <Speakers topics={mainData.article_news} />}
 

@@ -27,6 +27,18 @@ export default class MyDocument extends Document {
             }}
           />
           <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-4950332-37"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-4950332-37');`,
+            }}
+          />
+          <script
             data-ad-client="ca-pub-4601055099861731"
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
@@ -57,7 +69,6 @@ export default class MyDocument extends Document {
                         dable('sendLogOnce');`,
             }}
           />
-
         </Head>
         <body>
           <Main />

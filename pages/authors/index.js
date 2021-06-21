@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/Layout";
 import axios from "../../components/utils/axios";
-import Link from "next/link";
-import Image from "next/image";
 import AsideSection from "../../components/AsideSection";
 import BreadCrumb from "../../components/utils/BreadCrumb";
 import AuthorListItem from "../../components/MainSection/AuthorListItem";

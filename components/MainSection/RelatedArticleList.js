@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RelatedArticleItem from './RelatedArticleItem';
-import Fade from 'react-reveal/Fade';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
+import { Fade } from 'react-awesome-reveal';
 const RelatedArticleList = ({ topics, dableIds }) => {
   let defaultNum =
     topics.length > 0 ? (topics.length < 1 ? topics.length : 1) : 0;
@@ -59,15 +58,18 @@ const RelatedArticleList = ({ topics, dableIds }) => {
   return (
       <div className="news_articles flex flex-col space-y-14 pb-5 mb-5">
         {listItems.length <= topics.length &&
-          listItems.map((listItem, i) => (
-            <Fade bottom key={i + 1} when={true}>
-              <RelatedArticleItem
-                item={topics[listItem - 1]}
-                dableIds={dableIds[listItem - 1]}
-                i={i + 1}
-              />
-            </Fade>
-          ))}
+          listItems.map((listItem, i) => {
+            if (topics[listItem - 1].article_info.title){
+              return (
+                <Fade triggerOnce key={i + 1}>
+                  <RelatedArticleItem
+                    item={topics[listItem - 1]}
+                    dableIds={dableIds[listItem - 1]}
+                    i={i + 1}
+                  />
+                </Fade>
+              );}}
+        )}
 
         {listItems.length < topics.length && isFetching && (
           <div className="flex items-center justify-center">

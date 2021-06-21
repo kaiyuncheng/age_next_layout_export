@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import CategorySlider from "../utils/sliders/CategorySlider";
 import Image from "next/image";
 import Link from "next/link";
-import Fade from "react-reveal/Fade";
+import { Fade } from 'react-awesome-reveal';
 import clsx from "clsx";
 
 const Category = ({ name, id, data, isIndexCategory, parentName }) => {
@@ -29,7 +29,7 @@ const Category = ({ name, id, data, isIndexCategory, parentName }) => {
   }, []);
 
   return (
-    <Fade bottom>
+    <Fade triggerOnce direction="up">
       <div className="topics_section relative border border-secondary-medium rounded-lg rounded-br-5xl flex flex-col p-5 pt-3 bg-gradient-to-t from-primary-light via-white to-white">
         <Link href={linkHref}>
           <a className="absolute -top-4 left-5 shadow-md bg-primary-light hover:bg-secondary-light transition-all duration-200 px-12 py-2 rounded-br-full rounded-tl-full overflow-hidden outline-none focus:outline-none">

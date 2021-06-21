@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Fade from "react-reveal/Fade";
+import { Fade } from 'react-awesome-reveal';
 import ArticleListItem from "./ArticleListItem";
 
 const ArticleList = ({ topics, setShowAside }) => {
@@ -56,7 +56,7 @@ const ArticleList = ({ topics, setShowAside }) => {
     <div className="news_articles flex flex-col space-y-14 pb-5 mb-5">
       {listItems.length <= topics.length &&
         listItems.map((listItem, i) => (
-          <Fade bottom key={i}>
+          <Fade triggerOnce direction="up" key={i}>
             <ArticleListItem item={topics[listItem - 1]} />
           </Fade>
         ))}
