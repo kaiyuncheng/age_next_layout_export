@@ -99,9 +99,7 @@ const Speakers = ({ topics }) => {
                       href={'/article/[id]'}
                       as={`/article/${item.url_query}`}
                     >
-                      <a
-                        className="group w-full block border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
-                      >
+                      <a className="group w-full block border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none">
                         <p className="text-base group-hover:text-gray-600">
                           {item.title}
                         </p>

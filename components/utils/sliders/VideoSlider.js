@@ -208,11 +208,9 @@ const VideoSlider = ({ topics }) => {
 
       {topics && topics[pages.currentSlide].internal && (
         <Link href={`/video/${topics[pages.currentSlide].video_id}`}>
-          <a className="group block relative w-full mb-5 pb-5 outline-none focus:outline-none">
-            <div className=" px-2 pb-5 outline-none focus:outline-none">
-              <p className="text-base group-hover:text-gray-600">
-                {topics[pages.currentSlide].title}
-              </p>
+          <a className="z-10 group block relative w-full mb-5 pb-5 hover:text-gray-600 hover:font-medium">
+            <div className="px-2 pb-5">
+              <p className="text-base">{topics[pages.currentSlide].title}</p>
             </div>
           </a>
         </Link>
@@ -221,12 +219,10 @@ const VideoSlider = ({ topics }) => {
         <a
           href={topics[pages.currentSlide].hyperlink}
           target="_blank"
-          className="group block relative w-full mb-5 pb-5 outline-none focus:outline-none"
+          className="z-10 hover:text-gray-600 hover:font-medium group block relative w-full mb-5 pb-5"
         >
-          <div className="px-2 pb-5 outline-none focus:outline-none">
-            <p className="text-base group-hover:text-gray-600">
-              {topics[pages.currentSlide].title}
-            </p>
+          <div className="px-2 pb-5">
+            <p className="text-base">{topics[pages.currentSlide].title}</p>
           </div>
         </a>
       )}
