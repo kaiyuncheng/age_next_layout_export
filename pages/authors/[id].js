@@ -14,8 +14,10 @@ export const getServerSideProps = async (context) => {
   const { id } = context.query;
   try {
     const [authorInfoRes, authorArticlesRes] = await Promise.all([
-      axios.get(`Author/release/${id}`),
-      axios.get(`Author/getLongTermAuthorArticle/${id}`),
+      axios.get(`Author/release/${id}?${new Date().getTime()}`),
+      axios.get(
+        `Author/getLongTermAuthorArticle/${id}?${new Date().getTime()}`,
+      ),
     ]);
 
     if (!authorInfoRes.data.data || !authorArticlesRes.data.data) {

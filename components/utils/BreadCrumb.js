@@ -12,9 +12,15 @@ const BreadCrumb = ({ titles }) => {
             return (
               <span key={i} className="last:text-gray-800 last:font-medium">
                 <span className="mx-1">/</span>
-                <Link href={item.link}>
-                  <a className="hover:text-primary-dark">{item.title}</a>
-                </Link>
+                {item.link ? (
+                  <Link href={item.link}>
+                    <a className="hover:text-primary-dark">{item.title}</a>
+                  </Link>
+                ) : (
+                  
+                    <span>{item.title}</span>
+                  
+                )}
               </span>
             );
           })}

@@ -8,7 +8,7 @@ import Banner from '../../components/utils/googletags/Banner';
 
 export const getStaticProps = async () => {
   try {
-    const { data } = await axios.get(`Catalog/news`);
+    const { data } = await axios.get(`Catalog/news?${new Date().getTime()}`);
     
     if (!data.data) {
       return {

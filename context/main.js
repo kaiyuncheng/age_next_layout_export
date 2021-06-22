@@ -19,7 +19,7 @@ export function MainContextWrapper({ children }) {
   useEffect(() => {
     const getMainData = async () => {
       try {
-        const res = await axios.get(`Home`);
+        const res = await axios.get(`Home?${new Date().getTime()}`);
         setMainData(res.data.data);
       } catch (error) {
         console.log("getMainData error", error);

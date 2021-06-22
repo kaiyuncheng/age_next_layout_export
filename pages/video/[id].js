@@ -12,8 +12,8 @@ export const getServerSideProps = async context => {
   const { id } = context.query;
   try {
     const [videoDataRes, videosDataRes] = await Promise.all([
-      axios.get(`Media/detail/${id}`),
-      axios.get(`Media/list`),
+      axios.get(`Media/detail/${id}?${new Date().getTime()}`),
+      axios.get(`Media/list?${new Date().getTime()}`),
     ]);
 
 

@@ -12,7 +12,9 @@ import clsx from 'clsx';
 export const getServerSideProps = async context => {
   const { id } = context.query;
   try {
-    const { data } = await axios.get(`article/detail/${id}`);
+    const { data } = await axios.get(
+      `article/detail/${id}?${new Date().getTime()}`,
+    );
 
     if (!data.data) {
       return {

@@ -9,7 +9,9 @@ import Banner from '../../components/utils/googletags/Banner';
 
 export const getStaticProps = async () => {
     try {
-      const { data } = await axios.get(`Author/getLongTermAuthor`);
+      const { data } = await axios.get(
+        `Author/getLongTermAuthor?${new Date().getTime()}`,
+      );
 
       if (!data.data) {
         return {

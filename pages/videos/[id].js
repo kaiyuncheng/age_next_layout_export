@@ -12,7 +12,7 @@ export const getServerSideProps = async context => {
   const { id } = context.query;
 
   try {
-    const { data } = await axios.get(`Media/list`);
+    const { data } = await axios.get(`Media/list?${new Date().getTime()}`);
 
     if (!data.data) {
       return {

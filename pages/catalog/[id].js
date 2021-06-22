@@ -15,7 +15,9 @@ import Banner from '../../components/utils/googletags/Banner';
 export const getServerSideProps = async context => {
   const { id } = context.query;
   try {
-    const { data } = await axios.get(`Catalog/list/${id}`);
+    const { data } = await axios.get(
+      `Catalog/list/${id}?${new Date().getTime()}`,
+    );
 
     if (!data.data) {
       return {
@@ -150,19 +152,34 @@ export default function cataloglist({ data }) {
                 </h2>
               </div>
             )}
-
             {/* <!-- bread crumb --> */}
+            {catalogData.category_info.categoryLevel === '1' &&
+              catalogData.category_info.is_project === true && (
+                <BreadCrumb
+                  titles={[
+                    {
+                      title: `精選專題活動`,
+                    },
+                    {
+                      title: `${catalogData.category_info.name}`,
+                      link: `/catalog/${catalogData.category_info.category_id}`,
+                    },
+                  ]}
+                />
+              )}
 
-            {catalogData.category_info.categoryLevel === '1' ? (
-              <BreadCrumb
-                titles={[
-                  {
-                    title: `${catalogData.category_info.name}`,
-                    link: `/catalog/${catalogData.category_info.category_id}`,
-                  },
-                ]}
-              />
-            ) : (
+            {catalogData.category_info.categoryLevel === '1' &&
+              catalogData.category_info.is_project === false && (
+                <BreadCrumb
+                  titles={[
+                    {
+                      title: `${catalogData.category_info.name}`,
+                      link: `/catalog/${catalogData.category_info.category_id}`,
+                    },
+                  ]}
+                />
+              )}
+            {catalogData.category_info.categoryLevel !== '1' && (
               <BreadCrumb
                 titles={[
                   {
@@ -204,7 +221,6 @@ export default function cataloglist({ data }) {
                 </a>
               </>
             )}
-
             <div className="space-y-14">
               {catalogData.top_article && (
                 <MainArticle topics={catalogData.top_article} />
