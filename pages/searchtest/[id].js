@@ -12,7 +12,7 @@ export const getServerSideProps = async context => {
   const { keywords, sort, count, yearFrom, yearTo } = context.query;
   try {
     const { data } = await axios.get(
-      `search?q=${encodeURIComponent(keywords)}?${new Date().getTime()}`,
+      `search?q=${encodeURIComponent(keywords)}`,
     );
 
     if (!data.data) {

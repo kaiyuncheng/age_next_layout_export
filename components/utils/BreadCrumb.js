@@ -17,9 +17,7 @@ const BreadCrumb = ({ titles }) => {
                     <a className="hover:text-primary-dark">{item.title}</a>
                   </Link>
                 ) : (
-                  
                     <span>{item.title}</span>
-                  
                 )}
               </span>
             );

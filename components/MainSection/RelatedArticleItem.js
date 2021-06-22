@@ -205,14 +205,17 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                 <p className="font-medium">加入最愛</p>
               </a> */}
             </div>
-            <div
-              className={clsx(
-                fontSize,
-                'article_part leading-relaxed tracking-widest bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
-              )}
-            >
-              <p>{item.article_info.part_text}</p>
-            </div>
+
+            {item.article_info.part_text && (
+              <div
+                className={clsx(
+                  fontSize,
+                  'article_part leading-relaxed tracking-widest bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
+                )}
+              >
+                <p>{item.article_info.part_text}</p>
+              </div>
+            )}
 
             <div
               className={clsx(

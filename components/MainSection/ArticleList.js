@@ -3,13 +3,15 @@ import { Fade } from 'react-awesome-reveal';
 import ArticleListItem from "./ArticleListItem";
 
 const ArticleList = ({ topics, setShowAside }) => {
-  let defaultNum =
-    topics.length > 0 ? (topics.length < 20 ? topics.length : 20) : 0;
-
-  const [listItems, setListItems] = useState(
-    Array.from(Array(defaultNum).keys(), n => n + 1),
-  );
+  const [listItems, setListItems] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
+
+    useEffect(() => {
+      let defaultNum =
+        topics.length > 0 ? (topics.length < 20 ? topics.length : 20) : 0;
+      setListItems(Array.from(Array(defaultNum).keys(), n => n + 1));
+      setShowAside(false);
+    }, [topics]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -54,9 +56,10 @@ const ArticleList = ({ topics, setShowAside }) => {
 
   return (
     <div className="news_articles flex flex-col space-y-14 pb-5 mb-5">
+    {console.log(topics)}
       {listItems.length <= topics.length &&
         listItems.map((listItem, i) => (
-          <Fade triggerOnce direction="up" key={i}>
+          <Fade triggerOnce direction="up" key={i + 1}>
             <ArticleListItem item={topics[listItem - 1]} />
           </Fade>
         ))}

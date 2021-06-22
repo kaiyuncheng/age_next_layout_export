@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import RelatedArticleItem from './RelatedArticleItem';
 import { Fade } from 'react-awesome-reveal';
 const RelatedArticleList = ({ topics, dableIds }) => {
-  let defaultNum =
-    topics.length > 0 ? (topics.length < 1 ? topics.length : 1) : 0;
-
-  const [listItems, setListItems] = useState(
-    Array.from(Array(defaultNum).keys(), n => n + 1),
-  );
+  const [listItems, setListItems] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
+
+  useEffect(() => {
+    let defaultNum =
+      topics.length > 0 ? (topics.length < 1 ? topics.length : 1) : 0;
+    setListItems(Array.from(Array(defaultNum).keys(), n => n + 1));
+  }, [topics]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);

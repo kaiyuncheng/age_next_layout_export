@@ -100,7 +100,7 @@ export default function article({ data, id }) {
   }, [isFetching]);
 
   const handleScrollBottom = () => {
-    if (document.documentElement.scrollTop >= document.documentElement.offsetHeight - window.innerHeight - 1000) {
+    if (document.documentElement.scrollTop >= document.documentElement.offsetHeight - window.innerHeight - 800) {
       setIsFetching(true);
     } else {
       return null;
@@ -247,7 +247,7 @@ export default function article({ data, id }) {
         />
     </Fade>
 
-      {articleData.article_other_list.length !== 0 &&
+      {/* {articleData.article_other_list.length !== 0 &&
         !isShowList &&
         isFetching && (
           <div className="flex items-center justify-center">
@@ -267,7 +267,7 @@ export default function article({ data, id }) {
             </div>
             <p className="text-primary-dark font-bold">MORE ...</p>
           </div>
-        )}
+        )} */}
 
       {articleData.article_other_list.length !== 0 && isShowList && (
         <RelatedArticleList
