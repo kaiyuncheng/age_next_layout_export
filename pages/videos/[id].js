@@ -65,8 +65,11 @@ export default function videos({ data, id }) {
 
   useEffect(() => {
     setVideosData(data);
-    
-    if (videosData){
+  }, [data, id]);
+
+
+  useEffect(() => {
+    if (videosData) {
       videosData.media_category_lv1[0].open_top_article === '1'
         ? setVideosMain(videosData.media_category_top)
         : setVideosMain('');
@@ -80,11 +83,8 @@ export default function videos({ data, id }) {
         setVideosList(videosData.media_category[id - 1].media_video);
         setMenuTag(id);
       }
-
     }
-      
-
-  }, [data, id]);
+  }, [videosData, id]);
 
   return (
     <Layout siteTitle="幸福熟齡 - Hot影音">
