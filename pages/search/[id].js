@@ -224,8 +224,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
 
     if (newKeywords.trim().length !== 0) {
       return router.push(
-        `/search/article?keywords=${newKeywords.trim()}&sort=${sortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`,
-        `/search/article?keywords=${newKeywords.trim()}`,
+        `/search/article?keywords=${newKeywords.trim()}&sort=${sortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`
       );
     } else {
       return setNewKeywords('');
@@ -238,8 +237,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
       e.preventDefault();
       if (newKeywords.trim().length !== 0) {
         router.push(
-          `/search/article?keywords=${newKeywords.trim()}&sort=${sortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`,
-          `/search/article?keywords=${newKeywords.trim()}`,
+          `/search/article?keywords=${newKeywords.trim()}&sort=${sortBy}&count=${newCount}&yearFrom=${yearStart}&yearTo=${yearEnd}`
         );
       }
     }

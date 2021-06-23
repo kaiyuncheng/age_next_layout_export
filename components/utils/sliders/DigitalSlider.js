@@ -118,6 +118,7 @@ const DigitalSlider = ({ topics }) => {
                           }
                           alt={item.title}
                           layout="fill"
+                          priority
                         />
                       </div>
                     </a>
