@@ -12,12 +12,12 @@ import ArticlesSlider from '../../components/utils/sliders/ArticlesSlider';
 import Category from '../../components/MainSection/Category';
 import ArticleList from '../../components/MainSection/ArticleList';
 import Banner from '../../components/utils/googletags/Banner';
+
+const timestamp = new Date().getTime();
 export const getServerSideProps = async context => {
   const { id } = context.query;
   try {
-    const { data } = await axios.get(
-      `Catalog/list/${id}?${new Date().getTime()}`,
-    );
+    const { data } = await axios.get(`Catalog/list/${id}?${timestamp}`);
 
     if (!data.data) {
       return {

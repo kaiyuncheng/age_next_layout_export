@@ -10,13 +10,15 @@ import BreadCrumb from "../../components/utils/BreadCrumb";
 import AuthorInfo from "../../components/MainSection/AuthorInfo";
 import ArticleList from "../../components/MainSection/ArticleList";
 
+
+const timestamp = new Date().getTime();
 export const getServerSideProps = async (context) => {
   const { id } = context.query;
   try {
     const [authorInfoRes, authorArticlesRes] = await Promise.all([
-      axios.get(`Author/release/${id}?${new Date().getTime()}`),
+      axios.get(`Author/release/${id}?${timestamp}`),
       axios.get(
-        `Author/getLongTermAuthorArticle/${id}?${new Date().getTime()}`,
+        `Author/getLongTermAuthorArticle/${id}?${timestamp}`,
       ),
     ]);
 

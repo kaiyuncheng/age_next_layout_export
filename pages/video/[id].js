@@ -8,12 +8,14 @@ import AsideSection from "../../components/AsideSection";
 import BreadCrumb from "../../components/utils/BreadCrumb";
 import RelatedSlider from "../../components/utils/sliders/RelatedSlider";
 import Banner from "../../components/utils/googletags/Banner";
+
+const timestamp = new Date().getTime();
 export const getServerSideProps = async context => {
   const { id } = context.query;
   try {
     const [videoDataRes, videosDataRes] = await Promise.all([
-      axios.get(`Media/detail/${id}?${new Date().getTime()}`),
-      axios.get(`Media/list?${new Date().getTime()}`),
+      axios.get(`Media/detail/${id}?${timestamp}`),
+      axios.get(`Media/list?${timestamp}`),
     ]);
 
 

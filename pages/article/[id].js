@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import Layout from '../../components/Layout';
 import axios from '../../components/utils/axios';
@@ -9,12 +9,11 @@ import RelatedArticleList from '../../components/MainSection/RelatedArticleList'
 import clsx from 'clsx';
 // import DableHiddenBar from '../../components/utils/dable/DableHiddenBar';
 
+const timestamp = new Date().getTime();
 export const getServerSideProps = async context => {
   const { id } = context.query;
   try {
-    const { data } = await axios.get(
-      `article/detail/${id}?${new Date().getTime()}`,
-    );
+    const { data } = await axios.get(`article/detail/${id}?${timestamp}`);
 
     if (!data.data) {
       return {
@@ -92,15 +91,15 @@ export default function article({ data, id }) {
       !isShowList &&
       articleData.article_other_list.length !== 0
     ) {
-        setIsFetching(false);
-        setIsShowList(true);
+      setIsFetching(false);
+      setIsShowList(true);
     } else {
       return setIsFetching(false);
     }
   }, [isFetching]);
 
   const handleScrollBottom = () => {
-    if (document.documentElement.scrollTop >= document.documentElement.offsetHeight - window.innerHeight - 800) {
+    if (document.documentElement.scrollTop >= document.documentElement.offsetHeight - window.innerHeight - 2200) {
       setIsFetching(true);
     } else {
       return null;

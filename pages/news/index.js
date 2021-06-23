@@ -7,9 +7,10 @@ import ArticleList from '../../components/MainSection/ArticleList';
 import BreadCrumb from '../../components/utils/BreadCrumb';
 import Banner from '../../components/utils/googletags/Banner';
 
+const timestamp = new Date().getTime();
 export const getStaticProps = async () => {
   try {
-    const { data } = await axios.get(`Catalog/news?${new Date().getTime()}`);
+    const { data } = await axios.get(`Catalog/news?${timestamp}`);
 
     if (!data.data) {
       return {

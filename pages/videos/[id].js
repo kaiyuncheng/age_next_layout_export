@@ -8,7 +8,7 @@ import AsideSection from '../../components/AsideSection';
 import MainVideo from '../../components/MainSection/MainVideo';
 import VideoList from '../../components/MainSection/VideoList';
 
-let timestamp = new Date().getTime();
+const timestamp = new Date().getTime();
 export const getServerSideProps = async context => {
   const { id } = context.query;
 

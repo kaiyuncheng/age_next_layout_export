@@ -7,12 +7,10 @@ import BreadCrumb from "../../components/utils/BreadCrumb";
 import AuthorListItem from "../../components/MainSection/AuthorListItem";
 import Banner from '../../components/utils/googletags/Banner';
 
-
+const timestamp = new Date().getTime();
 export const getStaticProps = async () => {
     try {
-      const { data } = await axios.get(
-        `Author/getLongTermAuthor?${new Date().getTime()}`,
-      );
+      const { data } = await axios.get(`Author/getLongTermAuthor?${timestamp}`);
 
       if (!data.data) {
         return {
