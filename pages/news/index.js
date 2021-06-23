@@ -8,7 +8,7 @@ import BreadCrumb from '../../components/utils/BreadCrumb';
 import Banner from '../../components/utils/googletags/Banner';
 
 const timestamp = new Date().getTime();
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   try {
     const { data } = await axios.get(`Catalog/news?${timestamp}`);
 
@@ -32,23 +32,13 @@ export const getStaticProps = async () => {
 };
 
 export default function news({ data }) {
-  const router = useRouter();
+  
   const [newsData, setNewsData] = useState('');
   const [showAside, setShowAside] = useState(false);
 
   useEffect(() => {
     setNewsData(data);
   }, [data]);
-
-  useEffect(() => {
-    const handleRouteChange = () => {
-      setNewsData('');
-    };
-    router.events.on('routeChangeStart', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
-    };
-  }, []);
 
   return (
     <Layout siteTitle="幸福熟齡 - 最新文章">
