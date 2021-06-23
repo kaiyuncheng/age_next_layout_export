@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 import Layout from "../../components/Layout";
 import axios from "../../components/utils/axios";
 import AsideSection from "../../components/AsideSection";
@@ -33,11 +34,22 @@ export const getStaticProps = async () => {
   };
 
 export default function authors({data}) {
-  const [authorsData, setAuthorsData] = useState(data);
+  const router = useRouter();
+  const [authorsData, setAuthorsData] = useState('');
 
   useEffect(() => {
     setAuthorsData(data);
   }, [data]);
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setAuthorsData('');
+    };
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, []);
 
   return (
     <Layout siteTitle="幸福熟齡 - 名人私房學">

@@ -37,12 +37,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
 
   return (
     <div className="sections flex flex-col justify-center items-center">
-      <div
-        className={clsx(
-          !i && 'mb-14',
-          'w-full max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row md:space-x-10 md:space-y-0',
-        )}
-      >
+      <div className="w-full max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row md:space-x-10 md:space-y-0">
         <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden pb-5">
           {/* <!-- main article --> */}
 
@@ -272,7 +267,10 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
 
       {/* PC 內頁 廣告 下 */}
 
-      <div className="lg:block hidden max-w-screen-2xl px-4 lg:px-2">
+      <div
+        className={clsx(
+          !i && 'mb-14', "lg:block hidden max-w-screen-2xl px-4 lg:px-2")}
+      >
         <Banner
           adId={
             !i

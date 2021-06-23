@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
-import Layout from "../../components/Layout";
-import axios from "../../components/utils/axios";
-import AsideSection from "../../components/AsideSection";
-import ArticleList from "../../components/MainSection/ArticleList";
-import BreadCrumb from "../../components/utils/BreadCrumb";
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Layout from '../../components/Layout';
+import axios from '../../components/utils/axios';
+import AsideSection from '../../components/AsideSection';
+import ArticleList from '../../components/MainSection/ArticleList';
+import BreadCrumb from '../../components/utils/BreadCrumb';
 import Banner from '../../components/utils/googletags/Banner';
 
 export const getStaticProps = async () => {
   try {
     const { data } = await axios.get(`Catalog/news?${new Date().getTime()}`);
-    
+
     if (!data.data) {
       return {
         redirect: {
@@ -24,19 +25,29 @@ export const getStaticProps = async () => {
         data: data.data,
       },
     };
-
   } catch (error) {
-    console.log("getData error", error);
+    console.log('getData error', error);
   }
 };
 
-export default function news({data}) {
-    const [newsData, setNewsData] = useState(data);
-    const [showAside, setShowAside] = useState(false);
+export default function news({ data }) {
+  const router = useRouter();
+  const [newsData, setNewsData] = useState('');
+  const [showAside, setShowAside] = useState(false);
 
-    useEffect(() => {
-      setNewsData(data);
-    }, [data]);
+  useEffect(() => {
+    setNewsData(data);
+  }, [data]);
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setNewsData('');
+    };
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, []);
 
   return (
     <Layout siteTitle="幸福熟齡 - 最新文章">
@@ -56,10 +67,12 @@ export default function news({data}) {
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col space-y-14 md:flex-row md:space-x-10 md:space-y-0">
           <div className="relative w-full md:w-3/4 flex flex-col overflow-hidden">
-            <ArticleList topics={newsData} setShowAside={setShowAside} />
+            {newsData && (
+              <ArticleList topics={newsData} setShowAside={setShowAside} />
+            )}
           </div>
           <AsideSection isHot={true} type={'list'} showPcAside={true} />
-          
+
           {showAside && (
             <AsideSection isHot={true} type={'article'} showMbAside={true} />
           )}

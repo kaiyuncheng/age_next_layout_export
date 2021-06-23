@@ -1,10 +1,10 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 const AdContext = createContext();
 
 export function AdContextWrapper({ children }) {
-  const router = useRouter()
+  const router = useRouter();
   const adState = {
     isTransitioning: false,
     adlist: {

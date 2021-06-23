@@ -56,7 +56,7 @@ const ArticleList = ({ topics, setShowAside }) => {
 
   return (
     <div className="news_articles flex flex-col space-y-14 pb-5 mb-5">
-    {console.log(topics)}
+    
       {listItems.length <= topics.length &&
         listItems.map((listItem, i) => (
           <Fade triggerOnce direction="up" key={i + 1}>

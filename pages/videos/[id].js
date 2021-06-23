@@ -8,11 +8,13 @@ import AsideSection from '../../components/AsideSection';
 import MainVideo from '../../components/MainSection/MainVideo';
 import VideoList from '../../components/MainSection/VideoList';
 
+let timestamp = new Date().getTime();
 export const getServerSideProps = async context => {
   const { id } = context.query;
 
   try {
-    const { data } = await axios.get(`Media/list?${new Date().getTime()}`);
+    
+    const { data } = await axios.get(`Media/list?${timestamp}`);
 
     if (!data.data) {
       return {
@@ -54,7 +56,7 @@ export const getServerSideProps = async context => {
 };
 
 export default function videos({ data, id }) {
-  const [videosData, setVideosData] = useState(data);
+  const [videosData, setVideosData] = useState('');
   const [menuTag, setMenuTag] = useState('all');
   const [menuName, setMenuName] = useState('全部');
   const [videosMain, setVideosMain] = useState('');
@@ -64,20 +66,23 @@ export default function videos({ data, id }) {
   useEffect(() => {
     setVideosData(data);
     
-    videosData.media_category_lv1[0].open_top_article === '1'
-      ? setVideosMain(videosData.media_category_top)
-      : setVideosMain('');
-      
+    if (videosData){
+      videosData.media_category_lv1[0].open_top_article === '1'
+        ? setVideosMain(videosData.media_category_top)
+        : setVideosMain('');
 
-    if (id === 'all') {
-      setMenuName('全部');
-      setVideosList(videosData.media_video);
-      setMenuTag(id);
-    } else {
-      setMenuName(videosData.media_category[id - 1].name);
-      setVideosList(videosData.media_category[id - 1].media_video);
-      setMenuTag(id);
+      if (id === 'all') {
+        setMenuName('全部');
+        setVideosList(videosData.media_video);
+        setMenuTag(id);
+      } else {
+        setMenuName(videosData.media_category[id - 1].name);
+        setVideosList(videosData.media_category[id - 1].media_video);
+        setMenuTag(id);
+      }
+
     }
+      
 
   }, [data, id]);
 

@@ -246,10 +246,6 @@ export default function cataloglist({ data }) {
                     />
                   )}
 
-                {console.log(
-                  !catalogData.category_info.is_project_based_style_enable,
-                catalogData.article_info)}
-
                 {catalogData.category_info.is_project_based_style_enable &&
                   catalogData.article_project_info &&
                   catalogData.article_project_info.map((block, i) => {
