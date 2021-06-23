@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import axios from '../../components/utils/axios';
 import AsideSection from '../../components/AsideSection';
@@ -28,6 +27,12 @@ export const getServerSideProps = async () => {
     };
   } catch (error) {
     console.log('getData error', error);
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
   }
 };
 

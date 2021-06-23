@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { useRouter } from 'next/router';
 import Layout from "../../components/Layout";
 import axios from "../../components/utils/axios";
 import AsideSection from "../../components/AsideSection";
@@ -8,10 +7,10 @@ import AuthorListItem from "../../components/MainSection/AuthorListItem";
 import Banner from '../../components/utils/googletags/Banner';
 
 const timestamp = new Date().getTime();
+
 export const getServerSideProps = async () => {
   try {
     const { data } = await axios.get(`Author/getLongTermAuthor?${timestamp}`);
-
     if (!data.data) {
       return {
         redirect: {
@@ -28,26 +27,24 @@ export const getServerSideProps = async () => {
     };
   } catch (error) {
     console.log('getData error', error);
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
   }
 };
 
 export default function authors({data}) {
-  // const router = useRouter();
+  
   const [authorsData, setAuthorsData] = useState('');
 
   useEffect(() => {
     setAuthorsData(data);
   }, [data]);
 
-  // useEffect(() => {
-  //   const handleRouteChange = () => {
-  //     setAuthorsData('');
-  //   };
-  //   router.events.on('routeChangeStart', handleRouteChange);
-  //   return () => {
-  //     router.events.off('routeChangeStart', handleRouteChange);
-  //   };
-  // }, []);
+  
 
   return (
     <Layout siteTitle="幸福熟齡 - 名人私房學">

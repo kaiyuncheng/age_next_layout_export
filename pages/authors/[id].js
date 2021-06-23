@@ -10,7 +10,6 @@ import BreadCrumb from "../../components/utils/BreadCrumb";
 import AuthorInfo from "../../components/MainSection/AuthorInfo";
 import ArticleList from "../../components/MainSection/ArticleList";
 
-
 const timestamp = new Date().getTime();
 export const getServerSideProps = async (context) => {
   const { id } = context.query;

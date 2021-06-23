@@ -399,7 +399,7 @@ const Header = ({ isFBLogin, handleFBLogout }) => {
         )}
       >
         <div className="w-full h-screen overflow-y-scroll sm:w-1/2 bg-primary-light shadow-mdRight pt-5 pb-52">
-          <div className="mobile_menu_search mx-5 mb-5 relative border border-white rounded-br-full">
+          <div className="mobile_menu_search mx-5 mb-5 relative bg-white rounded-br-full">
             <SearchBar toggleMenu={toggleMenu} />
           </div>
           <nav className="bg-primary-light">
