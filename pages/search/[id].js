@@ -154,7 +154,7 @@ const Search = ({ data, keywords, sort, count, yearFrom, yearTo }) => {
     setResultDateData(resultYearData);
     setResultDateData(prevData =>
       prevData.map(item => {
-        let timestamp = new Date(item.pubtime).getTime();
+        let timestamp = new Date(item.pubtime.slice(0,10)).getTime();
         return {
           ...item,
           timestamp: timestamp,
