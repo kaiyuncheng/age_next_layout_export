@@ -11,6 +11,13 @@ import clsx from 'clsx';
 
 const timestamp = new Date().getTime();
 export const getServerSideProps = async context => {
+  const UA = context.req.headers['user-agent'];
+  const isMobile = Boolean(
+    UA.match(
+      /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i,
+    ),
+  );
+
   const { id } = context.query;
   try {
     const { data } = await axios.get(`article/detail/${id}?${timestamp}`);
@@ -28,6 +35,7 @@ export const getServerSideProps = async context => {
       props: {
         data: data.data,
         id: id,
+        isMobile: isMobile,
       },
     };
   } catch (error) {
@@ -69,17 +77,17 @@ const dableIds = [
   },
 ];
 
-export default function article({ data, id }) {
+export default function article({ data, id, isMobile }) {
   const [articleData, setArticleData] = useState(data);
   const [isFetching, setIsFetching] = useState(false);
   const [isShowList, setIsShowList] = useState(false);
-  
+
   useEffect(() => {
     setArticleData(data);
   }, [data]);
 
   useEffect(() => {
-    if (articleData.article_other_list.length !== 0) {
+    if (articleData.article_other_list.length !== 0 && !isShowList) {
       window.addEventListener('scroll', handleScrollBottom);
       return () => window.removeEventListener('scroll', handleScrollBottom);
     }
@@ -99,11 +107,21 @@ export default function article({ data, id }) {
   }, [isFetching]);
 
   const handleScrollBottom = () => {
-    if (document.documentElement.scrollTop >= document.documentElement.offsetHeight - window.innerHeight - 2200) {
-      setIsFetching(true);
-    } else {
-      return null;
+    let condition;
+    if (isMobile){
+      condition =
+        document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight - window.innerHeight - 3000;
+    }else{
+      condition =
+        document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight - window.innerHeight - 2200;
     }
+      if (condition) {
+        setIsFetching(true);
+      } else {
+        return null;
+      }
   };
 
   return (
@@ -233,7 +251,7 @@ export default function article({ data, id }) {
       {/* Dable 大家都在看 隱藏 下滑顯示 */}
       {/* <DableHiddenBar /> */}
 
-    <Fade triggerOnce>
+      <Fade triggerOnce>
         <RelatedArticleItem
           item={articleData}
           dableIds={{
@@ -244,7 +262,7 @@ export default function article({ data, id }) {
           type={'article'}
           i={0}
         />
-    </Fade>
+      </Fade>
 
       {/* {articleData.article_other_list.length !== 0 &&
         !isShowList &&
@@ -272,6 +290,7 @@ export default function article({ data, id }) {
         <RelatedArticleList
           topics={articleData.article_other_list}
           dableIds={dableIds}
+          isMobile={isMobile}
         />
       )}
     </Layout>

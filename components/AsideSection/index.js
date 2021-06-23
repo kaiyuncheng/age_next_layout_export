@@ -20,7 +20,7 @@ const AsideSection = ({
   const { mainData } = useMainContext();
 
   return (
-    <Fade triggerOnce direction="up">
+    
       <aside
         className={clsx(
           showPcAside && 'hidden md:block',
@@ -82,7 +82,7 @@ const AsideSection = ({
 
         {isHot && <Speakers topics={mainData.article_news} />}
       </aside>
-    </Fade>
+    
   );
 };
 

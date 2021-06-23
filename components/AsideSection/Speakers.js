@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Speakers = ({ topics }) => {
   return (
-    <div className="speakers">
+    <div className="speakers mb-10 md:mb-0">
       <div className="relative inline-flex items-center rounded-tl-lg bg-primary-light pl-5 py-2 w-full shadow-md rounded-br-5xl overflow-hidden outline-none focus:outline-none mb-5 h-10">
         {topics && (
           <span className="mr-2">
@@ -116,7 +116,6 @@ const Speakers = ({ topics }) => {
                     key={i}
                     className="animate-pulse group w-full block border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
                   >
-                    
                     <div className="text-base mb-1 bg-secondary-medium h-6 rounded-md md:mr-2"></div>
                   </div>
                 );
