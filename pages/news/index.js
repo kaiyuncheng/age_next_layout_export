@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import axios from '../../components/utils/axios';
 import AsideSection from '../../components/AsideSection';
@@ -32,7 +32,6 @@ export const getServerSideProps = async () => {
 };
 
 export default function news({ data }) {
-  
   const [newsData, setNewsData] = useState('');
   const [showAside, setShowAside] = useState(false);
 
