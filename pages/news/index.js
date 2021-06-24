@@ -6,7 +6,7 @@ import ArticleList from '../../components/MainSection/ArticleList';
 import BreadCrumb from '../../components/utils/BreadCrumb';
 import Banner from '../../components/utils/googletags/Banner';
 
-const timestamp = new Date().getTime();
+let timestamp = new Date().getTime();
 export const getServerSideProps = async () => {
   try {
     const { data } = await axios.get(`Catalog/news?${timestamp}`);

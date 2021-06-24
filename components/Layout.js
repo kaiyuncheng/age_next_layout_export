@@ -45,13 +45,15 @@ const Layout = ({ children, siteTitle, isFBLogin, handleFBLogout }) => {
         />
         <meta property="og:type" content="website" />
         <title>{siteTitle}</title>
-        <link
-          rel="icon"
-          href="https://new-thebetteraging-dev.businesstoday.com.tw/images/favicon.ico"
-        />
-        {/* 'https://new-thebetteraging-dev.businesstoday.com.tw/images/favicon.ico'  */}
-        {/* 'https://thebetteraging.businesstoday.com.tw/images/favicon.ico'  */}
-        {/* https://thebetteraging.businesstoday.com.tw/lazyweb/web/images/favicon.ico */}
+
+        <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+        <link rel="alternate icon" href="/images/favicon.ico" />
+
+        <script
+          type="text/javascript"
+          src={`/js/v3.js?${new Date().getTime()}`}
+        ></script>
+
         {/* <script
           async="async"
           src="https://www.googletagservices.com/tag/js/gpt.js"

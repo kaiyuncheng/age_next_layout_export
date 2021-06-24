@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { useMainContext } from '../context/main';
 import { Fade } from 'react-awesome-reveal';
 import Layout from "../components/Layout";
@@ -14,9 +13,7 @@ export default function Home() {
 
   return (
     <Layout siteTitle="幸福熟齡 - 從今開始，勾勒美好第二人生">
-      {mainData && (
-          <MainSlider topics={mainData.top_banners} />
-      )}
+      {mainData && <MainSlider topics={mainData.top_banners} />}
 
       <Fade triggerOnce direction="up">
         <div className="latest border-box mb-10">
