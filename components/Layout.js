@@ -49,6 +49,7 @@ const Layout = ({ children, siteTitle, isFBLogin, handleFBLogout }) => {
         <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
         <link rel="alternate icon" href="/images/favicon.ico" />
 
+        {/* 全版蓋板廣告 域動廣告ID 刪除 */}
         <script
           type="text/javascript"
           src={`/js/v3.js?${new Date().getTime()}`}
