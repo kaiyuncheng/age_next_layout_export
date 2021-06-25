@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/Layout";
 import axios from "../../components/utils/axios";
-import clsx from "clsx";
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import AsideSection from "../../components/AsideSection";
 import BreadCrumb from "../../components/utils/BreadCrumb";
 import AuthorInfo from "../../components/MainSection/AuthorInfo";
@@ -47,9 +44,9 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-export default function Author({ authorInfo, authorArticles }) {
-  const [authorInfoData, setAuthorInfo] = useState(authorInfo);
-  const [authorArticlesData, setAuthorData] = useState(authorArticles);
+export default function author({ authorInfo, authorArticles }) {
+  const [authorInfoData, setAuthorInfo] = useState('');
+  const [authorArticlesData, setAuthorData] = useState('');
   const [showAside, setShowAside] = useState(false);
 
   useEffect(() => {
@@ -58,7 +55,7 @@ export default function Author({ authorInfo, authorArticles }) {
   }, [authorInfo, authorArticles]);
 
   return (
-    <Layout
+    authorInfoData && <Layout
       siteTitle={`幸福熟齡 - ${
         authorInfoData.authorInfo.name || '從今開始，勾勒美好第二人生'
       }`}

@@ -69,7 +69,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
 
             <div className="article_info mb-5 text-base text-secondary-dark">
               {item.article_info.writers && (
-                <p className="inline mr-4">
+                <p className="block xs:inline mr-4 xs:whitespace-nowrap whitespace-normal">
                   撰文 |
                   <span className="ml-1 text-gray-500">
                     {item.article_info.writers}
@@ -77,7 +77,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                 </p>
               )}
               {item.article_info.release_date && (
-                <p className="inline mr-4">
+                <p className="block xs:inline mr-4 xs:whitespace-nowrap whitespace-normal">
                   日期 |
                   <span className="ml-1 text-gray-500">
                     {item.article_info.release_date}
@@ -85,7 +85,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                 </p>
               )}
               {item.category_info.name && (
-                <p className="inline mr-4">
+                <p className="block xs:inline mr-4 xs:whitespace-nowrap whitespace-normal">
                   分類 |
                   <span className="ml-1 text-gray-500">
                     {item.category_info.name}
@@ -93,7 +93,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                 </p>
               )}
               {item.article_info.picture_source && (
-                <p className="inline mr-4">
+                <p className="block xs:inline mr-4 xs:whitespace-nowrap whitespace-normal">
                   圖檔來源 |
                   <span className="ml-1 text-gray-500">
                     {item.article_info.picture_source}
@@ -269,7 +269,9 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
 
       <div
         className={clsx(
-          !i && 'mb-14', "lg:block hidden max-w-screen-2xl px-4 lg:px-2")}
+          !i && 'mb-14',
+          'lg:block hidden max-w-screen-2xl px-4 lg:px-2',
+        )}
       >
         <Banner
           adId={

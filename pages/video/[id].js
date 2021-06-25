@@ -59,7 +59,7 @@ export default function video({ data, categoryData }) {
 
 
   function findID (id){
-    category.media_category.map((item, i) => {
+    category.media_category && category.media_category.map((item, i) => {
       if (item.media_category_id === id){
         setNewID(i+1);
       }
@@ -190,7 +190,7 @@ export default function video({ data, categoryData }) {
               </div>
               <div className="video_info mb-5 text-base text-secondary-dark">
                 {videoData.mediaDetail.writers && (
-                  <p className="inline mr-4">
+                  <p className="block xs:inline mr-4 xs:whitespace-nowrap whitespace-normal">
                     撰文 |
                     <span className="ml-1 text-gray-500">
                       {videoData.mediaDetail.writers}
@@ -198,15 +198,17 @@ export default function video({ data, categoryData }) {
                   </p>
                 )}
                 {videoData.mediaDetail.updated_at && (
-                  <p className="inline mr-4">
+                  <p className="block xs:inline mr-4 xs:whitespace-nowrap whitespace-normal">
                     日期 |
                     <span className="ml-1 text-gray-500">
-                      {videoData.mediaDetail.updated_at.slice(0, 10)}
+                      {videoData.mediaDetail.updated_at.slice(0, 4)}年
+                      {videoData.mediaDetail.updated_at.slice(5, 7)}月
+                      {videoData.mediaDetail.updated_at.slice(8, 10)}日
                     </span>
                   </p>
                 )}
                 {videoData.mediaDetail.category_name && (
-                  <p className="inline mr-4">
+                  <p className="block xs:inline mr-4 xs:whitespace-nowrap whitespace-normal">
                     分類 |
                     <span className="ml-1 text-gray-500">
                       {videoData.mediaDetail.category_name}
