@@ -217,7 +217,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
               <div
                 className={clsx(
                   fontSize,
-                  'article_part leading-relaxed tracking-widest bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
+                  'article_part leading-relaxed tracking-widest bg-secondary-light border-l-4 border-secondary-dark rounded-md font-medium mb-5',
                 )}
               >
                 <MinorTextComponent />
