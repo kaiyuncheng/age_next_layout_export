@@ -66,7 +66,7 @@ const Category = ({ name, id, data, isIndexCategory, parentName }) => {
 
         <div className="topics_items hidden lg:flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-5">
           {data &&
-            data.map((item, i) => {
+            data.slice(0,3).map((item, i) => {
               return (
                 <div key={i} className="topics_item flex-1">
                   <Link href={`/article/${item.url_query}`}>

@@ -71,11 +71,11 @@ const Layout = ({ children, siteTitle, isFBLogin, handleFBLogout }) => {
       <main className="mt-28 md:mt-44 flex flex-col pb-14">{children}</main>
       <Footer />
 
-      <Banner adId="test_thebetteraging_pc_in-cover" />
-      <Banner adId="test_thebetteraging_mob_320x480_cover" />
+      {/* <Banner adId="test_thebetteraging_pc_in-cover" />
+      <Banner adId="test_thebetteraging_mob_320x480_cover" /> */}
 
-      {/* <Banner adId="thebetteraging_pc_in-cover" />
-      <Banner adId="thebetteraging_mob_320x480_cover" /> */}
+      <Banner adId="thebetteraging_pc_in-cover" />
+      <Banner adId="thebetteraging_mob_320x480_cover" />
     </div>
   );
 };
