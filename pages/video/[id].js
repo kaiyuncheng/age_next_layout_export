@@ -74,6 +74,16 @@ export default function video({ data, categoryData }) {
     return <div dangerouslySetInnerHTML={createMarkup()} />;
   }
 
+  function createMinorText() {
+    if (videoData.mediaDetail.introduction) {
+      return { __html: videoData.mediaDetail.introduction};
+    }
+  }
+
+  function MinorTextComponent() {
+    return <div dangerouslySetInnerHTML={createMinorText()} />;
+  }
+
   const handleFontSize = size => {
     setFontSize(`text-${size}`);
   };
@@ -168,6 +178,7 @@ export default function video({ data, categoryData }) {
           ]}
         />
       )}
+      
 
       <div className="sections">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-2 flex flex-col md:flex-row md:space-x-10 md:space-y-0">
@@ -344,7 +355,7 @@ export default function video({ data, categoryData }) {
                   'article_part leading-relaxed tracking-widest bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
                 )}
               >
-                <p>{videoData.mediaDetail.introduction}</p>
+                <MinorTextComponent />
               </div>
 
               <div

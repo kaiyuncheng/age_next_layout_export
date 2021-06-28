@@ -27,6 +27,18 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
     );
   }
 
+  function createMinorText() {
+    if (item.article_info.part_text) {
+      return { __html: item.article_info.part_text };
+    }
+  }
+
+  function MinorTextComponent() {
+    return (
+      <div dangerouslySetInnerHTML={createMinorText()} />
+    );
+  }
+
   const handleFontSize = (size) => {
     setFontSize(`text-${size}`);
   };
@@ -208,7 +220,7 @@ const RelatedArticleItem = ({ item, dableIds, i }) => {
                   'article_part leading-relaxed tracking-widest bg-secondary-light border-l-4 border-secondary-dark p-5 rounded-md font-medium mb-5',
                 )}
               >
-                <p>{item.article_info.part_text}</p>
+                <MinorTextComponent />
               </div>
             )}
 

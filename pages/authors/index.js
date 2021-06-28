@@ -43,9 +43,7 @@ export default function authors({data}) {
   useEffect(() => {
     setAuthorsData(data);
   }, [data]);
-
   
-
   return (
     <Layout siteTitle="幸福熟齡 - 名人私房學">
       {/* PC 列表頁 廣告上 */}
