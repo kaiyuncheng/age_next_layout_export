@@ -131,11 +131,23 @@ export default function article({ data, id, isMobile }) {
       }`}
     >
       <Head>
+        {articleData.article_info && (
+          <meta
+            name="title"
+            content={`幸福熟齡 - ${
+              articleData.article_info.title || '從今開始，勾勒美好第二人生'
+            }`}
+          />
+        )}
+
         {articleData.seo_meta.meta_description && (
           <meta
             itemProp="description"
             content={articleData.seo_meta.meta_description}
           />
+        )}
+        {articleData.seo_meta.meta_og_image && (
+          <meta itemProp="image" content={articleData.seo_meta.meta_og_image} />
         )}
 
         {articleData.seo_meta.meta_description && (
@@ -144,9 +156,15 @@ export default function article({ data, id, isMobile }) {
             content={articleData.seo_meta.meta_description}
           />
         )}
-
         {articleData.seo_meta.meta_keyword && (
           <meta name="keywords" content={articleData.seo_meta.meta_keyword} />
+        )}
+
+        {articleData.article_info.url_query && (
+          <meta
+            property="og:url"
+            content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.url_query}`}
+          />
         )}
 
         {articleData.seo_meta.meta_og_title && (
@@ -163,24 +181,18 @@ export default function article({ data, id, isMobile }) {
           />
         )}
 
-        {articleData.article_info.url_query && (
-          <meta
-            property="og:url"
-            content={`http://thebetteraging.businesstoday.com.tw/article/${articleData.article_info.url_query}`}
-          />
-        )}
-
         {articleData.seo_meta.meta_og_image && (
           <meta
-            itemProp="image"
             property="og:image"
             content={articleData.seo_meta.meta_og_image}
           />
         )}
+        <meta property="og:type" content="website" />
 
-        {articleData.seo_meta.meta_og_image && (
-          <meta itemProp="image" content={articleData.seo_meta.meta_og_image} />
-        )}
+        <meta
+          property="dable:title"
+          content={articleData.article_info.title || '幸福熟齡'}
+        />
 
         <meta
           property="dable:item_id"

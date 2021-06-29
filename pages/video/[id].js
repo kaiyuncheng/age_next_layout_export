@@ -95,11 +95,24 @@ export default function video({ data, categoryData }) {
       }`}
     >
       <Head>
+        {videoData.mediaDetail && (
+          <meta
+            name="title"
+            content={`幸福熟齡 - ${
+              videoData.mediaDetail.title || '從今開始，勾勒美好第二人生'
+            }`}
+          />
+        )}
+
         {videoData.seo_meta.meta_description && (
           <meta
             itemProp="description"
             content={videoData.seo_meta.meta_description}
           />
+        )}
+
+        {videoData.seo_meta.meta_og_image && (
+          <meta itemProp="image" content={videoData.seo_meta.meta_og_image} />
         )}
 
         {videoData.seo_meta.meta_description && (
@@ -111,6 +124,13 @@ export default function video({ data, categoryData }) {
 
         {videoData.seo_meta.meta_keyword && (
           <meta name="keywords" content={videoData.seo_meta.meta_keyword} />
+        )}
+
+        {videoData.mediaDetail.url_query && (
+          <meta
+            property="og:url"
+            content={`http://thebetteraging.businesstoday.com.tw/video/${videoData.mediaDetail.url_query}`}
+          />
         )}
 
         {videoData.seo_meta.meta_og_title && (
@@ -127,13 +147,6 @@ export default function video({ data, categoryData }) {
           />
         )}
 
-        {videoData.mediaDetail.url_query && (
-          <meta
-            property="og:url"
-            content={`http://thebetteraging.businesstoday.com.tw/video/${videoData.mediaDetail.url_query}`}
-          />
-        )}
-
         {videoData.seo_meta.meta_og_image && (
           <meta
             itemProp="image"
@@ -141,10 +154,7 @@ export default function video({ data, categoryData }) {
             content={videoData.seo_meta.meta_og_image}
           />
         )}
-
-        {videoData.seo_meta.meta_og_image && (
-          <meta itemProp="image" content={videoData.seo_meta.meta_og_image} />
-        )}
+        <meta property="og:type" content="website" />
       </Head>
 
       {videoData.mediaDetail.category_name ? (

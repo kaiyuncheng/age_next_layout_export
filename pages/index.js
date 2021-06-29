@@ -1,5 +1,6 @@
 import { useMainContext } from '../context/main';
 import { Fade } from 'react-awesome-reveal';
+import Head from 'next/head';
 import Layout from "../components/Layout";
 import MainSlider from "../components/utils/sliders/MainSlider";
 import Tabs from "../components/LatestSection/Tabs";
@@ -14,6 +15,43 @@ export default function Home() {
   return (
     <Layout siteTitle="幸福熟齡 - 從今開始，勾勒美好第二人生">
       {mainData && <MainSlider topics={mainData.top_banners} />}
+
+      <Head>
+        <meta name="title" content="幸福熟齡 - 從今開始，勾勒美好第二人生" />
+        <meta
+          itemProp="description"
+          content="打造多元觀點的熟世代題材，用新觀點活出成熟態度"
+        />
+        <meta
+          itemProp="image"
+          content="https://thebetteraging.businesstoday.com.tw/images/og_image.jpg"
+        />
+        <meta
+          name="description"
+          content="打造多元觀點的熟世代題材，用新觀點活出成熟態度"
+        />
+        <meta
+          name="keywords"
+          content="熟齡,長照,樂齡,學習,健康,照護,退休,幸福熟齡,銀髮,品味人生,今周刊"
+        />
+        <meta
+          property="og:url"
+          content="http://thebetteraging.businesstoday.com.tw/"
+        />
+        <meta
+          property="og:title"
+          content="幸福熟齡 - 從今開始，勾勒美好第二人生"
+        />
+        <meta
+          property="og:description"
+          content="打造多元觀點的熟世代題材，用新觀點活出成熟態度"
+        />
+        <meta
+          property="og:image"
+          content="https://thebetteraging.businesstoday.com.tw/images/og_image.jpg"
+        />
+        <meta property="og:type" content="website" />
+      </Head>
 
       <Fade triggerOnce direction="up">
         <div className="latest border-box mb-10">

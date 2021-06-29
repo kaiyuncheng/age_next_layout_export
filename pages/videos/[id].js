@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
 import axios from '../../components/utils/axios';
 import clsx from 'clsx';
 import Layout from '../../components/Layout';
@@ -62,6 +63,40 @@ export default function videos({ data, id }) {
 
   return (
     <Layout siteTitle="幸福熟齡 - Hot影音">
+      <Head>
+        <meta name="title" content="幸福熟齡 - Hot影音" />
+        <meta
+          itemProp="description"
+          content="打造多元觀點的熟世代題材，用新觀點活出成熟態度"
+        />
+        <meta
+          itemProp="image"
+          content="https://thebetteraging.businesstoday.com.tw/images/og_image.jpg"
+        />
+        <meta
+          name="description"
+          content="打造多元觀點的熟世代題材，用新觀點活出成熟態度"
+        />
+        <meta
+          name="keywords"
+          content="熟齡,長照,樂齡,學習,健康,照護,退休,幸福熟齡,銀髮,品味人生,今周刊"
+        />
+        <meta
+          property="og:url"
+          content="http://thebetteraging.businesstoday.com.tw/"
+        />
+        <meta property="og:title" content="幸福熟齡 - Hot影音" />
+        <meta
+          property="og:description"
+          content="打造多元觀點的熟世代題材，用新觀點活出成熟態度"
+        />
+        <meta
+          property="og:image"
+          content="https://thebetteraging.businesstoday.com.tw/images/og_image.jpg"
+        />
+        <meta property="og:type" content="website" />
+      </Head>
+      
       {/* <!-- bread crumb --> */}
 
       <BreadCrumb
@@ -118,8 +153,6 @@ export default function videos({ data, id }) {
                 setShowAside={setShowAside}
               />
             )}
-
-
           </div>
           <AsideSection isHot={true} type={'list'} showPcAside={true} />
 

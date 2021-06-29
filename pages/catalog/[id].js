@@ -62,10 +62,26 @@ export default function cataloglist({ data }) {
         }`}
       >
         <Head>
+          {catalogData.category_info && (
+            <meta
+              name="title"
+              content={`幸福熟齡 - ${
+                catalogData.category_info.name || '從今開始，勾勒美好第二人生'
+              }`}
+            />
+          )}
+
           {catalogData.seo_meta.meta_description && (
             <meta
               itemProp="description"
               content={catalogData.seo_meta.meta_description}
+            />
+          )}
+
+          {catalogData.seo_meta.meta_og_image && (
+            <meta
+              itemProp="image"
+              content={catalogData.seo_meta.meta_og_image}
             />
           )}
 
@@ -78,6 +94,13 @@ export default function cataloglist({ data }) {
 
           {catalogData.seo_meta.meta_keyword && (
             <meta name="keywords" content={catalogData.seo_meta.meta_keyword} />
+          )}
+
+          {catalogData.category_info.category_id && (
+            <meta
+              property="og:url"
+              content={`http://thebetteraging.businesstoday.com.tw/catalog/${catalogData.category_info.category_id}`}
+            />
           )}
 
           {catalogData.seo_meta.meta_og_title && (
@@ -94,27 +117,12 @@ export default function cataloglist({ data }) {
             />
           )}
 
-          {catalogData.category_info.category_id && (
-            <meta
-              property="og:url"
-              content={`http://thebetteraging.businesstoday.com.tw/catalog/${catalogData.category_info.category_id}`}
-            />
-          )}
-
           {catalogData.seo_meta.meta_og_image && (
-            <meta
-              itemProp="image"
-              property="og:image"
+            <meta property="og:image"
               content={catalogData.seo_meta.meta_og_image}
             />
           )}
-
-          {catalogData.seo_meta.meta_og_image && (
-            <meta
-              itemProp="image"
-              content={catalogData.seo_meta.meta_og_image}
-            />
-          )}
+          <meta property="og:type" content="website" />
         </Head>
 
         {/* PC 列表頁 廣告上 */}
