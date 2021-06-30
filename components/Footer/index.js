@@ -351,11 +351,9 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <Image
+              <img
                 className="h-full w-full object-cover"
                 src="/images/download-ios.png"
-                height={120}
-                width={400}
                 alt="Download iOS APP"
               />
             </a>
@@ -365,11 +363,9 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <Image
+              <img
                 className="h-full w-full object-cover"
                 src="/images/download-android.png"
-                height={120}
-                width={400}
                 alt="Download Android APP"
               />
             </a>
