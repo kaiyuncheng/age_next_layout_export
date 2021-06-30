@@ -21,7 +21,6 @@ const AuthorInfo = ({ author }) => {
             height={300}
             width={300}
             alt={author.name}
-            
           />
         </div>
         <div className="w-full md:w-2/3 md:flex-grow flex flex-col justify-center">
