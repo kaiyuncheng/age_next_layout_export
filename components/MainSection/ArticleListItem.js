@@ -25,10 +25,9 @@ const ArticleListItem = ({ item, isSearch, keywords }) => {
       <Link href={`/article/${item.url_query}`}>
         <a className="block w-full md:w-1/3 outline-none focus:outline-none">
           <div className="rounded-lg overflow-hidden aspect-h-3 aspect-w-4 relative">
-            <Image
+            <img
               className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
               src={item.image_url}
-              layout="fill"
               alt={item.title}
             />
           </div>

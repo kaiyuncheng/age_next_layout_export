@@ -98,10 +98,9 @@ const RelatedSlider = ({ topics }) => {
                     <a className="group block">
                       <div className="group rounded-md relative overflow-hidden w-full outline-none focus:outline-none mb-2">
                         <div className="aspect-w-4 aspect-h-3">
-                          <Image
+                          <img
                             className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
                             src={item.image_url}
-                            layout="fill"
                             alt={item.title}
                           />
                         </div>
@@ -160,10 +159,9 @@ const RelatedSlider = ({ topics }) => {
                     <a className="group block">
                       <div className="group rounded-md relative overflow-hidden w-full outline-none focus:outline-none mb-2">
                         <div className="aspect-w-4 aspect-h-3">
-                          <Image
+                          <img
                             className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
                             src={item.image_url}
-                            layout="fill"
                             alt={item.title}
                           />
                         </div>
@@ -221,10 +219,9 @@ const RelatedSlider = ({ topics }) => {
                     <a className="group block">
                       <div className="group rounded-md relative overflow-hidden w-full outline-none focus:outline-none mb-2">
                         <div className="aspect-w-4 aspect-h-3">
-                          <Image
+                          <img
                             className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
                             src={item.image_url}
-                            layout="fill"
                             alt={item.title}
                           />
                         </div>

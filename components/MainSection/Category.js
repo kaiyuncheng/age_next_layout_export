@@ -72,11 +72,10 @@ const Category = ({ name, id, data, isIndexCategory, parentName }) => {
                   <Link href={`/article/${item.url_query}`}>
                     <a className="group flex flex-col justify-center">
                       <div className="relative rounded-t-md overflow-hidden aspect-h-3 aspect-w-4 w-full">
-                        <Image
+                        <img
                           className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                           src={item.image_url}
                           alt={item.title}
-                          layout="fill"
                         />
                       </div>
                       <div

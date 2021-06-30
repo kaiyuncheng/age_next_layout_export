@@ -12,11 +12,10 @@ const FourColumns = ({ topics }) => {
               <Link href={`/article/${item.url_query}`}>
                 <a className="group block relative">
                   <div className="relative overflow-hidden rounded-lg mb-4 w-full aspect-w-4 aspect-h-3">
-                    <Image
+                    <img
                       className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                       src={item.image_url}
                       alt={item.title}
-                      layout="fill"
                     />
                   </div>
                   <h3 className="absolute w-full bottom-0 left-0 rounded-b-lg bg-black bg-opacity-75 text-white p-3 text-sm group-hover:bg-primary-dark transition-all duration-500 ease-in-out">

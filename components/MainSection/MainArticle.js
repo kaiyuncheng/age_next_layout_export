@@ -21,16 +21,13 @@ const MainArticle = ({ topics }) => {
       <div className="flex flex-col">
         {topics.file_type === 'image' && (
           <Link href={`/article/${topics.url_query}`}>
-            <a className="group relative block rounded-lg overflow-hidden w-full mb-5 outline-none focus:outline-none">
-              <Image
+            <a className="group relative block rounded-lg overflow-hidden aspect-w-4 aspect-h-3 w-full mb-5 outline-none focus:outline-none">
+              <img
                 className="object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
                 src={
                   topics.image_url ||
                   'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
                 }
-                height={300}
-                width={400}
-                layout="responsive"
                 alt={topics.title}
               />
             </a>

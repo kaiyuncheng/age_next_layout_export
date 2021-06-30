@@ -573,13 +573,12 @@ const MainSlider = ({ topics }) => {
                     <Link href={`/article/${item.url_query}`}>
                       <a className="main_slider_img block overflow-hidden relative w-full lg:w-1/2">
                         <div className="aspect-h-3 aspect-w-4 h-full">
-                          <Image
+                          <img
                             className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
                             src={
                               item.image_url ||
                               'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
                             }
-                            layout="fill"
                             alt={item.title}
                           />
                         </div>

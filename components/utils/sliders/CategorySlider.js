@@ -80,11 +80,10 @@ const CategorySlider = ({ topics, color }) => {
                   <Link href={`/article/${item.url_query}`}>
                     <a className="group flex flex-col">
                       <div className="relative rounded-t-md overflow-hidden aspect-h-3 aspect-w-4">
-                        <Image
+                        <img
                           className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                           src={item.image_url}
                           alt={item.title}
-                          layout="fill"
                         />
                       </div>
                       <div

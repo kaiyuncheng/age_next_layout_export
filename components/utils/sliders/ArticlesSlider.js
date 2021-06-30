@@ -109,11 +109,10 @@ const MainSlider = ({ topics }) => {
                     <Link href={`/article/${item.article_id}`}>
                       <a className="group relative z-30 rounded-t-lg lg:rounded-l-lg lg:rounded-r-none block overflow-hidden flex-grow w-full lg:w-auto h-full">
                         <div className="aspect-w-4 aspect-h-3">
-                          <Image
+                          <img
                             className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                             src={item.image_url}
                             alt={item.title}
-                            layout="fill"
                           />
                         </div>
 

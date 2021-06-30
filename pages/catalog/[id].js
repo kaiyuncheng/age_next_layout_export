@@ -146,13 +146,12 @@ export default function cataloglist({ data }) {
               {isBrandOpen && catalogData.brand_area && (
                 <div className="flex items-center">
                   <div className="relative overflow-hidden rounded-lg w-20 h-14 mr-5">
-                    <Image
+                    <img
                       className="w-full h-full object-cover"
                       src={
                         catalogData.brand_area.logo_url ||
                         'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
                       }
-                      layout="fill"
                       alt={catalogData.brand_area.logo_title}
                     />
                   </div>
@@ -217,14 +216,11 @@ export default function cataloglist({ data }) {
 
                   <a
                     href={catalogData.brand_area.mobile_advertising_url}
-                    className="md:hidden block relative overflow-hidden rounded-lg mb-14"
+                    className="md:hidden block relative overflow-hidden rounded-lg mb-14 w-[300px] h-[250px]"
                   >
-                    <Image
+                    <img
                       className="w-full h-full object-cover"
                       src={catalogData.brand_area.mobile_advertising_image_url}
-                      layout="responsive"
-                      width={300}
-                      height={250}
                       alt={catalogData.brand_area.about_brand_title}
                     />
                   </a>

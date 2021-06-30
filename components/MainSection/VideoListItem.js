@@ -10,14 +10,13 @@ const VideoListItem = ({ item }) => {
         <div className="flex flex-col bg-white rounded-bl-lg rounded-t-lg rounded-br-5xl shadow-md border border-secondary-medium">
           <Link href={`/video/${item.url_query}`}>
             <a className="group block rounded-t-lg relative overflow-hidden w-full outline-none focus:outline-none">
-              <Image
-                className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
-                src={item.image_url}
-                height={300}
-                width={400}
-                layout="responsive"
-                alt={item.title}
-              />
+              <div className="aspect-h-3 aspect-w-4">
+                <img
+                  className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
+                  src={item.image_url}
+                  alt={item.title}
+                />
+              </div>
 
               <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out fill-current text-black opacity-60 group-hover:opacity-95 z-40">
                 <svg

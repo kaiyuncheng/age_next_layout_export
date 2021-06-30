@@ -111,14 +111,13 @@ const DigitalSlider = ({ topics }) => {
                       className="relative z-10 rounded-lg overflow-hidden w-full lg:w-3/5 outline-none  flex items-center focus:outline-none relative"
                     >
                       <div className="aspect-h-3 aspect-w-4 w-full rounded-lg overflow-hidden">
-                        <Image
+                        <img
                           className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
                           src={
                             item.image_url ||
                             'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
                           }
                           alt={item.title}
-                          layout="fill"
                         />
                       </div>
                     </a>

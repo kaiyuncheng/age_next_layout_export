@@ -22,10 +22,9 @@ const ProjectSection = ({ topics }) => {
         {topics.file_type === 'image' && topics.image_url && (
           <Link href={`/article/${topics.url_query}`}>
             <a className="block aspect-w-4 aspect-h-3 rounded-lg overflow-hidden relative">
-              <Image
+              <img
                 className="w-full h-full object-cover"
                 src={topics.image_url}
-                layout="fill"
                 alt={topics.title}
               />
             </a>

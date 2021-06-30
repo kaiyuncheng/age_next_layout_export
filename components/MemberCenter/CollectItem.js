@@ -5,15 +5,14 @@ const CollectItem = ({ item }) => {
   return (
     <div className="flex md:flex-row flex-col relative">
       <Link href={`/article/${item.url_query}`}>
-        <a className="group block rounded-lg overflow-hidden w-full md:w-1/3 outline-none focus:outline-none">
-          <Image
-            className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
-            src={item.image_url}
-            height={300}
-            width={400}
-            layout="responsive"
-            alt={item.title}
-          />
+        <a className="block w-full md:w-1/3 outline-none focus:outline-none">
+          <div className="rounded-lg overflow-hidden aspect-h-3 aspect-w-4 relative">
+            <img
+              className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
+              src={item.image_url}
+              alt={item.title}
+            />
+          </div>
         </a>
       </Link>
 
@@ -33,8 +32,7 @@ const CollectItem = ({ item }) => {
             <p className="mr-2">取消收藏</p>
             <div>
               <svg
-              className="fill-current text-gray-800 group-hover:text-primary-dark transform"
-                
+                className="fill-current text-gray-800 group-hover:text-primary-dark transform"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
                 width="18px"

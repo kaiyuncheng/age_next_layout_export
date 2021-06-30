@@ -42,14 +42,13 @@ const HotNews = ({ topics }) => {
                     >
                       <a className="group w-1/2 md:w-full block md:border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none">
                         <div className="block md:hidden overflow-hidden rounded-lg mb-2 aspect-w-4 aspect-h-3 relative">
-                          <Image
+                          <img
                             className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                             src={
                               item.image_url ||
                               'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
                             }
                             alt={item.title}
-                            layout="fill"
                           />
                         </div>
                         <p className="text-sm md:text-base group-hover:text-gray-600 line-clamp-3">

@@ -110,11 +110,10 @@ const VideoSlider = ({ topics }) => {
                         <a className="group block relative w-full outline-none focus:outline-none">
                           <div className="rounded-lg overflow-hidden w-full relative">
                             <div className="aspect-h-3 aspect-w-4">
-                              <Image
+                              <img
                                 className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                                 src={item.image_url}
                                 alt={item.title}
-                                layout="fill"
                               />
                             </div>
                             <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out fill-current text-white opacity-60 group-hover:opacity-95 z-40">
@@ -144,11 +143,10 @@ const VideoSlider = ({ topics }) => {
                       >
                         <div className="rounded-lg overflow-hidden w-full relative">
                           <div className="aspect-h-3 aspect-w-4">
-                            <Image
+                            <img
                               className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-all duration-500 ease-in-out"
                               src={item.image_url}
                               alt={item.title}
-                              layout="fill"
                             />
                           </div>
 
