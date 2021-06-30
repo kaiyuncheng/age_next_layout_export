@@ -27,7 +27,6 @@ const ArticleListItem = ({ item, isSearch, keywords }) => {
           <div className="rounded-lg overflow-hidden aspect-h-3 aspect-w-4 relative">
             <Image
               className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-all duration-500 ease-in-out"
-              priority={true}
               src={item.image_url}
               layout="fill"
               alt={item.title}

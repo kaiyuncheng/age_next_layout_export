@@ -115,7 +115,6 @@ const VideoSlider = ({ topics }) => {
                                 src={item.image_url}
                                 alt={item.title}
                                 layout="fill"
-                                priority
                               />
                             </div>
                             <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out fill-current text-white opacity-60 group-hover:opacity-95 z-40">

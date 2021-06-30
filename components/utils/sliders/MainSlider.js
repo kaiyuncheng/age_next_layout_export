@@ -579,7 +579,6 @@ const MainSlider = ({ topics }) => {
                               item.image_url ||
                               'https://doqvf81n9htmm.cloudfront.net/data/no_image.jpg'
                             }
-                            priority
                             layout="fill"
                             alt={item.title}
                           />

@@ -27,7 +27,6 @@ const ProjectSection = ({ topics }) => {
                 src={topics.image_url}
                 layout="fill"
                 alt={topics.title}
-                priority
               />
             </a>
           </Link>
