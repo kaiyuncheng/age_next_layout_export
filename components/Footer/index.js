@@ -8,7 +8,11 @@ const Footer = () => {
       <div className="max-w-screen-xl mx-auto px-6 md:px-4 lg:px-2 p-12 flex flex-col md:flex-row justify-between items-center space-y-10 md:space-y-0 md:space-x-10">
         <div className="flex flex-col md:flex-row md:space-x-10 lg:space-x-20 space-y-10 md:space-y-0">
           <div className="footer_logos flex flex-col items-center space-y-2">
-            <a href="https://www.businesstoday.com.tw/" target="_blank">
+            <a
+              href="https://www.businesstoday.com.tw/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <svg
                 className="fill-current text-white hover:text-gray-100"
                 xmlns="http://www.w3.org/2000/svg"
@@ -345,6 +349,7 @@ const Footer = () => {
               className="block h-12 w-40"
               href="https://apps.apple.com/tw/app/%E4%BB%8A%E5%91%A8%E5%88%8A-app/id1486129448"
               target="_blank"
+              rel="noreferrer"
             >
               <Image
                 className="h-full w-full object-cover"
@@ -358,6 +363,7 @@ const Footer = () => {
               className="block h-12 w-40"
               href="https://play.google.com/store/apps/details?id=com.businesstoday.reader&hl=en_US"
               target="_blank"
+              rel="noreferrer"
             >
               <Image
                 className="h-full w-full object-cover"

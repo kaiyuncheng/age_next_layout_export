@@ -85,6 +85,7 @@ const Speakers = ({ topics }) => {
                       key={i}
                       href={item.hyperlink}
                       target="_blank"
+                      rel="noreferrer"
                       className="group w-full block border-b last:border-none border-dashed border-secondary-medium px-2 pb-5 outline-none focus:outline-none"
                     >
                       <p className="line-clamp-3 text-base group-hover:text-gray-600">

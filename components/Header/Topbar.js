@@ -12,6 +12,7 @@ const Topbar = () => {
           <a
             href="https://www.businesstoday.com.tw/"
             target="_blank"
+            rel="noreferrer"
             className="mr-3 block"
           >
             <svg
@@ -112,6 +113,7 @@ const Topbar = () => {
             className="topbar_btn md:mr-3 md:hidden flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full flex items-center justify-center last:border-r"
             href="https://www.businesstoday.com.tw/"
             target="_blank"
+            rel="noreferrer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -208,6 +210,7 @@ const Topbar = () => {
             className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
             href="https://www.facebook.com/thebetteraging/"
             target="_blank"
+            rel="noreferrer"
           >
             FACEBOOK
           </a>
@@ -215,6 +218,7 @@ const Topbar = () => {
             className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
             href="https://page.line.me/sgw2846w?openQrModal=true"
             target="_blank"
+            rel="noreferrer"
           >
             LINE
           </a>
@@ -224,6 +228,7 @@ const Topbar = () => {
                 className="topbar_btn flex-grow md:px-4 border-l border-gray-200 hover:bg-primary-light transition-all duration-300 h-full inline-flex items-center justify-center last:border-r"
                 href="https://www.businesstoday.com.tw/dashboard"
                 target="_blank"
+                rel="noreferrer"
               >
                 會員中心
               </a>

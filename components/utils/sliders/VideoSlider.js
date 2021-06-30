@@ -139,6 +139,7 @@ const VideoSlider = ({ topics }) => {
                       <a
                         href={item.hyperlink}
                         target="_blank"
+                        rel="noreferrer"
                         className="group block relative w-full outline-none focus:outline-none"
                       >
                         <div className="rounded-lg overflow-hidden w-full relative">
@@ -219,6 +220,7 @@ const VideoSlider = ({ topics }) => {
         <a
           href={topics[pages.currentSlide].hyperlink}
           target="_blank"
+          rel="noreferrer"
           className="z-10 hover:text-gray-600 hover:font-medium group block relative w-full mb-5 pb-5"
         >
           <div className="px-2 pb-5">

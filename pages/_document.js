@@ -10,10 +10,10 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <script
+          {/* <script
             async="async"
             src="https://www.googletagservices.com/tag/js/gpt.js"
-          ></script>
+          ></script> */}
           <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=AW-990045206"

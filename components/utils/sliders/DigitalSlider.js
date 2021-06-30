@@ -107,6 +107,7 @@ const DigitalSlider = ({ topics }) => {
                     <a
                       href={item.hyperlink}
                       target="_blank"
+                      rel="noreferrer"
                       className="relative z-10 rounded-lg overflow-hidden w-full lg:w-3/5 outline-none  flex items-center focus:outline-none relative"
                     >
                       <div className="aspect-h-3 aspect-w-4 w-full rounded-lg overflow-hidden">
@@ -124,6 +125,7 @@ const DigitalSlider = ({ topics }) => {
                     <a
                       href={item.hyperlink}
                       target="_blank"
+                      rel="noreferrer"
                       className="block relative z-10 group w-full lg:w-2/5 outline-none focus:outline-none"
                     >
                       <h2 className="pb-2 mb-2 border-b border-secondary-medium border-dashed group-hover:text-primary-dark text-xl font-medium">
