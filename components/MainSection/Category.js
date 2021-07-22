@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CategorySlider from "../utils/sliders/CategorySlider";
-import Image from "next/image";
+
 import Link from "next/link";
 import { Fade } from 'react-awesome-reveal';
 import clsx from "clsx";

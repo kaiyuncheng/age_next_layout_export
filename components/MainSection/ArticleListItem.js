@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
+
 
 const ArticleListItem = ({ item, isSearch, keywords }) => {
   const [title, setTitle] = useState('');

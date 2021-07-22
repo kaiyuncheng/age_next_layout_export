@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import Image from "next/image";
+
 import Link from "next/link";
 
 function NextArrow({ onClick }) {

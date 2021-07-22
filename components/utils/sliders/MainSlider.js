@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+
 import Slider from "react-slick";
 import clsx from "clsx";
 

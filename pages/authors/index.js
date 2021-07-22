@@ -7,11 +7,9 @@ import BreadCrumb from "../../components/utils/BreadCrumb";
 import AuthorListItem from "../../components/MainSection/AuthorListItem";
 import Banner from '../../components/utils/googletags/Banner';
 
-const timestamp = new Date().getTime();
-
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   try {
-    const { data } = await axios.get(`Author/getLongTermAuthor?${timestamp}`);
+    const { data } = await axios.get(`Author/getLongTermAuthor`);
     if (!data.data) {
       return {
         redirect: {
@@ -25,6 +23,7 @@ export const getServerSideProps = async () => {
       props: {
         data: data.data,
       },
+      revalidate: 300,
     };
   } catch (error) {
     console.log('getData error', error);

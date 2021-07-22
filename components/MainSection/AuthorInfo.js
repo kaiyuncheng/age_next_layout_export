@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+
 import { Fade } from 'react-awesome-reveal';
 const AuthorInfo = ({ author }) => {
   function createMarkup() {

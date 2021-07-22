@@ -7,10 +7,10 @@ import ArticleList from '../../components/MainSection/ArticleList';
 import BreadCrumb from '../../components/utils/BreadCrumb';
 import Banner from '../../components/utils/googletags/Banner';
 
-let timestamp = new Date().getTime();
-export const getServerSideProps = async () => {
+
+export const getStaticProps = async () => {
   try {
-    const { data } = await axios.get(`Catalog/news?${timestamp}`);
+    const { data } = await axios.get(`Catalog/news`);
 
     if (!data.data) {
       return {
@@ -25,6 +25,7 @@ export const getServerSideProps = async () => {
       props: {
         data: data.data,
       },
+      revalidate: 59,
     };
   } catch (error) {
     console.log('getData error', error);
@@ -41,14 +42,33 @@ export default function news({ data }) {
   const [newsData, setNewsData] = useState('');
   const [showAside, setShowAside] = useState(false);
 
+  const [newData, setNewData] = useState('');
+
   useEffect(() => {
     setNewsData(data);
   }, [data]);
 
+
+  useEffect(() => {
+    const getMainData = async () => {
+      try {
+        const res = await axios.get(`Catalog/news`);
+        setNewsData(res.data.data);
+      } catch (error) {
+        console.log('getMainData error', error);
+      }
+    };
+    getMainData();
+  }, []);
+
+  
+
   return (
     <Layout siteTitle="幸福熟齡 - 最新文章">
+      {console.log(newsData)}
       <Head>
-        <meta name="title" content="幸福熟齡 - 最新文章" />
+        {newsData && <meta name="title" content={newsData[0].title} />}
+
         <meta
           itemProp="description"
           content="打造多元觀點的熟世代題材，用新觀點活出成熟態度"
